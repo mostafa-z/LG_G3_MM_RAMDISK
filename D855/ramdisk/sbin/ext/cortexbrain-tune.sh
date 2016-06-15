@@ -61,23 +61,20 @@ KERNEL_TWEAKS;
 # TWEAKS: if Screen-ON
 # ==============================================================
 AWAKE_MODE()
-{
-}
 
 # ==============================================================
 # TWEAKS: if Screen-OFF
 # ==============================================================
 SLEEP_MODE()
-{
-}
 
 # ==============================================================
 # Background process to check screen state
 # ==============================================================
 
 # Dynamic value do not change/delete
-	
-if [ "$(pgrep -f cortex | wc -l)" -eq "1" ]; then
+cortexbrain_background_process=1;
+
+if [ "$cortexbrain_background_process" -eq "1" ]; then
 	(while true; do
 		while [ "$(cat /sys/module/state_notifier/parameters/state_suspended)" != "N" ]; do
 			sleep "3";
@@ -92,9 +89,9 @@ if [ "$(pgrep -f cortex | wc -l)" -eq "1" ]; then
 		SLEEP_MODE;
 	done &);
 else
-	if [ "$(pgrep -f cortex | wc -l)" -eq "0" ]; then
+	if [ "$cortexbrain_background_process" -eq "0" ]; then
 		echo "Cortex background disabled!"
 	else
-		echo "Cortex background process already running!"
+		echo "Cortex background process already running!";
 	fi;
 fi;

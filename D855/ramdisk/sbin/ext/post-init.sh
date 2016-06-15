@@ -153,8 +153,10 @@ LOG=/data/boot_log
 BUSYBOX_VER=$(busybox | grep "BusyBox v" | cut -c0-15);
 echo "$BUSYBOX_VER" > $LOG;
 
+# start CORTEX by tree root, so it's will not be terminated.
+sed -i "s/cortexbrain_background_process=[0-1]*/cortexbrain_background_process=1/g" /sbin/ext/cortexbrain-tune.sh;
 if [ "$(pgrep -f "cortexbrain-tune.sh" | wc -l)" -eq "0" ]; then
-	nohup sh /sbin/ext/cortexbrain-tune.sh;
+	nohup sh /sbin/ext/cortexbrain-tune.sh > /data/cortex.txt &
 fi;
 
 # disable debugging on some modules
