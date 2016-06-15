@@ -21,6 +21,17 @@ BB=/sbin/busybox
 
 FILE_NAME=$0;
 
+# if crond used, then give it root perent - if started by STweaks, then it will be killed in time
+CROND_SAFETY()
+{
+		if [ "$(pgrep -f crond | wc -l)" -eq "0" ]; then
+			sh /res/crontab_service/service.sh > /dev/null;
+			log -p i -t "$FILE_NAME" "*** CROND STARTED ***";
+		else
+			log -p i -t "$FILE_NAME" "*** CROND IS ONLINE ***";
+		fi;
+}
+
 # ==============================================================
 # I/O-TWEAKS
 # ==============================================================
@@ -61,11 +72,17 @@ KERNEL_TWEAKS;
 # TWEAKS: if Screen-ON
 # ==============================================================
 AWAKE_MODE()
+{
+	CROND_SAFETY;
+}
 
 # ==============================================================
 # TWEAKS: if Screen-OFF
 # ==============================================================
 SLEEP_MODE()
+{
+	CROND_SAFETY;
+}
 
 # ==============================================================
 # Background process to check screen state

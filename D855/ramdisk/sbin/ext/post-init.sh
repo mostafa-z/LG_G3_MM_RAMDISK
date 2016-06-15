@@ -39,6 +39,9 @@ fi;
 
 OPEN_RW;
 
+# start CROND by tree root, so it's will not be terminated.
+	nohup sh /res/crontab_service/service.sh;
+
 CRITICAL_PERM_FIX()
 {
 	# critical Permissions fix
@@ -157,6 +160,13 @@ echo "$BUSYBOX_VER" > $LOG;
 sed -i "s/cortexbrain_background_process=[0-1]*/cortexbrain_background_process=1/g" /sbin/ext/cortexbrain-tune.sh;
 if [ "$(pgrep -f "cortexbrain-tune.sh" | wc -l)" -eq "0" ]; then
 	nohup sh /sbin/ext/cortexbrain-tune.sh > /data/cortex.txt &
+fi;
+
+# copy cron files
+$BB cp -a /res/crontab/ /data/
+if [ ! -e /data/crontab/custom_jobs ]; then
+	$BB touch /data/crontab/custom_jobs;
+	$BB chmod 777 /data/crontab/custom_jobs;
 fi;
 
 # disable debugging on some modules
