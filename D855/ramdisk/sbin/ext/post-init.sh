@@ -153,6 +153,10 @@ LOG=/data/boot_log
 BUSYBOX_VER=$(busybox | grep "BusyBox v" | cut -c0-15);
 echo "$BUSYBOX_VER" > $LOG;
 
+if [ "$(pgrep -f "cortexbrain-tune.sh" | wc -l)" -eq "0" ]; then
+	nohup sh /sbin/ext/cortexbrain-tune.sh;
+fi;
+
 # disable debugging on some modules
 echo "N" > /sys/module/kernel/parameters/initcall_debug;
 echo "0" > /sys/devices/fe12f000.slim/debug_mask
