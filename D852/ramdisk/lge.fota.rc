@@ -1,0 +1,57 @@
+on fota-boot
+    trigger fota-boot-trigger
+
+on fota-update
+    trigger early-init
+    trigger fota-update-trigger
+
+on fota-boot-trigger
+    mkdir /cache/fota 0770 system system
+    chown system system /cache/fota
+    chmod 0775 /cache/fota
+
+    mkdir /data/fota 0770  system system
+    chown system system /data/fota
+    chmod 0775 /data/fota
+
+    chown system system /cache/fota/usd.dat
+    chmod 0775 /cache/fota/usd.dat
+
+on fota-update-trigger
+    export PATH /sbin
+    export ANDROID_ROOT /system
+    export ANDROID_DATA /data
+    export EXTERNAL_STORAGE /sdcard
+
+    symlink /system/etc /etc
+
+    mkdir /sdcard
+    mkdir /system
+    mkdir /cust
+    mkdir /data
+    mkdir /cache
+    mount /tmp /tmp tmpfs
+
+    #mount rootfs rootfs / rw remount
+
+
+# mount mmc partitions
+    wait /dev/block/platform/msm_sdcc.1/by-name/system
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system rw data=journal barrier=1
+
+    wait /dev/block/platform/msm_sdcc.1/by-name/cust
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/cust /cust rw data=journal barrier=1
+
+    wait /dev/block/platform/msm_sdcc.1/by-name/userdata
+    exec /system/bin/e2fsck -y /dev/block/platform/msm_sdcc.1/by-name/userdata
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/userdata /data nosuid nodev noatime barrier=1 data=journal noauto_da_alloc errors=panic
+
+    wait /dev/block/platform/msm_sdcc.1/by-name/cache
+    wait /dev/block/platform/msm_sdcc.1/by-name/cache
+    wait /dev/block/platform/msm_sdcc.1/by-name/cache
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/cache /cache nodev data=journal barrier=1
+
+    wait /dev/graphics/fb0
+    wait /dev/tty0
+
+    mkdir /cache/fota

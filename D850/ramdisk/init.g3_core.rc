@@ -1,0 +1,323 @@
+# Copyright (c) 2009-2012, Code Aurora Forum. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright
+#       notice, this list of conditions and the following disclaimer in the
+#       documentation and/or other materials provided with the distribution.
+#     * Neither the name of Code Aurora nor
+#       the names of its contributors may be used to endorse or promote
+#       products derived from this software without specific prior written
+#       permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NON-INFRINGEMENT ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+# CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+# OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+# OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+
+import /init.g3_product.rc
+import /init.lge.svelte.rc
+
+# BT_S : [CONBT-720] BDADDR_LOADER
+import /init.lge.bt_vendor.rc
+# BT_E : [CONBT-720] BDADDR_LOADER
+
+
+    #For key_lock ATD command
+    chown system system /sys/devices/platform/factory_misc.0/key_lock
+    chmod 664 /sys/devices/platform/factory_misc.0/key_lock
+
+on post-fs-data
+    #bohyun, jung - D3-5T-FS@lge.com, add jobs which should done after mount completed
+    single_binary_init
+
+	# To support Hidden Menu
+	chown system system /sys/class/power_supply/battery/charging_enabled
+	chmod 0644 /sys/class/power_supply/battery/charging_enabled
+
+    # enable exfat feature
+    insmod /system/lib/modules/texfat.ko
+
+# Sensor daemon
+service sensord /system/bin/sensord
+    user system
+    group system
+    class late_start
+    oneshot
+
+# Wi-Fi deamon
+service wcnss-service /system/bin/wcnss_service
+    class main
+    user system
+    group system wifi
+    oneshot
+
+service ptt_socket_app /system/bin/ptt_socket_app
+    class main
+    user system
+    group system
+    oneshot
+
+#LGE_CHANGE_S, restart qcamerasvr when restarting mediaserver and servicemanager, yousung.kang@lge.com
+on property:init.svc.media=restarting
+    restart qcamerasvr
+on property:init.svc.servicemanager=restarting
+    restart qcamerasvr
+#LGE_CHANGE_E, restart qcamerasvr when restarting mediaserver and servicemanager, yousung.kang@lge.com
+
+# Begin Immersion changes
+service immvibed /system/bin/immvibed
+    class main
+    user shell
+    group shell system
+    oneshot
+# End Immersion changes
+
+# Customize booting resources
+service runtime_boot_res /system/vendor/bin/runtime_boot_res.sh
+    disabled
+    oneshot
+
+on property:ro.build.sbp=1
+    start runtime_boot_res
+
+# LGODL
+import /init.lge.modem_log.rc
+
+# 2012.08.24 real-wifi@lge.com[wo0gi] TestMode Daemon for broadcom driver [START]
+service diagd /system/bin/diagd
+    class late_start
+    user root
+    group radio system
+    disabled
+    oneshot
+    socket lsock_diagd stream 666
+
+on property:wifi_ftm.diagd_start=1
+    start diagd
+
+on property:wifi_ftm.diagd_start=0
+    stop diagd
+# 2012.08.24 real-wifi@lge.com[wo0gi] TestMode Daemon for broadcom driver [END]
+
+#[START][LGE_WIFI][COMMON]: TO read WIFI MAC from LGFTM(MISC - block device)
+service wififtmd /system/bin/wififtmd
+    user root
+    group radio system
+    disabled
+    oneshot
+
+on property:wifi_ftm.wififtmd_start=1
+    start wififtmd
+
+on property:wifi_ftm.wififtmd_start=0
+    stop wififtmd
+#[END][LGE_WIFI][COMMON]: TO read WIFI MAC from LGFTM(MISC - block device)
+
+on boot
+	write /sys/module/lowmemorykiller/parameters/lmk_fast_run 0
+	chown system system /sys/class/leds/red/pattern_id
+	chmod 0664 /sys/class/leds/red/pattern_id
+	chown system system /sys/class/leds/red/timed
+	chmod 0664 /sys/class/leds/red/timed
+	chown system system /sys/class/leds/red/time_on_off
+	chmod 0664 /sys/class/leds/red/time_on_off
+
+on boot
+	# START touch_driver
+	chown system system /sys/devices/virtual/input/lge_touch/lpwg_data
+	chmod 664 /sys/devices/virtual/input/lge_touch/lpwg_data
+	chown system system /sys/devices/virtual/input/lge_touch/lpwg_notify
+	chmod 664 /sys/devices/virtual/input/lge_touch/lpwg_notify
+	chown system system /sys/devices/virtual/input/lge_touch/lpwg_test_info
+	chmod 644 /sys/devices/virtual/input/lge_touch/lpwg_test_info
+	chown system system /sys/devices/virtual/input/lge_touch/lpwg_test_ctrl
+	chmod 644 /sys/devices/virtual/input/lge_touch/lpwg_test_ctrl
+	chown system system /sys/devices/virtual/input/lge_touch/touch_wake_up_test
+	chmod 664 /sys/devices/virtual/input/lge_touch/touch_wake_up_test
+	chown system lgkeyguard /sys/devices/virtual/input/lge_touch/keyguard
+	chmod 664 /sys/devices/virtual/input/lge_touch/keyguard
+	chown system system /sys/devices/virtual/input/lge_touch/incoming_call
+	chown system system /sys/devices/virtual/input/lge_touch/ime_status
+	chown system system /sys/devices/virtual/input/lge_touch/ts_noise_log_enable
+	chmod 664 /sys/devices/virtual/input/lge_touch/ts_noise_log_enable
+	chown system system /sys/devices/virtual/input/lge_touch/ts_noise
+	chmod 664 /sys/devices/virtual/input/lge_touch/ts_noise
+	chmod 664 /sys/devices/virtual/input/lge_touch/quick_cover_status
+	chown system system /sys/devices/virtual/input/lge_touch/quick_cover_status
+	# END touch_knock_on
+
+	# setup permissions for fb0 related nodes
+	chown system graphics /sys/class/graphics/fb0/idle_time
+	chmod 664 /sys/class/graphics/fb0/idle_time
+	chown system system /sys/class/graphics/fb0/dynamic_fps
+	chmod 664 /sys/class/graphics/fb0/dynamic_fps
+	chown system system /sys/class/devfreq/g3-display.0/polling_interval
+	chmod 664 /sys/class/devfreq/g3-display.0/polling_interval
+	chown system system /sys/class/devfreq/g3-display.0/cur_freq
+	chmod 664 /sys/class/devfreq/g3-display.0/cur_freq
+	chown system system /sys/class/graphics/fb0/mdp/vfps
+	chmod 644 /sys/class/graphics/fb0/mdp/vfps
+	chown system system /sys/class/graphics/fb0/mdp/vfps_fcnt
+	chmod 644 /sys/class/graphics/fb0/mdp/vfps_fcnt
+	chown system system /sys/class/graphics/fb0/mdp/vfps_ratio
+	chmod 644 /sys/class/graphics/fb0/mdp/vfps_ratio
+
+
+	# create symlink for fb1 as HDMI
+	symlink /dev/graphics/fb1 /dev/graphics/hdmi
+
+	# setup permissions for fb1 related nodes
+	chown system system /sys/class/graphics/fb1/hdcp/tp
+	chmod 664 /sys/class/graphics/fb1/hdcp/tp
+	chown system graphics /sys/class/graphics/fb1/hpd
+	chmod 664 /sys/class/graphics/fb1/hpd
+	chown system graphics /sys/class/graphics/fb1/vendor_name
+	chmod 664 /sys/class/graphics/fb1/vendor_name
+	chown system graphics /sys/class/graphics/fb1/product_description
+	chmod 664 /sys/class/graphics/fb1/product_description
+
+# [START] hyunmin.baek@lge.com, SSR FEATURE
+    chmod 0660 /dev/ramdump_adsp
+    chown system system /dev/ramdump_adsp
+    chmod 0660 /dev/ramdump_audio-ocmem
+    chown system system /dev/ramdump_audio-ocmem
+    chmod 0660 /dev/ramdump_modem
+    chown system system /dev/ramdump_modem
+    chmod 0660 /dev/ramdump_pronto
+    chown system system /dev/ramdump_pronto
+    chmod 0660 /dev/ramdump_smem
+    chown system system /dev/ramdump_smem
+    chmod 0660 /dev/ramdump_venus
+    chown system system /dev/ramdump_venus
+# [END] hyunmin.baek@lge.com, SSR FEATURE
+
+# Workaround for copying the updated firmware
+    rm /data/misc/wifi/WCNSS_qcom_cfg.ini
+    rm /data/misc/wifi/WCNSS_qcom_wlan_nv.bin
+
+# 2015.09.17 Temporary moved here. Contact to changduk.ryu@lge.com when power.rc is ready.
+service gbmd /system/bin/gbmd
+    class main
+    socket gbm-client stream 660 system system
+    user system
+    group system
+
+# 2013.05.13 real-wifi@lge.com[woOgi] TestMode Daemon for QCT driver
+service ftm_ptt /system/bin/ftm_ptt -d
+    class late_start
+    user root
+    group radio
+    disabled
+    oneshot
+
+on property:hw.ftm_ptt_start=1
+    start ftm_ptt
+
+on property:hw.ftm_ptt_start=0
+    stop ftm_ptt
+# 2013.05.13 real-wifi@lge.com[woOgi] TestMode Daemon for QCT driver
+
+# LGE_CHANGE_S, WiFi WCNSS SSR enable/disable
+# Disable WCNSS SSR
+on property:persist.sys.ssr.restart_level=1
+    setprop persist.sys.ssr.restart_level ALL_DISABLE
+
+on property:persist.sys.ssr.restart_level=ALL_DISABLE
+    write /sys/bus/msm_subsys/devices/subsys2/restart_level system
+
+# Enable WCNSS SSR
+on property:persist.sys.ssr.restart_level=3
+    setprop persist.sys.ssr.restart_level ALL_ENABLE
+
+on property:persist.sys.ssr.restart_level=ALL_ENABLE
+    write /sys/bus/msm_subsys/devices/subsys2/restart_level related
+# LGE_CHANGE_E, WiFi WCNSS SSR enable/disable
+
+# improving first Touch response by i2c active
+    write /sys/devices/f9924000.i2c/power/control on
+
+# HDCP 2.x for Wi-Fi Display
+    mkdir /persist-lg/wfd 0770 system system
+
+# [LGE_MODEMBSP] modem reset feature [START]
+on property:rild.modem_restart=silence
+    write /sys/module/lge_handle_panic/parameters/gen_modem_panic 2
+# [LGE_MODEMBSP] modem reset feature [END]
+
+#LGE_CHANGE_S, Advanced MOCA, huny.lee@lge.com
+service moca_service /system/bin/advanced_moca -s
+    class late_start
+    user root
+    group system sdcard_r sdcard_rw radio
+    disabled
+    oneshot
+    socket Full.MOCA.port stream 660 system system
+
+on property:persist.service.moca.enable=1
+   start moca_service
+
+service moca_service_disable /system/bin/advanced_moca -k
+    class late_start
+    user root
+    group system sdcard_r sdcard_rw radio
+    disabled
+    oneshot
+
+on property:persist.service.moca.enable=0
+   start moca_service_disable
+#LGE_CHANGE_E, Advanced MOCA, huny.lee@lge.com
+
+# Disable SSR
+on property:persist.sys.ssr.restart_level=1
+    setprop persist.sys.ssr.restart_level ALL_DISABLE
+
+on property:persist.sys.ssr.restart_level=ALL_DISABLE
+    write /sys/bus/msm_subsys/devices/subsys1/restart_level system
+
+# Enable SSR
+on property:persist.sys.ssr.restart_level=3
+    setprop persist.sys.ssr.restart_level ALL_ENABLE
+
+on property:persist.sys.ssr.restart_level=ALL_ENABLE
+    write /sys/bus/msm_subsys/devices/subsys1/restart_level related
+
+# LGE_CHANGE_S, 20130713, jin.park@lge.com, SSR Ramdump Application
+service ssr_dump /system/bin/subsystem_ramdump 1 0 0
+    class late_start
+    user system
+    group system sdcard_r sdcard_rw
+    disabled
+
+on property:persist.service.ssr_dump.enable=1
+    write /sys/module/subsystem_restart/parameters/enable_ramdumps 1
+    start ssr_dump
+
+on property:persist.service.ssr_dump.enable=0
+    write /sys/module/subsystem_restart/parameters/enable_ramdumps 0
+    stop ssr_dump
+# LGE_CHANGE_E, 20130713, jin.park@lge.com
+
+# LGE FM driver SELinux labeling [START]
+on property:bluetooth.fm.restorecon=1
+    restorecon /sys/devices/virtual/video4linux/radio0
+    restorecon_recursive /sys/devices/virtual/video4linux/radio0
+    chown system system /sys/class/video4linux/radio0
+    chown system system /sys/class/video4linux/radio0/fmrx_band
+    chown system system /sys/class/video4linux/radio0/fmrx_rds_af
+    chown system system /sys/class/video4linux/radio0/fmrx_rds_on
+    chown system system /sys/class/video4linux/radio0/fmrx_rssi_lvl
+    chown system system /sys/class/video4linux/radio0/fmrx_snr_lvl
+    chown system system /sys/class/video4linux/radio0/fmrx_chl_lvl
+    chown system system /sys/class/video4linux/radio0/fmrx_search_abort
+# LGE FM driver SELinux labeling [END]

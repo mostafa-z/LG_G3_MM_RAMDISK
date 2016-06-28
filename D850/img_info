@@ -1,0 +1,12 @@
+kernel=zImage-dtb
+ramdisk=ramdisk
+dt=dt.img
+page_size=2048
+kernel_size=9623760
+ramdisk_size=4732869
+dtb_size=477184
+base_addr=0x00000000
+kernel_offset=0x00008000
+ramdisk_offset=0x01000000
+tags_offset=0x00000100
+cmd_line="console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=g3 user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1 lpm_levels.sleep_disabled=1 androidboot.selinux=permissive"

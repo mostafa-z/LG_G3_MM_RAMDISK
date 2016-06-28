@@ -1,0 +1,12 @@
+# LGE copyright 2015.
+
+import /init.lge.power.rc
+
+# chargerlogo
+on chargerlogo
+   trigger early-fs
+   trigger fs
+   trigger post-fs
+   trigger post-fs-data
+   trigger chargerlogo_exec
+

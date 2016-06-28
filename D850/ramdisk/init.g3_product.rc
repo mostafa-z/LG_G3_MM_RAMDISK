@@ -1,0 +1,118 @@
+on early-fs
+    ffu_update
+
+on init
+    exec u:r:setup_fs:s0 -- /sbin/setup_fs_static \
+        /dev/block/bootdevice/by-name/cust \
+        no_reboot
+    mkdir /cust 0771 system system
+
+# Begin Immersion changes
+    export VIBE_PIPE_PATH /dev/pipes
+    mkdir /dev/pipes 0771 shell shell
+# End Immersion changes
+# LGE_CHANGE_S, lg-security@lge.com, 2014-11-20, to support MDFPP
+    setprop ro.sys.sec.version.info "Truongthevinh@tekcafe.vn 5.0"
+	setprop ro.lge.swversion_short "D85030F"
+# LGE_CHANGE_S, lg-security@lge.com, 2014-11-20, to support MDFPP
+on fs
+    wait /dev/block/bootdevice/by-name/cust
+    exec /system/bin/e2fsck -y /dev/block/bootdevice/by-name/cust
+    mount ext4 /dev/block/bootdevice/by-name/cust /cust rw nosuid nodev barrier=1 noauto_da_alloc
+    restorecon_recursive /cust
+    mount ext4 /dev/block/bootdevice/by-name/cust /cust ro remount nosuid nodev barrier=1 noauto_da_alloc
+
+# LGE IMS Features - To interwork with QMI WMS (64-bit exe/lib)
+service imswmsproxy /system/bin/imswmsproxy
+    class main
+    user system
+    group radio system net_admin net_raw
+
+# For IPSec
+service ipsecclient /system/bin/ipsecclient
+    class main
+    group system net_admin net_raw
+    disabled
+
+service ipsecstarter /system/bin/ipsecstarter
+    class main
+    user system
+    group system net_admin net_raw
+
+# [LGU_OPERATOR_APP][I-WLAN]
+service mwlan_vpncored /system/bin/mwlan_helper @vpncored
+    user system
+    group system inet
+    disabled
+    oneshot
+# [LGU_OPERATOR_APP][I-WLAN]
+
+on init
+    setprop ro.ssbd.session /dev/block/platform/msm_sdcc.1/by-name/eksst
+    setprop ro.ssbd.offset 0
+
+on boot
+# 2013-02-25 hyoseab.song@lge.com LGP_DATA_TCPIP_TCP_BUFSIZE_ON_LTE_UPLUS [START]
+# Re-define TCP buffer size for SKT WCDMA network. Overwrite init.rc property
+# ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
+    setprop net.tcp.buffersize.umts		4094,87380,1220608,4096,16384,1220608
+    setprop net.tcp.buffersize.hspa		4094,87380,1220608,4096,16384,1220608
+    setprop net.tcp.buffersize.hsupa	4094,87380,1220608,4096,16384,1220608
+    setprop net.tcp.buffersize.hsdpa	4094,87380,1220608,4096,16384,1220608
+    setprop net.tcp.buffersize.lte     524288,1048576,2560000,524288,1048576,2560000
+# 2013-02-25 hyoseab.song@lge.com LGP_DATA_TCPIP_TCP_BUFSIZE_ON_LTE_UPLUS [END]
+
+# LGE_CHANGE_S LGT_REQ  [hanchul.shin@lgepartner.com][2014-05-08][BEGIN]
+    mkdir /data/data/com.ubivelox.wipiplayer/W 0777 system lgt_gid
+    mkdir /data/LGTContents 0771 system lgt_gid
+    mkdir /data/LGTContents/app 0771 system lgt_gid
+    mkdir /data/LGTContents/video 0771 system lgt_gid
+    mkdir /data/LGTContents/music 0771 system lgt_gid
+    mkdir /data/LGTContents/bell 0771 system lgt_gid
+    mkdir /data/LGTContents/DLtmp 0771 system lgt_gid
+    mkdir /data/LGTContents/ringforme 0771 system lgt_gid
+    chmod 771 /system/persist
+    chmod 665 /system/persist/LGUPlus_Api.xml
+    chmod 0644 /system/lib/modules/mwlan_aarp.ko
+
+# LGE_CHANGE_S, [LGE_DATA][LGP_DATA_TCPIP_NSRM], kwangbin.yim@lge.com, 2013-12-30
+    setprop lg.data.nsrm.policypath         /data/connectivity/nsrm/NsrmConfiguration.xml
+    setprop persist.dpm.nsrm.bkg.evt 16243
+    setprop persist.dpm.loglevel 7825
+    chmod 0644 /persist/init.cne.rc
+    mkdir /data/connectivity 0775 system system
+    mkdir /data/connectivity/nsrm 0775 system system
+    copy /system/etc/dpm/libdpmlog.so /data/dpm/libdpmlog.so
+# LGE_CHANGE_E, [LGE_DATA][LGP_DATA_TCPIP_NSRM], kwangbin.yim@lge.com, 2013-12-30
+
+# [hanchul.shin@lgepartner.com][2014-05-08] add LGTConents
+    chown system lgt_gid /data/data/com.ubivelox.wipiplayer/W
+    chown system lgt_gid /data/LGTContents
+    chown system lgt_gid /data/LGTContents/video
+    chown system lgt_gid /data/LGTContents/music
+    chown system lgt_gid /data/LGTContents/bell
+    chown system lgt_gid /data/LGTContents/app
+    chown system lgt_gid /data/LGTContents/DLtmp
+    chown system lgt_gid /data/LGTContents/ringforme
+# LGE_CHANGE_E LGT_REQ  [hanchul.shin@lgepartner.com][2014-05-08][END]
+    restorecon_recursive /data/LGTContents
+
+on post-fs
+    chmod 0644 /system/lib/modules/mwlan_aarp.ko
+    insmod /system/lib/modules/mwlan_aarp.ko
+    chmod 0644 /system/lib/modules/ipsecdrvtl.ko
+    chmod 0755 /system/bin/mwlan_helper
+
+on post-fs-data
+# NFC local data and nfcee xml storage
+    mkdir /data/nfc 0770 nfc nfc
+    mkdir /data/nfc/param 0770 nfc nfc
+
+# LGE_CHANGE_S, [U+ DRM], lg-drm@lge.com
+    mkdir /data/ep 0771 system system
+    mkdir /data/ep/Music 0777 system system
+    restorecon_recursive /data/ep/Music
+# LGE_CHANGE_E, [U+ DRM]
+# LGE_CHANGE_S [GNSS] youngseok.ko@lge.com; to fix the problem that QCT doesn't consider KK to L Upgrade for iZat EURA setting in SElinux violation.
+    restorecon /data/data/com.qualcomm.location.XT/shared_prefs/XT_PREFS.xml
+# LGE_CHANGE_E [GNSS]
