@@ -21,7 +21,7 @@ OPEN_RW()
 OPEN_RW;
 
 # run ROM scripts
-$BB sh /init.qcom.post_boot.sh;
+$BB sh /system/etc/init.qcom.post_boot.sh;
 
 # clean old modules from /system and add new from ramdisk
 if [ ! -d /system/lib/modules ]; then
@@ -59,8 +59,8 @@ SYSTEM_TUNING()
 echo "512" > /proc/sys/kernel/random/read_wakeup_threshold;
 echo "256" > /proc/sys/kernel/random/write_wakeup_threshold;
 # Tune thermal parameters.
-echo "Y" > /sys/module/msm_thermal/core_control/core_control/parameters/enabled;
-echo "0" > /sys/module/msm_thermal/core_control/core_control/enabled;
+echo "Y" > /sys/module/msm_thermal/parameters/enabled;
+echo "0" > /sys/module/msm_thermal/core_control/enabled;
 }
 
 # oom and mem perm fix
