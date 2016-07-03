@@ -86,6 +86,9 @@ $BB chmod 666 /sys/class/kgsl/kgsl-3d0/max_gpuclk
 $BB chmod 666 /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/governor
 $BB chmod 666 /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/*_freq
 
+# disable debugging
+echo "0" > /sys/module/lge_touch_core/parameters/debug_mask;
+
 OPEN_RW;
 
 # set system tuning.
