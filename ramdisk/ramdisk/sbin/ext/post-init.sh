@@ -91,5 +91,19 @@ OPEN_RW;
 # set system tuning.
 SYSTEM_TUNING;
 
+SYSTEM_CHECK=$($BB blkid /dev/block/platform/msm_sdcc.1/by-name/system | $BB grep "f2fs" | $BB wc -l)
+DATA_CHECK=$($BB blkid /dev/block/platform/msm_sdcc.1/by-name/data | $BB grep "f2fs" | $BB wc -l)
+CACHE_CHECK=$($BB blkid /dev/block/platform/msm_sdcc.1/by-name/cache | $BB grep "f2fs" | $BB wc -l)
+
+	if [ "$SYSTEM_CHECK" -eq "1" ]; then
+		$BB fstrim /system
+	fi;
+	if [ "$DATA_CHECK" -eq "1" ]; then
+		$BB fstrim /data
+	fi;
+	if [ "$CACHE_CHECK" -eq "1" ]; then
+		$BB fstrim /cache
+	fi;
+
 	$BB mount -o remount,ro /system;
 
