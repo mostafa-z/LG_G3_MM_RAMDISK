@@ -851,6 +851,45 @@ SLEEP_HOTPLUG_CONTROL()
 	log -p i -t "$FILE_NAME" "*** SLEEP_HOTPLUG_CONTROL $state ***: done";
 }
 
+DROP_CACHE_AUTO()
+{
+	if [ "$cortexbrain_drop_cache_auto" == "on" ]; then
+
+		CACHE_FREE=`free -m | awk 'NR==3' | awk '{ print $4 }' | cut -c 1-3`;
+
+		if [ "$CACHE_FREE" -lt "120" ]; then
+
+			echo "$CACHE_FREE" > /data/.gabriel/logs/drop-cache_auto;
+			sync;
+			sleep 1;
+			sysctl -w vm.drop_caches=2;
+			echo "$CACHE_FREE" >> /data/.gabriel/logs/drop-cache_auto;
+			date +%H:%M-%D >> /data/.gabriel/logs/drop-cache_auto;
+			echo "Used cache is Big! Cleaned RAM Cache." >> /data/.gabriel/logs/drop-cache_auto;
+		fi;
+	fi;
+}
+
+PROCESS_RECLAIM_AUTO()
+{
+	if [ "$cortexbrain_process_reclaim_auto" == "on" ]; then
+
+		RAM_FREE=`vmstat | awk 'NR==3' | awk '{ print $4 }' | cut -c 1-3`;
+
+		if [ "$RAM_FREE" -lt "150" ]; then
+
+			echo "$RAM_FREE" > /data/.gabriel/logs/process_reclaim_auto;
+			for i in $(ls /proc/ | grep -E '^[0-9]+'); do
+				if [ "$i" -ge "1500" ] && [ -f /proc/$i/reclaim ]; then
+					su -c echo "all" > /proc/$i/reclaim;
+				fi;
+			done;
+			echo "$RAM_FREE" >> /data/.gabriel/logs/process_reclaim_auto;
+			date +%H:%M-%D >> /data/.gabriel/logs/process_reclaim_auto;
+			echo "Done! Ram Reclaimed." >> /data/.gabriel/logs/process_reclaim_auto;
+		fi;
+}
+
 # ==============================================================
 # TWEAKS: if Screen-ON
 # ==============================================================
@@ -861,6 +900,7 @@ AWAKE_MODE()
 	CLEAN_CACHE;
 	PROCESS_RECLAIM;
 	FS_TRIM;
+	PROCESS_RECLAIM_AUTO;
 
 	if [ "$(cat /data/gabriel_cortex_sleep)" -eq "1" ]; then
 		IO_SCHEDULER "awake";
@@ -907,6 +947,7 @@ SLEEP_MODE()
 	APP_CACHE;
 	DB_OPT;
 	BATTERY_TWEAKS;
+	PROCESS_RECLAIM_AUTO;
 
 	if [ "$CHARGER_STATE" -eq "0" ]; then
 		IO_SCHEDULER "sleep";
@@ -919,6 +960,7 @@ SLEEP_MODE()
 		MOBILE_DATA "sleep";
 		VFS_CACHE_PRESSURE "sleep";
 		NET "sleep";
+		DROP_CACHE_AUTO;
 		echo "1" > /data/gabriel_cortex_sleep;
 
 		log -p i -t "$FILE_NAME" "*** SLEEP mode ***";

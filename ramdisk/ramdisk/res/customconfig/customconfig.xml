@@ -808,6 +808,12 @@ performance CPUs (Default: 15 %)." name="Initial Task Load"
 		<checkbox description="Enable I/O Tweaks (reboot needed)." name="I/O Tweaks"
 			action="generic_cortex /tmp/cortexbrain_io" label="I/O Tweaks"/>
 
+		<checkbox description="Enable Auto Drop Cache (reboot needed)." name="Drop Cache"
+			action="generic_cortex /tmp/cortexbrain_drop_cache_auto" label="Drop Cache"/>
+
+		<checkbox description="Enable Auto Ram Reclaim (reboot needed)." name="Ram Reclaim"
+			action="generic_cortex /tmp/cortexbrain_process_reclaim_auto" label="Ram Reclaim"/>
+
 		<checkbox description="Enable or Disable Battery-Calibrate each Time gets 100% and in Sleep Mode (reboot needed)." name="Battery-Tweaks"
 			action="generic_cortex /tmp/cortexbrain_battery" label="Battery-Tweaks"/>
 
