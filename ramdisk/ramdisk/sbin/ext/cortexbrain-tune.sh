@@ -334,9 +334,9 @@ VFS_CACHE_PRESSURE()
 
 	if [ -e $sys_vfs_cache ]; then
 		if [ "$state" == "awake" ]; then
-			echo "50" > $sys_vfs_cache;
+			echo "$vfs_cache_pressure" > $sys_vfs_cache;
 		elif [ "$state" == "sleep" ]; then
-			echo "10" > $sys_vfs_cache;
+			echo "$vfs_cache_pressure_sleep" > $sys_vfs_cache;
 		fi;
 
 		log -p i -t $FILE_NAME "*** VFS_CACHE_PRESSURE: $state ***";

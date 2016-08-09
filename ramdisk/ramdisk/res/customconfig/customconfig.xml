@@ -638,6 +638,8 @@ performance CPUs (Default: 15 %)." name="Initial Task Load"
 		<seekBar description="It controls the tendency of the kernel for reclaiming memory, which is used for caching the directory and all the information needed by the kernel to manipulate a file or a directory (inode objects) (Default: 100%)." name="Vfs Cache Pressure"
 			action="generic /proc/sys/vm/vfs_cache_pressure" unit="%" min="10" reversed="false" step="5" max="150"/>
 
+		<seekBar description="It controls vfs cache pressure while in sleep mode" name="Vfs Cache Pressure sleep mode" action="generic_cortex /tmp/vfs_cache_pressure_sleep" unit="%" min="10" reversed="false" step="5" max="150"/>
+
 		<button description="Release all cached and buffered files from RAM. WAIT approx. 3 sec for getting cleanup report." name="Clear RAM Cache" action="push-actions/clean_ram_cache" label="Clear RAM Cache"/>
 
 	</settingsPane>
