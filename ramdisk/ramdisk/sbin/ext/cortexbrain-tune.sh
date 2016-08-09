@@ -857,15 +857,13 @@ DROP_CACHE_AUTO()
 
 		CACHE_FREE=`free -m | awk 'NR==3' | awk '{ print $4 }' | cut -c 1-3`;
 
-		if [ "$CACHE_FREE" -lt "120" ]; then
+		if [ "$CACHE_FREE" -lt "$cortexbrain_drop_cache_auto_threshold" ]; then
 
-			echo "$CACHE_FREE" > /data/.gabriel/logs/drop-cache_auto;
 			sync;
 			sleep 1;
 			sysctl -w vm.drop_caches=2;
-			echo "$CACHE_FREE" >> /data/.gabriel/logs/drop-cache_auto;
 			date +%H:%M-%D >> /data/.gabriel/logs/drop-cache_auto;
-			echo "Used cache is Big! Cleaned RAM Cache." >> /data/.gabriel/logs/drop-cache_auto;
+			echo "Cleaned RAM Cache." >> /data/.gabriel/logs/drop-cache_auto;
 		fi;
 	fi;
 }
@@ -876,18 +874,17 @@ PROCESS_RECLAIM_AUTO()
 
 		RAM_FREE=`vmstat | awk 'NR==3' | awk '{ print $4 }' | cut -c 1-3`;
 
-		if [ "$RAM_FREE" -lt "150" ]; then
+		if [ "$RAM_FREE" -lt "$cortexbrain_process_reclaim_auto_threshold" ]; then
 
-			echo "$RAM_FREE" > /data/.gabriel/logs/process_reclaim_auto;
 			for i in $(ls /proc/ | grep -E '^[0-9]+'); do
 				if [ "$i" -ge "1500" ] && [ -f /proc/$i/reclaim ]; then
 					su -c echo "all" > /proc/$i/reclaim;
 				fi;
 			done;
-			echo "$RAM_FREE" >> /data/.gabriel/logs/process_reclaim_auto;
 			date +%H:%M-%D >> /data/.gabriel/logs/process_reclaim_auto;
-			echo "Done! Ram Reclaimed." >> /data/.gabriel/logs/process_reclaim_auto;
+			echo "Ram Reclaimed." >> /data/.gabriel/logs/process_reclaim_auto;
 		fi;
+	fi;
 }
 
 # ==============================================================
