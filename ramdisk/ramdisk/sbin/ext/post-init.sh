@@ -23,6 +23,30 @@ OPEN_RW;
 # run ROM scripts
 $BB sh /system/etc/init.qcom.post_boot.sh;
 
+if [ ! -e /hotplugs/ ]; then
+	$BB mkdir /hotplugs/;
+fi;
+
+# some nice thing for dev
+if [ ! -e /cpufreq ]; then
+	$BB ln -s /sys/devices/system/cpu/cpu0/cpufreq/ /cpufreq;
+	$BB ln -s /sys/devices/system/cpu/cpufreq/all_cpus/ /all_cpus;
+	$BB ln -s /sys/devices/system/cpu/cpufreq/ /cpugov;
+	$BB ln -s /sys/module/cpu_boost/parameters/ /cpu_boost;
+	$BB ln -s /sys/kernel/msm_cpufreq_limit/ /cpufreq_limit;
+	$BB ln -s /sys/module/msm_thermal/parameters/ /cputemp;
+	$BB ln -s /sys/kernel/alucard_hotplug/ /hotplugs/alucard;
+	$BB ln -s /sys/kernel/intelli_plug/ /hotplugs/intelli;
+	$BB ln -s /sys/module/msm_hotplug/ /hotplugs/msm_hotplug;
+	$BB ln -s /sys/kernel/thunderplug/ /hotplugs/thunderplug;
+fi;
+
+# create init.d folder if missing
+if [ ! -d /system/etc/init.d ]; then
+	mkdir -p /system/etc/init.d/
+	$BB chmod 755 /system/etc/init.d/;
+fi;
+
 OPEN_RW;
 
 CRITICAL_PERM_FIX()
@@ -31,7 +55,6 @@ CRITICAL_PERM_FIX()
 	$BB chown -R root:root /tmp;
 	$BB chown -R root:root /res;
 	$BB chown -R root:root /sbin;
-	$BB chown -R root:root /lib;
 	$BB chmod -R 777 /tmp/;
 	$BB chmod -R 775 /res/;
 	$BB chmod -R 06755 /sbin/ext/;
@@ -45,74 +68,45 @@ SYSTEM_TUNING()
 # Tune entropy parameters.
 echo "512" > /proc/sys/kernel/random/read_wakeup_threshold;
 echo "256" > /proc/sys/kernel/random/write_wakeup_threshold;
-# Tune hotplug parameters
-stop mpdecision;
+
+echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable;
 sleep 0.5;
-ehco "1" > /sys/class/misc/mako_hotplug_control/enabled;
-ehco "1497600" > /sys/class/misc/mako_hotplug_control/cpufreq_unplug_limit;
-ehco "5" > /sys/class/misc/mako_hotplug_control/load_threshold;
-# Tune thermal parameters.
-echo "N" > /sys/module/msm_thermal/parameters/intelli_enabled;
-# add these parameters for later use
-echo "1" > /sys/module/msm_thermal/core_control/enabled;
-echo "68" > /sys/module/msm_thermal/parameters/core_limit_temp_degC;
-echo "65" > /sys/module/msm_thermal/parameters/limit_temp_degC;
-echo "5" > /sys/module/msm_thermal/parameters/temp_hysteresis_degC;
-echo "5" > /sys/module/msm_thermal/parameters/core_temp_hysteresis_degC;
-echo "9" > /sys/module/msm_thermal/parameters/thermal_limit_low;
-echo "N" > /sys/module/msm_thermal/parameters/immediately_limit_stop;
-echo "1" > /sys/module/msm_thermal/parameters/temp_safety;
-# Tune gpu parameters
-#echo "1" > /sys/module/simple_gpu_algorithm/parameters/simple_gpu_activate;
-#echo "2" > /sys/module/simple_gpu_algorithm/parameters/simple_laziness;
-#echo "7000" > /sys/module/simple_gpu_algorithm/parameters/simple_ramp_threshold;
+stop mpdecision;
 
-#		local MMC=$(find /sys/block/mmc*);
-#		for i in $MMC; do
-#			echo "row" > "$i"/queue/scheduler;
-#			echo "0" > "$i"/queue/rotational;
-#			echo "0" > "$i"/queue/iostats;
-#			echo "2" > "$i"/queue/nomerges;
-#		done;
+echo ondemandx > /cpufreq/scaling_governor;
+echo ondemandx > /all_cpus/scaling_governor_cpu1;
+echo ondemandx > /all_cpus/scaling_governor_cpu2;
+echo ondemandx > /all_cpus/scaling_governor_cpu3;
 
-		# This controls how many requests may be allocated
-		# in the block layer for read or write requests.
-		# Note that the total allocated number may be twice
-		# this amount, since it applies only to reads or writes
-		# (not the accumulated sum).
-#		echo "128" > /sys/block/mmcblk0/queue/nr_requests; # default: 128
+echo "500" > /cpu_boost/input_boost_ms;
 
-		# our storage is 16/32GB, best is 1024KB readahead
-		# see https://github.com/Keff/samsung-kernel-msm7x30/commit/a53f8445ff8d947bd11a214ab42340cc6d998600#L1R627
-#		echo "1024" > /sys/block/mmcblk0/queue/read_ahead_kb;
-#		echo "1024" > /sys/block/mmcblk0/bdi/read_ahead_kb;
+echo "2457600" > /cpufreq_limit/cpufreq_max_limit_cpu0;
+echo "2457600" > /cpufreq_limit/cpufreq_max_limit_cpu1;
+echo "2457600" > /cpufreq_limit/cpufreq_max_limit_cpu2;
+echo "2457600" > /cpufreq_limit/cpufreq_max_limit_cpu3;
+echo "300000" > /cpufreq_limit/cpufreq_min_limit_cpu0;
+echo "300000" > /cpufreq_limit/cpufreq_min_limit_cpu1;
+echo "300000" > /cpufreq_limit/cpufreq_min_limit_cpu2;
+echo "300000" > /cpufreq_limit/cpufreq_min_limit_cpu3;
+echo "1497600" > /cpufreq_limit/suspend_max_freq;
+echo "268800" > /cpufreq_limit/suspend_min_freq;
 
-#		echo "45" > /proc/sys/fs/lease-break-time;
+echo "578000000" > /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/max_freq
+echo "100000000" > /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/min_freq
 
-# ==============================================================
+echo "0" > /sys/module/msm_thermal/core_control/enabled;
+echo "1" > /cputemp/intelli_enabled;
+
+echo quiet > /sys/kernel/mm/uksm/cpu_governor;
+echo "1000" > /sys/kernel/mm/uksm/sleep_millisecs;
+
+echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable;
+
 # KERNEL-TWEAKS
-# ==============================================================
-#		echo "0" > /proc/sys/vm/oom_kill_allocating_task;
-#		echo "0" > /proc/sys/vm/panic_on_oom;
-#		echo "30" > /proc/sys/kernel/panic;
-#		echo "0" > /proc/sys/kernel/panic_on_oops;
-# ==============================================================
-# MEMORY-TWEAKS
-# ==============================================================
-#		echo "20" > /proc/sys/vm/dirty_background_ratio; # default: 20
-#		echo "25" > /proc/sys/vm/dirty_ratio; # default: 25
-#		echo "4" > /proc/sys/vm/min_free_order_shift; # default: 4
-#		echo "1" > /proc/sys/vm/overcommit_memory; # default: 1
-#		echo "50" > /proc/sys/vm/overcommit_ratio; # default: 50
-#		echo "3" > /proc/sys/vm/page-cluster; # default: 3
-#		echo "8192" > /proc/sys/vm/min_free_kbytes; #default: 2572
-		# mem calc here in pages. so 16384 x 4 = 64MB reserved for fast access by kernel and VM
-#		echo "32768" > /proc/sys/vm/mmap_min_addr; #default: 32768
-#		echo "69632" > /sys/module/lowmemorykiller/parameters/vmpressure_file_min;
-#		echo "1" > /sys/module/process_reclaim/parameters/enable_process_reclaim;
-#		echo "80" > /sys/module/process_reclaim/parameters/pressure_max;
-#		echo "50" > /sys/module/process_reclaim/parameters/pressure_min;
-		#echo "80" > /proc/sys/vm/swappiness;
+echo "0" > /proc/sys/vm/oom_kill_allocating_task;
+echo "0" > /proc/sys/vm/panic_on_oom;
+echo "30" > /proc/sys/kernel/panic;
+echo "0" > /proc/sys/kernel/panic_on_oops;
 }
 
 # oom and mem perm fix
@@ -138,32 +132,180 @@ $BB chmod 666 /sys/class/kgsl/kgsl-3d0/max_gpuclk
 $BB chmod 666 /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/governor
 $BB chmod 666 /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/*_freq
 
+if [ ! -d /data/.gabriel ]; then
+	$BB mkdir -p /data/.gabriel;
+fi;
+
+if [ ! -d /data/.gabriel/logs ]; then
+	$BB mkdir -p /data/.gabriel/logs;
+fi;
+
+# reset profiles auto trigger to be used by kernel ADMIN, in case of need, if new value added in default profiles
+# just set numer $RESET_MAGIC + 1 and profiles will be reset one time on next boot with new kernel.
+# incase that ADMIN feel that something wrong with global STweaks config and profiles, then ADMIN can add +1 to CLEAN_gabriel_DIR
+# to clean all files on first boot from /data/.gabriel/ folder.
+RESET_MAGIC=1;
+CLEAN_gabriel_DIR=1;
+
+if [ ! -e /data/.gabriel/reset_profiles ]; then
+	echo "$RESET_MAGIC" > /data/.gabriel/reset_profiles;
+fi;
+if [ ! -e /data/reset_gabriel_dir ]; then
+	echo "$CLEAN_gabriel_DIR" > /data/reset_gabriel_dir;
+fi;
+if [ -e /data/.gabriel/.active.profile ]; then
+	PROFILE=$(cat /data/.gabriel/.active.profile);
+else
+	echo "default" > /data/.gabriel/.active.profile;
+	PROFILE=$(cat /data/.gabriel/.active.profile);
+fi;
+if [ "$(cat /data/reset_gabriel_dir)" -eq "$CLEAN_gabriel_DIR" ]; then
+	if [ "$(cat /data/.gabriel/reset_profiles)" != "$RESET_MAGIC" ]; then
+		if [ ! -e /data/.gabriel_old ]; then
+			mkdir /data/.gabriel_old;
+		fi;
+		cp -a /data/.gabriel/*.profile /data/.gabriel_old/;
+		$BB rm -f /data/.gabriel/*.profile;
+		if [ -e /data/data/com.af.synapse/databases ]; then
+			$BB rm -R /data/data/com.af.synapse/databases;
+		fi;
+		echo "$RESET_MAGIC" > /data/.gabriel/reset_profiles;
+	else
+		echo "no need to reset profiles or delete .gabriel folder";
+	fi;
+else
+	# Clean /data/.gabriel/ folder from all files to fix any mess but do it in smart way.
+	if [ -e /data/.gabriel/"$PROFILE".profile ]; then
+		cp /data/.gabriel/"$PROFILE".profile /sdcard/"$PROFILE".profile_backup;
+	fi;
+	if [ ! -e /data/.gabriel_old ]; then
+		mkdir /data/.gabriel_old;
+	fi;
+	cp -a /data/.gabriel/* /data/.gabriel_old/;
+	$BB rm -f /data/.gabriel/*
+	if [ -e /data/data/com.af.synapse/databases ]; then
+		$BB rm -R /data/data/com.af.synapse/databases;
+	fi;
+	echo "$CLEAN_gabriel_DIR" > /data/reset_gabriel_dir;
+	echo "$RESET_MAGIC" > /data/.gabriel/reset_profiles;
+	echo "$PROFILE" > /data/.gabriel/.active.profile;
+fi;
+
+[ ! -f /data/.gabriel/default.profile ] && cp -a /res/customconfig/default.profile /data/.gabriel/default.profile;
+[ ! -f /data/.gabriel/battery.profile ] && cp -a /res/customconfig/battery.profile /data/.gabriel/battery.profile;
+[ ! -f /data/.gabriel/performance.profile ] && cp -a /res/customconfig/performance.profile /data/.gabriel/performance.profile;
+[ ! -f /data/.gabriel/extreme_performance.profile ] && cp -a /res/customconfig/extreme_performance.profile /data/.gabriel/extreme_performance.profile;
+[ ! -f /data/.gabriel/extreme_battery.profile ] && cp -a /res/customconfig/extreme_battery.profile /data/.gabriel/extreme_battery.profile;
+
+$BB chmod -R 0777 /data/.gabriel/;
+
+. /res/customconfig/customconfig-helper;
+read_defaults;
+read_config;
+
+# Load parameters for Synapse
+DEBUG=/data/.gabriel/;
+BUSYBOX_VER=$(busybox | grep "BusyBox v" | cut -c0-15);
+echo "$BUSYBOX_VER" > $DEBUG/busybox_ver;
+
+# start CORTEX by tree root, so it's will not be terminated.
+sed -i "s/cortexbrain_background_process=[0-1]*/cortexbrain_background_process=1/g" /sbin/ext/cortexbrain-tune.sh;
+if [ "$(pgrep -f "cortexbrain-tune.sh" | wc -l)" -eq "0" ]; then
+	nohup sh /sbin/ext/cortexbrain-tune.sh > /data/.gabriel/cortex.txt &
+fi;
+
+if [ "$stweaks_boot_control" == "yes" ]; then
+	# apply Synapse monitor
+	$BB sh /res/synapse/uci reset;
+	# apply Gabriel settings
+	$BB sh /res/uci_boot.sh apply;
+	$BB mv /res/uci_boot.sh /res/uci.sh;
+else
+	$BB mv /res/uci_boot.sh /res/uci.sh;
+fi;
+
 # disable debugging
-echo "0" > /sys/module/lge_touch_core/parameters/debug_mask;
+echo "0" > /sys/module/lge_touch_core/parameters/debug_mask
+echo "0" > /sys/module/lm3697/parameters/debug_mask
+echo "0" > /sys/module/ipc_router/parameters/debug_mask
+echo "0" > /sys/module/smp2p/parameters/debug_mask
+echo "0" > /sys/module/msm_serial_hs_lge/parameters/debug_mask
+echo "0" > /sys/module/msm_show_resume_irq/parameters/debug_mask
+echo "0" > /sys/module/alarm_dev/parameters/debug_mask
+echo "0" > /sys/module/mpm_of/parameters/debug_mask
+echo "0" > /sys/module/msm_pm/parameters/debug_mask
+#	echo "0" > /sys/module/msm_hotplug/parameters/debug_mask
+#	echo "0" > /sys/module/cpufreq_limit/parameters/debug_mask
 
 OPEN_RW;
 
 # set system tuning.
 SYSTEM_TUNING;
 
+# Start any init.d scripts that may be present in the rom or added by the user
+$BB chmod -R 755 /system/etc/init.d/;
+if [ "$init_d" == "on" ]; then
+	(
+		$BB nohup $BB run-parts /system/etc/init.d/ > /data/.gabriel/init.d.txt &
+	)&
+else
+	if [ -e /system/etc/init.d/99SuperSUDaemon ]; then
+		$BB nohup $BB sh /system/etc/init.d/99SuperSUDaemon > /data/.gabriel/root.txt &
+	else
+		echo "no root script in init.d";
+	fi;
+fi;
+
+OPEN_RW;
+
+# Fix critical perms again after init.d mess
+CRITICAL_PERM_FIX;
+
+# tune I/O controls to boost I/O performance
+
+#This enables the user to disable the lookup logic involved with IO
+#merging requests in the block layer. By default (0) all merges are
+#enabled. When set to 1 only simple one-hit merges will be tried. When
+#set to 2 no merge algorithms will be tried (including one-hit or more
+#complex tree/hash lookups).
+if [ "$(cat /sys/devices/msm_sdcc.1/mmc_host/mmc0/mmc0:0001/block/mmcblk0/queue/nomerges)" != "2" ]; then
+	echo "2" > /sys/devices/msm_sdcc.1/mmc_host/mmc0/mmc0:0001/block/mmcblk0/queue/nomerges;
+	echo "2" > /sys/devices/msm_sdcc.1/mmc_host/mmc0/mmc0:0001/block/mmcblk0/mmcblk0rpmb/queue/nomerges;
+fi;
+
+#If this option is '1', the block layer will migrate request completions to the
+#cpu "group" that originally submitted the request. For some workloads this
+#provides a significant reduction in CPU cycles due to caching effects.
+#For storage configurations that need to maximize distribution of completion
+#processing setting this option to '2' forces the completion to run on the
+#requesting cpu (bypassing the "group" aggregation logic).
+if [ "$(cat /sys/devices/msm_sdcc.1/mmc_host/mmc0/mmc0:0001/block/mmcblk0/queue/rq_affinity)" != "1" ]; then
+	echo "1" > /sys/devices/msm_sdcc.1/mmc_host/mmc0/mmc0:0001/block/mmcblk0/queue/rq_affinity;
+	echo "1" > /sys/devices/msm_sdcc.1/mmc_host/mmc0/mmc0:0001/block/mmcblk0/mmcblk0rpmb/queue/rq_affinity;
+fi;
+
+(
+	sleep 30;
+
+	# get values from profile
+	PROFILE=$(cat /data/.gabriel/.active.profile);
+	. /data/.gabriel/"$PROFILE".profile;
+
+	$BB mount -o remount,ro /system;
+
 	while [ "$(cat /sys/class/thermal/thermal_zone5/temp)" -ge "65" ]; do
 		sleep 5;
 	done;
 
-	echo "Y" > /sys/module/msm_thermal/parameters/intelli_enabled;
-	echo "0" > /sys/module/msm_thermal/core_control/enabled;
-	echo "72" > /sys/module/msm_thermal/parameters/core_limit_temp_degC;
-	echo "68" > /sys/module/msm_thermal/parameters/limit_temp_degC;
-	echo "10" > /sys/module/msm_thermal/parameters/temp_hysteresis_degC;
-	echo "10" > /sys/module/msm_thermal/parameters/core_temp_hysteresis_degC;
-	echo "7" > /sys/module/msm_thermal/parameters/thermal_limit_low;
-	echo "65" > /sys/module/msm_thermal/parameters/freq_limit_debug;
-	echo "0" > /sys/class/misc/mako_hotplug_control/enabled;
-	echo "1728000" > /sys/class/misc/mako_hotplug_control/cpufreq_unplug_limit;
-	echo "80" > /sys/class/misc/mako_hotplug_control/load_threshold;
-	sleep 0.5;
-	start mpdecision;
-	echo "2457600" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq;
+	if [ "$(cat /sys/module/state_notifier/parameters/state_suspended)" == "N" ]; then
+		$BB sh /res/uci.sh cpu0_min_freq "$cpu0_min_freq";
+		$BB sh /res/uci.sh cpu1_min_freq "$cpu1_min_freq";
+		$BB sh /res/uci.sh cpu2_min_freq "$cpu2_min_freq";
+		$BB sh /res/uci.sh cpu3_min_freq "$cpu3_min_freq";
 
-	$BB mount -o remount,ro /system;
-
+		$BB sh /res/uci.sh cpu0_max_freq "$cpu0_max_freq";
+		$BB sh /res/uci.sh cpu1_max_freq "$cpu1_max_freq";
+		$BB sh /res/uci.sh cpu2_max_freq "$cpu2_max_freq";
+		$BB sh /res/uci.sh cpu3_max_freq "$cpu3_max_freq";
+	fi;
+)&

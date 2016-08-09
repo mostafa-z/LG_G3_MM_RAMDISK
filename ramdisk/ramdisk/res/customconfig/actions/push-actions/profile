@@ -1,0 +1,5 @@
+#!/sbin/busybox sh
+
+PROFILE=`cat /data/.gabriel/.active.profile`;
+
+echo "Current profile: \"$PROFILE\"";

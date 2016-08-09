@@ -1,0 +1,19 @@
+#!/sbin/busybox sh
+
+# $1 - "drop-cache-only"
+# $2 - value=
+# Created By Mostafa-z
+
+BB=/sbin/busybox
+
+if [ "a$2" != "a" ]; then
+	timeout=$2;
+	cctimeout=$((timeout * 3600));
+
+	if [ "$cortexbrain_clean_cache" == "on" ]; then
+		$BB pkill -f /res/services/drop_cache_only;
+		$BB sh /res/services/drop_cache_only $cctimeout;
+	fi;	
+fi;
+
+echo ${timeout};

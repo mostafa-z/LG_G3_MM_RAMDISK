@@ -1,0 +1,19 @@
+#!/sbin/busybox sh
+
+# $1 - "mem_process_reclaim"
+# $2 - value=
+# Created By Mostafa-z
+
+BB=/sbin/busybox
+
+if [ "a$2" != "a" ]; then
+	timeout=$2;
+	prtimeout=$((timeout * 3600));
+
+	if [ "$cortexbrain_process_reclaim" == "on" ]; then
+		$BB pkill -f /res/services/mem_process_reclaim;
+		$BB sh /res/services/mem_process_reclaim $prtimeout;
+	fi;	
+fi;
+
+echo ${timeout};

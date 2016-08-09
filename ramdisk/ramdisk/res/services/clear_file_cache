@@ -1,0 +1,35 @@
+#!/sbin/busybox sh
+# Clear Cache script
+
+(
+	PROFILE=$(cat /data/.gabriel/.active.profile);
+	. /data/.gabriel/${PROFILE}.profile;
+
+	if [ "$cortexbrain_app_cache" == "on" ]; then
+		while true; do
+
+
+# can get two argument for hour & minute
+
+		hrs=${1:-04}
+		min=${2:-00}
+		while [ $(date +%H:%M) != $hrs":"$min ]; do sleep 1; done
+
+
+#		while [ $(date +%H:%M) != "04:00" ]; do sleep 1; done
+		CACHE_JUNK=$(ls -d /data/data/*/cache)
+		for i in $CACHE_JUNK; do
+			rm -rf $i/*
+		done;
+
+		# Old logs
+		rm -f /data/tombstones/*;
+		rm -f /data/anr/*;
+		rm -f /data/system/dropbox/*;
+		date +%H:%M-%D > /data/.gabriel/logs/clear-file-cache;
+		echo "Done! Cleaned Apps Cache." >> /data/.gabriel/logs/clear-file-cache;
+		sync;
+		sleep 60;
+		done;
+	fi;
+)&

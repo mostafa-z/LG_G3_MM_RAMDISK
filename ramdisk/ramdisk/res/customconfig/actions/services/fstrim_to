@@ -1,0 +1,21 @@
+#!/sbin/busybox sh
+
+# $1 - "fstrim"
+# $2 - value=
+# $3 - value=
+# Created By Mostafa-z
+
+BB=/sbin/busybox
+
+if [ "a$2" != "a" ]; then
+	hour=$2;
+#	minute=00 __i only push hour as first argument and minute is always "00"
+#	hour=$((timeout * 3600));
+
+	if [ "$cortexbrain_trim" == "on" ]; then
+		$BB pkill -f /res/services/fstrim;
+		$BB sh /res/services/fstrim $hour;
+	fi;	
+fi;
+
+echo ${hour};

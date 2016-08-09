@@ -1,0 +1,10 @@
+#!/sbin/busybox sh
+
+/sbin/busybox fstrim -v /system > /data/.gabriel/fstrim_log;
+/sbin/busybox fstrim -v /data >> /data/.gabriel/fstrim_log;
+/sbin/busybox fstrim -v /cache >> /data/.gabriel/fstrim_log;
+
+fstrim_log=$(cat /data/.gabriel/fstrim_log);
+
+echo "$fstrim_log"
+

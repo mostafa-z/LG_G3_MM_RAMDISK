@@ -1,0 +1,33 @@
+#!/sbin/busybox sh
+
+(
+	PROFILE=$(cat /data/.gabriel/.active.profile);
+	. /data/.gabriel/${PROFILE}.profile;
+
+	if [ "$cortexbrain_db_opt" == "on" ]; then
+		while true; do
+
+
+# can get two argument for hour & minute
+
+		hrs=${1:-03}
+		min=${2:-00}
+		while [ $(date +%H:%M) != $hrs":"$min ]; do sleep 1; done
+
+
+
+#		while [ $(date +%H:%M) != "03:00" ]; do sleep 1; done
+echo "passed time 03:00" >> /data/.gabriel/logs/debugging_db;
+date +%H:%M-%D >> /data/.gabriel/logs/debugging_db;
+		for i in $(find /data -iname "*.db"); do
+			/system/xbin/sqlite3 $i 'VACUUM;' > /dev/null;
+			/system/xbin/sqlite3 $i 'REINDEX;' > /dev/null;
+		done;
+
+		date +%H:%M-%D > /data/.gabriel/logs/db-optimizing;
+		echo "Done! DB was successfully Optimized." >> /data/.gabriel/logs/db-optimizing;
+		sync;
+		sleep 60;
+		done;
+	fi;
+)&

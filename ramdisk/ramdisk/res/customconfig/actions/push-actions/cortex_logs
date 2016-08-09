@@ -1,0 +1,22 @@
+#!/sbin/busybox sh
+
+if [ ! -e /data/.gabriel/logs/clean-ram-cache ]; then
+	echo "no data" > /data/.gabriel/logs/clean-ram-cache;
+fi;
+if [ ! -e /data/.gabriel/logs/mem-process-reclaim ]; then
+	echo "no data" > /data/.gabriel/logs/mem-process-reclaim;
+fi;
+if [ ! -e /data/.gabriel/logs/fstrim ]; then
+	echo "no data" > /data/.gabriel/logs/fstrim;
+fi;
+chmod 777 /data/.gabriel/logs/*
+cat /data/.gabriel/logs/clean-ram-cache > /data/.gabriel/logs/cron_log;
+echo "---" >> /data/.gabriel/logs/cron_log;
+cat /data/.gabriel/logs/mem-process-reclaim >> /data/.gabriel/logs/cron_log;
+echo "---" >> /data/.gabriel/logs/cron_log;
+cat /data/.gabriel/logs/fstrim >> /data/.gabriel/logs/cron_log;
+echo "---" >> /data/.gabriel/logs/cron_log;
+
+# push all to one log.
+CRON_LOG=$(cat /data/.gabriel/logs/cron_log);
+echo "$CRON_LOG";

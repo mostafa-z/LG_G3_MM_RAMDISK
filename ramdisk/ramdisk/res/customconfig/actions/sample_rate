@@ -1,0 +1,29 @@
+#!/sbin/busybox sh
+
+# $1 - "sample_rate"
+# $2 - value=
+# Created By Dorimanx
+
+# get values from profile
+PROFILE=$(cat /data/.gabriel/.active.profile);
+. /data/.gabriel/"$PROFILE".profile;
+
+if [ "a$2" != "a" ] && [ "$power_mode" -eq "0" ]; then
+	sample_rate=$2;
+
+	GOV0_NAME=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor);
+
+	if [ -e /sys/devices/system/cpu/cpufreq/$GOV0_NAME/min_sample_time ]; then
+		echo "$sample_rate" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/min_sample_time;
+	fi;
+
+	if [ -e /sys/devices/system/cpu/cpufreq/$GOV0_NAME/sampling_rate ]; then
+		echo "$sample_rate" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/sampling_rate;
+	fi;
+
+	if [ -e /sys/devices/system/cpu/cpufreq/$GOV0_NAME/timer_rate ]; then
+		echo "$sample_rate" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/timer_rate;
+	fi;
+fi;
+
+echo ${sample_rate};

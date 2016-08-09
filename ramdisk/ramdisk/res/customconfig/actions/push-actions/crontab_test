@@ -1,0 +1,18 @@
+#!/sbin/busybox sh
+
+# get values from profile
+PROFILE=$(cat /data/.gabriel/.active.profile);
+. /data/.gabriel/"$PROFILE".profile;
+
+if [ "$crontab_switch" == "on" ]; then
+	if [ "$(pidof crond | wc -l)" -eq "0" ]; then
+		$BB sh /res/crontab_service/service.sh > /dev/null;
+	fi;
+fi;
+
+CRON_SERVICE=$(pidof crond | wc -l);
+if [ "$CRON_SERVICE" -eq "1" ]; then
+	echo "Service is ONLINE and supported";
+else
+	echo "Service is OFFLINE or NOT supported";
+fi;

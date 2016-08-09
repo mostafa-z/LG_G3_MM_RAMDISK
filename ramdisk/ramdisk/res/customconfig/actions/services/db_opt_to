@@ -1,0 +1,22 @@
+#!/sbin/busybox sh
+
+# $1 - "db-optimization"
+# $2 - value=
+# $3 - value=
+# Created By Mostafa-z
+
+BB=/sbin/busybox
+
+if [ "a$2" != "a" ]; then
+	hour=$2;
+#	minute=00 __i only need to push hour as first argument and minute is always "00"
+#	hour=$((timeout * 3600));
+
+
+	if [ "$cortexbrain_db_opt" == "on" ]; then
+		$BB pkill -f /res/services/database_optimizing;
+		$BB sh /res/services/database_optimizing $hour;
+	fi;	
+fi;
+
+echo ${hour};

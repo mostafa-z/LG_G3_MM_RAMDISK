@@ -1,0 +1,920 @@
+<settingsRoot>
+
+<settingsTab name="Info">
+
+	<settingsPane description="Be Sure ! If you benefit to the other's you will see it's effect. (Imam Ali ,a.s.)" name="Top Quote">
+	</settingsPane>
+
+	<settingsPane description="I like to create new things and get better results by them. I named this Kernel to Gabriel as respect of God's Holly Angel." name="History">
+	</settingsPane>
+
+</settingsTab>
+
+<settingsTab name="Scheduler Tuning">
+
+	<settingsPane description="Tuning Task Scheduler Parameters of CPUs " name="CPU Scheduler">
+
+		<seekBar description="Set init_task_load to Higher value to allow new tasks to wake up on the best
+performance CPUs (Default: 15 %)." name="Initial Task Load"
+			action="generic /proc/sys/kernel/sched_init_task_load" unit="prc" min="10" reversed="false" step="5" max="100"/>
+
+	</settingsPane>
+
+</settingsTab>
+
+<settingsTab name="Master CORE">
+
+	<settingsPane description="Stweak Master Switch for loading ALL settings on BOOT." name="Global BOOT Settings">
+
+		<spinner description="Master Switch - load ALL settings from ALL tabs on BOOT (Default: Load)." name="Enable On Boot"
+			action="generic_cortex /tmp/stweaks_boot_control">
+			<spinnerItem name="Load all Settings on boot." value="yes"/> 
+			<spinnerItem name="Don't load all Settings on boot." value="no"/> 
+		</spinner>
+
+		<button description="Push this button to manually load ALL settings in case of the master switch is (or already was) OFF and wait until Stweak reloads. When the Master Switch was already ON while phone was booting up, there is no need to use it." name="Reload All Settings" action="push-actions/reload_settings" label="Reload All"/>
+
+	</settingsPane>
+
+	<settingsPane description="Customize the CPU Active Governor for each core. A governor defines the strategy how to scale CPU cores up and down across frequencies based on system load. Default for all cores is Ondemand." name="CPU Active Governor">
+
+		<spinner description="Select the CPU0 governor. Some governor's can be unstable on CPU0. It's recommended to leave it as is." name="CPU0 Governor"
+			action="default_cpu0_gov">
+			<spinnerItem name="Alucard" value="alucard"/> 
+			<spinnerItem name="Nightmare" value="nightmare"/> 
+			<spinnerItem name="Darkness" value="darkness"/> 
+			<spinnerItem name="Interactive" value="interactive"/> 
+			<spinnerItem name="Interactive_LG" value="interactive_lg"/>
+			<spinnerItem name="Barry_Allen" value="barry_allen"/>  
+			<spinnerItem name="Intel" value="intel"/> 
+			<spinnerItem name="Impulse" value="impulse"/> 
+			<spinnerItem name="Intellimm" value="intellimm"/> 
+			<spinnerItem name="Ondemand" value="ondemand"/> 
+			<spinnerItem name="OndemandX" value="ondemandx"/> 
+			<spinnerItem name="Ondemand_Sem" value="ondemand_sem"/> 
+			<spinnerItem name="Ondemand_LG" value="ondemand_lg"/> 
+			<spinnerItem name="Slim" value="slim"/> 
+			<spinnerItem name="Conservative" value="conservative"/> 
+			<spinnerItem name="ZZMoove" value="zzmoove"/> 
+			<spinnerItem name="Smartmax" value="smartmax"/> 
+			<spinnerItem name="Lionheart" value="lionheart"/> 
+			<spinnerItem name="Powersave" value="powersave"/> 
+			<spinnerItem name="Performance" value="performance"/> 
+		</spinner>
+
+		<spinner description="Select the CPU1 governor." name="CPU1 Governor"
+			action="default_cpu1_gov">
+			<spinnerItem name="Alucard" value="alucard"/> 
+			<spinnerItem name="Nightmare" value="nightmare"/> 
+			<spinnerItem name="Darkness" value="darkness"/> 
+			<spinnerItem name="Interactive" value="interactive"/> 
+			<spinnerItem name="Interactive_LG" value="interactive_lg"/>
+			<spinnerItem name="Barry_Allen" value="barry_allen"/>  
+			<spinnerItem name="Intel" value="intel"/> 
+			<spinnerItem name="Impulse" value="impulse"/> 
+			<spinnerItem name="Intellimm" value="intellimm"/> 
+			<spinnerItem name="Ondemand" value="ondemand"/> 
+			<spinnerItem name="OndemandX" value="ondemandx"/> 
+			<spinnerItem name="Ondemand_Sem" value="ondemand_sem"/> 
+			<spinnerItem name="Ondemand_LG" value="ondemand_lg"/> 
+			<spinnerItem name="Slim" value="slim"/> 
+			<spinnerItem name="Conservative" value="conservative"/> 
+			<spinnerItem name="ZZMoove" value="zzmoove"/> 
+			<spinnerItem name="Smartmax" value="smartmax"/> 
+			<spinnerItem name="Lionheart" value="lionheart"/> 
+			<spinnerItem name="Powersave" value="powersave"/> 
+			<spinnerItem name="Performance" value="performance"/> 
+		</spinner>
+
+		<spinner description="Select the CPU2 governor." name="CPU2 Governor"
+			action="default_cpu2_gov">
+			<spinnerItem name="Alucard" value="alucard"/> 
+			<spinnerItem name="Nightmare" value="nightmare"/> 
+			<spinnerItem name="Darkness" value="darkness"/> 
+			<spinnerItem name="Interactive" value="interactive"/> 
+			<spinnerItem name="Interactive_LG" value="interactive_lg"/>
+			<spinnerItem name="Barry_Allen" value="barry_allen"/>  
+			<spinnerItem name="Intel" value="intel"/> 
+			<spinnerItem name="Impulse" value="impulse"/> 
+			<spinnerItem name="Intellimm" value="intellimm"/> 
+			<spinnerItem name="Ondemand" value="ondemand"/> 
+			<spinnerItem name="OndemandX" value="ondemandx"/> 
+			<spinnerItem name="Ondemand_Sem" value="ondemand_sem"/> 
+			<spinnerItem name="Ondemand_LG" value="ondemand_lg"/> 
+			<spinnerItem name="Slim" value="slim"/> 
+			<spinnerItem name="Conservative" value="conservative"/> 
+			<spinnerItem name="ZZMoove" value="zzmoove"/> 
+			<spinnerItem name="Smartmax" value="smartmax"/> 
+			<spinnerItem name="Lionheart" value="lionheart"/> 
+			<spinnerItem name="Powersave" value="powersave"/> 
+			<spinnerItem name="Performance" value="performance"/> 
+		</spinner>
+
+		<spinner description="Select the CPU3 governor." name="CPU3 Governor"
+			action="default_cpu3_gov">
+			<spinnerItem name="Alucard" value="alucard"/> 
+			<spinnerItem name="Nightmare" value="nightmare"/> 
+			<spinnerItem name="Darkness" value="darkness"/> 
+			<spinnerItem name="Interactive" value="interactive"/> 
+			<spinnerItem name="Interactive_LG" value="interactive_lg"/>
+			<spinnerItem name="Barry_Allen" value="barry_allen"/>  
+			<spinnerItem name="Intel" value="intel"/> 
+			<spinnerItem name="Impulse" value="impulse"/> 
+			<spinnerItem name="Intellimm" value="intellimm"/> 
+			<spinnerItem name="Ondemand" value="ondemand"/> 
+			<spinnerItem name="OndemandX" value="ondemandx"/> 
+			<spinnerItem name="Ondemand_Sem" value="ondemand_sem"/> 
+			<spinnerItem name="Ondemand_LG" value="ondemand_lg"/> 
+			<spinnerItem name="Slim" value="slim"/> 
+			<spinnerItem name="Conservative" value="conservative"/> 
+			<spinnerItem name="ZZMoove" value="zzmoove"/> 
+			<spinnerItem name="Smartmax" value="smartmax"/> 
+			<spinnerItem name="Lionheart" value="lionheart"/> 
+			<spinnerItem name="Powersave" value="powersave"/> 
+			<spinnerItem name="Performance" value="performance"/> 
+		</spinner>
+
+	</settingsPane>
+
+	<settingsPane description="Customize the Touch Boost Control settings. Touch Boost means, the CPU frequency is boosted to a higher level when the touch screen is being used. It gives smoother UI, in exchange consumes slightly more power." name="Touch Boost Controls">
+
+		<checkbox description="Enable/Disable cpu boost ability." name="CPU Boost on/off"
+			action="generic01 /sys/module/cpu_boost/parameters/cpu_boost" label="CPU Boost"/>
+
+		<checkbox description="Boost cpu when CPUs go online." name="Hotplug Boost"
+			action="generic01 /sys/module/cpu_boost/parameters/hotplug_boost" label="Hotplug Boost"/>
+
+		<checkbox description="Boost cpu when screen is turned on." name="Wakeup Boost"
+			action="generic01 /sys/module/cpu_boost/parameters/wakeup_boost" label="Wakeup Boost"/>
+
+		<spinner description="Set the Maximum CPU Boost frequency for CORE 0. When touch is being detected, CPU frequency will be locked to selected frequency for the time range. Too high frequencies will use more power (Default: 1.49 GHz)." name="Touch Boost Frequency"
+			action="cpu_boost_freq">
+			<spinnerItem name="1.95 GHz" value="1958400"/> 
+			<spinnerItem name="1.72 GHz" value="1728000"/> 
+			<spinnerItem name="1.57 GHz" value="1574400"/> 
+			<spinnerItem name="1.49 GHz" value="1497600"/> 
+			<spinnerItem name="1.26 GHz" value="1267200"/> 
+			<spinnerItem name="1.19 GHz" value="1190400"/> 
+			<spinnerItem name="1.03 GHz" value="1036800"/> 
+			<spinnerItem name="960 MHz" value="960000"/> 
+		</spinner>
+
+		<seekBar description="Set the time that core is locked on Maximum Boost frequency. 10 ms is equal to 0.01 sec (Default: 500 ms)." name="CPU Touch Boost duration"
+			action="generic /sys/module/cpu_boost/parameters/input_boost_ms" unit="ms" min="10" reversed="false" step="10" max="1000"/>
+
+		<seekBar description="This option determines the time, that Touch Boost driver will wait before locking CPU on it's minimum frequency (Default: 300 ms)." name="CPU Touch Boost Interval"
+			action="generic /sys/module/cpu_boost/parameters/min_input_interval" unit="ms" min="100" reversed="false" step="50" max="1500"/>
+
+	</settingsPane>
+
+	<settingsPane description="Customize the CPU Power Saving settings." name="CPU Power Controls">
+
+		<seekBar description="Select CPU Governor Sample Rate which works in Power Save mode. The lower the value, the faster response you'll get, but quicker battery will be discharging (Default: 30000)." name="CPU Governor Sample Rate"
+			action="sample_rate" unit="rate" min="10000" reversed="false" step="5000" max="80000"/>
+
+		<seekBar description="Select CPU Governor Sample Rate for Sleep mode. Depends on CortexBrain." name="Sleep CPU Governor Sample Rate"
+			action="generic_cortex /tmp/sleep_sample_rate" unit="rate" min="10000" reversed="false" step="5000" max="80000"/>
+
+		<spinner description="Select CPU Governor Power Control mode. Power Save mode activates options below, so you can set the CPU Governor Sample Rate as you like. When performance mode is selected, CPU Governor Sample Rate is set to it's Maximum response (10000 rate) and other rates will be ignored." name="Power Save Switch"
+			action="power_mode">
+			<spinnerItem name="Power Save" value="0"/> 
+			<spinnerItem name="Performance" value="1"/> 
+		</spinner>
+
+		<checkbox description="Power-efficient Workqueues help to reduce power consumption at the cost of slight performance decrease. By enabling this, PE Workqueues are used for unbound scheduled works to reduce the load on sibling CPU cores and queuing work only on CPU0." name="Power-efficient Workqueues"
+			action="generic01 /sys/module/workqueue/parameters/power_efficient" label="Power-efficient Workqueues"/>
+
+		<checkbox description="By enabling this setting, kernel will obey only Stweak settings and set the frequencies selected below. This option works whenever screen is ON or OFF." name="CPU-Tweaks"
+			action="generic_cortex /tmp/cortexbrain_cpu" label="CPU-Tweaks"/>
+
+	</settingsPane>
+
+	<settingsPane description="Set the Maximum CPU Frequency for each core separately. Other apps or services won't overcome them. Default for each core is 2.26 GHz." name="Maximum CPU Frequency">
+
+		<spinner description="Select Maximum CPU0 frequency. It works only when CPU-Tweaks is enabled." name="Max CPU0 Frequency"
+			action="cpu0_max_freq">
+			<spinnerItem name="2.45 GHz" value="2457600"/> 
+			<spinnerItem name="2.26 GHz" value="2265600"/> 
+			<spinnerItem name="1.95 GHz" value="1958400"/> 
+			<spinnerItem name="1.72 GHz" value="1728000"/> 
+			<spinnerItem name="1.57 GHz" value="1574400"/> 
+			<spinnerItem name="1.49 GHz" value="1497600"/> 
+			<spinnerItem name="1.26 GHz" value="1267200"/> 
+			<spinnerItem name="1.19 GHz" value="1190400"/> 
+			<spinnerItem name="1.03 GHz" value="1036800"/> 
+			<spinnerItem name="960 MHz" value="960000"/> 
+			<spinnerItem name="883 MHz" value="883200"/> 
+		</spinner>
+
+		<spinner description="Select Maximum CPU1 frequency. It works only when CPU-Tweaks is enabled." name="Max CPU1 Frequency"
+			action="cpu1_max_freq">
+			<spinnerItem name="2.45 GHz" value="2457600"/> 
+			<spinnerItem name="2.26 GHz" value="2265600"/> 
+			<spinnerItem name="1.95 GHz" value="1958400"/> 
+			<spinnerItem name="1.72 GHz" value="1728000"/> 
+			<spinnerItem name="1.57 GHz" value="1574400"/> 
+			<spinnerItem name="1.49 GHz" value="1497600"/> 
+			<spinnerItem name="1.26 GHz" value="1267200"/> 
+			<spinnerItem name="1.19 GHz" value="1190400"/> 
+			<spinnerItem name="1.03 GHz" value="1036800"/> 
+			<spinnerItem name="960 MHz" value="960000"/> 
+			<spinnerItem name="883 MHz" value="883200"/> 
+		</spinner>
+
+		<spinner description="Select Maximum CPU2 frequency. It works only when CPU-Tweaks is enabled." name="Max CPU2 Frequency"
+			action="cpu2_max_freq">
+			<spinnerItem name="2.45 GHz" value="2457600"/> 
+			<spinnerItem name="2.26 GHz" value="2265600"/> 
+			<spinnerItem name="1.95 GHz" value="1958400"/> 
+			<spinnerItem name="1.72 GHz" value="1728000"/> 
+			<spinnerItem name="1.57 GHz" value="1574400"/> 
+			<spinnerItem name="1.49 GHz" value="1497600"/> 
+			<spinnerItem name="1.26 GHz" value="1267200"/> 
+			<spinnerItem name="1.19 GHz" value="1190400"/> 
+			<spinnerItem name="1.03 GHz" value="1036800"/> 
+			<spinnerItem name="960 MHz" value="960000"/> 
+			<spinnerItem name="883 MHz" value="883200"/> 
+		</spinner>
+
+		<spinner description="Select Maximum CPU3 frequency. It works only when CPU-Tweaks is enabled." name="Max CPU3 Frequency"
+			action="cpu3_max_freq">
+			<spinnerItem name="2.45 GHz" value="2457600"/> 
+			<spinnerItem name="2.26 GHz" value="2265600"/> 
+			<spinnerItem name="1.95 GHz" value="1958400"/> 
+			<spinnerItem name="1.72 GHz" value="1728000"/> 
+			<spinnerItem name="1.57 GHz" value="1574400"/> 
+			<spinnerItem name="1.49 GHz" value="1497600"/> 
+			<spinnerItem name="1.26 GHz" value="1267200"/> 
+			<spinnerItem name="1.19 GHz" value="1190400"/> 
+			<spinnerItem name="1.03 GHz" value="1036800"/> 
+			<spinnerItem name="960 MHz" value="960000"/> 
+			<spinnerItem name="883 MHz" value="883200"/> 
+		</spinner>
+
+	</settingsPane>
+
+	<settingsPane description="Set the minimum CPU frequency for each core separately. Default for each core is 300 MHz." name="Minimum CPU Frequency">
+
+		<spinner description="Select minimum CPU0 frequency. Note that, it can't be higher than Maximum CPU0 freq. It works only when CPU-Tweaks is enabled." name="min CPU0 Frequency"
+			action="cpu0_min_freq">
+			<spinnerItem name="268 MHz" value="268800"/> 
+			<spinnerItem name="300 MHz" value="300000"/> 
+			<spinnerItem name="422 MHz" value="422400"/> 
+			<spinnerItem name="499 MHz" value="499200"/> 
+			<spinnerItem name="652 MHz" value="652800"/> 
+			<spinnerItem name="729 MHz" value="729600"/> 
+			<spinnerItem name="883 MHz" value="883200"/> 
+			<spinnerItem name="960 MHz" value="960000"/> 
+		</spinner>
+
+		<spinner description="Select minimum CPU1 frequency. Note that, it can't be higher than Maximum CPU1 freq. It works only when CPU-Tweaks is enabled." name="min CPU1 Frequency"
+			action="cpu1_min_freq">
+			<spinnerItem name="268 MHz" value="268800"/> 
+			<spinnerItem name="300 MHz" value="300000"/> 
+			<spinnerItem name="422 MHz" value="422400"/> 
+			<spinnerItem name="499 MHz" value="499200"/> 
+			<spinnerItem name="652 MHz" value="652800"/> 
+			<spinnerItem name="729 MHz" value="729600"/> 
+			<spinnerItem name="883 MHz" value="883200"/> 
+			<spinnerItem name="960 MHz" value="960000"/> 
+		</spinner>
+
+		<spinner description="Select minimum CPU2 frequency. Note that, it can't be higher than Maximum CPU2 freq. It works only when CPU-Tweaks is enabled." name="min CPU2 Frequency"
+			action="cpu2_min_freq">
+			<spinnerItem name="268 MHz" value="268800"/> 
+			<spinnerItem name="300 MHz" value="300000"/> 
+			<spinnerItem name="422 MHz" value="422400"/> 
+			<spinnerItem name="499 MHz" value="499200"/> 
+			<spinnerItem name="652 MHz" value="652800"/> 
+			<spinnerItem name="729 MHz" value="729600"/> 
+			<spinnerItem name="883 MHz" value="883200"/> 
+			<spinnerItem name="960 MHz" value="960000"/> 
+		</spinner>
+
+		<spinner description="Select minimum CPU3 frequency. Note that, it can't be higher than Maximum CPU3 freq. It works only when CPU-Tweaks is enabled." name="min CPU3 Frequency"
+			action="cpu3_min_freq">
+			<spinnerItem name="268 MHz" value="268800"/> 
+			<spinnerItem name="300 MHz" value="300000"/> 
+			<spinnerItem name="422 MHz" value="422400"/> 
+			<spinnerItem name="499 MHz" value="499200"/> 
+			<spinnerItem name="652 MHz" value="652800"/> 
+			<spinnerItem name="729 MHz" value="729600"/> 
+			<spinnerItem name="883 MHz" value="883200"/> 
+			<spinnerItem name="960 MHz" value="960000"/> 
+		</spinner>
+
+	</settingsPane>
+
+	<settingsPane description="Set the Suspend min and Max Frequencies for all cores." name="CPU Suspend Frequency">
+
+		<spinner description="Maximum Allowed CPU frequency when screen is OFF, but phone is awake (cases like any app holds wakelock, music, radio etc.). It has effect ONLY when screen is OFF. If screen is ON, normal Maximum allowed frequency take place (Default: 1.95 GHz)." name="Max Screen OFF CPU Frequency"
+			action="suspend_max_freq">
+			<spinnerItem name="Max Allowed" value="max_freq"/> 
+			<spinnerItem name="2.45 GHz" value="2457600"/> 
+			<spinnerItem name="2.26 GHz" value="2265600"/> 
+			<spinnerItem name="1.95 GHz" value="1958400"/> 
+			<spinnerItem name="1.72 GHz" value="1728000"/> 
+			<spinnerItem name="1.57 GHz" value="1574400"/> 
+			<spinnerItem name="1.49 GHz" value="1497600"/> 
+			<spinnerItem name="1.26 GHz" value="1267200"/> 
+			<spinnerItem name="1.19 GHz" value="1190400"/> 
+			<spinnerItem name="1.03 GHz" value="1036800"/> 
+			<spinnerItem name="960 MHz" value="960000"/> 
+			<spinnerItem name="883 MHz" value="883200"/> 
+		</spinner>
+
+		<spinner description="Minimum Allowed CPU frequency when screen is OFF but phone is awake (cases in which any app holds wakelock, music, radio etc.). It has effect ONLY when screen is OFF. If screen is ON, normal minimum allowed frequency take place (Default: 268 MHz)." name="Min Screen OFF CPU Frequency"
+			action="suspend_min_freq">
+			<spinnerItem name="268 MHz" value="min_freq"/> 
+			<spinnerItem name="300 MHz" value="300000"/> 
+			<spinnerItem name="422 MHz" value="422400"/> 
+			<spinnerItem name="499 MHz" value="499200"/> 
+			<spinnerItem name="652 MHz" value="652800"/> 
+			<spinnerItem name="729 MHz" value="729600"/> 
+		</spinner>
+
+		<button description="To access CPU LIVE Stats from kernel, Push The Button." name="CPU LIVE Stats" action="push-actions/thermal_control" label="Switch to Synapse Controls"/>
+
+	</settingsPane>
+
+</settingsTab>
+
+<settingsTab name="CPU Thermal">
+
+	<settingsPane description="Kernel ROM Thermal Service and Intelligent Thermal Kernel driver can be enabled together in this section. It protects device from overheating and breaking down components. Controls below are active for Dual Intelligent Temp Control in case of ROM service die. Kernel will protect phone components from any damage only if Dual Intelligent Temp Control is in use. It's better to leave it as is." name="CPU Thermal Protection">
+
+		<spinner description="Select CPU Temp Control driver. Default driver without controls or Dual Intelligent Thermal driver with controls below and ROM thermal control. It'll limit CPU frequency when CPU reaches Maximum set temperature and wait until the temperature decreases below specified level for restoring Maximum frequency. By using Default Temp Control you'll have only one overheat protection ensured by ROM, so if ROM stuck and performs hot boot, there is no protection from overheating and breaking your device! On the other hand you'll get better game performance by using ONE protection (high freq. lasts longer on high temp), so keep that in mind!" name="CPU Temp Control"
+			action="msm_thermal">
+			<spinnerItem name="Default Temp Control" value="msm_temp"/> 
+			<spinnerItem name="Dual Intelligent Temp Control" value="intelli_temp"/> 
+			<spinnerItem name="Intelligent Temp Control Only" value="intelli_temp_only"/> 
+		</spinner>
+
+		<seekBar description="Set the Max Allowed CPU Temperature before throttling down in order to cool down the device (Default: 75°C)." name="CPU Max Heat"
+			action="generic /sys/module/msm_thermal/parameters/limit_temp_degC" unit="°C" min="50" reversed="false" step="1" max="78"/>
+
+		<seekBar description="Set the number of Frequency Steps when throttling down performs (Default: 2)." name="Frequency Steps"
+			action="generic /sys/module/msm_thermal/parameters/freq_step" unit="Step" min="1" reversed="false" step="1" max="4"/>
+
+		<seekBar description="Set the Temp Pull Timer intervals. The lower value, the more often kernel will check up the CPU temp (Default: 250 ms)." name="Temp Pull Timer"
+			action="generic /sys/module/msm_thermal/parameters/poll_ms" unit="ms" min="200" reversed="false" step="50" max="500"/>
+
+		<seekBar description="Set the Temperature Hysteresis for driver. It calculates temp differences for adjusting the best CPU frequency, when CPU is in stress too often. Do NOT reduce below 10°C! (Default: 10°C)." name="Temperature Hysteresis"
+			action="generic /sys/module/msm_thermal/parameters/temp_hysteresis_degC" unit="°C" min="5" reversed="false" step="1" max="20"/>
+
+		<seekBar description="Set the Lowest Thermal CPU Frequency Limit, 7 stands for 1.19 GHz, 6 stands for 1.03 GHz and so on (Default: 7)." name="Lowest Thermal Frequency Limit"
+			action="generic /sys/module/msm_thermal/parameters/thermal_limit_low" unit="Freq" min="5" reversed="false" step="1" max="10"/>
+
+		<checkbox description="Use The Immediately Freq Limit Stop. It allows to set the Max frequency, when temperature is not rising. It's stressing the driver, but provides higher performance by adding extra 3°C to the global limit. Use it with caution!" name="Immediately Frequency Limit Stop"
+			action="generic01 /sys/module/msm_thermal/parameters/immediately_limit_stop" label="Immediately Limit Stop"/>
+
+	</settingsPane>
+
+	<settingsPane description="Setup HotPlug CPU Thermal Controls by deciding how many cores remains ON when they're overheated. It reduces performance, by getting less cores enabled on higher freq. Others will keep waiting until CPU cools down." name="HotPlug CPU Thermal Control">
+
+		<spinner description="HotPlug CPU Thermal Control Main Switch allows to shutdown cores 1,2,3 and leave only core 0 as the main core locked on it's Max frequency. If this option is disabled, all CPU cores will be online and operate at lower frequencies on high temperature." name="HotPlug Thermal CPU Control"
+			action="core_control">
+			<spinnerItem name="Enabled" value="1"/> 
+			<spinnerItem name="Disabled" value="0"/> 
+		</spinner>
+
+		<spinner description="Set how many cores will stay active on high temp. The more cores is OFF, the higher frequencies you'll get on the other cores. Disabled Cores will switch online, when temperature is back to normal. Changes will take effect ONLY on LOW Temp! This option depends on HotPlug CPU Thermal Control (must be Enabled above)!" name="Max Online CPUs"
+			action="core_mask">
+			<spinnerItem name="Core 0" value="1"/> 
+			<spinnerItem name="Core 0,1" value="2"/> 
+			<spinnerItem name="Core 0,1,2" value="3"/> 
+			<spinnerItem name="All Cores ON" value="4"/> 
+		</spinner>
+
+		<seekBar description="Set the HotPlug Maximum Core Temperature. When temperature reaches defined value, it turns cores OFF from 4 to (set in Max ONLINE CORE option) in order to cool down the device. It can't be higher than CPU Max HEAT Control. This option works only with Intelli CPU Cores Control (Default: 72°C)." name="Intelli CORE Max Heat"
+			action="generic /sys/module/msm_thermal/parameters/core_limit_temp_degC" unit="°C" min="50" reversed="false" step="1" max="80"/>
+
+		<seekBar description="Adjust the Core HotPlug Temperature Hysteresis Driver by calculating temperature differences and switching cores ON/OFF. Cores can be brought online if needed. Works only with Intelli CPU Cores Control (Default: 10°C)." name="Core Temperature Hysteresis"
+			action="generic /sys/module/msm_thermal/parameters/core_temp_hysteresis_degC" unit="°C" min="5" reversed="false" step="1" max="20"/>
+
+	</settingsPane>
+
+</settingsTab>
+
+<settingsTab name="CPU HotPlug">
+
+	<settingsPane description="Setup CPU HotPlug settings." name="Global HotPlug">
+
+		<spinner description="Switch from OLD LG Default HotPlug driver to other custom HotPlug drivers. Note that using Intelligent CPU Thermal Control with mpdecision HotPlug is NOT recommended (causing low performance)." name="HotPlug Driver"
+			action="hotplug">
+			<spinnerItem name="MSM HotPlug" value="msm_hotplug"/> 
+			<spinnerItem name="Alucard HotPlug" value="alucard"/> 
+			<spinnerItem name="Thunder HotPlug" value="thunderplug"/> 
+			<spinnerItem name="Intelligent HotPlug" value="intelli"/> 
+		</spinner>
+
+		<seekBar description="Set the HotPlug Sample Rate. It determines how often the driver refreshes the CPU load calculation. Lower time have more refined and accurate hotplugging, but also causes a slightly higher power consumption. For battery save, it's recommended to set the same value, as is in MASTER CORE tab in CPU Power Controls section. Note that 10 here is 10000 for CPU governor. For best performance, set in range from 10 to 30 (Default: 20)." name="CPU HotPlug Sample Rate"
+			action="hotplug_sample_rate" unit="rate" min="10" reversed="false" step="5" max="80"/>
+
+		<seekBar description="Set the HotPlug Sample Rate for Sleep mode (Default: 20)." name="Sleep CPU HotPlug Sample Rate"
+			action="generic_cortex /tmp/hotplug_sleep_sample_rate" unit="rate" min="10" reversed="false" step="5" max="80"/>
+
+		<spinner description="Allow HotPlug to be suspended when screen is OFF. When device enters full suspend mode, only one core is half active. But if app holds wakelock, then 3 cores are online. This is with all kernel HotPlugs excluding mpdecision HotPlug.. After many tests it's best to allow HotPlug to always work, as it reduces battery drain when playing music with screen is OFF." name="Hotplug Suspend Mode"
+			action="hotplug_suspend">
+			<spinnerItem name="Always Active" value="always_active"/> 
+			<spinnerItem name="HotPlug Suspend" value="suspend_when_off"/> 
+		</spinner>
+
+		<spinner description="Set how many cores hotplug driver will enable as soon as touch screen is being detected, in order to bring the smoothest experience. It works with all HotPlugs excluding Alucard and mpdecision." name="Touch Core Boost"
+			action="cpus_boosted">
+			<spinnerItem name="One Core Boost" value="1"/> 
+			<spinnerItem name="Dual Core Boost" value="2"/> 
+			<spinnerItem name="Triple Core Boost" value="3"/> 
+			<spinnerItem name="Quad Core Boost" value="4"/> 
+		</spinner>
+
+		<seekBar description="Set the Touch Boost duration. It controls how long each core will be active after touch is being detected (Default: 1000 ms)." name="Touch Boost Duration"
+			action="cpus_boosted_time" unit="ms" min="250" reversed="false" step="250" max="3000"/>
+
+		<spinner description="Set the number of CPU cores that can be online. It allows to enable sleeping cores to (Maximum set). mpdecision and Alucard HotPlugs are not supported. This set is stronger than min cores online below." name="Max Cores online"
+			action="eco_mode">
+			<spinnerItem name="Quad Core CPU" value="all"/> 
+			<spinnerItem name="Triple Core CPU" value="eco_boost"/> 
+			<spinnerItem name="Dual Core CPU" value="eco"/> 
+			<spinnerItem name="One Core CPU" value="strict"/> 
+		</spinner>
+
+		<spinner description="Set the minimum number of CPU cores to be online. By default, we have only one core online when device is in idle. More cores online gives more power, but causes faster battery discharging. Default is NORMAL (one core online + other cores offline until needed)." name="min Online CPU"
+			action="min_online_cpus">
+			<spinnerItem name="NORMAL (1 core)" value="1"/> 
+			<spinnerItem name="BOOSTER NOS (2 cores)" value="2"/> 
+			<spinnerItem name="TURBO CORE (3 cores)" value="3"/> 
+			<spinnerItem name="NUCLEAR FUSION (4 cores)" value="4"/> 
+		</spinner>
+
+	</settingsPane>
+
+</settingsTab>
+
+<settingsTab name="GPU CORE">
+
+	<settingsPane description="Select the GPU Governor. After doing some changes, hit button to update GPU Governor." name="GPU Governors And Settings">
+
+		<spinner description="Select GPU Governor that will control GPU frequency. If selected Performance governor, then the GPU will be at Max frequency all the time (Default: MSM Adreno)." name="GPU Active Governor"
+			action="gpu_governor">
+			<spinnerItem name="MSM Adreno" value="msm-adreno-tz"/> 
+			<spinnerItem name="Simple Ondemand" value="simple_ondemand"/> 
+			<spinnerItem name="Conservative" value="conservative"/> 
+			<spinnerItem name="Performance" value="performance"/> 
+		</spinner>
+
+		<button description="This option updates GPU Governor's changes." name="Update GPU Governor Tuning" action="push-actions/gpu_update" label="Update GPU Governor"/>
+
+		<spinner description="Select GPU Maximum frequency only when needed because some higher frequencies can be unstable! (Default: 450 MHz)." name="Max GPU Frequency"
+			action="generic /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/max_freq">
+			<spinnerItem name="578 MHz" value="578000000"/> 
+			<spinnerItem name="462 MHz" value="462400000"/> 
+			<spinnerItem name="389 MHz" value="389000000"/> 
+			<spinnerItem name="330 MHz" value="330000000"/> 
+			<spinnerItem name="200 MHz" value="200000000"/> 
+			<spinnerItem name="100 MHz" value="100000000"/>
+			<spinnerItem name="27 MHz" value="27000000"/> 
+		</spinner>
+
+		<spinner description="Select GPU Minimum frequency when GPU is IDLE - if you set higher than 200 MHz, then the GPU will hold selected frequency on IDLE (Default: 100 MHz)." name="Min GPU Frequency"
+			action="generic /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/min_freq">
+			<spinnerItem name="27 MHz" value="27000000"/> 
+			<spinnerItem name="100 MHz" value="100000000"/> 
+			<spinnerItem name="200 MHz" value="200000000"/> 
+			<spinnerItem name="330 MHz" value="330000000"/> 
+			<spinnerItem name="389 MHz" value="389000000"/> 
+			<spinnerItem name="462 MHz" value="462400000"/> 
+			<spinnerItem name="578 MHz" value="578000000"/> 
+		</spinner>
+
+	</settingsPane>
+
+	<settingsPane description="Customize Msm Adreno Tz Governor! Use that controls ONLY if Msm Adreno Tz is selected (otherwise nothing will happen)." name="Msm Adreno Tz Controls">
+
+		<seekBar description="Msm Adreno Tz CAP, must NOT be HIGHER than TARGET value! (Default: 75%)." name="CAP Value"
+			action="generic /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/gpufreq/msm-adreno-tz/cap" unit="%" min="40" reversed="false" step="5" max="90"/>
+
+		<seekBar description="Msm Adreno Tz TARGET, must NOT be LOWER than TARGET value! (Default: 80%)." name="TARGET Value"
+			action="generic /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/gpufreq/msm-adreno-tz/target" unit="%" min="40" reversed="false" step="5" max="90"/>
+
+		<spinner description="Set Control Simple Ramp Threshold and Simple Laziness. If it's set to AUTO, then controls below have no effect." name="Msm Adreno Tz Extra Controls"
+			action="generic /sys/module/simple_gpu_algorithm/parameters/simple_gpu_activate">
+			<spinnerItem name="Auto Mode" value="0"/> 
+			<spinnerItem name="Allow Controls" value="1"/> 
+		</spinner>
+
+		<seekBar description="Set how many steps will governor wait on high freq before switching to GPU min speed. Higher you set, faster battery will be discharging, but smoother UI you'll get (Default: 2 steps)." name="Simple Laziness Value"
+			action="generic /sys/module/simple_gpu_algorithm/parameters/simple_laziness" unit="step" min="1" reversed="false" step="1" max="5"/>
+
+		<seekBar description="The higher value is set, the longer GPU freq will stay LOW on GPU load (Default: 7000)." name="Simple Ramp Threshold"
+			action="generic /sys/module/simple_gpu_algorithm/parameters/simple_ramp_threshold" unit="ramp" min="2000" reversed="false" step="500" max="10000"/>
+
+	</settingsPane>
+
+	<settingsPane description="Customize Simple Ondemand Governor. Use this controls ONLY if Simple Ondemand is selected (otherwise nothing will happen)." name="Simple Ondemand Controls">
+
+		<seekBar description="When GPU load decreases below Down Differential level, then governor reduces GPU frequency to it's min frequency. Must NOT be HIGHER than Up threshold value! (Default: 20%)." name="Down Differential Value"
+			action="generic /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/gpufreq/simple_ondemand/downdifferential" unit="%" min="5" reversed="false" step="5" max="60"/>
+
+		<seekBar description="When GPU load raises above Up Threshold level, then governor raises GPU frequency to it's next frequency step until it reaches Max frequency (must NOT be LOWER than Down Differential)! (Default: 60%)." name="Up Threshold Value"
+			action="generic /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/gpufreq/simple_ondemand/upthreshold" unit="%" min="30" reversed="false" step="5" max="90"/>
+
+	</settingsPane>
+
+	<settingsPane description="Customize Conservative Governor. Use the controls ONLY if Conservative is selected (otherwise nothing will happen)." name="Conservative Controls">
+
+		<seekBar description="When GPU load decreases below Down differential level, then governor. reduces GPU frequency to it's min frequency. Must NOT be HIGHER than Up threshold value! (Default: 20%)." name="Down Threshold Value"
+			action="generic /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/gpufreq/conservative/downthreshold" unit="%" min="5" reversed="false" step="5" max="60"/>
+
+		<seekBar description="When GPU load raises above Up threshold level, then governor raises GPU frequency to it's next frequency step until it reaches Max frequency (must NOT be LOWER than Down differential)! (Default: 50%)." name="Up Threshold Value"
+			action="generic /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/gpufreq/conservative/upthreshold_cons" unit="%" min="30" reversed="false" step="5" max="90"/>
+
+	</settingsPane>
+
+</settingsTab>
+
+<settingsTab name="I/O">
+
+	<settingsPane description="Customize I/O settings." name="I/O Tuning">
+
+		<spinner description="Set the Maximum number of KiloBytes to read-ahead from device storage, (Default: 1024 KiB)." name="KiloBytes to Read Ahead"
+			action="generic /sys/block/mmcblk0/bdi/read_ahead_kb">
+			<spinnerItem name="128 KiB" value="128"/> 
+			<spinnerItem name="256 KiB" value="256"/> 
+			<spinnerItem name="512 KiB" value="512"/> 
+			<spinnerItem name="1024 KiB" value="1024"/> 
+			<spinnerItem name="2048 KiB" value="2048"/> 
+			<spinnerItem name="2560 KiB" value="2560"/> 
+		</spinner>
+
+		<spinner description="When performance mode MMC I/O is set, write speed will be very fast. But when power save mode is set, write performance will be degraded in order to reduce battery discharging." name="MMC Power Usage"
+			action="mmc_mode">
+			<spinnerItem name="MMC Performance" value="performance"/> 
+			<spinnerItem name="MMC Power Save" value="power_save"/> 
+		</spinner>
+
+		<button description="Push Trim Now button in order to speed up Read and Write Access Time. It's good to use it once in a day or two, or let the cron to do it for you." name="Trim System and Data" action="push-actions/fstrim" label="Trim NOW"/>
+
+		<spinner description="Set the AWAKE I/O scheduler for internal storage (Default: ZEN)." name="Default Awake I/O Scheduler"
+			action="scheduler">
+			<spinnerItem name="CFQ" value="cfq"/> 
+			<spinnerItem name="BFQ" value="bfq"/> 
+			<spinnerItem name="DEADLINE" value="deadline"/> 
+			<spinnerItem name="NOOP" value="noop"/> 
+			<spinnerItem name="ROW" value="row"/> 
+			<spinnerItem name="SIOPLUS" value="sioplus"/> 
+			<spinnerItem name="ZEN" value="zen"/> 
+			<spinnerItem name="FIOPS" value="fiops"/> 
+			<spinnerItem name="TRIPNDROID" value="tripndroid"/> 
+			<spinnerItem name="VR" value="vr"/> 
+		</spinner>
+
+		<spinner description="Set the Screen OFF I/O scheduler for internal storage. It depends on CortexBrain Background Process (Default: ZEN)." name="Screen OFF I/O Scheduler"
+			action="generic_cortex /tmp/sleep_scheduler">
+			<spinnerItem name="CFQ" value="cfq"/> 
+			<spinnerItem name="BFQ" value="bfq"/> 
+			<spinnerItem name="DEADLINE" value="deadline"/> 
+			<spinnerItem name="NOOP" value="noop"/> 
+			<spinnerItem name="ROW" value="row"/> 
+			<spinnerItem name="SIOPLUS" value="sioplus"/> 
+			<spinnerItem name="ZEN" value="zen"/> 
+			<spinnerItem name="FIOPS" value="fiops"/> 
+			<spinnerItem name="TRIPNDROID" value="tripndroid"/> 
+			<spinnerItem name="VR" value="vr"/> 
+		</spinner>
+
+	</settingsPane>
+
+</settingsTab>
+
+<settingsTab name="Memory">
+
+	<settingsPane description="Customize Memory and OOM (Out Of Memory) prevention settings." name="Memory Tuning">
+
+		<checkbox description="Enable AUTO OOM control using the profiles below. If you want to set your own OOM tuning via another app or scripts, disable this setting." name="Auto OOM"
+			action="generic01 /sys/module/lowmemorykiller/parameters/auto_oom" label="Auto OOM Control"/>
+
+		<checkbox description="Enabling Adaptive LMK will increase responsiveness at the cost of reduced multitasking capabilities and battery life. It helps to free up RAM faster when low RAM and vmpressure is in range from 85% to 94%. Apps will be cleared from RAM." name="Adaptive LMK"
+			action="generic01 /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk" label="Adaptive LMK"/>
+
+		<seekBar description="When RAM pressure is higher than set in here, LMK is ordered to release RAM and allow faster load for something BIG into memory. The effect is that apps are loading faster. Lower the value, more apps gets killed. For best performance, keep it in range from 85% to 90% (Default: 85%)." name="Adaptive LMK Pressure Range"
+			action="generic /sys/module/lowmemorykiller/parameters/vm_pressure_adaptive_start" unit="%" min="75" reversed="false" step="1" max="94"/>
+
+		<seekBar description="When RAM pressure is higher than set above, and RAM is lower than set here, kernel will start releasing RAM by stopping background apps. Value calculation here is based on this formula PR * 4096 (example: 68 * 4096 = 278MB free RAM) default 68 PR" name="Adaptive LMK Lowest RAM Allowed"
+                        action="vmpressure_file_min" unit="PR" min="65" reversed="false" step="1" max="78"/>
+
+		<spinner description="Set the mode for low memory management (lowmemkiller function) when screen is ON. More aggressive equals more free RAM, but more apps gets killed." name="OOM Level Screen ON"
+			action="oom_config_screen_on">
+			<spinnerItem name="Medium" value="medium"/> 
+			<spinnerItem name="Gabriel Default" value="default"/> 
+			<spinnerItem name="Stock MM ROM" value="stock"/> 
+			<spinnerItem name="Aggressive" value="aggressive"/> 
+			<spinnerItem name="Exterminate" value="exterminate"/> 
+		</spinner>
+
+		<spinner description="Set the mode for low memory management when screen is OFF. More aggressive equals more free RAM, but more apps gets killed." name="OOM Level Screen OFF"
+			action="oom_config_screen_off">
+			<spinnerItem name="Medium" value="medium"/> 
+			<spinnerItem name="Gabriel Default" value="default"/> 
+			<spinnerItem name="Stock MM ROM" value="stock"/> 
+			<spinnerItem name="Aggressive" value="aggressive"/> 
+			<spinnerItem name="Exterminate" value="exterminate"/> 
+		</spinner>
+
+		<spinner description="Set the low memory reserve ratio mode. Higher ratio gives more free RAM. If you see that your RAM and system is always loaded and device is lagging, with less than 280 MiB of RAM, then use recommended or high pressure setting. Use relaxed if your free RAM is always above 650 MiB." name="Low Memory Reserve"
+			action="lowmem_reserve">
+			<spinnerItem name="Relaxed" value="relaxed"/> 
+			<spinnerItem name="Default" value="default"/> 
+			<spinnerItem name="Recommended" value="boosted"/> 
+			<spinnerItem name="High Pressure Ratio" value="high_pressure"/> 
+		</spinner>
+
+		<seekBar description="The more is set, the more memory will be used as writing buffer for background operations. Buffer will be released when it needs more free RAM (Default: 5%)." name="Dirty Background Ratio"
+			action="generic /proc/sys/vm/dirty_background_ratio" unit="%" min="0" reversed="false" step="5" max="80"/>
+
+		<seekBar description="The more is set, the more memory will be used for real time operations writing buffer. Buffer will be released when it needs more free RAM (Default: 20%)." name="Dirty Ratio"
+			action="generic /proc/sys/vm/dirty_ratio" unit="%" min="0" reversed="false" step="5" max="90"/>
+
+		<seekBar description="It controls the tendency of the kernel for reclaiming memory, which is used for caching the directory and all the information needed by the kernel to manipulate a file or a directory (inode objects) (Default: 100%)." name="Vfs Cache Pressure"
+			action="generic /proc/sys/vm/vfs_cache_pressure" unit="%" min="10" reversed="false" step="5" max="150"/>
+
+		<button description="Release all cached and buffered files from RAM. WAIT approx. 3 sec for getting cleanup report." name="Clear RAM Cache" action="push-actions/clean_ram_cache" label="Clear RAM Cache"/>
+
+	</settingsPane>
+
+	<settingsPane description="SWAP function is using swap storage placed in /data folder in order to expand RAM and leave more physical RAM for apps working in the background. Enable this option only, if you have free space and you really need that RAM expansion. You will notice slightly faster battery discharging and slower I/O read/write operations. It can be combined with ZRAM." name="Linux SWAP">
+
+		<spinner description="SWAP Size Controller. The more is set, the bigger SWAP file will be. It takes time to create SWAP file (about 50 sec)." name="SWAP Selector"
+			action="swaptweaks">
+			<spinnerItem name="OFF" value="0"/> 
+			<spinnerItem name="256 MiB" value="256"/> 
+			<spinnerItem name="512 MiB" value="512"/> 
+		</spinner>
+
+	</settingsPane>
+
+	<settingsPane description="ZRAM Control Module take real RAM and compress it by 35-40% to create more FREE RAM for apps. Compression method is LZ4. The more RAM is allocated in ZRAM, the more physical RAM is given to user at cost of CPU power and faster battery discharging. When switching ZRAM size from one to another, decompression and new compression will take some TIME. In some cases that will take more than 2 min. In that time, Stweak will FREEZE. DO NOT PANIC! You can just switch to home and open synapse and watch how much memory is decompressed. Do not kill the app." name="ZRAM">
+
+		<spinner description="ZRAM Size Controller. The more is set, the more free RAM you'll get in cost of CPU power. But it's really low usage and device is operating GREAT! This is memory based module, so storage is not killed over time. You can see how it works in synapse app! Before proceeding PLEASE read the instruction ABOVE! (Default: 512 MiB)" name="ZRAM Selector"
+			action="zramtweaks">
+			<spinnerItem name="1 GB" value="1024"/> 
+			<spinnerItem name="768 MiB" value="768"/> 
+			<spinnerItem name="512 MiB" value="512"/> 
+			<spinnerItem name="256 MiB" value="256"/> 
+			<spinnerItem name="OFFLINE" value="0"/> 
+		</spinner>
+
+		<seekBar description="Controls ZRAM/SWAP allocation. The higher value is set, then ZRAM/SWAP will use more storage instead of real RAM, in order to give you more free RAM. The only cost is slight performance drop (Default: 50%)." name="Swappiness"
+			action="generic /proc/sys/vm/swappiness" unit="%" min="0" reversed="false" step="5" max="100"/>
+
+	</settingsPane>
+
+	<settingsPane description="UKSM lets the hypervisor system to share identical memory pages amongst different processes." name="UKSM">
+
+		<checkbox description="UKSM Main Switch." name="Ultra Kernel Samepage Merging"
+			action="generic01 /sys/kernel/mm/uksm/run" label="UKSM Switch"/>
+
+		<spinner description="UKSM CPU Governor Power when screen is ON. You can set high or low operational power for scanning and sharing memory across apps (Default: Medium Power)." name="UKSM CPU AWAKE GOVERNOR"
+			action="uksm_gov_on">
+			<spinnerItem name="Full Power" value="full"/> 
+			<spinnerItem name="Medium Power" value="medium"/> 
+			<spinnerItem name="Low Power" value="low"/> 
+			<spinnerItem name="No Power (idle)" value="quiet"/> 
+		</spinner>
+
+		<spinner description="UKSM CPU Governor Power when screen is OFF. You can set high or low operational power for scanning and sharing memory across apps (Default: No Power)." name="UKSM CPU SLEEP GOVERNOR"
+			action="generic_cortex /tmp/uksm_gov_sleep">
+			<spinnerItem name="Full Power" value="full"/> 
+			<spinnerItem name="Medium Power" value="medium"/> 
+			<spinnerItem name="Low Power" value="low"/> 
+			<spinnerItem name="No Power (idle)" value="quiet"/> 
+		</spinner>
+
+		<seekBar description="The lower is set, more RAM we can gain at cost of slight performance (Default: 1000 ms)." name="UKSM Scan Delay Interval"
+			action="generic /sys/kernel/mm/uksm/sleep_millisecs" unit="ms" min="50" reversed="false" step="50" max="1000"/>
+
+	</settingsPane>
+
+</settingsTab>
+
+<settingsTab name="Other">
+
+	<settingsPane description="Other customization settings." name="apps">
+
+		<button description="Touch here to start applications Database Optimization. Compacting, cleaning and indexing will take Max 2 minutes." name="DB Optimization" action="push-actions/database_optimizing" label="DB Optimization"/>
+
+		<button description="Touch here to see current SELINUX status." name="SELINUX Status Check" action="push-actions/selinux_check" label="SELINUX Status Check"/>
+
+		<button description="Touch here to Enable or Disable Selinux Driver. If selinux is OFF apps may get access to files in system but not changed them. With ROOT access they can (with or without selinux). If SELINUX is disabled (Default: set on boot) then life is good and all works with no problems with GSM connection or access permissions with different apps. When you push this button ONCE, kernel command line will be updated and current kernel will reinstall automatic. To see changes you'll need to REBOOT! Then you can check using check button above. WARNING some USER apps loose some or all data (mostly configurations) when permissions changed! Do backup before change selinux to ENABLE! When you'll reboot Dalvik Cache will be cleared out and kernel will reboot. Wait for apps to be optimized." name="SELINUX ON/OFF Control" action="push-actions/selinux_switch" label="SELINUX Hard ON/OFF"/>
+
+		<spinner description="Change your SELinux (Security-Enhanced Linux) status from Permissive (prints warnings instead of enforcing) if Enforcing then policy is enforced. ONCE YOU CHANGE TO ENFORCE! THIS CONTROL APP WILL NEVER WORK AGAIN. Until you'll reset profiles by deleting data-.gabriel folder and reboot device or run setenforce 0 or use some app to change selinux to permissive. Then go here and set Permissive." name="SeLinux Control"
+			action="selinux_control">
+			<spinnerItem name="Enforcing" value="on"/> 
+			<spinnerItem name="Permissive" value="off"/> 
+		</spinner>
+
+	</settingsPane>
+
+	<settingsPane description="Customize Auto Backlight Driver settings." name="min/max Backlight Control">
+
+		<checkbox description="Enable Minimum/Maximum Backlight Override." name="min/max Backlight Override"
+			action="generic01 /sys/module/lm3697/parameters/lm3697_backlight_control" label="min/max Backlight Override Switch"/>
+
+		<seekBar description="If backlight override switch is ON, set the min backlight allowable value and change the Rom Brightness control to see results." name="min Backlight Level"
+			action="generic /sys/module/lm3697/parameters/lm3697_min_backlight" unit="lvl" min="2" reversed="false" step="10" max="945"/>
+
+		<seekBar description="If backlight override switch is ON, set the max backlight allowable value and change the Rom Brightness control to see results." name="max Backlight Level"
+			action="generic /sys/module/lm3697/parameters/lm3697_max_backlight" unit="lvl" min="3" reversed="false" step="10" max="1892"/>
+
+	</settingsPane>
+
+	<settingsPane description="Congestion control controls traffic entry into a telecommunications network, to avoid congestive collapse by avoiding oversubscription by reducing the rate of packets." name="TCP Algorithms">
+
+		<spinner description="This algorithms controls the Data Transmission Protocol used by many Internet applications. It needs from user to investigate from net and check what's the BEST setting for him. If USER is lazy to read Google, leave it as default (Cubic or Bic depends on phone model)." name="Net Congestion Control"
+			action="generic /proc/sys/net/ipv4/tcp_congestion_control">
+			<spinnerItem name="Cubic" value="cubic"/> 
+			<spinnerItem name="Reno" value="reno"/> 
+			<spinnerItem name="Veno" value="veno"/> 
+			<spinnerItem name="Westwood" value="westwood"/> 
+			<spinnerItem name="Bic" value="bic"/> 
+			<spinnerItem name="HTCP" value="htcp"/> 
+			<spinnerItem name="HighSpeed (HSTCP)" value="highspeed"/> 
+		</spinner>
+
+	</settingsPane>
+
+	<settingsPane description="WIFI Settings. Some devices can have a problem with connecting while using DHCP method and obtaining IP address. You can use button below to clean WiFi lease and try again or use static method obtaining IP." name="WIFI">
+
+		<button description="Clean WIFI DHCP IP Lease. Sometimes when connecting using WiFi, DHCP method will failure on Android WiFi (stuck on obtaining IP address). This option will clean the lease!" name="Clean WIFI Lease" action="push-actions/fix_wifi" label="Clean WIFI Lease"/>
+
+	</settingsPane>
+
+	<settingsPane description="Change GPS settings." name="GPS">
+
+		<spinner description="Set GPS Time Zone for faster GPS lock. Use your current time zone." name="GPS Region"
+			action="gpsregion">
+			<spinnerItem name="No GPS Zone changes (default)" value="No_GPS_Zone_changes"/> 
+			<spinnerItem name="Asia Zone" value="Asia"/> 
+			<spinnerItem name="Europe Zone" value="Europe"/> 
+			<spinnerItem name="Oceania Zone" value="Oceania"/> 
+			<spinnerItem name="North America Zone" value="North-America"/> 
+			<spinnerItem name="South America Zone" value="South-America"/> 
+			<spinnerItem name="Africa Zone" value="Africa"/> 
+			<spinnerItem name="Restore Original ROM Config" value="Original_ROM_GPS_Restored"/> 
+		</spinner>
+
+		<button description="Check for current GPS ZONE." name="GPS ZONE" action="push-actions/gpszonecheck" label="GPS Zone Check"/>
+
+	</settingsPane>
+
+	<settingsPane description="INIT.D" name="INIT.D">
+
+		<checkbox description="Enable INIT.D scripts RUN on boot. If you put scripts in INIT.D and enable it, default SuperSu scripts will run on boot from INIT.D." name="INIT.D Scripts RUN control"
+			action="generic_cortex /tmp/init_d" label="Enable INIT.D scripts RUN Control"/>
+
+	</settingsPane>
+
+</settingsTab>
+
+<settingsTab name="Tweaks">
+
+	<settingsPane description="Battery Tweaks." name="Battery Twaks Control">
+
+		<button description="Calibrate Battery. Run it if you installed Rom recently or Battery Diagram have Flat Drop Energy status or Increase While not Charging." name="Reset Battery Counter. It can b Apply if Battery Fully Charged and be at the 100%" action="push-actions/battery_tweak" label="Calibrate Battery"/>
+
+		<button description="Reset the Battery Fuel Counter. If you suspect that Battery Counter is not showing the correct state, ask kernel for recalibration. It can't extend battery life but prevents wrong calculation of reaming energy." name="Reset Battery Counter" action="push-actions/reset_battery" label="Reset Battery Counter"/>
+
+	</settingsPane>
+
+	<settingsPane description="This script manipulates many kernel settings, based on chosen Stweak profile + settings and screen state (ON/OFF) - we call it CortexBrain. To reset the kernel-settings after disabling a tweak, you must reboot the device." name="CortexBrain Tweaks">
+
+		<spinner description="Enable the CortexBrain Background Process. Disabling it means, losing the functions that sets different settings for screen state (ON/OFF)." name="CortexBrain-Background-Process"
+			action="cortexbrain_background_process">
+			<spinnerItem name="Enable" value="1"/> 
+			<spinnerItem name="Disable" value="0"/> 
+		</spinner>
+
+		<button description="Touch to see, if the CortexBrain Background Process is running." name="Check Background Process" action="push-actions/cortexbrain_background_process_check" label="CHECK SERVICE"/>
+
+		<checkbox description="Enable Memory Tweaks (reboot needed)." name="Memory Tweaks"
+			action="generic_cortex /tmp/cortexbrain_memory" label="Memory Tweaks"/>
+
+		<checkbox description="Enable System Tweaks (reboot needed)." name="System Tweaks"
+			action="generic_cortex /tmp/cortexbrain_system" label="System Tweaks"/>
+
+		<checkbox description="Enable Kernel Tweaks (reboot needed)." name="Kernel Tweaks"
+			action="generic_cortex /tmp/cortexbrain_kernel_tweaks" label="Kernel Tweaks"/>
+
+		<checkbox description="Enable I/O Tweaks (reboot needed)." name="I/O Tweaks"
+			action="generic_cortex /tmp/cortexbrain_io" label="I/O Tweaks"/>
+
+		<checkbox description="Enable or Disable Battery-Calibrate each Time gets 100% and in Sleep Mode (reboot needed)." name="Battery-Tweaks"
+			action="generic_cortex /tmp/cortexbrain_battery" label="Battery-Tweaks"/>
+
+		<checkbox description="Enable or Disable the DATA turns off while screen is off function." name="Auto-DATA" action="generic_cortex /tmp/cortexbrain_auto_tweak_mobile" label="Force Auto-Data"/>
+
+		<seekBar description="Here you can set a delay before DATA is forced to OFF when screen is turned off." name="DATA Turn Off Delay (in sec)" action="generic_cortex /tmp/cortexbrain_auto_tweak_mobile_sleep_delay" unit="sec" min="0" reversed="false" step="30" max="300"/>
+
+		<checkbox description="Enable or Disable the Wifi turns off while screen is off function." name="Auto-Wifi" action="generic_cortex /tmp/cortexbrain_auto_tweak_wifi" label="Force Auto-Wifi"/>
+
+		<seekBar description="Here you can set a delay before WIFI is forced to OFF when screen is turned off." name="WIFI Turn Off Delay (in sec)" action="generic_cortex /tmp/cortexbrain_auto_tweak_wifi_sleep_delay" unit="sec" min="0" reversed="false" step="30" max="300"/>
+
+	</settingsPane>
+
+</settingsTab>
+
+<settingsTab name="Services">
+
+	<settingsPane description="Specify Userspace Freezing Time out (kernel threats, process). It will Freeze Services and Prevent them to Run at Specific Times if You Set this over 0" name="PM Freeze Time Out">
+
+		<seekBar description="Userspace Freeze Timeout, default kernel value is 20000" name="Freeze Time Period"
+			action="generic /sys/power/pm_freeze_timeout" unit="ms" min="0" reversed="false" step="1000" max="50000"/>
+
+	</settingsPane>
+
+	<settingsPane description="Activate some scripts which automatically runs in the background at the specified time. Depends on CortexBrain !" name="CortexBrain Services">
+
+		<button description="Touch to check the Details of Finished Service Jobs." name="Check Service Logs" action="push-actions/service_logs" label="CHECK LOGS"/>
+
+		<checkbox description="Enable Clean-Cache, Run at Specific Hour if Used Memory is over 50%. Default Run-Time is Every 3 Hour" name="Clean Cache Service"
+			action="generic_cortex /tmp/cortexbrain_clean_cache" label="Clean Cache service"/>
+
+		<seekBar description="Move Seekbar to Set the Clean-Cache time Period, Re-Executing in Specific Time Period." name="Clean Cache Time out"
+            action="generic_cortex /tmp/cortexbrain_clean_cache_timeout" unit="Hrs" min="1" reversed="false" step="1" max="24"/>
+
+		<checkbox description="Enable reclaiming RAM from apps. It's smart memory kernel feature used to take back all cached RAM from apps without killing them. It helps to maintain stable and fast device for a long time. Default Run-Time is Every 6 Hour" name="Process Reclaim Service"
+			action="generic_cortex /tmp/cortexbrain_process_reclaim" label="Process Reclaim service"/>
+
+		<seekBar description="Move Seekbar to Set the Process-Reclaim time Period, Re-Executing in Specific Time Period" name="Process Reclaim Time out"
+            action="generic_cortex /tmp/cortexbrain_process_reclaim_timeout" unit="Hrs" min="1" reversed="false" step="1" max="24"/>
+
+		<checkbox description="Enable Trim, Run every day at specific Hour. Default Run-Time is Every Day at 10 PM" name="FSTrim Service every day at Specific Hour"
+			action="generic_cortex /tmp/cortexbrain_trim" label="FSTrim servicer"/>
+
+		<seekBar description="Enable Trim of System, Data and Cache partitions every day at Specific Hour to speed up NAND Read and Write Access Time. NOTE that screen will be AWAKE during the fstrim to prevent MMC crash, then if screen was OFF it's will be auto turned off. Some devices don't like to be trimmed, so if device get stuck after Executing this Serivice, don't enable this. Move Seekbar to Set the FSTrim time Period" name="FSTrim Time out"
+            action="generic_cortex /tmp/cortexbrain_fstrim_timeout" unit="Hrs" min="1" reversed="false" step="1" max="24"/>
+
+		<checkbox description="Enable Clean File Cache, Run every day at specific Hour. Default Run-Time is Every Day at 4 AM, While in Sleep Mode" name="Clear APP Cache Service"
+			action="generic_cortex /tmp/cortexbrain_app_cache" label="Clear APP Cache eservice"/>
+
+		<seekBar description="Move Seekbar to Set the Clean File Cache time Period, Executing Only in Specific Hour" name="Clean File Cache Time out"
+            action="generic_cortex /tmp/cortexbrain_appcache_timeout" unit="Hrs" min="1" reversed="false" step="1" max="24"/>
+
+		<checkbox description="Enable DB Optimization, Run every day at specific Hour. Default Run-Time is Every Day at 3 AM, While in Sleep Mode" name="DB Optimization"
+			action="generic_cortex /tmp/cortexbrain_db_opt" label="DB Optimization servicer"/>
+
+		<seekBar description="Move Seekbar to Set the DB Optimization time Period, Executing Only in Specific Hour" name="DB Optimization Time out"
+            action="generic_cortex /tmp/cortexbrain_db_opt_timeout" unit="Hrs" min="1" reversed="false" step="1" max="24"/>
+
+	</settingsPane>
+
+</settingsTab>
+
+<settingsTab name="PROFILES">
+
+	<settingsPane description="Check which profile is in use right now." name="Online Profile">
+
+		<button description="Check current profile." name="Profile Check" action="push-actions/profile" label="Profile Check"/>
+
+	</settingsPane>
+
+	<settingsPane description="Choose kernel profiles." name="Kernel Profiles">
+
+		<button description="Extreme Performance" name="Extreme Performance Profile" action="push-actions/config_backup_restore 7" label="Extreme Performance"/>
+
+		<button description="Performance" name="Performance Profile" action="push-actions/config_backup_restore 5" label="Performance"/>
+
+		<button description="Default" name="Default Profile" action="push-actions/config_backup_restore 4" label="Default"/>
+
+		<button description="Battery Save" name="Battery Save Profile" action="push-actions/config_backup_restore 3" label="Battery"/>
+
+		<button description="Extreme Battery Save" name="Extreme Battery Save Profile" action="push-actions/config_backup_restore 6" label="Extreme Battery"/>
+
+	</settingsPane>
+
+	<settingsPane description="Backup or restore current profile after installing or updating kernel. Some settings will work only after reboot." name="Profile Backup or Restore">
+
+		<button description="Backup Gabriel User Settings." name="Settings Backup" action="push-actions/config_backup_restore 1" label="Backup Settings"/>
+
+		<button description="Restore Gabriel User Settings." name="Settings Restore" action="push-actions/config_backup_restore 2" label="Restore Settings"/>
+
+	</settingsPane>
+
+</settingsTab>
+
+<settingsTab name="KERNEL STUFF">
+
+	<settingsPane description="Debug to SD-Card." name="Bug-Report">
+
+		<button description="Bug-Report for Kernel, if a reboot or a freeze was performed and log was created with it's name part contains USELESS phase, then there is nothing to be done here. There is no need to upload it to thread for investigation." name="Kernel Debug" action="push-actions/debug_to_sd 1" label="KERNEL-CRASH-DEBUG"/>
+
+		<button description="Active Kernel/System Debug Report, use to report BUG with kernel or system in LIVE, NOT after crash, reboot or freeze. if something is wrong, upload debug for investigation." name="Kernel Active Debug" action="push-actions/debug_to_sd 3" label="KERNEL-ACTIVE-DEBUG"/>
+
+		<button description="Bug-Report for apps. Make sure that Logcat is Enabled before using this option. Remember, it's useless for kernel DEV and it's only needed for ROM DEV!" name="App-Bug" action="push-actions/debug_to_sd 2" label="ROM-Logcat"/>
+
+	</settingsPane>
+
+</settingsTab>
+
+</settingsRoot>
+

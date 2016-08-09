@@ -1,0 +1,21 @@
+#!/sbin/busybox sh
+
+# $1 - "drop-file-cache"
+# $2 - value=
+# $3 - value=
+# Created By Mostafa-z
+
+BB=/sbin/busybox
+
+if [ "a$2" != "a" ]; then
+	hour=$2;
+#	minute=00 __i only need to push hour as first argument and minute is always "00"
+#	hour=$((timeout * 3600));
+
+	if [ "$cortexbrain_app_cache" == "on" ]; then
+		$BB pkill -f /res/services/clear_file_cache;
+		$BB sh /res/services/clear_file_cache $hour;
+	fi;	
+fi;
+
+echo ${hour};

@@ -1,0 +1,44 @@
+#!/sbin/busybox sh
+
+# $1 - "adb_selector"
+# $2 - value=
+# Created By Dorimanx
+
+ADB_SELECTOR_MODE=$(cat /data/.gabriel/adbd_selector);
+
+if [ "a$2" != "a" ]; then
+	adb_selector=$2;
+
+	case "${adb_selector}" in
+	1)
+		if [ "$ADB_SELECTOR_MODE" == "adbd_su" ]; then
+			echo "adbd_lg" > /data/.gabriel/adbd_selector;
+			sync;
+			stop adbd
+			sleep 1;
+			rm -f /sbin/adbd;
+			ln -s /sbin/adbd_lg /sbin/adbd;
+			start adbd
+		else
+			echo "adbd_lg" > /data/.gabriel/adbd_selector;
+		fi;
+	;;
+	0)
+		if [ "$ADB_SELECTOR_MODE" == "adbd_lg" ]; then
+			echo "adbd_su" > /data/.gabriel/adbd_selector;
+			sync;
+			stop adbd
+			sleep 1;
+			rm -f /sbin/adbd;
+			ln -s /sbin/adbd_su /sbin/adbd;
+			start adbd
+		else
+			echo "adbd_su" > /data/.gabriel/adbd_selector;
+		fi;
+	;;
+	*)
+		adb_selector=1;
+	;;
+	esac;
+fi;
+echo ${adb_selector};

@@ -1,0 +1,23 @@
+#!/sbin/busybox sh
+
+# Created By Mostafa-z
+
+if [ "cat /sys/class/power_supply/battery/capacity" -gt "3"]; then
+
+		# battery-calibration if battery is full
+		local LEVEL=`cat /sys/class/power_supply/battery/capacity`;
+		local CURR_ADC=`cat /sys/class/power_supply/battery/voltage_now`;
+		local BATTFULL=`cat /sys/class/power_supply/battery/status`;
+		local i="";
+		local bus="";
+
+		log -p i -t $FILE_NAME "*** BATTERY - LEVEL: $LEVEL - CUR: $CURR_ADC ***";
+
+		if [ "$LEVEL" -eq "100" ] && [ "$BATTFULL" -eq "1" ]; then
+			rm -f /data/system/batterystats.bin;
+			log -p i -t $FILE_NAME "battery-calibration done ...";
+			echo "Battery-calibration done";
+		fi;
+else
+			echo "Battery-calibration Failed, Full Charge it Then Try Again";
+fi;

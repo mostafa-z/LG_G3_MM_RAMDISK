@@ -1,0 +1,32 @@
+#!/sbin/busybox sh
+
+if [ ! -e /data/.gabriel/logs/clean-ram-cache ]; then
+	echo "no data" > /data/.gabriel/logs/clean-ram-cache;
+fi;
+if [ ! -e /data/.gabriel/logs/mem-process-reclaim ]; then
+	echo "no data" > /data/.gabriel/logs/mem-process-reclaim;
+fi;
+if [ ! -e /data/.gabriel/logs/fs-trim ]; then
+	echo "no data" > /data/.gabriel/logs/fs-trim;
+fi;
+if [ ! -e /data/.gabriel/logs/clear-file-cache ]; then
+	echo "no data" > /data/.gabriel/logs/clear-file-cache;
+fi;
+if [ ! -e /data/.gabriel/logs/db-optimizing ]; then
+	echo "no data" > /data/.gabriel/logs/db-optimizing;
+fi;
+chmod 777 /data/.gabriel/logs/*
+cat /data/.gabriel/logs/clean-ram-cache > /data/.gabriel/logs/service_log;
+echo "---" >> /data/.gabriel/logs/service_log;
+cat /data/.gabriel/logs/mem-process-reclaim >> /data/.gabriel/logs/service_log;
+echo "---" >> /data/.gabriel/logs/service_log;
+cat /data/.gabriel/logs/fs-trim >> /data/.gabriel/logs/service_log;
+echo "---" >> /data/.gabriel/logs/service_log;
+cat /data/.gabriel/logs/clear-file-cache >> /data/.gabriel/logs/service_log;
+echo "---" >> /data/.gabriel/logs/service_log;
+cat /data/.gabriel/logs/db-optimizing >> /data/.gabriel/logs/service_log;
+echo "---" >> /data/.gabriel/logs/service_log;
+
+# push all to one log.
+SERVICE_LOG=$(cat /data/.gabriel/logs/service_log);
+echo "$SERVICE_LOG";
