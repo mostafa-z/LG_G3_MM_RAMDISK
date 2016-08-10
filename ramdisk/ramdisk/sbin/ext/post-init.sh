@@ -291,6 +291,15 @@ fi;
 	PROFILE=$(cat /data/.gabriel/.active.profile);
 	. /data/.gabriel/"$PROFILE".profile;
 
+	# Now wait for the rom to finish booting up
+	# (by checking for the android acore process)
+	# and exclude it from OOM
+	while ! $BB pgrep com.android.systemui ; do
+	  $BB sleep 1
+	done
+	echo "[Gabriel-Kernel] systemui detected" > /dev/kmsg
+	$BB pgrep -f pgrep com.android.systemui | while read PID; do echo -1000 > /proc/$PID/oom_score_adj; done
+
 	$BB mount -o remount,ro /system;
 
 	while [ "$(cat /sys/class/thermal/thermal_zone5/temp)" -ge "65" ]; do

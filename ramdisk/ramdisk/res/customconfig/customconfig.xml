@@ -605,20 +605,20 @@ performance CPUs (Default: 15 %)." name="Initial Task Load"
 
 		<spinner description="Set the mode for low memory management (lowmemkiller function) when screen is ON. More aggressive equals more free RAM, but more apps gets killed." name="OOM Level Screen ON"
 			action="oom_config_screen_on">
-			<spinnerItem name="Medium" value="medium"/> 
-			<spinnerItem name="Gabriel Default" value="default"/> 
-			<spinnerItem name="Stock MM ROM" value="stock"/> 
-			<spinnerItem name="Aggressive" value="aggressive"/> 
-			<spinnerItem name="Exterminate" value="exterminate"/> 
+			<spinnerItem name="Verylight" value="verylight"/>
+			<spinnerItem name="Light" value="light"/>
+			<spinnerItem name="Medium" value="medium"/>
+			<spinnerItem name="Aggressive" value="aggressive"/>
+			<spinnerItem name="Exterminate" value="exterminate"/>
 		</spinner>
 
 		<spinner description="Set the mode for low memory management when screen is OFF. More aggressive equals more free RAM, but more apps gets killed." name="OOM Level Screen OFF"
 			action="oom_config_screen_off">
-			<spinnerItem name="Medium" value="medium"/> 
-			<spinnerItem name="Gabriel Default" value="default"/> 
-			<spinnerItem name="Stock MM ROM" value="stock"/> 
-			<spinnerItem name="Aggressive" value="aggressive"/> 
-			<spinnerItem name="Exterminate" value="exterminate"/> 
+			<spinnerItem name="Verylight" value="verylight"/>
+			<spinnerItem name="Light" value="light"/>
+			<spinnerItem name="Medium" value="medium"/>
+			<spinnerItem name="Aggressive" value="aggressive"/>
+			<spinnerItem name="Exterminate" value="exterminate"/>
 		</spinner>
 
 		<spinner description="Set the low memory reserve ratio mode. Higher ratio gives more free RAM. If you see that your RAM and system is always loaded and device is lagging, with less than 280 MiB of RAM, then use recommended or high pressure setting. Use relaxed if your free RAM is always above 650 MiB." name="Low Memory Reserve"
@@ -629,16 +629,38 @@ performance CPUs (Default: 15 %)." name="Initial Task Load"
 			<spinnerItem name="High Pressure Ratio" value="high_pressure"/> 
 		</spinner>
 
-		<seekBar description="The more is set, the more memory will be used as writing buffer for background operations. Buffer will be released when it needs more free RAM (Default: 5%)." name="Dirty Background Ratio"
-			action="generic /proc/sys/vm/dirty_background_ratio" unit="%" min="0" reversed="false" step="5" max="80"/>
+	</settingsPane>
 
-		<seekBar description="The more is set, the more memory will be used for real time operations writing buffer. Buffer will be released when it needs more free RAM (Default: 20%)." name="Dirty Ratio"
-			action="generic /proc/sys/vm/dirty_ratio" unit="%" min="0" reversed="false" step="5" max="90"/>
+	<settingsPane description="How you adjust these depends on what you’re trying to do. increasing dirty_background_ratio and dirty_ratio has positive effects on performance. In theory, by allowing more dirty pages to exist in memory you’ll rewrite the same blocks over and over in cache, and just need to do one write every so often to the actual disk. in this case increase the dirty_expire_centisecs parameter to allow more time in cache. Beyond the increased risk of data loss, you also run the risk of long I/O pauses if that cache gets full and needs to destage." name="Cache Tuning">
 
-		<seekBar description="It controls the tendency of the kernel for reclaiming memory, which is used for caching the directory and all the information needed by the kernel to manipulate a file or a directory (inode objects) (Default: 100%)." name="Vfs Cache Pressure"
+		<seekBar description="The more is set, the more memory will be used as writing buffer for background operations. Buffer will be released when it needs more free RAM. If you have 2 GiB RAM and set it to 10% then 200 MiB of data that can be sitting in RAM before something is done." name="Dirty Background Ratio"
+			action="generic /proc/sys/vm/dirty_background_ratio" unit="%" min="0" reversed="false" step="5" max="100"/>
+
+		<seekBar description="The more is set, the more memory will be used for real time operations writing buffer. Buffer will be released when it needs more free RAM. This is absolute maximum amount of system memory that can be filled with dirty pages before everything must get committed to disk. When the system gets to this point all new I/O blocks until dirty pages have been written to disk. This is often the source of long I/O pauses" name="Dirty Ratio"
+			action="generic /proc/sys/vm/dirty_ratio" unit="%" min="0" reversed="false" step="5" max="100"/>
+
+		<seekBar description="how long something can be in cache before it needs to be written. When the pdflush/flush/kdmflush processes kick in they will check to see how old a dirty page is, and if it’s older than this value it’ll be written asynchronously to disk. Since holding a dirty page in memory is unsafe this is also a safeguard against data loss. (3000cs equals to 30 sec)" name="Dirty expire centisecs"
+			action="generic /proc/sys/vm/dirty_expire_centisecs" unit="cs" min="0" reversed="false" step="100" max="5000"/>
+
+		<seekBar description="how often the pdflush/flush/kdmflush processes wake up and check to see if work needs to be done." name="Dirty writeback centisecs"
+			action="generic /proc/sys/vm/dirty_writeback_centisecs" unit="cs" min="0" reversed="false" step="100" max="9000"/>
+
+		<seekBar description="Set 0, the kernel attempts to estimate the amount of free memory left when userspace requests more memory. 1, the kernel pretends there is always enough memory until it actually runs out. This feature can be very useful because there are a lot of programs that malloc() huge amounts of memory just-in-case and don't use much of it." name="Overcommit Memory"
+			action="generic /proc/sys/vm/overcommit_memory" unit="" min="0" reversed="false" step="1" max="1"/>
+
+		<seekBar description="Percentage of phisical memory size to include in overcommit calculation. with overcommit at 100, the kernel will not allow applications to allocate any more memory than you have (swap + ram). Setting it at less than 100 means that you will never use all your memory. When overcommit_memory is set to 2, the committed address space is not permitted to exceed swap plus this percentage of physical RAM" name="Overcommit Ratio"
+			action="generic /proc/sys/vm/overcommit_ratio" unit="%" min="0" reversed="false" step="10" max="150"/>
+
+		<seekBar description="This is used to force the Linux VM to keep a minimum number of kilobytes free (keep reserve to prevent OOM). The VM uses this number to compute a watermark[WMARK_MIN] value for each lowmem zone in the system. Each lowmem zone gets a number of reserved free pages based proportionally on its size." name="Min free kbytes"
+			action="generic /proc/sys/vm/min_free_kbytes" unit="kb" min="1024" reversed="false" step="1024" max="16384"/>
+
+		<seekBar description="It controls the tendency of the kernel for reclaiming memory, which is used for caching the directory and all the information needed by the kernel to manipulate a file or a directory (inode objects) (Default: 100%). At the default value of vfs_cache_pressure=100 the kernel will attempt to reclaim dentries and inodes at a fair rate with respect to pagecache and swapcache reclaim. Decreasing vfs_cache_pressure causes the kernel to prefer to retain dentry and inode caches. When vfs_cache_pressure=0, the kernel will never reclaim dentries and inodes due to memory pressure and this can easily lead to out-of-memory conditions. Increasing vfs_cache_pressure beyond 100 causes the kernel to prefer to reclaim dentries and inodes." name="Vfs Cache Pressure"
 			action="generic /proc/sys/vm/vfs_cache_pressure" unit="%" min="10" reversed="false" step="5" max="150"/>
 
 		<seekBar description="It controls vfs cache pressure while in sleep mode" name="Vfs Cache Pressure sleep mode" action="generic_cortex /tmp/vfs_cache_pressure_sleep" unit="%" min="10" reversed="false" step="5" max="150"/>
+
+		<checkbox description="This enables or disables killing the OOM-triggering task in out-of-memory situations. If this is set disable, the OOM killer will scan through the entire tasklist and select a task based on heuristics to kill. This normally selects a rogue memory-hogging task that frees up a large amount of memory when killed. If this is set to enable, the OOM killer simply kills the task that triggered the out-of-memory condition. This avoids the expensive tasklist scan." name="oom kill allocating task"
+			action="generic01 /proc/sys/vm/oom_kill_allocating_task" label="oom kill allocating task"/>
 
 		<button description="Release all cached and buffered files from RAM. WAIT approx. 3 sec for getting cleanup report." name="Clear RAM Cache" action="push-actions/clean_ram_cache" label="Clear RAM Cache"/>
 
@@ -666,7 +688,7 @@ performance CPUs (Default: 15 %)." name="Initial Task Load"
 			<spinnerItem name="OFFLINE" value="0"/> 
 		</spinner>
 
-		<seekBar description="Controls ZRAM/SWAP allocation. The higher value is set, then ZRAM/SWAP will use more storage instead of real RAM, in order to give you more free RAM. The only cost is slight performance drop (Default: 50%)." name="Swappiness"
+		<seekBar description="Controls ZRAM/SWAP allocation. The higher value is set, then ZRAM/SWAP will use more storage instead of real RAM, in order to give you more free RAM. The only cost is slight performance drop. If you have enabled swap, then the higher a number set here, the more the system will swap. It is not recommended to enable swap as it is very resource heavy. Use ZRAM instead!. By setting it to the maximum of 100 the kernel will swap very aggressively. By setting it to 0 the kernel will only swap to protect against an Out-Of-Memory condition." name="Swappiness"
 			action="generic /proc/sys/vm/swappiness" unit="%" min="0" reversed="false" step="5" max="100"/>
 
 	</settingsPane>
