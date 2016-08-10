@@ -20,6 +20,14 @@ performance CPUs (Default: 15 %)." name="Initial Task Load"
 
 	</settingsPane>
 
+	<settingsPane description="These settings control CFS (Complete Fair Scheduler) Task Scheduler Settings" name="CFS Settings">
+
+		<checkbox description="Disabling GENTLE FAIR SLEEPERS may give you better UI responsiveness, so NOT checked is GOOD." name="GENTLE FAIR SLEEPERS" action="generic01 /sys/kernel/sched/gentle_fair_sleepers" label="GENTLE FAIR SLEEPERS"/>
+
+		<checkbox description="Using ARCH POWER enables the use of ARM topology power functions instead of generic ones, and saves battery. Not recommended to disable." name="ARCH POWER" action="generic01 /sys/kernel/sched/arch_power" label="ARCH POWER"/>
+
+	</settingsPane>
+
 </settingsTab>
 
 <settingsTab name="Master CORE">

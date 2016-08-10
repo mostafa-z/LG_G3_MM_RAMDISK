@@ -1,5 +1,7 @@
 stweaks_boot_control=yes
 sched_init_task_load=15
+gentle_fair_sleepers=off
+arch_power=on
 default_cpu0_gov=ondemandx
 default_cpu1_gov=ondemandx
 default_cpu2_gov=ondemandx
