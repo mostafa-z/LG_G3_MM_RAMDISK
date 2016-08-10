@@ -872,6 +872,10 @@ PROCESS_RECLAIM_AUTO()
 {
 	if [ "$cortexbrain_process_reclaim_auto" == "on" ]; then
 
+		# make sure ram usage calculation on right time
+		# less than default task freez time out (20000)
+		sleep 10;
+
 		RAM_FREE=`vmstat | awk 'NR==3' | awk '{ print $4 }' | cut -c 1-3`;
 
 		if [ "$RAM_FREE" -lt "$cortexbrain_process_reclaim_auto_threshold" ]; then
@@ -897,7 +901,6 @@ AWAKE_MODE()
 	CLEAN_CACHE;
 	PROCESS_RECLAIM;
 	FS_TRIM;
-	PROCESS_RECLAIM_AUTO;
 
 	if [ "$(cat /data/gabriel_cortex_sleep)" -eq "1" ]; then
 		IO_SCHEDULER "awake";
@@ -909,6 +912,7 @@ AWAKE_MODE()
 		WIFI "awake";
 		VFS_CACHE_PRESSURE "awake";
 		NET "awake";
+		PROCESS_RECLAIM_AUTO;
 		echo "0" > /data/gabriel_cortex_sleep;
 		log -p i -t "$FILE_NAME" "*** AWAKE_MODE - WAKEUP ***: done";
 
@@ -944,7 +948,6 @@ SLEEP_MODE()
 	APP_CACHE;
 	DB_OPT;
 	BATTERY_TWEAKS;
-	PROCESS_RECLAIM_AUTO;
 
 	if [ "$CHARGER_STATE" -eq "0" ]; then
 		IO_SCHEDULER "sleep";
@@ -957,6 +960,7 @@ SLEEP_MODE()
 		MOBILE_DATA "sleep";
 		VFS_CACHE_PRESSURE "sleep";
 		NET "sleep";
+		PROCESS_RECLAIM_AUTO;
 		DROP_CACHE_AUTO;
 		echo "1" > /data/gabriel_cortex_sleep;
 
