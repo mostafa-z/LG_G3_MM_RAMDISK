@@ -859,7 +859,7 @@ DROP_CACHE_AUTO()
 	local MEM_USED_CALC=$(($MEM_USED*100/$MEM_ALL));
 
 	if [ "$state" == "awake" ]; then
-		if [ "$cortexbrain_drop_cache_auto" == "on" ] && [ "$cortexbrain_drop_cache_auto_on" == "on" ]; then
+		if [ "$cortexbrain_drop_cache_auto_on" == "on" ]; then
 			if [ "$MEM_USED_CALC" -gt "$cortexbrain_drop_cache_auto_on_threshold" ]; then
 				sync;
 				sleep 1;
@@ -869,7 +869,7 @@ DROP_CACHE_AUTO()
 			fi;
 		fi;
 	elif [ "$state" == "sleep" ]; then
-		if [ "$cortexbrain_drop_cache_auto" == "on" ] && [ "$cortexbrain_drop_cache_auto_off" == "on" ]; then
+		if [ "$cortexbrain_drop_cache_auto_off" == "on" ]; then
 			if [ "$MEM_USED_CALC" -gt "$cortexbrain_drop_cache_auto_off_threshold" ]; then
 				sync;
 				sleep 1;
@@ -884,25 +884,35 @@ DROP_CACHE_AUTO()
 
 PROCESS_RECLAIM_AUTO()
 {
-	if [ "$cortexbrain_process_reclaim_auto" == "on" ]; then
+	local state="$1";
+	local RAM_FREE=`vmstat | awk 'NR==3' | awk '{ print $4 }' | cut -c 1-3`;
 
-		# make sure ram usage calculation on right time
-		# less than default task freez time out (20000)
-		sleep 2;
-
-		RAM_FREE=`vmstat | awk 'NR==3' | awk '{ print $4 }' | cut -c 1-3`;
-
-		if [ "$RAM_FREE" -lt "$cortexbrain_process_reclaim_auto_threshold" ]; then
-
-			for i in $(ls /proc/ | grep -E '^[0-9]+'); do
-				if [ "$i" -ge "1500" ] && [ -f /proc/$i/reclaim ]; then
-					su -c echo "all" > /proc/$i/reclaim;
-				fi;
-			done;
-			date +%H:%M-%D >> /data/.gabriel/logs/process_reclaim_auto;
-			echo "Ram Reclaimed." >> /data/.gabriel/logs/process_reclaim_auto;
+	if [ "$state" == "awake" ]; then
+		if [ "$cortexbrain_process_reclaim_auto_on" == "on" ]; then
+			if [ "$RAM_FREE" -lt "$cortexbrain_process_reclaim_auto_on_threshold" ]; then
+				for i in $(ls /proc/ | grep -E '^[0-9]+'); do
+					if [ "$i" -ge "1500" ] && [ -f /proc/$i/reclaim ]; then
+						su -c echo "all" > /proc/$i/reclaim;
+					fi;
+				done;
+				date +%H:%M-%D > /data/.gabriel/logs/process_reclaim_auto;
+				echo "Ram Reclaimed." >> /data/.gabriel/logs/process_reclaim_auto;
+			fi;
+		fi;
+	elif [ "$state" == "sleep" ]; then
+		if [ "$cortexbrain_process_reclaim_auto_off" == "on" ]; then
+			if [ "$RAM_FREE" -lt "$cortexbrain_process_reclaim_auto_off_threshold" ]; then
+				for i in $(ls /proc/ | grep -E '^[0-9]+'); do
+					if [ "$i" -ge "1500" ] && [ -f /proc/$i/reclaim ]; then
+						su -c echo "all" > /proc/$i/reclaim;
+					fi;
+				done;
+				date +%H:%M-%D > /data/.gabriel/logs/process_reclaim_auto;
+				echo "Ram Reclaimed." >> /data/.gabriel/logs/process_reclaim_auto;
+			fi;
 		fi;
 	fi;
+
 }
 
 # ==============================================================
@@ -926,7 +936,7 @@ AWAKE_MODE()
 		WIFI "awake";
 		VFS_CACHE_PRESSURE "awake";
 		NET "awake";
-		PROCESS_RECLAIM_AUTO;
+		PROCESS_RECLAIM_AUTO "awake";
 		DROP_CACHE_AUTO "awake";
 		echo "0" > /data/gabriel_cortex_sleep;
 		log -p i -t "$FILE_NAME" "*** AWAKE_MODE - WAKEUP ***: done";
@@ -975,7 +985,7 @@ SLEEP_MODE()
 		MOBILE_DATA "sleep";
 		VFS_CACHE_PRESSURE "sleep";
 		NET "sleep";
-		PROCESS_RECLAIM_AUTO;
+		PROCESS_RECLAIM_AUTO "sleep";
 		DROP_CACHE_AUTO "sleep";
 		echo "1" > /data/gabriel_cortex_sleep;
 
