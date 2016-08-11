@@ -1,5 +1,17 @@
 stweaks_boot_control=yes
+sched_spill_load=100
+sched_spill_nr_run=10
+sched_upmigrate=80
+sched_downmigrate=60
+sched_small_task=10
 sched_init_task_load=15
+sched_upmigrate_min_nice=15
+sched_window_stats_policy=2
+sched_mostly_idle_load=20
+sched_mostly_idle_nr_run=3
+sched_power_band_limit=20
+sched_wakeup_load_threshold=110
+sched_autogroup_enabled=on
 gentle_fair_sleepers=off
 arch_power=on
 default_cpu0_gov=ondemandx
