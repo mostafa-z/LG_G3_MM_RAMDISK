@@ -854,10 +854,12 @@ SLEEP_HOTPLUG_CONTROL()
 DROP_CACHE_AUTO()
 {
 	if [ "$cortexbrain_drop_cache_auto" == "on" ]; then
+	
+		MEM_ALL=`free | grep Mem | awk '{ print $2 }'`;
+		MEM_USED=`free | grep Mem | awk '{ print $3 }'`;
+		MEM_USED_CALC=$(($MEM_USED*100/$MEM_ALL));
 
-		CACHE_FREE=`free -m | awk 'NR==3' | awk '{ print $4 }' | cut -c 1-3`;
-
-		if [ "$CACHE_FREE" -lt "$cortexbrain_drop_cache_auto_threshold" ]; then
+		if [ "$MEM_USED_CALC" -gt "$cortexbrain_drop_cache_auto_threshold" ]; then
 
 			sync;
 			sleep 1;
@@ -874,7 +876,7 @@ PROCESS_RECLAIM_AUTO()
 
 		# make sure ram usage calculation on right time
 		# less than default task freez time out (20000)
-		sleep 10;
+		sleep 2;
 
 		RAM_FREE=`vmstat | awk 'NR==3' | awk '{ print $4 }' | cut -c 1-3`;
 

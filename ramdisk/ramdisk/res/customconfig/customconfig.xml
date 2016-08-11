@@ -843,7 +843,7 @@ performance CPUs (Default: 15 %)." name="Initial Task Load"
 		<checkbox description="Enable Auto Drop Cache (reboot needed)." name="Drop Cache"
 			action="generic_cortex /tmp/cortexbrain_drop_cache_auto" label="Drop Cache"/>
 
-		<seekBar description="Here you can set Threshold fot cleaning the cache when screen turns off or on. if the free amount of cache goes under this value it will clean while in sleep mode. 170 MiB equals to 25%. note, Higher value makes OS and Apps insane. (default is 90 MiB equals to 13%)" name="Clean Cache Threshold" action="generic_cortex /tmp/cortexbrain_drop_cache_auto_threshold" unit="MiB" min="50" reversed="false" step="10" max="200"/>
+		<seekBar description="Here you can set Threshold for cleaning the cache when screen turns off. Kernel drop the cache if cache uses free memory more than this threshold. lower value means aggressive." name="Clean Cache Threshold" action="generic_cortex /tmp/cortexbrain_drop_cache_auto_threshold" unit="%" min="40" reversed="false" step="10" max="100"/>
 
 		<checkbox description="Enable Auto Ram Reclaim (reboot needed)." name="Ram Reclaim"
 			action="generic_cortex /tmp/cortexbrain_process_reclaim_auto" label="Ram Reclaim"/>
