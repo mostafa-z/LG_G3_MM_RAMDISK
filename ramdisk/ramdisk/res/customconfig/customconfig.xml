@@ -843,7 +843,15 @@ performance CPUs (Default: 15 %)." name="Initial Task Load"
 		<checkbox description="Enable Auto Drop Cache (reboot needed)." name="Drop Cache"
 			action="generic_cortex /tmp/cortexbrain_drop_cache_auto" label="Drop Cache"/>
 
-		<seekBar description="Here you can set Threshold for cleaning the cache when screen turns off. Kernel drop the cache if cache uses free memory more than this threshold. lower value means aggressive." name="Clean Cache Threshold" action="generic_cortex /tmp/cortexbrain_drop_cache_auto_threshold" unit="%" min="40" reversed="false" step="10" max="100"/>
+		<checkbox description="Enable Auto Drop Cache when screen turns off." name="Drop Cache Screen OFF"
+			action="generic_cortex /tmp/cortexbrain_drop_cache_auto_off" label="Drop CacheScreen OFF"/>
+
+		<seekBar description="Here you can set Threshold for cleaning the cache when screen turns off. Kernel drop the cache if cache uses free memory more than this threshold. lower value means aggressive." name="Clean Cache Threshold" action="generic_cortex /tmp/cortexbrain_drop_cache_auto_off_threshold" unit="%" min="40" reversed="false" step="10" max="100"/>
+
+		<checkbox description="Enable Auto Drop Cache when screen turns on." name="Drop Cache Screen ON"
+			action="generic_cortex /tmp/cortexbrain_drop_cache_auto_on" label="Drop CacheScreen ON"/>
+
+		<seekBar description="Here you can set Threshold for cleaning the cache when screen turns on. Kernel drop the cache if cache uses free memory more than this threshold. lower value means aggressive." name="Clean Cache Threshold" action="generic_cortex /tmp/cortexbrain_drop_cache_auto_on_threshold" unit="%" min="40" reversed="false" step="10" max="100"/>
 
 		<checkbox description="Enable Auto Ram Reclaim (reboot needed)." name="Ram Reclaim"
 			action="generic_cortex /tmp/cortexbrain_process_reclaim_auto" label="Ram Reclaim"/>

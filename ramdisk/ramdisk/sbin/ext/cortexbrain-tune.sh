@@ -853,21 +853,33 @@ SLEEP_HOTPLUG_CONTROL()
 
 DROP_CACHE_AUTO()
 {
-	if [ "$cortexbrain_drop_cache_auto" == "on" ]; then
-	
-		MEM_ALL=`free | grep Mem | awk '{ print $2 }'`;
-		MEM_USED=`free | grep Mem | awk '{ print $3 }'`;
-		MEM_USED_CALC=$(($MEM_USED*100/$MEM_ALL));
+	local state="$1";
+	local MEM_ALL=`free | grep Mem | awk '{ print $2 }'`;
+	local MEM_USED=`free | grep Mem | awk '{ print $3 }'`;
+	local MEM_USED_CALC=$(($MEM_USED*100/$MEM_ALL));
 
-		if [ "$MEM_USED_CALC" -gt "$cortexbrain_drop_cache_auto_threshold" ]; then
-
-			sync;
-			sleep 1;
-			sysctl -w vm.drop_caches=2;
-			date +%H:%M-%D >> /data/.gabriel/logs/drop-cache_auto;
-			echo "Cleaned RAM Cache." >> /data/.gabriel/logs/drop-cache_auto;
+	if [ "$state" == "awake" ]; then
+		if [ "$cortexbrain_drop_cache_auto" == "on" ] && [ "$cortexbrain_drop_cache_auto_on" == "on" ]; then
+			if [ "$MEM_USED_CALC" -gt "$cortexbrain_drop_cache_auto_on_threshold" ]; then
+				sync;
+				sleep 1;
+				sysctl -w vm.drop_caches=2;
+				date +%H:%M-%D > /data/.gabriel/logs/drop-cache_auto;
+				echo "Cleaned RAM Cache." >> /data/.gabriel/logs/drop-cache_auto;
+			fi;
+		fi;
+	elif [ "$state" == "sleep" ]; then
+		if [ "$cortexbrain_drop_cache_auto" == "on" ] && [ "$cortexbrain_drop_cache_auto_off" == "on" ]; then
+			if [ "$MEM_USED_CALC" -gt "$cortexbrain_drop_cache_auto_off_threshold" ]; then
+				sync;
+				sleep 1;
+				sysctl -w vm.drop_caches=2;
+				date +%H:%M-%D > /data/.gabriel/logs/drop-cache_auto;
+				echo "Cleaned RAM Cache." >> /data/.gabriel/logs/drop-cache_auto;
+			fi;
 		fi;
 	fi;
+
 }
 
 PROCESS_RECLAIM_AUTO()
@@ -915,6 +927,7 @@ AWAKE_MODE()
 		VFS_CACHE_PRESSURE "awake";
 		NET "awake";
 		PROCESS_RECLAIM_AUTO;
+		DROP_CACHE_AUTO "awake";
 		echo "0" > /data/gabriel_cortex_sleep;
 		log -p i -t "$FILE_NAME" "*** AWAKE_MODE - WAKEUP ***: done";
 
@@ -963,7 +976,7 @@ SLEEP_MODE()
 		VFS_CACHE_PRESSURE "sleep";
 		NET "sleep";
 		PROCESS_RECLAIM_AUTO;
-		DROP_CACHE_AUTO;
+		DROP_CACHE_AUTO "sleep";
 		echo "1" > /data/gabriel_cortex_sleep;
 
 		log -p i -t "$FILE_NAME" "*** SLEEP mode ***";
