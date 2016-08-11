@@ -10,7 +10,7 @@
 
 </settingsTab>
 
-<settingsTab name="Scheduler Tuning">
+<settingsTab name="Master CORE">
 
 	<settingsPane description="Tuning Task Scheduler Parameters of CPUs " name="CPU Scheduler">
 
@@ -30,7 +30,7 @@ performance CPUs (Default: 15 %)." name="Initial Task Load"
 
 </settingsTab>
 
-<settingsTab name="Master CORE">
+<settingsTab name="CPU Tuning">
 
 	<settingsPane description="Stweak Master Switch for loading ALL settings on BOOT." name="Global BOOT Settings">
 

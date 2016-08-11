@@ -10,13 +10,13 @@ else
 	echo "$debug_to_sd";
 fi;
 
-DEBUG_FILE="/sdcard/gabrielmanx_debug.txt";
-DEBUG_FILE_ZIP="/sdcard/gabrielmanx_debug";
-DEBUG_FILE_USELESS_ZIP="/sdcard/gabrielmanx_useless_debug";
-DEBUG_FILE_LOGCAT="/sdcard/gabrielmanx_debug_logcat.txt"
+DEBUG_FILE="/sdcard/gabriel_debug.txt";
+DEBUG_FILE_ZIP="/sdcard/gabriel_debug";
+DEBUG_FILE_USELESS_ZIP="/sdcard/gabriel_useless_debug";
+DEBUG_FILE_LOGCAT="/sdcard/gabriel_debug_logcat.txt"
 KERNEL_VER=$(uname -r | cut -c 24-29);
-ACTIVE_DEBUG_FILE="/sdcard/gabrielmanx_active_debug.txt";
-ACTIVE_DEBUG_FILE_ZIP="/sdcard/gabrielmanx_active_debug";
+ACTIVE_DEBUG_FILE="/sdcard/gabriel_active_debug.txt";
+ACTIVE_DEBUG_FILE_ZIP="/sdcard/gabriel_active_debug";
 
 PROFILE=$(cat /data/.gabriel/.active.profile);
 . /data/.gabriel/${PROFILE}.profile;
