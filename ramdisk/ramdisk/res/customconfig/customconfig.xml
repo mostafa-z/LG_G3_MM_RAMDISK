@@ -91,6 +91,13 @@
 
 	</settingsPane>
 
+<settingsPane description="Allow to control Screen Sharpening, which makes texts unreadable in some case." name="Sharpening">
+
+		<checkbox description="Enable/Disable Sharpening Control ability. (Default: enabled)" name="Sharpening Control on/off"
+			action="generic01 /sys/devices/virtual/graphics/fb0/sharpening" label="Sharpening Control"/>
+
+	</settingsPane>
+
 </settingsTab>
 
 <settingsTab name="CPU Tuning">

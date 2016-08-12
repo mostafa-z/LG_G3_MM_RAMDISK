@@ -16,6 +16,7 @@ sched_autogroup_enabled=on
 gentle_fair_sleepers=off
 arch_power=on
 entropytweaks=medium
+sharpening=on
 default_cpu0_gov=ondemandx
 default_cpu1_gov=ondemandx
 default_cpu2_gov=ondemandx
