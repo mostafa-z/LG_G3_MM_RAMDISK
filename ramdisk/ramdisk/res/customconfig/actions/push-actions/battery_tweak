@@ -2,7 +2,7 @@
 
 # Created By Mostafa-z
 
-if [ "cat /sys/class/power_supply/battery/capacity" -gt "3"]; then
+if [ "cat /sys/class/power_supply/battery/capacity" -gt "99"]; then
 
 		# battery-calibration if battery is full
 		local LEVEL=`cat /sys/class/power_supply/battery/capacity`;
@@ -13,7 +13,7 @@ if [ "cat /sys/class/power_supply/battery/capacity" -gt "3"]; then
 
 		log -p i -t $FILE_NAME "*** BATTERY - LEVEL: $LEVEL - CUR: $CURR_ADC ***";
 
-		if [ "$LEVEL" -eq "100" ] && [ "$BATTFULL" -eq "1" ]; then
+		if [ "$LEVEL" -eq "100" ] && [ "$BATTFULL" -eq "full" ]; then
 			rm -f /data/system/batterystats.bin;
 			log -p i -t $FILE_NAME "battery-calibration done ...";
 			echo "Battery-calibration done";
