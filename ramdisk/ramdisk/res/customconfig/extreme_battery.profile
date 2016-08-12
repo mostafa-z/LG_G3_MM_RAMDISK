@@ -1,4 +1,5 @@
 stweaks_boot_control=yes
+google_services_fix=no
 sched_spill_load=100
 sched_spill_nr_run=10
 sched_upmigrate=80

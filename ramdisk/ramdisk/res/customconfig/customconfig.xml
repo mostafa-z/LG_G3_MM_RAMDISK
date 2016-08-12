@@ -20,6 +20,12 @@
 			<spinnerItem name="Don't load all Settings on boot." value="no"/> 
 		</spinner>
 
+		<spinner description="Enabling the service actually prevents the wakelock from occurring by Google services and fix battery drainage (reboot needed). (Default: Don't Load)." name="Enable Google Services Fix On Boot"
+			action="generic_cortex /tmp/google_services_fix">
+			<spinnerItem name="Load services fix on boot." value="yes"/> 
+			<spinnerItem name="Don't load services fix on boot." value="no"/> 
+		</spinner>
+
 		<button description="Push this button to manually load ALL settings in case of the master switch is (or already was) OFF and wait until Stweak reloads. When the Master Switch was already ON while phone was booting up, there is no need to use it." name="Reload All Settings" action="push-actions/reload_settings" label="Reload All"/>
 
 	</settingsPane>

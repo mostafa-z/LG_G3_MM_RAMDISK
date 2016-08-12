@@ -300,6 +300,25 @@ fi;
 	echo "[Gabriel-Kernel] systemui detected" > /dev/kmsg
 	$BB pgrep -f pgrep com.android.systemui | while read PID; do echo -1000 > /proc/$PID/oom_score_adj; done
 
+if [ "$google_services_fix" == "yes" ] && [ "$stweaks_boot_control" == "yes" ]; then
+	# Google Services battery drain fixer by Alcolawl@xda
+	# http://forum.xda-developers.com/google-nexus-5/general/script-google-play-services-battery-t3059585/post59563859
+	pm enable com.google.android.gms/.update.SystemUpdateActivity
+	pm enable com.google.android.gms/.update.SystemUpdateService
+	pm enable com.google.android.gms/.update.SystemUpdateService$ActiveReceiver
+	pm enable com.google.android.gms/.update.SystemUpdateService$Receiver
+	pm enable com.google.android.gms/.update.SystemUpdateService$SecretCodeReceiver
+	pm enable com.google.android.gsf/.update.SystemUpdateActivity
+	pm enable com.google.android.gsf/.update.SystemUpdatePanoActivity
+	pm enable com.google.android.gsf/.update.SystemUpdateService
+	pm enable com.google.android.gsf/.update.SystemUpdateService$Receiver
+	pm enable com.google.android.gsf/.update.SystemUpdateService$SecretCodeReceiver
+
+	echo "[Gabriel-Kernel] google services fix enabled" > /dev/kmsg
+else
+	echo "[Gabriel-Kernel] google services fix disabled" > /dev/kmsg 
+fi;
+
 	$BB mount -o remount,ro /system;
 
 	while [ "$(cat /sys/class/thermal/thermal_zone5/temp)" -ge "65" ]; do
