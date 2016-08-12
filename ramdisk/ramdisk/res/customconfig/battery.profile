@@ -15,6 +15,7 @@ sched_wakeup_load_threshold=110
 sched_autogroup_enabled=on
 gentle_fair_sleepers=off
 arch_power=on
+entropytweaks=medium
 default_cpu0_gov=ondemandx
 default_cpu1_gov=ondemandx
 default_cpu2_gov=ondemandx

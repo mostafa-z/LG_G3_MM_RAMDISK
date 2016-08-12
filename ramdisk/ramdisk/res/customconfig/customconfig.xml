@@ -80,6 +80,17 @@
 
 	</settingsPane>
 
+<settingsPane description="The random number generator gathers environmental noise from device drivers and other sources into an entropy pool. The generator also keeps an estimate of the number of bits of noise in the entropy pool. From this entropy pool random numbers are created." name="Entropy">
+
+		<spinner description="Select availalbe entropy generator. (Default: Medium)." name="Available entropy"
+			action="entropytweaks">
+			<spinnerItem name="Low" value="low"/> 
+			<spinnerItem name="Medium" value="medium"/> 
+			<spinnerItem name="High" value="high"/> 
+		</spinner>
+
+	</settingsPane>
+
 </settingsTab>
 
 <settingsTab name="CPU Tuning">

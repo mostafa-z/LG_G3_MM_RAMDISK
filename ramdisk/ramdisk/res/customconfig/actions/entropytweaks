@@ -1,0 +1,31 @@
+#!/sbin/busybox sh
+
+# ENTROPY
+
+# $1 - "entropytweaks"
+# $2 - value=
+
+BB=/sbin/busybox
+
+if [ "a$2" != "a" ]; then
+	entropytweaks=$2;
+
+	case "${entropytweaks}" in
+		low)
+			echo "128" > /proc/sys/kernel/random/read_wakeup_threshold;
+			echo "64" > /proc/sys/kernel/random/write_wakeup_threshold;
+		;;
+		medium)
+			echo "512" > /proc/sys/kernel/random/read_wakeup_threshold;
+			echo "256" > /proc/sys/kernel/random/write_wakeup_threshold;
+		;;
+		high)
+			echo "1024" > /proc/sys/kernel/random/read_wakeup_threshold;
+			echo "512" > /proc/sys/kernel/random/write_wakeup_threshold;
+		;;
+		*)
+			entropytweaks=0;
+		;;
+	esac;
+fi;
+echo ${entropytweaks};
