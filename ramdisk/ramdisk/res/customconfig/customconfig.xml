@@ -716,7 +716,7 @@
 		<seekBar description="Set 0, the kernel attempts to estimate the amount of free memory left when userspace requests more memory. 1, the kernel pretends there is always enough memory until it actually runs out. This feature can be very useful because there are a lot of programs that malloc() huge amounts of memory just-in-case and don't use much of it." name="Overcommit Memory"
 			action="generic /proc/sys/vm/overcommit_memory" unit="" min="0" reversed="false" step="1" max="1"/>
 
-		<seekBar description="Percentage of phisical memory size to include in overcommit calculation. with overcommit at 100, the kernel will not allow applications to allocate any more memory than you have (swap + ram). Setting it at less than 100 means that you will never use all your memory. When overcommit_memory is set to 2, the committed address space is not permitted to exceed swap plus this percentage of physical RAM" name="Overcommit Ratio"
+		<seekBar description="Percentage of phisical memory size to include in overcommit calculation. with overcommit at 100, the kernel will not allow applications to allocate any more memory than you have (swap + ram). Setting it at less than 100 means that you will never use all your memory." name="Overcommit Ratio"
 			action="generic /proc/sys/vm/overcommit_ratio" unit="%" min="0" reversed="false" step="10" max="150"/>
 
 		<seekBar description="This is used to force the Linux VM to keep a minimum number of kilobytes free (keep reserve to prevent OOM). The VM uses this number to compute a watermark[WMARK_MIN] value for each lowmem zone in the system. Each lowmem zone gets a number of reserved free pages based proportionally on its size." name="Min free kbytes"
