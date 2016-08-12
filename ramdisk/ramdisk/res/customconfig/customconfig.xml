@@ -12,6 +12,18 @@
 
 <settingsTab name="Master CORE">
 
+<settingsPane description="Stweak Master Switch for loading ALL settings on BOOT." name="Global BOOT Settings">
+
+		<spinner description="Master Switch - load ALL settings from ALL tabs on BOOT (Default: Load)." name="Enable On Boot"
+			action="generic_cortex /tmp/stweaks_boot_control">
+			<spinnerItem name="Load all Settings on boot." value="yes"/> 
+			<spinnerItem name="Don't load all Settings on boot." value="no"/> 
+		</spinner>
+
+		<button description="Push this button to manually load ALL settings in case of the master switch is (or already was) OFF and wait until Stweak reloads. When the Master Switch was already ON while phone was booting up, there is no need to use it." name="Reload All Settings" action="push-actions/reload_settings" label="Reload All"/>
+
+	</settingsPane>
+
 	<settingsPane description="These settings control CFS (Heterogeneous multi-processing) Task Scheduler Settings" name="HMP">
 
 		<seekBar description="CPU selection criteria for fair-sched class tasks is the lowest power cpu where they can fit. When the most power-efficient cpu where a task can fit is overloaded (aggregate demand of tasks currently queued on it exceeds sched_spill_load), a task can be placed on a higher-performance cpu, even though the task strictly doesn't need one. This applies to non-small tasks (Default: 100%)." name="sched spill load"
@@ -65,19 +77,7 @@
 </settingsTab>
 
 <settingsTab name="CPU Tuning">
-
-	<settingsPane description="Stweak Master Switch for loading ALL settings on BOOT." name="Global BOOT Settings">
-
-		<spinner description="Master Switch - load ALL settings from ALL tabs on BOOT (Default: Load)." name="Enable On Boot"
-			action="generic_cortex /tmp/stweaks_boot_control">
-			<spinnerItem name="Load all Settings on boot." value="yes"/> 
-			<spinnerItem name="Don't load all Settings on boot." value="no"/> 
-		</spinner>
-
-		<button description="Push this button to manually load ALL settings in case of the master switch is (or already was) OFF and wait until Stweak reloads. When the Master Switch was already ON while phone was booting up, there is no need to use it." name="Reload All Settings" action="push-actions/reload_settings" label="Reload All"/>
-
-	</settingsPane>
-
+	
 	<settingsPane description="Customize the CPU Active Governor for each core. A governor defines the strategy how to scale CPU cores up and down across frequencies based on system load. Default for all cores is Ondemand." name="CPU Active Governor">
 
 		<spinner description="Select the CPU0 governor. Some governor's can be unstable on CPU0. It's recommended to leave it as is." name="CPU0 Governor"
