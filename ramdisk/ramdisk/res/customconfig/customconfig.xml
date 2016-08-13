@@ -26,11 +26,17 @@
 			<spinnerItem name="Don't load services fix on boot." value="no"/> 
 		</spinner>
 
+		<spinner description="Protecting systemui from OOM, do not kill LG Launcher when in Out Of Memory condition (reboot needed). (Default: Don't Load)." name="Protect Systemui"
+			action="generic_cortex /tmp/protect_systemui_oom">
+			<spinnerItem name="Load Protection on boot." value="yes"/> 
+			<spinnerItem name="Don't load protection on boot." value="no"/> 
+		</spinner>
+
 		<button description="Push this button to manually load ALL settings in case of the master switch is (or already was) OFF and wait until Stweak reloads. When the Master Switch was already ON while phone was booting up, there is no need to use it." name="Reload All Settings" action="push-actions/reload_settings" label="Reload All"/>
 
 	</settingsPane>
 
-	<settingsPane description="These settings control CFS (Heterogeneous multi-processing) Task Scheduler Settings" name="HMP">
+	<settingsPane description="These settings control HMP (Heterogeneous multi-processing) Task Scheduler Settings" name="HMP">
 
 		<seekBar description="CPU selection criteria for fair-sched class tasks is the lowest power cpu where they can fit. When the most power-efficient cpu where a task can fit is overloaded (aggregate demand of tasks currently queued on it exceeds sched_spill_load), a task can be placed on a higher-performance cpu, even though the task strictly doesn't need one. This applies to non-small tasks (Default: 100%)." name="sched spill load"
 			action="generic /proc/sys/kernel/sched_spill_load" unit="%" min="5" reversed="false" step="5" max="100"/>

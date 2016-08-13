@@ -291,6 +291,7 @@ fi;
 	PROFILE=$(cat /data/.gabriel/.active.profile);
 	. /data/.gabriel/"$PROFILE".profile;
 
+if [ "$protect_systemui_oom" == "yes" ] && [ "$stweaks_boot_control" == "yes" ]; then
 	# Now wait for the rom to finish booting up
 	# (by checking for the android acore process)
 	# and exclude it from OOM
@@ -299,6 +300,11 @@ fi;
 	done
 	echo "[Gabriel-Kernel] systemui detected" > /dev/kmsg
 	$BB pgrep -f pgrep com.android.systemui | while read PID; do echo -1000 > /proc/$PID/oom_score_adj; done
+
+	echo "[Gabriel-Kernel] Protect systemui enabled" > /dev/kmsg
+else
+	echo "[Gabriel-Kernel] Protect systemui disabled" > /dev/kmsg 
+fi;
 
 if [ "$google_services_fix" == "yes" ] && [ "$stweaks_boot_control" == "yes" ]; then
 	# Google Services battery drain fixer by Alcolawl@xda
