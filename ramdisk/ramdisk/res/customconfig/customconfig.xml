@@ -8,6 +8,9 @@
 	<settingsPane description="I like to create new things and get better results by them. I named this Kernel to Gabriel as respect of God's Holly Angel." name="History">
 	</settingsPane>
 
+	<settingsPane description="Set desired Profile in Profiles tab, then you can modify it with what you need and like. If you found something wrong with this APP please remove /data/.gabriel directory, wait some seconds and reboot, it will load with default profile again. press backup settings in profiles tab and you can found it in /data/.gabriel folder with the appended _backup to end of the base profile name, if you changed battery profile parameters it will be battery.profile_backup, it's your config and you can share it." name="Help">
+	</settingsPane>
+
 </settingsTab>
 
 <settingsTab name="Master CORE">
