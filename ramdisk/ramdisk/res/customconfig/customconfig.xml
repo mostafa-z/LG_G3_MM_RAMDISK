@@ -791,6 +791,12 @@
 		<seekBar description="The lower is set, more RAM we can gain at cost of slight performance (Default: 1000 ms)." name="UKSM Scan Delay Interval"
 			action="generic /sys/kernel/mm/uksm/sleep_millisecs" unit="ms" min="50" reversed="false" step="50" max="1000"/>
 
+		<seekBar description="Max CPU Usage when merging pages (Default: 10%)." name="UKSM Max CPU Usage"
+			action="generic /sys/kernel/mm/uksm/max_cpu_percentage" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="Max CPU Usage when merging pages while in Sleep mode (Default: 1%)." name="UKSM Max CPU Usage Sleep"
+			action="generic_cortex /tmp/uksm/max_cpu_percentage_sleep" unit="%" min="0" reversed="false" step="1" max="100"/>
+
 	</settingsPane>
 
 </settingsTab>

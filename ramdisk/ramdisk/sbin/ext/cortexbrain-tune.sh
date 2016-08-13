@@ -781,8 +781,10 @@ UKSM_CONTROL()
 
 	if [ "$state" == "awake" ]; then
 		echo "$uksm_gov_on" > /sys/kernel/mm/uksm/cpu_governor;
+		echo "$max_cpu_percentage" > /sys/kernel/mm/uksm/max_cpu_percentage;
 	elif [ "$state" == "sleep" ]; then
 		echo "$uksm_gov_sleep" > /sys/kernel/mm/uksm/cpu_governor;
+		echo "$max_cpu_percentage_sleep" > /sys/kernel/mm/uksm/max_cpu_percentage;
 	fi;
 	log -p i -t "$FILE_NAME" "*** UKSM_CONTROL $state ***: done";
 }
