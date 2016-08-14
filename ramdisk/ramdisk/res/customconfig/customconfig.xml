@@ -887,7 +887,7 @@
 
 	<settingsPane description="Battery Tweaks." name="Battery Tweaks Control">
 
-		<button description="Calibrate Battery. Push this button if you installed Rom recently or Battery Diagram have Flat Drop Energy status or Increase While not Charging. It can be Apply if Battery Fully Charged and be at the 100% level" name="Remove batterystats.bin" action="push-actions/battery_tweak" label="Calibrate Battery"/>
+		<button description="Calibrate Battery. Push this button if you installed Rom recently or Battery Diagram have Flat Drop Energy status or Increase While not Charging. It can be Apply if Battery Fully Charged at the 100% level and charger connected." name="Remove batterystats.bin" action="push-actions/battery_tweak" label="Calibrate Battery"/>
 
 		<button description="Reset the Battery Fuel Counter. If you suspect that Battery Counter is not showing the correct state, ask kernel for recalibration. It can't extend battery life but prevents wrong calculation of reaming energy." name="Reset Battery Counter" action="push-actions/reset_battery" label="Reset Battery Counter"/>
 
