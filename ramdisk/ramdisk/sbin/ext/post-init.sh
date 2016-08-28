@@ -214,6 +214,13 @@ if [ "$(pgrep -f "cortexbrain-tune.sh" | wc -l)" -eq "0" ]; then
 	nohup sh /sbin/ext/cortexbrain-tune.sh > /data/.gabriel/cortex.txt &
 fi;
 
+# kill charger logo binary to prevent ROM running it.
+CHECK_BOOT_STATE=$($BB cat /proc/cmdline | $BB grep "androidboot.mode=" | $BB wc -l);
+if [ "$CHECK_BOOT_STATE" -eq "0" ]; then
+	$BB rm /sbin/chargerlogo;
+	$BB rm /charger;
+fi;
+
 if [ "$stweaks_boot_control" == "yes" ]; then
 	# apply Synapse monitor
 	$BB sh /res/synapse/uci reset;
