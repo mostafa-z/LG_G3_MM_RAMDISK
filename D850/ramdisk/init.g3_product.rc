@@ -51,16 +51,25 @@ on init
     setprop ro.ssbd.session /dev/block/platform/msm_sdcc.1/by-name/eksst
     setprop ro.ssbd.offset 0
 
-on boot
-# 2013-02-25 hyoseab.song@lge.com LGP_DATA_TCPIP_TCP_BUFSIZE_ON_LTE_UPLUS [START]
-# Re-define TCP buffer size for SKT WCDMA network. Overwrite init.rc property
-# ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
-    setprop net.tcp.buffersize.umts		4094,87380,1220608,4096,16384,1220608
-    setprop net.tcp.buffersize.hspa		4094,87380,1220608,4096,16384,1220608
-    setprop net.tcp.buffersize.hsupa	4094,87380,1220608,4096,16384,1220608
-    setprop net.tcp.buffersize.hsdpa	4094,87380,1220608,4096,16384,1220608
-    setprop net.tcp.buffersize.lte     524288,1048576,2560000,524288,1048576,2560000
-# 2013-02-25 hyoseab.song@lge.com LGP_DATA_TCPIP_TCP_BUFSIZE_ON_LTE_UPLUS [END]
+#[START][ePDG][changhwan.lee] set ePDG property
+on init
+    setprop persist.data.iwlan.enable true
+    setprop persist.sys.cnd.iwlan 2
+    setprop persist.service.epdg.enable 1
+#[END][ePDG][changhwan.lee] set ePDG property
+
+#   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax
+    setprop net.tcp.buffersize.default 8096,87380,3461120,4096,16384,3461120
+    setprop net.tcp.buffersize.lte 524288,1048576,3461120,524288,1048576,3461120
+    setprop net.tcp.buffersize.umts 8096,140625,3461120,4096,140625,3461120
+    setprop net.tcp.buffersize.hspa 8096,140625,3461120,4096,140625,3461120
+    setprop net.tcp.buffersize.hsupa 8096,140625,3461120,4096,140625,3461120
+    setprop net.tcp.buffersize.hsdpa 8096,140625,3461120,4096,140625,3461120
+    setprop net.tcp.buffersize.hspap 8096,140625,3461120,4096,140625,3461120
+    setprop net.tcp.buffersize.edge 8096,87380,3461120,4096,16384,3461120
+    setprop net.tcp.buffersize.gprs 8096,87380,3461120,4096,16384,3461120
+# 2013-02-25 hyoseab.song@lge.com LGP_DATA_TCPIP_TCP_BUFSIZE_SKT [END]
+
 
 # LGE_CHANGE_S LGT_REQ  [hanchul.shin@lgepartner.com][2014-05-08][BEGIN]
     mkdir /data/data/com.ubivelox.wipiplayer/W 0777 system lgt_gid

@@ -75,7 +75,14 @@ nfc.                    u:object_r:nfc_prop:s0
 # emulator/goldfish.
 config.                 u:object_r:config_prop:s0
 dalvik.                 u:object_r:dalvik_prop:s0
+# DOLBY_START
+dolby.                  u:object_r:dolby_prop:s0
+# DOLBY_END
 #line 1 "device/lge/common/sepolicy/property_contexts"
+
+wifiminid.anytime_connect	u:object_r:minios_prop:s0
+wifiminid.anytime_pw		u:object_r:minios_prop:s0
+wifiminid.anytime_ssid		u:object_r:minios_prop:s0
 wifiminid.is_connected u:object_r:minios_prop:s0
 wifiminid.ssid         u:object_r:minios_prop:s0
 wifiminid.ipaddr       u:object_r:minios_prop:s0
@@ -85,6 +92,9 @@ wifiminid.turning_on   u:object_r:minios_prop:s0
 wifiminid.turning_off  u:object_r:minios_prop:s0
 AAT.camera.flash          u:object_r:aat_camera_prop:s0
 AAT.ldcal                 u:object_r:aat_ldcal_prop:s0
+aat.fail.item             u:object_r:minios_prop:s0
+aat.first.enter           u:object_r:minios_prop:s0
+aat.test.status           u:object_r:minios_prop:s0
 adc.n11.                  u:object_r:adc_n11_prop:s0
 boot.laf                   u:object_r:minios_prop:s0
 build.version.base_os     u:object_r:build_version_base_os_prop:s0
@@ -97,23 +107,28 @@ config.zram                      u:object_r:config_zram_prop:s0
 conup                     u:object_r:system_prop:s0
 ctl.Aat_audio          u:object_r:minios_prop:s0
 ctl.Aat_auto_detect    u:object_r:minios_prop:s0
+ctl.Aat_buildfe        u:object_r:minios_prop:s0
 ctl.Aat_camcorder      u:object_r:minios_prop:s0
 ctl.Aat_camera_main    u:object_r:minios_prop:s0
 ctl.Aat_cameraOIS      u:object_r:minios_prop:s0
 ctl.Aat_cameraVT       u:object_r:minios_prop:s0
 ctl.Aat_dmb_hdmi       u:object_r:minios_prop:s0
 ctl.Aat_fm_radio       u:object_r:minios_prop:s0
+ctl.Aat_FingerPrint    u:object_r:minios_prop:s0
 ctl.Aat_Frblank        u:object_r:minios_prop:s0
 ctl.Aat_gps_bt_wifi    u:object_r:minios_prop:s0
+ctl.Aat_HVDCP          u:object_r:minios_prop:s0
 ctl.Aat_irda_irrc      u:object_r:minios_prop:s0
 ctl.Aat_key_press      u:object_r:minios_prop:s0 
 ctl.Aat_led_display    u:object_r:minios_prop:s0
 ctl.Aat_loopback       u:object_r:minios_prop:s0
 ctl.Aat_m_sensor3      u:object_r:minios_prop:s0
 ctl.Aat_mainlist       u:object_r:minios_prop:s0
+ctl.Aat_mp3            u:object_r:minios_prop:s0
 ctl.Aat_nfc_felica     u:object_r:minios_prop:s0
 ctl.Aat_OTG            u:object_r:minios_prop:s0
 ctl.Aat_sensor_auto    u:object_r:minios_prop:s0
+ctl.Aat_sniffing       u:object_r:minios_prop:s0
 ctl.Aat_touch_auto     u:object_r:minios_prop:s0
 ctl.Aat_touch_draw     u:object_r:minios_prop:s0
 ctl.Aat_vibrator       u:object_r:minios_prop:s0
@@ -125,26 +140,38 @@ ctl.ble_sniff_scan     u:object_r:ble_sniff_prop:s0
 ctl.ckerrorreporter    u:object_r:ckerror_reporter_prop:s0
 ctl.vm_bms             u:object_r:vm_bms_prop:s0
 ctl.ddual_main         u:object_r:minios_prop:s0
+ctl.dhcpcd_wlan0       u:object_r:minios_prop:s0
 ctl.display_server     u:object_r:minios_prop:s0
+ctl.encrypt            u:object_r:encrypt_prop:s0
 ctl.fm_dl              u:object_r:minios_prop:s0
+ctl.latd               u:object_r:minios_prop:s0
 ctl.p2p_supplicant     u:object_r:minios_prop:s0
 ctl.Mfts_led_disp      u:object_r:minios_prop:s0
 ctl.Mfts_main          u:object_r:minios_prop:s0
 ctl.Mfts_touch_auto    u:object_r:minios_prop:s0
 ctl.Mfts_touch_draw    u:object_r:minios_prop:s0
 ctl.mfts_service       u:object_r:minios_prop:s0
+ctl.minios3_ble        u:object_r:minios_prop:s0
 ctl.minios3_genesis    u:object_r:minios_prop:s0
+ctl.minios_qrdisp:aat_result   u:object_r:minios_prop:s0
+ctl.mount_encrypt      u:object_r:encrypt_prop:s0
 ctl.netd               u:object_r:minios_prop:s0
+ctl.pre_gps_test       u:object_r:minios_prop:s0
 ctl.surfaceflinger     u:object_r:minios_prop:s0
+ctl.w_mid              u:object_r:minios_prop:s0
 ctl.zygote             u:object_r:minios_prop:s0
 ctl.zygote_secondary   u:object_r:minios_prop:s0
+persist.sniff.retrans  u:object_r:minios_prop:s0
 rild.modem_restart     u:object_r:rild_modemrestart_prop:s0
 vzw.os.rooted          u:object_r:vzw_rooted_prop:s0
+w_mid.force_terminate  u:object_r:minios_prop:s0
+w_mid.status           u:object_r:minios_prop:s0
 ##
 
 # bootanim_prop
 service.bootanim.begin     u:object_r:bootanim_prop:s0
 service.bootanim.exit     u:object_r:bootanim_prop:s0
+service.shutdownanim.exit     u:object_r:bootanim_prop:s0
 ###
 
 # bluetooth_prop
@@ -161,10 +188,13 @@ net.ims.country  u:object_r:net_radio_prop:s0
 
 # dumprepoter_prop
 ctl.Aat_result         u:object_r:minios_prop:s0
+ctl.charger_monitor    u:object_r:ctl_charger_monitor_prop:s0
 ctl.digicl    u:object_r:ctl_digicl_prop:s0
 ctl.dumpreporter          u:object_r:ctl_dumpreporter_prop:s0
 ctl.decryptwipe           u:object_r:ctl_decryptwipe_prop:s0
 ctl.ipsecclient                 u:object_r:ctl_ipsec_prop:s0
+ctl.irrc_minios        u:object_r:minios_prop:s0
+ctl.minios_qrdisp:selfd_result  u:object_r:minios_prop:s0
 ctl.minios3_battery    u:object_r:minios_prop:s0
 ctl.minios3_bt_stup    u:object_r:minios_prop:s0
 ctl.minios3_haudio     u:object_r:minios_prop:s0
@@ -183,6 +213,17 @@ ctl.quickdump    u:object_r:ctl_quickdump_prop:s0
 ctl.rfs_access    u:object_r:ctl_rfs_access_prop:s0
 ctl.ril-minios u:object_r:minios_prop:s0
 ctl.rmt_storage    u:object_r:ctl_rmt_storage_prop:s0
+ctl.Selfd_accel        u:object_r:minios_prop:s0
+ctl.Selfd_autodetect   u:object_r:minios_prop:s0
+ctl.Selfd_camera       u:object_r:minios_prop:s0
+ctl.Selfd_cameraVT     u:object_r:minios_prop:s0
+ctl.Selfd_gpsbtwifi    u:object_r:minios_prop:s0
+ctl.Selfd_main         u:object_r:minios_prop:s0
+ctl.Selfd_mic          u:object_r:minios_prop:s0
+ctl.Selfd_nfc          u:object_r:minios_prop:s0
+ctl.Selfd_result       u:object_r:minios_prop:s0
+ctl.Selfd_sensorauto   u:object_r:minios_prop:s0
+ctl.Selfd_touch        u:object_r:minios_prop:s0
 ctl.sensorservice      u:object_r:minios_prop:s0
 ctl.shutdownanim          u:object_r:system_prop:s0
 ctl.thermal-engine     u:object_r:ctl_thermal_engine_prop:s0
@@ -204,11 +245,13 @@ laf.mid                u:object_r:minios_prop:s0
 lfullseg.mode.             u:object_r:lfullseg_mode_prop:s0
 lg.data.                  u:object_r:radio_prop:s0
 lg.data.emergencystate    u:object_r:emergencystate_prop:s0
+lge.battery_thermal.interval    u:object_r:minios_prop:s0
 lge.battery_thermal.max    u:object_r:minios_prop:s0
 lge.battery_thermal.min    u:object_r:minios_prop:s0
 lge.data.apn2-disable     u:object_r:apn2_disable_prop:s0
 lge.genesis.current_status   u:object_r:minios_prop:s0
 lge.minios_hapticvibrator    u:object_r:minios_prop:s0
+lge.petname    u:object_r:lge_petname_prop:s0
 lge.policy_data_enable    u:object_r:system_prop:s0
 lge.powerkeypressed      u:object_r:powerkeypressed_prop:s0
 lge.suffix                u:object_r:suffix_prop:s0
@@ -228,7 +271,7 @@ net.pcscf0                u:object_r:net_pcscf_prop:s0
 net.tcp.buffersize.       u:object_r:radio_prop:s0
 net.tethering.            u:object_r:radio_prop:s0
 persist.ap.macaddress           u:object_r:system_prop:s0
-persist.service.avrcp.          u:object_r:avrcp_prop:s0
+persist.boot.first    u:object_r:persist_boot_first_prop:s0
 persist.call.imsservicestate     u:object_r:imsservicestate_prop:s0
 persist.camera.snapshot.number   u:object_r:camera_snapshot_prop:s0
 persist.camera.tcc_aat           u:object_r:qualcomm_camera_prop:s0
@@ -238,6 +281,7 @@ persist.data.ois.         u:object_r:persist_data_ois_prop:s0
 persist.data.sbp.update         u:object_r:update_prop:s0
 persist.data.sensor              u:object_r:sensor_name_prop:s0
 persist.data.sensor_name  u:object_r:sensor_name_prop:s0
+persist.data.opdeletion   u:object_r:update_prop:s0
 persist.data.tethering_oc       u:object_r:system_prop:s0
 persist.data_disable_bypaypopup u:object_r:radio_prop:s0
 persist.data_netmgrd_mtu  u:object_r:net_radio_prop:s0
@@ -251,6 +295,7 @@ persist.gsm.sms.forcegsm7       u:object_r:sms_prop:s0
 persist.last_update_time        u:object_r:persist_time_prop:s0
 persist.lg.data.                u:object_r:radio_prop:s0
 persist.lg.ims.                 u:object_r:ims_prop:s0
+persist.lg.volte_enabled    u:object_r:volte_enabled_prop:s0
 persist.lge.appbox.ntcode u:object_r:persist_appbox_ntcode_prop:s0
 persist.lge.appman.errc_done     u:object_r:update_prop:s0
 persist.lge.appman.firstboot     u:object_r:update_prop:s0
@@ -268,16 +313,18 @@ persist.lge.saat.build.date      u:object_r:minios_prop:s0
 persist.lge.saat.build.num       u:object_r:minios_prop:s0
 persist.lge.use.fmradio          u:object_r:fm_radio_prop:s0
 persist.log.tag    u:object_r:persist_log_tag_prop:s0
-persist.net.wo.opcode    u:object_r:persist_net_wo_opcode_prop:s0
 persist.mape.server              u:object_r:mptcp_prop:s0
 persist.mfts.running             u:object_r:minios_prop:s0
 persist.mms.pre-install         u:object_r:mms_prop:s0
 persist.profiled.build.version   u:object_r:profiled_build_version_prop:s0
 persist.proxy.profnai     u:object_r:proxy_prop:s0
 persist.qcril.datacall_timeout   u:object_r:datacall_prop:s0
+persist.sensors.                u:object_r:persist_sensors_prop:s0
 persist.sensors.onhand.en       u:object_r:sensors_onhand_prop:s0
+persist.service.avrcp.          u:object_r:avrcp_prop:s0
 persist.service.hf.call.status  u:object_r:hf_call_status_prop:s0
 persist.service.main.enable    u:object_r:persist_service_main_enable_prop:s0
+persist.service.odm_log.enable  u:object_r:lg_odm_prop:s0
 persist.service.radio.enable    u:object_r:persist_service_radio_enable_prop:s0
 persist.service.system.enable    u:object_r:persist_service_system_enable_prop:s0
 persist.sys.cota.changed        u:object_r:cota_prop:s0
@@ -287,11 +334,16 @@ persist.sys.ntcode_list         u:object_r:persist_sys_prop:s0
 persist.sys.security            u:object_r:system_prop:s0
 persist.sys.usb.config          u:object_r:usb_config_prop:s0
 persist.update_avail_time       u:object_r:persist_time_prop:s0
+pre.aat.testnum                 u:object_r:minios_prop:s0
 pre.from.test                   u:object_r:pre_from_test_prop:s0
+pre.glo.value                   u:object_r:minios_prop:s0
+pre.gps.running                 u:object_r:minios_prop:s0
 pre.gps.value                    u:object_r:pre_gps_value_prop:s0
 pre.qr.display            u:object_r:pre_qr_display_prop:s0
+qrcode.img.size           u:object_r:minios_prop:s0
 radio.noril                      u:object_r:radio_noril_prop:s0
 sbp.bootanim              u:object_r:system_prop:s0
+sbp.lge.opname            u:object_r:system_prop:s0
 sbp.oppartition.          u:object_r:update_prop:s0
 selfd.                    u:object_r:selfd_prop:s0
 service.adb.     u:object_r:adb_prop:s0
@@ -300,6 +352,7 @@ service.mex.progress             u:object_r:system_lge_prop:s0
 service.mex.wav                  u:object_r:system_lge_prop:s0
 service.plushome.currenthome    u:object_r:system_lge_prop:s0
 settings.knockon.test           u:object_r:knockon_prop:s0
+sys.aat.ldcal             u:object_r:minios_prop:s0
 sys.allautotest.rf.online u:object_r:minios_prop:s0
 sys.ara.applet.using      u:object_r:sys_ara_prop:s0
 sys.bluefactorymode    u:object_r:minios_prop:s0
@@ -317,6 +370,7 @@ usb.authorized            u:object_r:usb_authorized_prop:s0
 usb_uicc.loading                 u:object_r:uicc_loading_prop:s0
 user.language                   u:object_r:system_prop:s0
 user.region                     u:object_r:system_prop:s0
+vr.perfd.controller.start       u:object_r:vr_prop:s0
 wifi.country.code         u:object_r:wifi_prop:s0
 wifi.lge.assoclistsize    u:object_r:wifi_prop:s0
 wifi.lge.fota_updated            u:object_r:wifi_prop:s0
@@ -366,6 +420,7 @@ persist.camera.testvtcam  u:object_r:camera_prop:s0
 persist.camera.zsl.queuedepth    u:object_r:camera_prop:s0
 persist.data.front.minfps u:object_r:camera_prop:s0
 persist.data.rear.minfps  u:object_r:camera_prop:s0
+persist.camera.use_ais u:object_r:camera_prop:s0
 ###
 #line 1 "device/qcom/sepolicy/common/property_contexts"
 wc_transport.              u:object_r:bluetooth_prop:s0
@@ -401,6 +456,7 @@ ctl.mpdecision             u:object_r:mpdecision_prop:s0
 qualcomm.perf.cores_online u:object_r:mpdecision_prop:s0
 netd.fstman.               u:object_r:netd_prop:s0
 location.                  u:object_r:location_prop:s0
+qc.izat.                   u:object_r:location_prop:s0
 persist.rmnet.mux          u:object_r:rmnet_mux_prop:s0
 qemu.hw.mainkeys           u:object_r:qemu_hw_mainkeys_prop:s0
 dbg.coresight.cfg_file     u:object_r:coresight_prop:s0

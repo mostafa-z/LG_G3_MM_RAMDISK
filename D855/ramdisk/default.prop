@@ -20,7 +20,7 @@ debug.atrace.tags.enableflags=0
 #
 # BOOTIMAGE_BUILD_PROPERTIES
 #
-ro.bootimage.build.date=Tue Mar 29 10:32:34 KST 2016
-ro.bootimage.build.date.utc=1459215154
-ro.bootimage.build.fingerprint=lge/g3_global_com/g3:6.0/MRA58K/160891025a75e:user/release-keys
+ro.bootimage.build.date=Thu Apr 21 15:43:31 IST 2016
+ro.bootimage.build.date.utc=1461233611
+ro.bootimage.build.fingerprint=lge/g3_global_com/g3:6.0/MRA58K/161121858a9c0:user/release-key
 

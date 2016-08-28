@@ -6,7 +6,6 @@ ro.allow.mock.location=0
 ro.debuggable=1
 persist.sys.usb.config=boot
 ro.adb.secure=1
-ro.lge.fmframework.enabled=true
 persist.sys.strict_op_enable=false
 persist.sys.whitelist=/system/etc/whitelist_appops.xml
 camera2.portability.force_api=1
@@ -20,7 +19,7 @@ debug.atrace.tags.enableflags=0
 #
 # BOOTIMAGE_BUILD_PROPERTIES
 #
-ro.bootimage.build.date=Wed Mar 16 13:03:16 IST 2016
-ro.bootimage.build.date.utc=1458113596
-ro.bootimage.build.fingerprint=lge/g3_global_com/g3:6.0/MRA58K/1607616192902:user/release-keys
+ro.bootimage.build.date=Thu Apr 21 15:43:31 IST 2016
+ro.bootimage.build.date.utc=1461233611
+ro.bootimage.build.fingerprint=lge/g3_global_com/g3:6.0/MRA58K/161121858a9c0:user/release-keys
 

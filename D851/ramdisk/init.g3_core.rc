@@ -57,7 +57,7 @@ service sensord /system/bin/sensord
 
 # Wi-Fi deamon
 service wcnss-service /system/bin/wcnss_service
-    class late_start
+    class main
     user system
     group system wifi
     oneshot
@@ -307,3 +307,17 @@ on property:persist.service.ssr_dump.enable=0
     write /sys/module/subsystem_restart/parameters/enable_ramdumps 0
     stop ssr_dump
 # LGE_CHANGE_E, 20130713, jin.park@lge.com
+
+# LGE FM driver SELinux labeling [START]
+on property:bluetooth.fm.restorecon=1
+    restorecon /sys/devices/virtual/video4linux/radio0
+    restorecon_recursive /sys/devices/virtual/video4linux/radio0
+    chown system system /sys/class/video4linux/radio0
+    chown system system /sys/class/video4linux/radio0/fmrx_band
+    chown system system /sys/class/video4linux/radio0/fmrx_rds_af
+    chown system system /sys/class/video4linux/radio0/fmrx_rds_on
+    chown system system /sys/class/video4linux/radio0/fmrx_rssi_lvl
+    chown system system /sys/class/video4linux/radio0/fmrx_snr_lvl
+    chown system system /sys/class/video4linux/radio0/fmrx_chl_lvl
+    chown system system /sys/class/video4linux/radio0/fmrx_search_abort
+# LGE FM driver SELinux labeling [END]

@@ -194,7 +194,7 @@
 
 #BT_S : [CONBT-2025] LGC_BT_COMMON_IMP_MOS_V4L2
 /dev/brcm_bt_drv          0666   bluetooth  bluetooth
-/dev/radio0               0666   root       root
+/dev/radio0               0660   system     system
 #BT_E : [CONBT-2025] LGC_BT_COMMON_IMP_MOS_V4L2
 # SSR devices
 /dev/subsys_*         0640   system     system

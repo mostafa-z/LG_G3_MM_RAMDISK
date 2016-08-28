@@ -3,8 +3,18 @@
 #
 # Allow USB enumeration with default PID/VID
 #
-echo 1  > /sys/class/android_usb/f_mass_storage/lun/nofua
-echo 1  > /sys/class/android_usb/f_cdrom_storage/lun/nofua
+if [ -e /sys/class/android_usb/f_mass_storage/lun/nofua ];
+then
+    echo 1  > /sys/class/android_usb/f_mass_storage/lun/nofua
+fi
+if [ -e /sys/class/android_usb/f_cdrom_storage/lun/nofua ];
+then
+    echo 1  > /sys/class/android_usb/f_cdrom_storage/lun/nofua
+fi
+if [ -e /sys/class/android_usb/f_mass_storage/rom/nofua ];
+then
+    echo 1  > /sys/class/android_usb/f_mass_storage/rom/nofua
+fi
 usb_config=`getprop persist.sys.usb.config`
 case "$usb_config" in
     "" | "pc_suite" | "mtp_only" | "auto_conf")
@@ -135,7 +145,7 @@ case "$target" in
     "apq8064")
         echo hsic,hsic > /sys/class/android_usb/android0/f_rmnet/transports
     ;;
-    "msm8909")
+    "msm8909" | "msm8937")
     echo qti,bam > /sys/class/android_usb/android0/f_rmnet/transports
     ;;
     * )

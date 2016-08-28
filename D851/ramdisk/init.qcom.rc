@@ -541,7 +541,7 @@ service p2p_supplicant /system/bin/wpa_supplicant \
 service wpa_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
     -I/system/etc/wifi/wpa_supplicant_overlay.conf \
-    -O/data/misc/wifi/sockets -dd \
+    -O/data/misc/wifi/sockets \
     -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
     #   we will start as root and wpa_supplicant will switch to user wifi
     #   after setting up the capabilities required for WEXT
@@ -558,6 +558,12 @@ service dhcpcd_wlan0 /system/bin/dhcpcd -ABKLG
     oneshot
 
 service dhcpcd_p2p /system/bin/dhcpcd -ABKLG
+    class late_start
+    disabled
+    oneshot
+
+#LGE_CHANGE, moon-wifi@lge.com by wo0ngs for ORG DHCP Release
+service iprelease_wlan0 /system/bin/dhcpcd -k
     class late_start
     disabled
     oneshot
@@ -851,5 +857,8 @@ on property:persist.sys.rootagent=0
 
 service RIDL /system/vendor/bin/RIDLClient.exe
     class late_start
+    oneshot
     user root
-    group root
+    group root inet log sdcard_r sdcard_rw qcom_diag radio net_raw
+    # removed for security team - misc bluetooth gps wifi diag media_rw
+    # limited to 12 groups.  Unused: audio usb net_bt_admin net_bt_stac net_admin

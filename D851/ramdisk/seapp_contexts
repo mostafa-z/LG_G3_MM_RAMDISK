@@ -15,8 +15,11 @@ user=_app seinfo=platform name=com.android.mms domain=system_app type=system_app
 user=_app seinfo=platform name=com.android.systemui domain=system_app type=system_app_data_file
 user=_app seinfo=platform name=com.android.systemui:screenshot domain=system_app type=system_app_data_file
 user=_app seinfo=platform name=com.lge.launcher2 domain=system_app type=system_app_data_file
+user=_app seinfo=platform name=com.lge.lgsf.bluetooth domain=system_app type=system_app_data_file
 user=_app seinfo=platform name=com.lge.oneseg domain=system_app type=system_app_data_file
+user=_app seinfo=platform name=com.lge.rctprovider domain=system_app type=system_app_data_file
 user=_app seinfo=platform name=com.lge.sepolicyupdater domain=system_app type=system_app_data_file
+user=_app seinfo=platform name=com.lge.vragent domain=system_app type=system_app_data_file
 user=_app seinfo=release name=com.android.gallery3d domain=system_app type=system_app_data_file
 user=_app seinfo=shared name=android.process.acore domain=system_app type=system_app_data_file
 user=_app seinfo=shared name=com.android.contacts domain=system_app type=app_data_file
@@ -31,6 +34,7 @@ user=lgdrm seinfo=platform name=com.lge.drmservice domain=system_app type=system
 user=nfclock seinfo=platform name=com.lge.nfclock domain=nfc type=nfc_data_file
 user=smartcard domain=system_app type=system_app_data_file
 user=smartshare domain=system_app type=system_app_data_file
+user=system seinfo=platform name=com.lge.lgdmsclient domain=system_app type=system_app_data_file
 user=system seinfo=platform name=com.lge.lginstallservies domain=system_app type=system_app_data_file
 user=system seinfo=platform name=com.lge.systemserver domain=system_app type=system_app_data_file
 user=gps domain=location_app type=location_app_data_file

@@ -12,10 +12,6 @@ on init
     mkdir /dev/pipes 0771 shell shell
 # End Immersion changes
 
-# LGE_CHANGE_S, lg-security@lge.com, 2014-11-20, to support MDFPP
-    setprop ro.sys.sec.version.info "Truongthevinh@tekcafe.vn 5.0"
-	setprop ro.lge.swversion_short "D85230F"
-# LGE_CHANGE_S, lg-security@lge.com, 2014-11-20, to support MDFPP
 on fs
     wait /dev/block/bootdevice/by-name/cust
     exec /system/bin/e2fsck -y /dev/block/bootdevice/by-name/cust
@@ -53,15 +49,22 @@ on init
     setprop ro.ssbd.offset 0
 
 on boot
-# 2013-02-25 hyoseab.song@lge.com LGP_DATA_TCPIP_TCP_BUFSIZE_ON_LTE_UPLUS [START]
-# Re-define TCP buffer size for SKT WCDMA network. Overwrite init.rc property
-# ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
-    setprop net.tcp.buffersize.umts		4094,87380,1220608,4096,16384,1220608
-    setprop net.tcp.buffersize.hspa		4094,87380,1220608,4096,16384,1220608
-    setprop net.tcp.buffersize.hsupa	4094,87380,1220608,4096,16384,1220608
-    setprop net.tcp.buffersize.hsdpa	4094,87380,1220608,4096,16384,1220608
-    setprop net.tcp.buffersize.lte     524288,1048576,2560000,524288,1048576,2560000
-# 2013-02-25 hyoseab.song@lge.com LGP_DATA_TCPIP_TCP_BUFSIZE_ON_LTE_UPLUS [END]
+    # support device diagnostic management
+    setprop ro.lge.callduration 1
+    chmod 0440 /proc/cmdline
+    chown system system /proc/cmdline
+
+#   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax
+    setprop net.tcp.buffersize.default 8096,87380,3461120,4096,16384,3461120
+    setprop net.tcp.buffersize.lte 524288,1048576,3461120,524288,1048576,3461120
+    setprop net.tcp.buffersize.umts 8096,140625,3461120,4096,140625,3461120
+    setprop net.tcp.buffersize.hspa 8096,140625,3461120,4096,140625,3461120
+    setprop net.tcp.buffersize.hsupa 8096,140625,3461120,4096,140625,3461120
+    setprop net.tcp.buffersize.hsdpa 8096,140625,3461120,4096,140625,3461120
+    setprop net.tcp.buffersize.hspap 8096,140625,3461120,4096,140625,3461120
+    setprop net.tcp.buffersize.edge 8096,87380,3461120,4096,16384,3461120
+    setprop net.tcp.buffersize.gprs 8096,87380,3461120,4096,16384,3461120
+# 2013-02-25 hyoseab.song@lge.com LGP_DATA_TCPIP_TCP_BUFSIZE_SKT [END]
 
 # LGE_CHANGE_S LGT_REQ  [hanchul.shin@lgepartner.com][2014-05-08][BEGIN]
     mkdir /data/data/com.ubivelox.wipiplayer/W 0777 system lgt_gid
@@ -117,3 +120,9 @@ on post-fs-data
 # LGE_CHANGE_S [GNSS] youngseok.ko@lge.com; to fix the problem that QCT doesn't consider KK to L Upgrade for iZat EURA setting in SElinux violation.
     restorecon /data/data/com.qualcomm.location.XT/shared_prefs/XT_PREFS.xml
 # LGE_CHANGE_E [GNSS]
+
+# Define call duration feature
+on property:ro.lge.callduration=1
+    mkdir /persist-lg/callduration 0770 system radio
+    chown system radio /persist-lg/callduration
+    chmod 0770 /persist-lg/callduration

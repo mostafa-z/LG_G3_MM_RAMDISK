@@ -52,6 +52,14 @@ on chargerlogo_exec
    write /persist-lg/chargerlogo/autoboot_nosound 0
    chmod 0666 /persist-lg/chargerlogo/autoboot_nosound
 
+   wait /dev/block/bootdevice/by-name/system
+   mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
+   chown root system /sys/class/power_supply/bms/current_now
+   chown root system /sys/class/power_supply/bms/voltage_ocv
+   chmod 0664 /sys/class/power_supply/bms/current_now
+   chmod 0664 /sys/class/power_supply/bms/voltage_ocv
+   start vm_bms
+
    exec u:r:chargerlogo:s0 -- /sbin/chargerlogo
 
 # smpl_count
@@ -59,6 +67,11 @@ service smpl_count /system/bin/smpl_count
    class main
    user root
    oneshot
+
+#Power_BSP, thermal senario change about LCD brightness
+on post-fs-data
+   chown system system /sys/class/leds/lcd-backlight/thermald_status
+   chmod 0644 /sys/class/leds/lcd-backlight/thermald_status
 
 # battery fake mode
 on property:persist.service.fakebatt=1
