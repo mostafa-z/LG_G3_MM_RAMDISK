@@ -74,5 +74,5 @@ if [ -e /system/xbin/daemonsu ]; then
 	$BB chmod 06755 /system/xbin/daemonsu;
 fi;
 
-$BB sh /sbin/ext/post-init.sh;
+# $BB sh /sbin/ext/post-init.sh;
 
