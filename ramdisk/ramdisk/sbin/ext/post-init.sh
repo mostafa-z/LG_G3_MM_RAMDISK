@@ -39,6 +39,7 @@ if [ ! -e /cpufreq ]; then
 	$BB ln -s /sys/kernel/intelli_plug/ /hotplugs/intelli;
 	$BB ln -s /sys/module/msm_hotplug/ /hotplugs/msm_hotplug;
 	$BB ln -s /sys/kernel/thunderplug/ /hotplugs/thunderplug;
+	$BB ln -s /sys/kernel/msm_mpdecision/conf/ /hotplugs/msm_mpdecision;
 fi;
 
 # create init.d folder if missing
@@ -66,8 +67,8 @@ CRITICAL_PERM_FIX;
 SYSTEM_TUNING()
 {
 # Tune entropy parameters.
-echo "512" > /proc/sys/kernel/random/read_wakeup_threshold;
-echo "256" > /proc/sys/kernel/random/write_wakeup_threshold;
+#echo "512" > /proc/sys/kernel/random/read_wakeup_threshold;
+#echo "256" > /proc/sys/kernel/random/write_wakeup_threshold;
 
 echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable;
 sleep 0.5;
@@ -78,7 +79,7 @@ echo ondemandx > /all_cpus/scaling_governor_cpu1;
 echo ondemandx > /all_cpus/scaling_governor_cpu2;
 echo ondemandx > /all_cpus/scaling_governor_cpu3;
 
-echo "500" > /cpu_boost/input_boost_ms;
+echo "750" > /cpu_boost/input_boost_ms;
 
 echo "2457600" > /cpufreq_limit/cpufreq_max_limit_cpu0;
 echo "2457600" > /cpufreq_limit/cpufreq_max_limit_cpu1;
@@ -99,8 +100,6 @@ echo "1" > /cputemp/intelli_enabled;
 
 echo quiet > /sys/kernel/mm/uksm/cpu_governor;
 echo "1000" > /sys/kernel/mm/uksm/sleep_millisecs;
-
-echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable;
 
 # KERNEL-TWEAKS
 echo "0" > /proc/sys/vm/oom_kill_allocating_task;
