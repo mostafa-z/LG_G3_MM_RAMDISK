@@ -39,11 +39,13 @@
 
 	</settingsPane>
 
-	<settingsPane description="These settings control CFS (Complete Fair Scheduler) Task Scheduler Settings" name="CFS Settings">
+	<settingsPane description="These settings control other parameters configurations" name="Other Tunings">
 
 		<checkbox description="Disabling GENTLE FAIR SLEEPERS may give you better UI responsiveness, so NOT checked is GOOD." name="GENTLE FAIR SLEEPERS" action="generic01 /sys/kernel/sched/gentle_fair_sleepers" label="GENTLE FAIR SLEEPERS"/>
 
 		<checkbox description="Using ARCH POWER enables the use of ARM topology power functions instead of generic ones, and saves battery. Not recommended to disable." name="ARCH POWER" action="generic01 /sys/kernel/sched/arch_power" label="ARCH POWER"/>
+
+		<checkbox description="Whenenable and screen is on, fsync operation is asynchronous.when screen is off, this operation is done synchronously." name="Dynamic FSYNC" action="generic01 /sys/kernel/dyn_fsync/Dyn_fsync_active" label="Dynamic FSYNC"/>
 
 	</settingsPane>
 
