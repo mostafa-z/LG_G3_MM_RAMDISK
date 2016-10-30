@@ -39,48 +39,6 @@
 
 	</settingsPane>
 
-	<settingsPane description="These settings control HMP (Heterogeneous multi-processing) Task Scheduler Settings" name="HMP">
-
-		<seekBar description="CPU selection criteria for fair-sched class tasks is the lowest power cpu where they can fit. When the most power-efficient cpu where a task can fit is overloaded (aggregate demand of tasks currently queued on it exceeds sched_spill_load), a task can be placed on a higher-performance cpu, even though the task strictly doesn't need one. This applies to non-small tasks (Default: 100%)." name="sched spill load"
-			action="generic /proc/sys/kernel/sched_spill_load" unit="%" min="5" reversed="false" step="5" max="100"/>
-
-		<seekBar description="The intent of this tunable is similar to sched_spill_load, except it applies to nr_running count of a cpu. A non-small task can spill over to a higher-performance cpu when the most power-efficient cpu where it can normally fit has more tasks than sched_spill_nr_run (Default: 10%)." name="sched spill nr_run"
-			action="generic /proc/sys/kernel/sched_spill_nr_run" unit="%" min="5" reversed="false" step="5" max="100"/>
-
-		<seekBar description="If a task consumes more than this much of a CPU, the CPU is considered too small for the task and the scheduler will try to find a bigger CPU to place the task on. (Default: 80%)." name="sched upmigrate"
-			action="generic /proc/sys/kernel/sched_upmigrate" unit="%" min="5" reversed="false" step="5" max="100"/>
-
-		<seekBar description="It exists to control hysteresis. Lets say a task migrated to a high-performance cpu when it crossed 80% demand on a power-efficient cpu. We don't let it come back to a power-efficient cpu until its demand *in reference to the power-efficient cpu* drops less than 60% (sched_downmigrate). (Default: 60%)." name="sched downmigrate"
-			action="generic /proc/sys/kernel/sched_downmigrate" unit="%" min="5" reversed="false" step="5" max="100"/>
-
-		<seekBar description="If a task consumes this much or less of the minimum capacity CPU in the system, it is considered a small task. The scheduler will not attempt to find an idle CPU for small tasks - they may be woken up on busy CPUs. (Default: 10%)." name="sched small task"
-			action="generic /proc/sys/kernel/sched_small_task" unit="%" min="5" reversed="false" step="5" max="100"/>
-
-		<seekBar description=" When a task is first created it has no history, so the task load tracking mechanism cannot determine a historical load value to assign to it. This tunable specifies the initial load value for newly created tasks. Set init_task_load to Higher value to allow new tasks to wake up on the best performance CPUs (Default: 15%)." name="Initial Task Load"
-			action="generic /proc/sys/kernel/sched_init_task_load" unit="%" min="5" reversed="false" step="5" max="100"/>
-
-		<seekBar description="A task whose nice value is greater than this tunable value will never be considered as a big task (it will not be allowed to run on a high-performance CPU). (Default: 15%)." name="sched upmigrate min nice"
-			action="generic /proc/sys/kernel/sched_upmigrate_min_nice" unit="%" min="5" reversed="false" step="5" max="100"/>
-
-		<seekBar description="This tunable controls the policy in how window-based load tracking calculates an overall demand value based on the windows of CPU utilization it has collected for a task. Possible values for this tunable are: 0: Just use the most recent window sample of task activity when calculating task demand. 1: Use the maximum value of first M samples found in task's cpu demand history (sum_history[] array), where M = sysctl_sched_ravg_hist_size 2: Use the maximum of (the most recent window sample, average of first M samples), where M = sysctl_sched_ravg_hist_size 3. Use average of first M samples, where M = sysctl_sched_ravg_hist_size (Default: 2)." name="sched window stats policy"
-			action="generic /proc/sys/kernel/sched_window_stats_policy" unit="%" min="0" reversed="false" step="1" max="3"/>
-
-		<seekBar description="Note that these tunables are per-cpu. If a CPU does not have more than sched_mostly_idle_nr_run runnable tasks and is not more than sched_mostly_idle_load percent busy, it is considered mostly idle. (Default: 20%)." name="sched mostly idle load"
-			action="generic /proc/sys/kernel/sched_mostly_idle_load" unit="%" min="0" reversed="false" step="5" max="100"/>
-
-		<seekBar description="runnable tasks no.(Default: 3%)." name="sched mostly idle nr_run"
-			action="generic /proc/sys/kernel/sched_mostly_idle_nr_run" unit="%" min="1" reversed="false" step="1" max="20"/>
-
-		<seekBar description="When the power delta between two CPUs is less than sched_powerband_limit_pct, load will be prioritized as the deciding factor as to which CPU is selected. If the power delta between two CPUs exceeds that, the lower power CPU is considered to be in a different band and it is selected, despite perhaps having a higher current task load. Default: 20%)." name="sched powerband limit"
-			action="generic /proc/sys/kernel/sched_power_band_limit" unit="%" min="0" reversed="false" step="5" max="100"/>
-
-		<seekBar description="sched wakeup load threshold... (Default: 110%)." name="sched wakeup load threshold"
-			action="generic /proc/sys/kernel/sched_wakeup_load_threshold" unit="%" min="0" reversed="false" step="10" max="300"/>
-
-		<checkbox description="sched aut-ogroup. (Default: on)" name="sched auto-group" action="generic01 /proc/sys/kernel/sched_autogroup_enabled" label="sched auto-group"/>
-
-	</settingsPane>
-
 	<settingsPane description="These settings control CFS (Complete Fair Scheduler) Task Scheduler Settings" name="CFS Settings">
 
 		<checkbox description="Disabling GENTLE FAIR SLEEPERS may give you better UI responsiveness, so NOT checked is GOOD." name="GENTLE FAIR SLEEPERS" action="generic01 /sys/kernel/sched/gentle_fair_sleepers" label="GENTLE FAIR SLEEPERS"/>
