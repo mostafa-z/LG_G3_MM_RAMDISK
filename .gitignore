@@ -40,6 +40,7 @@ package*
 dt.img
 zImage-dtb
 !ramdisk.gz
+temp/
 
 #
 # Top-level generic files
