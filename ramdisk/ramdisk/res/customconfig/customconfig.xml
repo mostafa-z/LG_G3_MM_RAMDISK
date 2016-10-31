@@ -76,96 +76,108 @@
 		<spinner description="Select the CPU0 governor. Some governor's can be unstable on CPU0. It's recommended to leave it as is." name="CPU0 Governor"
 			action="default_cpu0_gov">
 			<spinnerItem name="Alucard" value="alucard"/> 
-			<spinnerItem name="Nightmare" value="nightmare"/> 
-			<spinnerItem name="Darkness" value="darkness"/> 
+			<spinnerItem name="Nightmare" value="nightmare"/>
+			<spinnerItem name="Intelliactive" value="intelliactive"/> 
 			<spinnerItem name="Interactive" value="interactive"/> 
 			<spinnerItem name="Interactive_LG" value="interactive_lg"/>
-			<spinnerItem name="Barry_Allen" value="barry_allen"/>  
+			<spinnerItem name="Yankactive" value="yankactive"/> 
 			<spinnerItem name="Intel" value="intel"/> 
 			<spinnerItem name="Impulse" value="impulse"/> 
 			<spinnerItem name="Intellimm" value="intellimm"/> 
 			<spinnerItem name="Ondemand" value="ondemand"/> 
 			<spinnerItem name="OndemandX" value="ondemandx"/> 
-			<spinnerItem name="Ondemand_Sem" value="ondemand_sem"/> 
+			<spinnerItem name="Ondemandplus" value="ondemandplus"/> 
 			<spinnerItem name="Ondemand_LG" value="ondemand_lg"/> 
+			<spinnerItem name="Intellidemand" value="intellidemand"/> 
 			<spinnerItem name="Slim" value="slim"/> 
 			<spinnerItem name="Conservative" value="conservative"/> 
 			<spinnerItem name="ZZMoove" value="zzmoove"/> 
 			<spinnerItem name="Smartmax" value="smartmax"/> 
+			<spinnerItem name="Smartmax_eps" value="smartmax_eps"/> 
 			<spinnerItem name="Lionheart" value="lionheart"/> 
 			<spinnerItem name="Powersave" value="powersave"/> 
+			<spinnerItem name="Wheatley" value="wheatley"/> 
 			<spinnerItem name="Performance" value="performance"/> 
 		</spinner>
 
 		<spinner description="Select the CPU1 governor." name="CPU1 Governor"
 			action="default_cpu1_gov">
 			<spinnerItem name="Alucard" value="alucard"/> 
-			<spinnerItem name="Nightmare" value="nightmare"/> 
-			<spinnerItem name="Darkness" value="darkness"/> 
+			<spinnerItem name="Nightmare" value="nightmare"/>
+			<spinnerItem name="Intelliactive" value="intelliactive"/> 
 			<spinnerItem name="Interactive" value="interactive"/> 
 			<spinnerItem name="Interactive_LG" value="interactive_lg"/>
-			<spinnerItem name="Barry_Allen" value="barry_allen"/>  
+			<spinnerItem name="Yankactive" value="yankactive"/> 
 			<spinnerItem name="Intel" value="intel"/> 
 			<spinnerItem name="Impulse" value="impulse"/> 
 			<spinnerItem name="Intellimm" value="intellimm"/> 
 			<spinnerItem name="Ondemand" value="ondemand"/> 
 			<spinnerItem name="OndemandX" value="ondemandx"/> 
-			<spinnerItem name="Ondemand_Sem" value="ondemand_sem"/> 
+			<spinnerItem name="Ondemandplus" value="ondemandplus"/> 
 			<spinnerItem name="Ondemand_LG" value="ondemand_lg"/> 
+			<spinnerItem name="Intellidemand" value="intellidemand"/> 
 			<spinnerItem name="Slim" value="slim"/> 
 			<spinnerItem name="Conservative" value="conservative"/> 
 			<spinnerItem name="ZZMoove" value="zzmoove"/> 
 			<spinnerItem name="Smartmax" value="smartmax"/> 
+			<spinnerItem name="Smartmax_eps" value="smartmax_eps"/> 
 			<spinnerItem name="Lionheart" value="lionheart"/> 
 			<spinnerItem name="Powersave" value="powersave"/> 
+			<spinnerItem name="Wheatley" value="wheatley"/> 
 			<spinnerItem name="Performance" value="performance"/> 
 		</spinner>
 
 		<spinner description="Select the CPU2 governor." name="CPU2 Governor"
 			action="default_cpu2_gov">
 			<spinnerItem name="Alucard" value="alucard"/> 
-			<spinnerItem name="Nightmare" value="nightmare"/> 
-			<spinnerItem name="Darkness" value="darkness"/> 
+			<spinnerItem name="Nightmare" value="nightmare"/>
+			<spinnerItem name="Intelliactive" value="intelliactive"/> 
 			<spinnerItem name="Interactive" value="interactive"/> 
 			<spinnerItem name="Interactive_LG" value="interactive_lg"/>
-			<spinnerItem name="Barry_Allen" value="barry_allen"/>  
+			<spinnerItem name="Yankactive" value="yankactive"/> 
 			<spinnerItem name="Intel" value="intel"/> 
 			<spinnerItem name="Impulse" value="impulse"/> 
 			<spinnerItem name="Intellimm" value="intellimm"/> 
 			<spinnerItem name="Ondemand" value="ondemand"/> 
 			<spinnerItem name="OndemandX" value="ondemandx"/> 
-			<spinnerItem name="Ondemand_Sem" value="ondemand_sem"/> 
+			<spinnerItem name="Ondemandplus" value="ondemandplus"/> 
 			<spinnerItem name="Ondemand_LG" value="ondemand_lg"/> 
+			<spinnerItem name="Intellidemand" value="intellidemand"/> 
 			<spinnerItem name="Slim" value="slim"/> 
 			<spinnerItem name="Conservative" value="conservative"/> 
 			<spinnerItem name="ZZMoove" value="zzmoove"/> 
 			<spinnerItem name="Smartmax" value="smartmax"/> 
+			<spinnerItem name="Smartmax_eps" value="smartmax_eps"/> 
 			<spinnerItem name="Lionheart" value="lionheart"/> 
 			<spinnerItem name="Powersave" value="powersave"/> 
+			<spinnerItem name="Wheatley" value="wheatley"/> 
 			<spinnerItem name="Performance" value="performance"/> 
 		</spinner>
 
 		<spinner description="Select the CPU3 governor." name="CPU3 Governor"
 			action="default_cpu3_gov">
 			<spinnerItem name="Alucard" value="alucard"/> 
-			<spinnerItem name="Nightmare" value="nightmare"/> 
-			<spinnerItem name="Darkness" value="darkness"/> 
+			<spinnerItem name="Nightmare" value="nightmare"/>
+			<spinnerItem name="Intelliactive" value="intelliactive"/> 
 			<spinnerItem name="Interactive" value="interactive"/> 
 			<spinnerItem name="Interactive_LG" value="interactive_lg"/>
-			<spinnerItem name="Barry_Allen" value="barry_allen"/>  
+			<spinnerItem name="Yankactive" value="yankactive"/> 
 			<spinnerItem name="Intel" value="intel"/> 
 			<spinnerItem name="Impulse" value="impulse"/> 
 			<spinnerItem name="Intellimm" value="intellimm"/> 
 			<spinnerItem name="Ondemand" value="ondemand"/> 
 			<spinnerItem name="OndemandX" value="ondemandx"/> 
-			<spinnerItem name="Ondemand_Sem" value="ondemand_sem"/> 
+			<spinnerItem name="Ondemandplus" value="ondemandplus"/> 
 			<spinnerItem name="Ondemand_LG" value="ondemand_lg"/> 
+			<spinnerItem name="Intellidemand" value="intellidemand"/> 
 			<spinnerItem name="Slim" value="slim"/> 
 			<spinnerItem name="Conservative" value="conservative"/> 
 			<spinnerItem name="ZZMoove" value="zzmoove"/> 
 			<spinnerItem name="Smartmax" value="smartmax"/> 
+			<spinnerItem name="Smartmax_eps" value="smartmax_eps"/> 
 			<spinnerItem name="Lionheart" value="lionheart"/> 
 			<spinnerItem name="Powersave" value="powersave"/> 
+			<spinnerItem name="Wheatley" value="wheatley"/> 
 			<spinnerItem name="Performance" value="performance"/> 
 		</spinner>
 
