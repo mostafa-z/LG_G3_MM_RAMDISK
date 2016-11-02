@@ -186,13 +186,7 @@
 	<settingsPane description="Customize the Touch Boost Control settings. Touch Boost means, the CPU frequency is boosted to a higher level when the touch screen is being used. It gives smoother UI, in exchange consumes slightly more power." name="Touch Boost Controls">
 
 		<checkbox description="Enable/Disable cpu boost ability." name="CPU Boost on/off"
-			action="generic01 /sys/module/cpu_boost/parameters/cpu_boost" label="CPU Boost"/>
-
-		<checkbox description="Boost cpu when CPUs go online." name="Hotplug Boost"
-			action="generic01 /sys/module/cpu_boost/parameters/hotplug_boost" label="Hotplug Boost"/>
-
-		<checkbox description="Boost cpu when screen is turned on." name="Wakeup Boost"
-			action="generic01 /sys/module/cpu_boost/parameters/wakeup_boost" label="Wakeup Boost"/>
+			action="generic01 /sys/module/cpu_boost/parameters/input_boost_enabled" label="CPU Boost"/>
 
 		<spinner description="Set the Maximum CPU Boost frequency for CORE 0. When touch is being detected, CPU frequency will be locked to selected frequency for the time range. Too high frequencies will use more power (Default: 1.49 GHz)." name="Touch Boost Frequency"
 			action="cpu_boost_freq">
@@ -207,10 +201,10 @@
 		</spinner>
 
 		<seekBar description="Set the time that core is locked on Maximum Boost frequency. 10 ms is equal to 0.01 sec (Default: 500 ms)." name="CPU Touch Boost duration"
-			action="generic /sys/module/cpu_boost/parameters/input_boost_ms" unit="ms" min="10" reversed="false" step="10" max="1000"/>
+			action="generic /sys/module/cpu_boost/parameters/input_boost_ms" unit="ms" min="10" reversed="false" step="10" max="2000"/>
 
-		<seekBar description="This option determines the time, that Touch Boost driver will wait before locking CPU on it's minimum frequency (Default: 300 ms)." name="CPU Touch Boost Interval"
-			action="generic /sys/module/cpu_boost/parameters/min_input_interval" unit="ms" min="100" reversed="false" step="50" max="1500"/>
+		<seekBar description="This option determines the time, that Touch Boost driver will wait before locking CPU on it's minimum frequency (Default: 20 ms)." name="CPU Touch Boost Interval"
+			action="generic /sys/module/cpu_boost/parameters/boost_ms" unit="ms" min="100" reversed="false" step="50" max="1500"/>
 
 	</settingsPane>
 

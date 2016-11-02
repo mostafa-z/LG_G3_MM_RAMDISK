@@ -1,3 +1,4 @@
+
 stweaks_boot_control=yes
 google_services_fix=no
 protect_systemui_oom=no
@@ -10,12 +11,10 @@ default_cpu0_gov=ondemandx
 default_cpu1_gov=ondemandx
 default_cpu2_gov=ondemandx
 default_cpu3_gov=ondemandx
-cpu_boost=on
-wakeup_boost=off
-hotplug_boost=off
+input_boost_enabled=on
 cpu_boost_freq=1497600
 input_boost_ms=500
-min_input_interval=500
+boost_ms=20
 sample_rate=40000
 sleep_sample_rate=40000
 power_mode=0
