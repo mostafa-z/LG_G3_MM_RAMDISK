@@ -240,6 +240,7 @@ echo "0" > /sys/module/msm_show_resume_irq/parameters/debug_mask
 echo "0" > /sys/module/alarm_dev/parameters/debug_mask
 echo "0" > /sys/module/mpm_of/parameters/debug_mask
 echo "0" > /sys/module/msm_pm/parameters/debug_mask
+echo "0" > /sys/module/powersuspend/parameters/debug_mask
 #	echo "0" > /sys/module/msm_hotplug/parameters/debug_mask
 #	echo "0" > /sys/module/cpufreq_limit/parameters/debug_mask
 
