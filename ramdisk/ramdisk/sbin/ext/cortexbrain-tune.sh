@@ -641,7 +641,7 @@ CPU_CENTRAL_CONTROL()
 					echo "$suspend_max_freq" > /sys/kernel/msm_cpufreq_limit/suspend_max_freq;
 				fi;
 			fi;
-			if [ "$suspend_min_freq" != "min_freq" ]; then
+			if [ "$suspend_min_freq" != "300000" ]; then
 				if [ "$(cat /sys/kernel/msm_cpufreq_limit/suspend_min_freq)" -ne "$suspend_min_freq" ]; then
 					echo "$suspend_min_freq" > /sys/kernel/msm_cpufreq_limit/suspend_min_freq;
 				fi;

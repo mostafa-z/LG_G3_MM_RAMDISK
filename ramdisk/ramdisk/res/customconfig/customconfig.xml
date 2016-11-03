@@ -298,7 +298,6 @@
 
 		<spinner description="Select minimum CPU0 frequency. Note that, it can't be higher than Maximum CPU0 freq. It works only when CPU-Tweaks is enabled." name="min CPU0 Frequency"
 			action="cpu0_min_freq">
-			<spinnerItem name="268 MHz" value="268800"/> 
 			<spinnerItem name="300 MHz" value="300000"/> 
 			<spinnerItem name="422 MHz" value="422400"/> 
 			<spinnerItem name="499 MHz" value="499200"/> 
@@ -310,7 +309,6 @@
 
 		<spinner description="Select minimum CPU1 frequency. Note that, it can't be higher than Maximum CPU1 freq. It works only when CPU-Tweaks is enabled." name="min CPU1 Frequency"
 			action="cpu1_min_freq">
-			<spinnerItem name="268 MHz" value="268800"/> 
 			<spinnerItem name="300 MHz" value="300000"/> 
 			<spinnerItem name="422 MHz" value="422400"/> 
 			<spinnerItem name="499 MHz" value="499200"/> 
@@ -322,7 +320,6 @@
 
 		<spinner description="Select minimum CPU2 frequency. Note that, it can't be higher than Maximum CPU2 freq. It works only when CPU-Tweaks is enabled." name="min CPU2 Frequency"
 			action="cpu2_min_freq">
-			<spinnerItem name="268 MHz" value="268800"/> 
 			<spinnerItem name="300 MHz" value="300000"/> 
 			<spinnerItem name="422 MHz" value="422400"/> 
 			<spinnerItem name="499 MHz" value="499200"/> 
@@ -334,7 +331,6 @@
 
 		<spinner description="Select minimum CPU3 frequency. Note that, it can't be higher than Maximum CPU3 freq. It works only when CPU-Tweaks is enabled." name="min CPU3 Frequency"
 			action="cpu3_min_freq">
-			<spinnerItem name="268 MHz" value="268800"/> 
 			<spinnerItem name="300 MHz" value="300000"/> 
 			<spinnerItem name="422 MHz" value="422400"/> 
 			<spinnerItem name="499 MHz" value="499200"/> 
@@ -350,7 +346,6 @@
 
 		<spinner description="Maximum Allowed CPU frequency when screen is OFF, but phone is awake (cases like any app holds wakelock, music, radio etc.). It has effect ONLY when screen is OFF. If screen is ON, normal Maximum allowed frequency take place (Default: 1.95 GHz)." name="Max Screen OFF CPU Frequency"
 			action="suspend_max_freq">
-			<spinnerItem name="Max Allowed" value="max_freq"/> 
 			<spinnerItem name="2.45 GHz" value="2457600"/> 
 			<spinnerItem name="2.26 GHz" value="2265600"/> 
 			<spinnerItem name="1.95 GHz" value="1958400"/> 
@@ -364,9 +359,8 @@
 			<spinnerItem name="883 MHz" value="883200"/> 
 		</spinner>
 
-		<spinner description="Minimum Allowed CPU frequency when screen is OFF but phone is awake (cases in which any app holds wakelock, music, radio etc.). It has effect ONLY when screen is OFF. If screen is ON, normal minimum allowed frequency take place (Default: 268 MHz)." name="Min Screen OFF CPU Frequency"
+		<spinner description="Minimum Allowed CPU frequency when screen is OFF but phone is awake (cases in which any app holds wakelock, music, radio etc.). It has effect ONLY when screen is OFF. If screen is ON, normal minimum allowed frequency take place (Default: 300 MHz)." name="Min Screen OFF CPU Frequency"
 			action="suspend_min_freq">
-			<spinnerItem name="268 MHz" value="min_freq"/> 
 			<spinnerItem name="300 MHz" value="300000"/> 
 			<spinnerItem name="422 MHz" value="422400"/> 
 			<spinnerItem name="499 MHz" value="499200"/> 
