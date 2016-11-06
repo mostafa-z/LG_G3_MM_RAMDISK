@@ -347,6 +347,26 @@ VFS_CACHE_PRESSURE()
 	return 1;
 }
 
+SWAPPINESS()
+{
+	local state="$1";
+	local sys_swappiness="/proc/sys/vm/swappiness";
+
+	if [ -e $sys_swappiness ]; then
+		if [ "$state" == "awake" ]; then
+			echo "$swappiness" > $sys_swappiness;
+		elif [ "$state" == "sleep" ]; then
+			echo "$swappiness_sleep" > $sys_swappiness;
+		fi;
+
+		log -p i -t $FILE_NAME "*** SWAPPINESS: $state ***";
+
+		return 0;
+	fi;
+
+	return 1;
+}
+
 NET()
 {
 	local state="$1";
@@ -937,6 +957,7 @@ AWAKE_MODE()
 		MOBILE_DATA "awake";
 		WIFI "awake";
 		VFS_CACHE_PRESSURE "awake";
+		SWAPPINESS "awake";
 		NET "awake";
 		PROCESS_RECLAIM_AUTO "awake";
 		DROP_CACHE_AUTO "awake";
@@ -986,6 +1007,7 @@ SLEEP_MODE()
 		WIFI "sleep";
 		MOBILE_DATA "sleep";
 		VFS_CACHE_PRESSURE "sleep";
+		SWAPPINESS "sleep";
 		NET "sleep";
 		PROCESS_RECLAIM_AUTO "sleep";
 		DROP_CACHE_AUTO "sleep";

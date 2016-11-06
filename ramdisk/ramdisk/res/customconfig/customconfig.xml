@@ -728,6 +728,8 @@
 		<seekBar description="Controls ZRAM/SWAP allocation. The higher value is set, then ZRAM/SWAP will use more storage instead of real RAM, in order to give you more free RAM. The only cost is slight performance drop. If you have enabled swap, then the higher a number set here, the more the system will swap. It is not recommended to enable swap as it is very resource heavy. Use ZRAM instead!. By setting it to the maximum of 100 the kernel will swap very aggressively. By setting it to 0 the kernel will only swap to protect against an Out-Of-Memory condition." name="Swappiness"
 			action="generic /proc/sys/vm/swappiness" unit="%" min="0" reversed="false" step="5" max="100"/>
 
+		<seekBar description="It controls swappiness while in sleep mode" name="swappiness sleep mode" action="generic_cortex /tmp/swappiness_sleep" unit="%" min="0" reversed="false" step="5" max="100"/>
+
 	</settingsPane>
 
 	<settingsPane description="UKSM lets the hypervisor system to share identical memory pages amongst different processes." name="UKSM">
