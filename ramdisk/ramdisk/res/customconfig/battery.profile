@@ -98,6 +98,7 @@ selinux_control=off
 lm3697_backlight_control=on
 lm3697_min_backlight=2
 lm3697_max_backlight=1892
+nforce_timed=30
 tcp_congestion_control=cubic
 gpsregion=No_GPS_Zone_changes
 init_d=off

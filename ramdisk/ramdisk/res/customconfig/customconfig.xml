@@ -804,6 +804,13 @@
 
 	</settingsPane>
 
+	<settingsPane description="Customize Vibration strength." name="weak/strong strength control">
+
+		<seekBar description="set the vibration strength for when vibrator should works, like heptik." name="vibration strength"
+			action="generic /sys/devices/platform/tspdrv/nforce_timed" unit="lvl" min="0" reversed="false" step="1" max="100"/>
+
+	</settingsPane>
+
 	<settingsPane description="Congestion control controls traffic entry into a telecommunications network, to avoid congestive collapse by avoiding oversubscription by reducing the rate of packets." name="TCP Algorithms">
 
 		<spinner description="This algorithms controls the Data Transmission Protocol used by many Internet applications. It needs from user to investigate from net and check what's the BEST setting for him. If USER is lazy to read Google, leave it as default (Cubic or Bic depends on phone model)." name="Net Congestion Control"
