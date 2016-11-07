@@ -58,6 +58,7 @@ CRITICAL_PERM_FIX()
 	$BB chown -R root:root /sbin;
 	$BB chmod -R 777 /tmp/;
 	$BB chmod -R 775 /res/;
+	$BB chmod -R 775 /hotplugs/;
 	$BB chmod -R 06755 /sbin/ext/;
 	$BB chmod 06755 /sbin/busybox;
 	$BB chmod 06755 /system/xbin/busybox;
@@ -74,32 +75,32 @@ echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable;
 sleep 0.5;
 stop mpdecision;
 
-echo ondemandx > /cpufreq/scaling_governor;
-echo ondemandx > /all_cpus/scaling_governor_cpu1;
-echo ondemandx > /all_cpus/scaling_governor_cpu2;
-echo ondemandx > /all_cpus/scaling_governor_cpu3;
+#echo ondemandx > /cpufreq/scaling_governor;
+#echo ondemandx > /all_cpus/scaling_governor_cpu1;
+#echo ondemandx > /all_cpus/scaling_governor_cpu2;
+#echo ondemandx > /all_cpus/scaling_governor_cpu3;
 
-echo "750" > /cpu_boost/input_boost_ms;
+#echo "750" > /cpu_boost/input_boost_ms;
 
-echo "2457600" > /cpufreq_limit/cpufreq_max_limit_cpu0;
-echo "2457600" > /cpufreq_limit/cpufreq_max_limit_cpu1;
-echo "2457600" > /cpufreq_limit/cpufreq_max_limit_cpu2;
-echo "2457600" > /cpufreq_limit/cpufreq_max_limit_cpu3;
-echo "300000" > /cpufreq_limit/cpufreq_min_limit_cpu0;
-echo "300000" > /cpufreq_limit/cpufreq_min_limit_cpu1;
-echo "300000" > /cpufreq_limit/cpufreq_min_limit_cpu2;
-echo "300000" > /cpufreq_limit/cpufreq_min_limit_cpu3;
-echo "1497600" > /cpufreq_limit/suspend_max_freq;
-echo "268800" > /cpufreq_limit/suspend_min_freq;
+#echo "2457600" > /cpufreq_limit/cpufreq_max_limit_cpu0;
+#echo "2457600" > /cpufreq_limit/cpufreq_max_limit_cpu1;
+#echo "2457600" > /cpufreq_limit/cpufreq_max_limit_cpu2;
+#echo "2457600" > /cpufreq_limit/cpufreq_max_limit_cpu3;
+#echo "300000" > /cpufreq_limit/cpufreq_min_limit_cpu0;
+#echo "300000" > /cpufreq_limit/cpufreq_min_limit_cpu1;
+#echo "300000" > /cpufreq_limit/cpufreq_min_limit_cpu2;
+#echo "300000" > /cpufreq_limit/cpufreq_min_limit_cpu3;
+#echo "1497600" > /cpufreq_limit/suspend_max_freq;
+#echo "268800" > /cpufreq_limit/suspend_min_freq;
 
-echo "578000000" > /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/max_freq
-echo "100000000" > /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/min_freq
+#echo "578000000" > /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/max_freq
+#echo "100000000" > /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/min_freq
 
 echo "0" > /sys/module/msm_thermal/core_control/enabled;
 echo "1" > /cputemp/intelli_enabled;
 
-echo quiet > /sys/kernel/mm/uksm/cpu_governor;
-echo "1000" > /sys/kernel/mm/uksm/sleep_millisecs;
+#echo quiet > /sys/kernel/mm/uksm/cpu_governor;
+#echo "1000" > /sys/kernel/mm/uksm/sleep_millisecs;
 
 # KERNEL-TWEAKS
 echo "0" > /proc/sys/vm/oom_kill_allocating_task;
@@ -121,11 +122,13 @@ $BB chown system /sys/devices/system/cpu/cpu3/online
 $BB chmod 666 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 $BB chmod 666 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 $BB chmod 666 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+$BB chmod 666 /cpufreq_limit/*
 $BB chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_cur_freq
 $BB chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/stats/*
 $BB chmod 666 /sys/devices/system/cpu/cpu1/online
 $BB chmod 666 /sys/devices/system/cpu/cpu2/online
 $BB chmod 666 /sys/devices/system/cpu/cpu3/online
+$BB chmod 666 /hotplugs/*
 $BB chmod 666 /sys/module/msm_thermal/parameters/*
 $BB chmod 666 /sys/class/kgsl/kgsl-3d0/max_gpuclk
 $BB chmod 666 /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/governor
