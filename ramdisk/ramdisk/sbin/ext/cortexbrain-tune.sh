@@ -608,6 +608,9 @@ CPU_CENTRAL_CONTROL()
 			if [ "$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq)" -ne "$cpu0_min_freq" ]; then
 				echo "$cpu0_min_freq" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq;
 			fi;
+			if [ "$(cat /sys/devices/system/cpu/cpufreq/all_cpus/scaling_min_freq_all_cpus)" -ne "$cpu0_min_freq" ]; then
+				echo "$cpu0_min_freq" > /sys/devices/system/cpu/cpufreq/all_cpus/scaling_min_freq_all_cpus;
+			fi;
 			if [ "$(cat /sys/devices/system/cpu/cpufreq/all_cpus/scaling_min_freq_cpu1)" -ne "$cpu1_min_freq" ]; then
 				echo "$cpu1_min_freq" > /sys/devices/system/cpu/cpufreq/all_cpus/scaling_min_freq_cpu1;
 			fi;
