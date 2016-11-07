@@ -484,6 +484,13 @@
 
 	</settingsPane>
 
+	<settingsPane description="only available if MSM Hotplug selected." name="MSM HotPlug Tuning">
+
+		<seekBar description="putting online all cores if current load is above this threshold, default developer's value is 180 and can be over 200." name="Fast Lane Load"
+			action="generic /sys/module/msm_hotplug/fast_lane_load" unit="rate" min="0" reversed="false" step="10" max="400"/>
+
+	</settingsPane>
+
 </settingsTab>
 
 <settingsTab name="GPU CORE">

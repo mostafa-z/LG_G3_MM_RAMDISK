@@ -48,6 +48,7 @@ cpus_boosted=1
 cpus_boosted_time=500
 eco_mode=eco
 min_online_cpus=1
+fast_lane_load=180
 gpu_governor=msm-adreno-tz
 max_freq=389000000
 min_freq=100000000
