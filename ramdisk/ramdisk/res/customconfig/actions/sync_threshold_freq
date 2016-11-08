@@ -1,0 +1,14 @@
+#!/sbin/busybox sh
+
+# $1 - "sync_threshold_freq"
+# $2 - value=
+# Created By Dorimanx
+
+if [ "a$2" != "a" ]; then
+	sync_threshold_freq=$2;
+
+	echo "$sync_threshold_freq" > /sys/module/cpu_boost/parameters/sync_threshold;
+
+fi;
+
+echo ${sync_threshold_freq};
