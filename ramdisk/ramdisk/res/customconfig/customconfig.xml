@@ -183,13 +183,13 @@
 
 	</settingsPane>
 
-	<settingsPane description="Customize the Touch Boost Control settings. Touch Boost means, the CPU frequency is boosted to a higher level when the touch screen is being used. It gives smoother UI, in exchange consumes slightly more power. makes the phone feel smooth without destroying battery life, sultanxda says" name="Input Boost Controls">
+	<settingsPane description="Customize the Touch Boost Control settings. Touch Boost means, the CPU frequency is boosted to a higher level when the touch screen is being used. It gives smoother UI, in exchange consumes slightly more power." name="Touch Boost Controls">
 
-		<checkbox description="Enable/Disable input boost ability." name="input Boost on/off"
-			action="generic01 /sys/kernel/cpu_input_boost/enabled" label="input Boost"/>
+		<checkbox description="Enable/Disable cpu boost ability." name="CPU Boost on/off"
+			action="generic01 /sys/module/cpu_boost/parameters/input_boost_enabled" label="CPU Boost"/>
 
-		<spinner description="Set the Maximum CPU Boost frequency for When touch is being detected, CPU frequency will be locked to selected frequency for the time range. Too high frequencies will use more power (Default: 1.49 GHz)." name="Input Boost Frequency"
-			action="input_boost_freq">
+		<spinner description="Set the Maximum CPU Boost frequency for CORE 0. When touch is being detected, CPU frequency will be locked to selected frequency for the time range. Too high frequencies will use more power (Default: 1.49 GHz)." name="Touch Boost Frequency"
+			action="cpu_boost_freq">
 			<spinnerItem name="1.95 GHz" value="1958400"/> 
 			<spinnerItem name="1.72 GHz" value="1728000"/> 
 			<spinnerItem name="1.57 GHz" value="1574400"/> 
@@ -198,11 +198,13 @@
 			<spinnerItem name="1.19 GHz" value="1190400"/> 
 			<spinnerItem name="1.03 GHz" value="1036800"/> 
 			<spinnerItem name="960 MHz" value="960000"/> 
-			<spinnerItem name="Disable" value="0"/> 
 		</spinner>
 
-		<seekBar description="Set the time that core is locked on Maximum Boost frequency. 10 ms is equal to 0.01 sec (Default: 500 ms)." name="Input Boost duration"
-			action="generic /sys/kernel/cpu_input_boost/ib_duration_ms" unit="ms" min="10" reversed="false" step="10" max="2000"/>
+		<seekBar description="Set the time that core is locked on Maximum Boost frequency. 10 ms is equal to 0.01 sec (Default: 500 ms)." name="CPU Touch Boost duration"
+			action="generic /sys/module/cpu_boost/parameters/input_boost_ms" unit="ms" min="10" reversed="false" step="10" max="2000"/>
+
+		<seekBar description="This option determines the time, that Touch Boost driver will wait before locking CPU on it's minimum frequency (Default: 20 ms)." name="CPU Touch Boost Interval"
+			action="generic /sys/module/cpu_boost/parameters/boost_ms" unit="ms" min="0" reversed="false" step="50" max="1500"/>
 
 	</settingsPane>
 
