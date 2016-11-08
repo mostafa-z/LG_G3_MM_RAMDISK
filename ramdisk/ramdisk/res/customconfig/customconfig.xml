@@ -203,7 +203,8 @@
 			<spinnerItem name="Disable" value="0"/> 
 		</spinner>
 
-		<spinner description="When cpu loading crosses the preset threshold, the current cpu is raised to this frequency (Default: 960 MHz)." name="Sync Threshold"
+		<spinner description="Perform frequency synchronization only when source CPU's frequency
+is less than sync_threshold, else sync to the sync_threshold. (Default: 960 MHz)." name="Sync Threshold"
 			action="sync_threshold">
 			<spinnerItem name="1.95 GHz" value="1958400"/> 
 			<spinnerItem name="1.72 GHz" value="1728000"/> 
