@@ -231,6 +231,15 @@ is less than sync_threshold, else sync to the sync_threshold. (Default: 960 MHz)
 		<seekBar description="Load percentage of the max frequency, depends on load based syncs (Default: 15)." name="Migration Load Threshold"
 			action="generic /sys/module/cpu_boost/parameters/migration_load_threshold" unit="perc" min="0" reversed="false" step="1" max="100"/>
 
+		<seekBar description="set min input interval." name="Min Input Interval"
+			action="generic /sys/module/cpu_boost/parameters/min_input_interval" unit="ms" min="0" reversed="false" step="10" max="1000"/>
+
+		<checkbox description="occues when CPUs goes online" name="Hotplug Boost"
+			action="generic01 /sys/module/cpu_boost/parameters/hotplug_boost" label="Hotplug Boost"/>
+
+		<checkbox description="occues when Screen is turns on" name="Wakeup Boost"
+			action="generic01 /sys/module/cpu_boost/parameters/wakeup_boost" label="Wakeup Boost"/>
+
 	</settingsPane>
 
 	<settingsPane description="Customize the CPU Power Saving settings." name="CPU Power Controls">
