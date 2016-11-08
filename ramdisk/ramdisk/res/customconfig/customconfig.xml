@@ -183,6 +183,46 @@
 
 	</settingsPane>
 
+	<settingsPane description="Customize the profile for Interactive Familly CPU Governor for each core. interactive familly means interactive, interactive_lg, yankactive, intelliactive, impulse. only works if you selected them in the CPU Active Governor section. the OFF means use default parameters of the current governor. default sample rate will change to 60000 in sleep mode and back to selected value in sample rate section while awake mode." name="Interactive CPU Governor Profile">
+
+		<spinner description="Select the CPU0 Profile." name="CPU0 Interactive Profile"
+			action="cpu0_interactive_profile">
+			<spinnerItem name="OFF" value="off"/> 
+			<spinnerItem name="Standard" value="standard"/>
+			<spinnerItem name="Battery" value="battery"/> 
+			<spinnerItem name="Battery Extreme" value="battery_extreme"/> 
+			<spinnerItem name="Performance" value="performance"/>
+		</spinner>
+
+		<spinner description="Select the CPU1 Profile." name="CPU1 Interactive Profile"
+			action="cpu1_interactive_profile">
+			<spinnerItem name="OFF" value="off"/> 
+			<spinnerItem name="Standard" value="standard"/>
+			<spinnerItem name="Battery" value="battery"/> 
+			<spinnerItem name="Battery Extreme" value="battery_extreme"/> 
+			<spinnerItem name="Performance" value="performance"/> 
+		</spinner>
+
+		<spinner description="Select the CPU2 Profile." name="CPU2 Interactive Profile"
+			action="cpu2_interactive_profile">
+			<spinnerItem name="OFF" value="off"/> 
+			<spinnerItem name="Standard" value="standard"/>
+			<spinnerItem name="Battery" value="battery"/> 
+			<spinnerItem name="Battery Extreme" value="battery_extreme"/> 
+			<spinnerItem name="Performance" value="performance"/>
+		</spinner>
+
+		<spinner description="Select the CPU3 Profile." name="CPU3 Interactive Profile"
+			action="cpu3_interactive_profile">
+			<spinnerItem name="OFF" value="off"/> 
+			<spinnerItem name="Standard" value="standard"/>
+			<spinnerItem name="Battery" value="battery"/> 
+			<spinnerItem name="Battery Extreme" value="battery_extreme"/> 
+			<spinnerItem name="Performance" value="performance"/>
+		</spinner>
+
+	</settingsPane>
+
 	<settingsPane description="Customize the Touch Boost Control settings. Touch Boost means, the CPU frequency is boosted to a higher level when the touch screen is being used. It gives smoother UI, in exchange consumes slightly more power." name="Touch Boost Controls">
 
 		<checkbox description="Enable/Disable cpu boost ability." name="CPU Boost on/off"

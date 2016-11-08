@@ -1,0 +1,110 @@
+#!/sbin/busybox sh
+
+# $1 - "cpu0_interactive_profile"
+# $2 - value=
+# Created By Dorimanx
+
+BB=/sbin/busybox
+
+# get values from profile
+PROFILE=$(cat /data/.gabriel/.active.profile);
+. /data/.gabriel/"$PROFILE".profile;
+
+if [ "a$2" != "a" ]; then
+	cpu0_interactive_profile=$2;
+
+	echo "1" > /sys/devices/system/cpu/cpu0/online;
+	GOV0_NAME=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor);
+
+	case "${cpu0_interactive_profile}" in
+		off)
+			busybox sleep 0.5s
+			busybox sync
+		;;
+		standard)
+			echo "20000 1400000:40000 1700000:20000" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/above_hispeed_delay 
+			echo "0" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/boost 
+			echo "" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/boostpulse 
+			echo "80000" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/boostpulse_duration 
+			echo "90" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/go_hispeed_load 
+			echo "1190400" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/hispeed_freq 
+			echo "1" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/io_is_busy 
+			echo "40000" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/min_sample_time 
+			echo "100000" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/sampling_down_factor 
+			echo "1036800" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/sync_freq 
+			echo "85 1500000:90 1800000:70" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/target_loads 
+			echo "30000" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/timer_rate 
+			echo "20000" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/timer_slack 
+			echo "1190400" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/up_threshold_any_cpu_freq 
+			echo "50" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/up_threshold_any_cpu_load 
+
+			busybox sleep 0.5s
+			busybox sync
+		;;
+		battery)
+			echo "20000 1400000:40000 1700000:20000" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/above_hispeed_delay 
+			echo "0" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/boost 
+			echo "" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/boostpulse 
+			echo "80000" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/boostpulse_duration 
+			echo "95" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/go_hispeed_load 
+			echo "833200" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/hispeed_freq 
+			echo "1" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/io_is_busy 
+			echo "10000" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/min_sample_time 
+			echo "100000" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/sampling_down_factor 
+			echo "1036800" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/sync_freq 
+			echo "85 1200000:90 1500000:70" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/target_loads 
+			echo "50000" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/timer_rate 
+			echo "20000" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/timer_slack 
+			echo "1190400" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/up_threshold_any_cpu_freq 
+			echo "50" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/up_threshold_any_cpu_load 
+
+			busybox sleep 0.5s
+			busybox sync
+		;;
+		battery_extreme)
+			echo "20000 1400000:40000 1700000:20000" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/above_hispeed_delay 
+			echo "0" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/boost 
+			echo "" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/boostpulse 
+			echo "80000" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/boostpulse_duration 
+			echo "100" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/go_hispeed_load 
+			echo "300000" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/hispeed_freq 
+			echo "1" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/io_is_busy 
+			echo "5000" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/min_sample_time 
+			echo "100000" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/sampling_down_factor 
+			echo "1036800" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/sync_freq 
+			echo "85 900000:90 1200000:70" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/target_loads 
+			echo "100000" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/timer_rate 
+			echo "20000" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/timer_slack 
+			echo "1190400" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/up_threshold_any_cpu_freq 
+			echo "50" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/up_threshold_any_cpu_load 
+
+			busybox sleep 0.5s
+			busybox sync
+		;;
+		performance)
+			echo "20000 1400000:40000 1700000:20000" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/above_hispeed_delay 
+			echo "0" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/boost 
+			echo "" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/boostpulse 
+			echo "80000" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/boostpulse_duration 
+			echo "80" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/go_hispeed_load 
+			echo "1958400" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/hispeed_freq 
+			echo "1" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/io_is_busy 
+			echo "60000" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/min_sample_time 
+			echo "100000" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/sampling_down_factor 
+			echo "1036800" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/sync_freq 
+			echo "85 1800000:90 2100000:70" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/target_loads 
+			echo "20000" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/timer_rate 
+			echo "20000" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/timer_slack 
+			echo "1190400" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/up_threshold_any_cpu_freq 
+			echo "50" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/up_threshold_any_cpu_load 
+
+			busybox sleep 0.5s
+			busybox sync
+		;;
+		*)
+			cpu0_interactive_profile=off;
+		;;
+	esac;
+fi;
+
+echo ${cpu0_interactive_profile};
