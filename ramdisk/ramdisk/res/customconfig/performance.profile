@@ -12,6 +12,7 @@ default_cpu2_gov=ondemandx
 default_cpu3_gov=ondemandx
 input_boost_enabled=on
 cpu_boost_freq=1497600
+sync_threshold=1267200
 input_boost_ms=750
 boost_ms=100
 sample_rate=20000

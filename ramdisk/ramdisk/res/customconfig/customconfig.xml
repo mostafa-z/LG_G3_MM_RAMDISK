@@ -198,6 +198,24 @@
 			<spinnerItem name="1.19 GHz" value="1190400"/> 
 			<spinnerItem name="1.03 GHz" value="1036800"/> 
 			<spinnerItem name="960 MHz" value="960000"/> 
+			<spinnerItem name="883 MHz" value="883200"/> 
+			<spinnerItem name="729 MHz" value="729600"/> 
+			<spinnerItem name="Disable" value="0"/> 
+		</spinner>
+
+		<spinner description="When cpu loading crosses the preset threshold, the current cpu is raised to this frequency (Default: 960 MHz)." name="Sync Threshold"
+			action="sync_threshold">
+			<spinnerItem name="1.95 GHz" value="1958400"/> 
+			<spinnerItem name="1.72 GHz" value="1728000"/> 
+			<spinnerItem name="1.57 GHz" value="1574400"/> 
+			<spinnerItem name="1.49 GHz" value="1497600"/> 
+			<spinnerItem name="1.26 GHz" value="1267200"/> 
+			<spinnerItem name="1.19 GHz" value="1190400"/> 
+			<spinnerItem name="1.03 GHz" value="1036800"/> 
+			<spinnerItem name="960 MHz" value="960000"/> 
+			<spinnerItem name="883 MHz" value="883200"/> 
+			<spinnerItem name="729 MHz" value="729600"/> 
+			<spinnerItem name="Disable" value="0"/> 
 		</spinner>
 
 		<seekBar description="Set the time that core is locked on Maximum Boost frequency. 10 ms is equal to 0.01 sec (Default: 500 ms)." name="CPU Touch Boost duration"
