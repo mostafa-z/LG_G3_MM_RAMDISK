@@ -1,0 +1,14 @@
+#!/sbin/busybox sh
+
+# $1 - "input_boost_freq"
+# $2 - value=
+# Created By Dorimanx
+
+if [ "a$2" != "a" ]; then
+	input_boost_freq=$2;
+
+	echo "$input_boost_freq"" ""$input_boost_freq" > /sys/kernel/cpu_input_boost/ib_freqs;
+
+fi;
+
+echo ${input_boost_freq};
