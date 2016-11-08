@@ -192,6 +192,10 @@
 			<spinnerItem name="Battery" value="battery"/> 
 			<spinnerItem name="Battery Extreme" value="battery_extreme"/> 
 			<spinnerItem name="Performance" value="performance"/>
+			<spinnerItem name="Neobuddy89" value="neobuddy89"/>
+			<spinnerItem name="Glass Fish" value="glassfish"/>
+			<spinnerItem name="Gabriel" value="gabriel"/>
+			<spinnerItem name="Gabriel Extreme" value="gabriel_extreme"/>
 		</spinner>
 
 		<spinner description="Select the CPU1 Profile." name="CPU1 Interactive Profile"
@@ -201,6 +205,10 @@
 			<spinnerItem name="Battery" value="battery"/> 
 			<spinnerItem name="Battery Extreme" value="battery_extreme"/> 
 			<spinnerItem name="Performance" value="performance"/> 
+			<spinnerItem name="Neobuddy89" value="neobuddy89"/>
+			<spinnerItem name="Glass Fish" value="glassfish"/>
+			<spinnerItem name="Gabriel" value="gabriel"/>
+			<spinnerItem name="Gabriel Extreme" value="gabriel_extreme"/>
 		</spinner>
 
 		<spinner description="Select the CPU2 Profile." name="CPU2 Interactive Profile"
@@ -210,6 +218,10 @@
 			<spinnerItem name="Battery" value="battery"/> 
 			<spinnerItem name="Battery Extreme" value="battery_extreme"/> 
 			<spinnerItem name="Performance" value="performance"/>
+			<spinnerItem name="Neobuddy89" value="neobuddy89"/>
+			<spinnerItem name="Glass Fish" value="glassfish"/>
+			<spinnerItem name="Gabriel" value="gabriel"/>
+			<spinnerItem name="Gabriel Extreme" value="gabriel_extreme"/>
 		</spinner>
 
 		<spinner description="Select the CPU3 Profile." name="CPU3 Interactive Profile"
@@ -219,6 +231,10 @@
 			<spinnerItem name="Battery" value="battery"/> 
 			<spinnerItem name="Battery Extreme" value="battery_extreme"/> 
 			<spinnerItem name="Performance" value="performance"/>
+			<spinnerItem name="Neobuddy89" value="neobuddy89"/>
+			<spinnerItem name="Glass Fish" value="glassfish"/>
+			<spinnerItem name="Gabriel" value="gabriel"/>
+			<spinnerItem name="Gabriel Extreme" value="gabriel_extreme"/>
 		</spinner>
 
 	</settingsPane>
