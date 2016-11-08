@@ -225,6 +225,12 @@ is less than sync_threshold, else sync to the sync_threshold. (Default: 960 MHz)
 		<seekBar description="This option determines the time, that Touch Boost driver will wait before locking CPU on it's minimum frequency (Default: 20 ms)." name="CPU Touch Boost Interval"
 			action="generic /sys/module/cpu_boost/parameters/boost_ms" unit="ms" min="0" reversed="false" step="50" max="1500"/>
 
+		<checkbox description="If the scheduler migration notification is extended with task load (cpu demand) information, the cpu boost driver can use this load to compute a suitable frequency for the migrating task. The required frequency for the task is calculated by taking the load percentage of the max frequency and no sync is performed if the load is less than a particular value (migration_load_threshold).This change is beneficial for both perf and power as demand of a task is taken into consideration while making cpufreq decisions and unnecessary syncs for lightweight tasks are avoided. (default: off)" name="Load Based Syncs"
+			action="generic01 /sys/module/cpu_boost/parameters/load_based_syncs" label="Load Based Syncs"/>
+
+		<seekBar description="Load percentage of the max frequency, depends on load based syncs (Default: 15)." name="Migration Load Threshold"
+			action="generic /sys/module/cpu_boost/parameters/migration_load_threshold" unit="perc" min="0" reversed="false" step="1" max="100"/>
+
 	</settingsPane>
 
 	<settingsPane description="Customize the CPU Power Saving settings." name="CPU Power Controls">
