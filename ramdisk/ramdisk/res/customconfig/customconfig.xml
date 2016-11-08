@@ -330,6 +330,9 @@ is less than sync_threshold, else sync to the sync_threshold. (Default: 960 MHz)
 
 	<settingsPane description="Set the minimum CPU frequency for each core separately. Default for each core is 300 MHz." name="Minimum CPU Frequency">
 
+		<checkbox description="By enabling this setting, kernel will force to set 300 Mhz min freq (awake and sleep) in cae of cpu-boost changes it and stucked at boosted freq like 1497600 and drain battery faster. Depends on Cortexbrain !!" name="CPU MIN FREQ POLICY"
+			action="generic_cortex /tmp/cpu_min_policy" label="CPU MIN POLICY"/>
+
 		<spinner description="Select minimum CPU0 frequency. Note that, it can't be higher than Maximum CPU0 freq. It works only when CPU-Tweaks is enabled." name="min CPU0 Frequency"
 			action="cpu0_min_freq">
 			<spinnerItem name="300 MHz" value="300000"/> 

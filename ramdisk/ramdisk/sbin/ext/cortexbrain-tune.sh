@@ -938,6 +938,54 @@ PROCESS_RECLAIM_AUTO()
 
 }
 
+CPU_MIN_POLICY()
+{
+	local CPU0=$(cat /sys/devices/system/cpu/cpu0/online);
+	local CPU1=$(cat /sys/devices/system/cpu/cpu1/online);
+	local CPU2=$(cat /sys/devices/system/cpu/cpu2/online);
+	local CPU3=$(cat /sys/devices/system/cpu/cpu3/online);
+	local CPU0_MIN_FREQ=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq);
+
+	if [ "$cpu_min_policy" == "on" ]; then
+		# wait for lighter load
+		while [ "$CPU2" != "0" ] && [ "$CPU3" != "0" ]; do
+			sleep 0.5;
+		done;
+
+		# check for a little load
+		if [ "$CPU0" -ge "300000" ] && [ "$CPU1" != "1" ]; then
+			while [ "$CPU0" -ge "300000" ]; do
+				echo "0" > /sys/kernel/msm_cpufreq_limit/cpufreq_min_limit_cpu0;
+				echo "300000" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq;
+				echo "300000" > /sys/kernel/msm_cpufreq_limit/cpufreq_min_limit_cpu0;
+				sleep 0.5; # doesn't make sense ! just push.
+			done;
+			# if hotplug min core > 1 goes crazy !
+			if [ "$CPU0" == "300000" ] && [ "$CPU1" -ge "300000" ] || [ "$CPU2" -ge "300000" ] || [ "$CPU3" -ge "300000" ]; then
+				while [ "$CPU1" -ge "300000" ] || [ "$CPU2" -ge "300000" ] || [ "$CPU3" -ge "300000" ]; do
+					# core0
+					echo "0" > /sys/kernel/msm_cpufreq_limit/cpufreq_min_limit_cpu0;
+					echo "300000" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq;
+					echo "300000" > /sys/kernel/msm_cpufreq_limit/cpufreq_min_limit_cpu0;
+					#core1
+					echo "0" > /sys/kernel/msm_cpufreq_limit/cpufreq_min_limit_cpu1;
+					echo "300000" > /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq;
+					echo "300000" > /sys/kernel/msm_cpufreq_limit/cpufreq_min_limit_cpu1;
+					#core2
+					echo "0" > /sys/kernel/msm_cpufreq_limit/cpufreq_min_limit_cpu2;
+					echo "300000" > /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq;
+					echo "300000" > /sys/kernel/msm_cpufreq_limit/cpufreq_min_limit_cpu2;
+					#core3
+					echo "0" > /sys/kernel/msm_cpufreq_limit/cpufreq_min_limit_cpu3;
+					echo "300000" > /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq;
+					echo "300000" > /sys/kernel/msm_cpufreq_limit/cpufreq_min_limit_cpu3;
+					echo "[Gabriel-Kernel] cpu min policy (hotplug) : ** set to 300 mhz **" > /dev/kmsg
+				done;
+			fi;
+		fi;
+		echo "[Gabriel-Kernel] cpu min policy : ** set to 300 mhz **" > /dev/kmsg
+	fi;
+}
 # ==============================================================
 # TWEAKS: if Screen-ON
 # ==============================================================
@@ -945,6 +993,7 @@ AWAKE_MODE()
 {
 	CPU_CENTRAL_CONTROL "awake";
 	HOTPLUG_CONTROL;
+	CPU_MIN_POLICY;
 
 	if [ "$(cat /data/gabriel_cortex_sleep)" -eq "1" ]; then
 		IO_SCHEDULER "awake";
@@ -991,6 +1040,7 @@ SLEEP_MODE()
 
 	CHARGER_STATE=$(cat /sys/class/power_supply/battery/charging_enabled);
 
+	CPU_MIN_POLICY;
 	CLEAN_CACHE;
 	PROCESS_RECLAIM;
 	FS_TRIM;

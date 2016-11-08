@@ -30,6 +30,7 @@ cpu0_max_freq=2265600
 cpu1_max_freq=2265600
 cpu2_max_freq=2265600
 cpu3_max_freq=2265600
+cpu_min_policy=on
 cpu0_min_freq=300000
 cpu1_min_freq=300000
 cpu2_min_freq=300000
