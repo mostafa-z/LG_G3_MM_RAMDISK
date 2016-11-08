@@ -631,14 +631,6 @@ CPU_CENTRAL_CONTROL()
 				echo "$cpu3_max_freq" > /sys/devices/system/cpu/cpufreq/all_cpus/scaling_max_freq_cpu3;
 			fi;
 
-			if [ "$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq)" -ge "729600" ]; then
-				echo "0" > /sys/kernel/msm_cpufreq_limit/cpufreq_min_limit_cpu0;
-				echo "0" > /sys/kernel/msm_cpufreq_limit/cpufreq_min_limit_cpu1;
-				echo "0" > /sys/kernel/msm_cpufreq_limit/cpufreq_min_limit_cpu2;
-				echo "0" > /sys/kernel/msm_cpufreq_limit/cpufreq_min_limit_cpu3;
-				echo "300000" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq;
-			fi;
-
 			if [ -e /res/uci_boot.sh ]; then
 				/res/uci_boot.sh power_mode $power_mode > /dev/null;
 			else
@@ -1041,14 +1033,12 @@ if [ "$cortexbrain_background_process" -eq "1" ]; then
 		while [ "$(cat /sys/module/lm3697/parameters/sleep_state)" == "1" ]; do
 			sleep "3";
 		done;
-		sleep 10; # to be sure in idle
 		# AWAKE State. all system ON
 		AWAKE_MODE;
 
 		while [ "$(cat /sys/module/lm3697/parameters/sleep_state)" == "0" ]; do
 			sleep "3";
 		done;
-		sleep 10; # to be sure in idle
 		# SLEEP state. All system to power save
 		SLEEP_MODE;
 	done &);
