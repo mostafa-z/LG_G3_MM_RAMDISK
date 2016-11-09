@@ -891,6 +891,10 @@ SLEEP_HOTPLUG_CONTROL()
 		if [ "$(cat /sys/kernel/thunderplug/hotplug_enabled)" == "1" ]; then
 			echo "$hotplug_sample_rate" > /sys/kernel/thunderplug/sampling_rate;
 		fi;
+		if [ "$(cat /sys/kernel/msm_mpdecision/conf/enabled)" == "1" ]; then
+			bricked_hotplug_sample_rate=$(($hotplug_sample_rate*1000));
+			echo "$bricked_hotplug_sample_rate" > /sys/kernel/msm_mpdecision/conf/startdelay;
+		fi;
 
 	elif [ "$state" == "sleep" ]; then
 
@@ -905,6 +909,10 @@ SLEEP_HOTPLUG_CONTROL()
 		fi;
 		if [ "$(cat /sys/kernel/thunderplug/hotplug_enabled)" == "1" ]; then
 			echo "$hotplug_sleep_sample_rate" > /sys/kernel/thunderplug/sampling_rate;
+		fi;
+		if [ "$(cat /sys/kernel/msm_mpdecision/conf/enabled)" == "1" ]; then
+			bricked_hotplug_sample_rate=$(($hotplug_sleep_sample_rate*1000));
+			echo "$bricked_hotplug_sample_rate" > /sys/kernel/msm_mpdecision/conf/startdelay;
 		fi;
 	fi;
 

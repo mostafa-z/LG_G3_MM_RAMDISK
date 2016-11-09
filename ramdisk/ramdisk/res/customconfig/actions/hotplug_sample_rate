@@ -13,7 +13,7 @@ if [ "a$2" != "a" ]; then
 	echo "$hotplug_sample_rate" > /sys/kernel/thunderplug/sampling_rate;
 
 	bricked_hotplug_sample_rate=$(($hotplug_sample_rate*1000));
-	echo "$bricked_hotplug_sample_rate" > /sys/kernel/msm_mpdecision/conf/startdelay
+	echo "$bricked_hotplug_sample_rate" > /sys/kernel/msm_mpdecision/conf/startdelay;
 fi;
 
 echo ${hotplug_sample_rate};
