@@ -1,0 +1,53 @@
+#!/sbin/busybox sh
+
+# $1 - "bricked_profile"
+# $2 - value=
+# Created By Dorimanx
+
+BB=/sbin/busybox
+
+# get values from profile
+PROFILE=$(cat /data/.gabriel/.active.profile);
+. /data/.gabriel/"$PROFILE".profile;
+
+if [ "a$2" != "a" ]; then
+	bricked_profile=$2;
+
+	case "${bricked_profile}" in
+		stock)
+			echo "12" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_0
+			echo "0" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_1
+			echo "25" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_2
+			echo "7" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_3
+			echo "30" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_4
+			echo "10" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_5
+			echo "0" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_6
+			echo "18" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_7
+		;;
+		showp1984)
+			echo "12" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_0
+			echo "0" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_1
+			echo "20" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_2
+			echo "7" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_3
+			echo "25" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_4
+			echo "10" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_5
+			echo "0" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_6
+			echo "18" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_7
+		;;
+		conservative)
+			echo "20" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_0
+			echo "0" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_1
+			echo "40" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_2
+			echo "15" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_3
+			echo "55" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_4
+			echo "30" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_5
+			echo "0" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_6
+			echo "45" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_7
+		;;
+		*)
+			bricked_profile=stock;
+		;;
+	esac;
+fi;
+
+echo ${bricked_profile};

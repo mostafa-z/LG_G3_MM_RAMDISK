@@ -584,6 +584,17 @@
 
 	</settingsPane>
 
+	<settingsPane description="only available if Bricked Hotplug selected." name="Bricked HotPlug Tuning">
+
+		<spinner description="Slect Runqueue Threshold config for Bricked Hotplug." name="Bricked Hotplug profile"
+			action="bricked_profile">
+			<spinnerItem name="Stock" value="stock"/> 
+			<spinnerItem name="Showp1984" value="showp1984"/> 
+			<spinnerItem name="Conservative" value="conservative"/> 
+		</spinner>
+
+	</settingsPane>
+
 </settingsTab>
 
 <settingsTab name="GPU CORE">
