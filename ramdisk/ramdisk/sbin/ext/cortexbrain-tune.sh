@@ -838,11 +838,18 @@ UKSM_CONTROL()
 	local state="$1";
 
 	if [ "$state" == "awake" ]; then
-		echo "$uksm_gov_on" > /sys/kernel/mm/uksm/cpu_governor;
-		echo "$max_cpu_percentage" > /sys/kernel/mm/uksm/max_cpu_percentage;
+		if [ "$run" == "on" ]; then
+			echo "1" > /sys/kernel/mm/uksm/run; # to be enable if sleep state was off.
+			echo "$uksm_gov_on" > /sys/kernel/mm/uksm/cpu_governor;
+			echo "$max_cpu_percentage" > /sys/kernel/mm/uksm/max_cpu_percentage;
+		fi;
 	elif [ "$state" == "sleep" ]; then
-		echo "$uksm_gov_sleep" > /sys/kernel/mm/uksm/cpu_governor;
-		echo "$max_cpu_percentage_sleep" > /sys/kernel/mm/uksm/max_cpu_percentage;
+		if [ "$run" == "on" ] && [ "$uksm_sleep" == "on" ]; then
+			echo "$uksm_gov_sleep" > /sys/kernel/mm/uksm/cpu_governor;
+			echo "$max_cpu_percentage_sleep" > /sys/kernel/mm/uksm/max_cpu_percentage;
+		elif [ "$run" == "on" ] && [ "$uksm_sleep" == "off" ]; then
+			echo "0" > /sys/kernel/mm/uksm/run;
+		fi;
 	fi;
 	log -p i -t "$FILE_NAME" "*** UKSM_CONTROL $state ***: done";
 }

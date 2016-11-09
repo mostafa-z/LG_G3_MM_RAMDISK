@@ -100,6 +100,7 @@ zramtweaks=512
 swappiness=50
 swappiness_sleep=80
 run=off
+uksm_sleep=on
 uksm_gov_on=quiet
 uksm_gov_sleep=quiet
 sleep_millisecs=1000
