@@ -11,10 +11,7 @@ on init
     export VIBE_PIPE_PATH /dev/pipes
     mkdir /dev/pipes 0771 shell shell
 # End Immersion changes
-# LGE_CHANGE_S, lg-security@lge.com, 2014-11-20, to support MDFPP
-    setprop ro.sys.sec.version.info "Truongthevinh@tekcafe.vn 5.0"
-	setprop ro.lge.swversion_short "D85030F"
-# LGE_CHANGE_S, lg-security@lge.com, 2014-11-20, to support MDFPP
+
 on fs
     wait /dev/block/bootdevice/by-name/cust
     exec /system/bin/e2fsck -y /dev/block/bootdevice/by-name/cust
