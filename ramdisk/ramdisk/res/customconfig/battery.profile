@@ -61,6 +61,7 @@ cpus_boosted_time=750
 eco_mode=eco_boost
 min_online_cpus=1
 fast_lane_load=180
+bricked_profile=stock
 gpu_governor=msm-adreno-tz
 max_freq=462400000
 min_freq=100000000
