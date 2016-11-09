@@ -107,6 +107,7 @@ max_cpu_percentage=5
 max_cpu_percentage_sleep=1
 reset_battery=on
 selinux_control=off
+kcal_profile=stock
 lm3697_backlight_control=on
 lm3697_min_backlight=2
 lm3697_max_backlight=1892

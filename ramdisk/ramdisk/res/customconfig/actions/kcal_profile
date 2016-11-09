@@ -1,0 +1,59 @@
+#!/sbin/busybox sh
+
+# $1 - "kcal_profile"
+# $2 - value=
+# Created By Dorimanx
+
+if [ "a$2" != "a" ]; then
+	kcal_profile=$2;
+
+	case "${kcal_profile}" in
+		stock)
+			echo "256 256 256" > /sys/devices/platform/kcal_ctrl.0/kcal
+			echo "255" > /sys/devices/platform/kcal_ctrl.0/kcal_sat
+			echo "255" > /sys/devices/platform/kcal_ctrl.0/kcal_val
+			echo "255" > /sys/devices/platform/kcal_ctrl.0/kcal_cont
+			echo "0" > /sys/devices/platform/kcal_ctrl.0/kcal_hue
+		;;
+		franco)
+			echo "232 237 256" > /sys/devices/platform/kcal_ctrl.0/kcal
+			echo "300" > /sys/devices/platform/kcal_ctrl.0/kcal_sat
+			echo "255" > /sys/devices/platform/kcal_ctrl.0/kcal_val
+			echo "255" > /sys/devices/platform/kcal_ctrl.0/kcal_cont
+			echo "0" > /sys/devices/platform/kcal_ctrl.0/kcal_hue
+		;;
+		deepblackcolourful)
+			echo "230 232 255" > /sys/devices/platform/kcal_ctrl.0/kcal
+			echo "274" > /sys/devices/platform/kcal_ctrl.0/kcal_sat
+			echo "247" > /sys/devices/platform/kcal_ctrl.0/kcal_val
+			echo "268" > /sys/devices/platform/kcal_ctrl.0/kcal_cont
+			echo "0" > /sys/devices/platform/kcal_ctrl.0/kcal_hue
+		;;
+		grandextremecool)
+			echo "217 215 255" > /sys/devices/platform/kcal_ctrl.0/kcal
+			echo "256" > /sys/devices/platform/kcal_ctrl.0/kcal_sat
+			echo "253" > /sys/devices/platform/kcal_ctrl.0/kcal_val
+			echo "250" > /sys/devices/platform/kcal_ctrl.0/kcal_cont
+			echo "0" > /sys/devices/platform/kcal_ctrl.0/kcal_hue
+		;;
+		wrinklefree)
+			echo "250 250 255" > /sys/devices/platform/kcal_ctrl.0/kcal
+			echo "245" > /sys/devices/platform/kcal_ctrl.0/kcal_sat
+			echo "251" > /sys/devices/platform/kcal_ctrl.0/kcal_val
+			echo "256" > /sys/devices/platform/kcal_ctrl.0/kcal_cont
+			echo "1515" > /sys/devices/platform/kcal_ctrl.0/kcal_hue
+		;;
+		wrinklefreecool)
+			echo "232 228 255" > /sys/devices/platform/kcal_ctrl.0/kcal
+			echo "251" > /sys/devices/platform/kcal_ctrl.0/kcal_sat
+			echo "254" > /sys/devices/platform/kcal_ctrl.0/kcal_val
+			echo "256" > /sys/devices/platform/kcal_ctrl.0/kcal_cont
+			echo "1515" > /sys/devices/platform/kcal_ctrl.0/kcal_hue
+		;;
+		*)
+			kcal_profile=stock;
+		;;
+	esac;
+fi;
+echo ${kcal_profile};
+

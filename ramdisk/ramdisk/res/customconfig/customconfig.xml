@@ -898,6 +898,20 @@
 
 	</settingsPane>
 
+	<settingsPane description="Here you can set profile for screen colour control." name="KCAL Profile">
+
+		<spinner description="Select a preset profile." name="Kcal available profile"
+			action="kcal_profile">
+			<spinnerItem name="Stock" value="stock"/> 
+			<spinnerItem name="Franco" value="franco"/> 
+			<spinnerItem name="Deep Black Clourful" value="deepblackcolourful"/> 
+			<spinnerItem name="Grand Extreme Cool" value="grandextremecool"/> 
+			<spinnerItem name="Wrinkle Free" value="wrinklefree"/> 
+			<spinnerItem name="Wrinkle Free Cool" value="wrinklefreecool"/> 
+		</spinner>
+
+	</settingsPane>
+
 	<settingsPane description="Customize Auto Backlight Driver settings." name="min/max Backlight Control">
 
 		<checkbox description="Enable Minimum/Maximum Backlight Override." name="min/max Backlight Override"
