@@ -14,6 +14,7 @@ cpu0_interactive_profile=off
 cpu1_interactive_profile=off
 cpu2_interactive_profile=off
 cpu3_interactive_profile=off
+cpu_zzmoove_profile=cus
 input_boost_enabled=on
 cpu_boost_freq=1267200
 sync_threshold_freq=883200

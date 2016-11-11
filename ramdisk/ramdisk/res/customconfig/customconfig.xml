@@ -239,6 +239,26 @@
 
 	</settingsPane>
 
+	<settingsPane description="Select ZZMoove Profile if you selected as CPU Governor." name="ZZMoove CPU Governor Profile">
+
+		<spinner description="Select a Profile." name="ZZMoove Profile"
+			action="cpu_zzmoove_profile">
+			<spinnerItem name="Custom" value="cus"/> 
+			<spinnerItem name="Default" value="def"/> 
+			<spinnerItem name="Yank Battery" value="ybat"/>
+			<spinnerItem name="Yank Battery Extreme " value="ybatext"/> 
+			<spinnerItem name="ZaneZam Battery" value="zzbat"/> 
+			<spinnerItem name="ZaneZam Battery Plus" value="zzbatp"/> 
+			<spinnerItem name="ZaneZam Optimized" value="zzopt"/>
+			<spinnerItem name="ZaneZam Moderate" value="zzmod"/>
+			<spinnerItem name="ZaneZam Performance" value="zzperf"/>
+			<spinnerItem name="ZaneZam Inzane" value="zzinz"/>
+			<spinnerItem name="ZaneZam Game" value="zzgame"/>
+			<spinnerItem name="ZaneZam Relax" value="zzrelax"/>
+		</spinner>
+
+	</settingsPane>
+
 	<settingsPane description="Customize the Touch Boost Control settings. Touch Boost means, the CPU frequency is boosted to a higher level when the touch screen is being used. It gives smoother UI, in exchange consumes slightly more power." name="Touch Boost Controls">
 
 		<checkbox description="Enable/Disable cpu boost ability." name="CPU Boost on/off"

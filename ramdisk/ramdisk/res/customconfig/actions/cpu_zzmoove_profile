@@ -1,0 +1,83 @@
+#!/sbin/busybox sh
+
+# $1 - "cpu_zzmoove_profile"
+# $2 - value=
+# Created By Dorimanx
+
+BB=/sbin/busybox
+
+# get values from profile
+PROFILE=$(cat /data/.gabriel/.active.profile);
+. /data/.gabriel/"$PROFILE".profile;
+
+if [ "a$2" != "a" ]; then
+	cpu_zzmoove_profile=$2;
+
+	case "${cpu_zzmoove_profile}" in
+		cus)
+			if [ -f /sys/devices/system/cpu/cpufreq/zzmoove/profile_number]; then
+				echo 0 > /sys/devices/system/cpu/cpufreq/zzmoove/profile_number
+			fi;
+		;;
+		def)
+			if [ -f /sys/devices/system/cpu/cpufreq/zzmoove/profile_number]; then
+				echo 1 > /sys/devices/system/cpu/cpufreq/zzmoove/profile_number
+			fi;
+		;;
+		ybat)
+			if [ -f /sys/devices/system/cpu/cpufreq/zzmoove/profile_number]; then
+				echo 2 > /sys/devices/system/cpu/cpufreq/zzmoove/profile_number
+			fi;
+		;;
+		ybatext)
+			if [ -f /sys/devices/system/cpu/cpufreq/zzmoove/profile_number]; then
+				echo 3 > /sys/devices/system/cpu/cpufreq/zzmoove/profile_number
+			fi;
+		;;
+		zzbat)
+			if [ -f /sys/devices/system/cpu/cpufreq/zzmoove/profile_number]; then
+				echo 4 > /sys/devices/system/cpu/cpufreq/zzmoove/profile_number
+			fi;
+		;;
+		zzbatp)
+			if [ -f /sys/devices/system/cpu/cpufreq/zzmoove/profile_number]; then
+				echo 5 > /sys/devices/system/cpu/cpufreq/zzmoove/profile_number
+			fi;
+		;;
+		zzopt)
+			if [ -f /sys/devices/system/cpu/cpufreq/zzmoove/profile_number]; then
+				echo 6 > /sys/devices/system/cpu/cpufreq/zzmoove/profile_number
+			fi;
+		;;
+		zzmod)
+			if [ -f /sys/devices/system/cpu/cpufreq/zzmoove/profile_number]; then
+				echo 7 > /sys/devices/system/cpu/cpufreq/zzmoove/profile_number
+			fi;
+		;;
+		zzperf)
+			if [ -f /sys/devices/system/cpu/cpufreq/zzmoove/profile_number]; then
+				echo 8 > /sys/devices/system/cpu/cpufreq/zzmoove/profile_number
+			fi;
+		;;
+		zzinz)
+			if [ -f /sys/devices/system/cpu/cpufreq/zzmoove/profile_number]; then
+				echo 9 > /sys/devices/system/cpu/cpufreq/zzmoove/profile_number
+			fi;
+		;;
+		zzgame)
+			if [ -f /sys/devices/system/cpu/cpufreq/zzmoove/profile_number]; then
+				echo 10 > /sys/devices/system/cpu/cpufreq/zzmoove/profile_number
+			fi;
+		;;
+		zzrelax)
+			if [ -f /sys/devices/system/cpu/cpufreq/zzmoove/profile_number]; then
+				echo 11 > /sys/devices/system/cpu/cpufreq/zzmoove/profile_number
+			fi;
+		;;
+		*)
+			cpu_zzmoove_profile=cus;
+		;;
+	esac;
+fi;
+
+echo ${cpu_zzmoove_profile};
