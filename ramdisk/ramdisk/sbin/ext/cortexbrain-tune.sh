@@ -367,6 +367,106 @@ SWAPPINESS()
 	return 1;
 }
 
+D_BACK_RATIO()
+{
+	local state="$1";
+	local sys_d_back_ratio="/proc/sys/vm/dirty_background_ratio";
+
+	if [ -e $sys_d_back_ratio ]; then
+		if [ "$state" == "awake" ]; then
+			echo "$dirty_background_ratio" > $sys_d_back_ratio;
+		elif [ "$state" == "sleep" ]; then
+			echo "$dirty_background_ratio_sleep" > $sys_d_back_ratio;
+		fi;
+
+		log -p i -t $FILE_NAME "*** Dirty Background Ratio: $state ***";
+
+		return 0;
+	fi;
+
+	return 1;
+}
+
+D_RATIO()
+{
+	local state="$1";
+	local sys_d_ratio="/proc/sys/vm/dirty_ratio";
+
+	if [ -e $sys_d_ratio ]; then
+		if [ "$state" == "awake" ]; then
+			echo "$dirty_ratio" > $sys_d_ratio;
+		elif [ "$state" == "sleep" ]; then
+			echo "$dirty_ratio_sleep" > $sys_d_ratio;
+		fi;
+
+		log -p i -t $FILE_NAME "*** Dirty Ratio: $state ***";
+
+		return 0;
+	fi;
+
+	return 1;
+}
+
+D_EXP_CEN()
+{
+	local state="$1";
+	local sys_d_exp_cen="/proc/sys/vm/dirty_expire_centisecs";
+
+	if [ -e $sys_d_exp_cen ]; then
+		if [ "$state" == "awake" ]; then
+			echo "$dirty_expire_centisecs" > $sys_d_exp_cen;
+		elif [ "$state" == "sleep" ]; then
+			echo "$dirty_expire_centisecs_sleep" > $sys_d_exp_cen;
+		fi;
+
+		log -p i -t $FILE_NAME "*** Dirty Expire Centisecs: $state ***";
+
+		return 0;
+	fi;
+
+	return 1;
+}
+
+D_WRB_CEN()
+{
+	local state="$1";
+	local sys_d_wrb_cen="/proc/sys/vm/dirty_writeback_centisecs";
+
+	if [ -e $sys_d_wrb_cen ]; then
+		if [ "$state" == "awake" ]; then
+			echo "$dirty_writeback_centisecs" > $sys_d_wrb_cen;
+		elif [ "$state" == "sleep" ]; then
+			echo "$dirty_writeback_centisecs_sleep" > $sys_d_wrb_cen;
+		fi;
+
+		log -p i -t $FILE_NAME "*** Dirty Writeback Centisecs: $state ***";
+
+		return 0;
+	fi;
+
+	return 1;
+}
+
+MIN_F_KB()
+{
+	local state="$1";
+	local sys_min_f_kb="/proc/sys/vm/min_free_kbytes";
+
+	if [ -e $sys_min_f_kb ]; then
+		if [ "$state" == "awake" ]; then
+			echo "$min_free_kbytes" > $sys_min_f_kb;
+		elif [ "$state" == "sleep" ]; then
+			echo "$min_free_kbytes_sleep" > $sys_min_f_kb;
+		fi;
+
+		log -p i -t $FILE_NAME "*** Min Free kbytes: $state ***";
+
+		return 0;
+	fi;
+
+	return 1;
+}
+
 NET()
 {
 	local state="$1";
@@ -1057,6 +1157,11 @@ AWAKE_MODE()
 		WIFI "awake";
 		VFS_CACHE_PRESSURE "awake";
 		SWAPPINESS "awake";
+		D_BACK_RATIO "awake";
+		D_RATIO "awake";
+		D_EXP_CEN "awake";
+		D_WRB_CEN "awake";
+		MIN_F_KB "awake";
 		NET "awake";
 		PROCESS_RECLAIM_AUTO "awake";
 		DROP_CACHE_AUTO "awake";
@@ -1111,6 +1216,11 @@ SLEEP_MODE()
 		MOBILE_DATA "sleep";
 		VFS_CACHE_PRESSURE "sleep";
 		SWAPPINESS "sleep";
+		D_BACK_RATIO "sleep";
+		D_RATIO "sleep";
+		D_EXP_CEN "sleep";
+		D_WRB_CEN "sleep";
+		MIN_F_KB "sleep";
 		NET "sleep";
 		PROCESS_RECLAIM_AUTO "sleep";
 		DROP_CACHE_AUTO "sleep";
