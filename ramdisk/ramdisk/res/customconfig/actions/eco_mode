@@ -14,6 +14,7 @@ if [ "a$2" != "a" ]; then
 			echo "4" > /sys/kernel/alucard_hotplug/maxcoreslimit;
 			echo "4" > /sys/kernel/thunderplug/max_core_online;
 			echo "4" > /sys/kernel/msm_mpdecision/conf/max_cpus_online;
+			echo "4" > /sys/devices/system/cpu/cpufreq/zzmoove/hotplug_min_limit;
 		;;
 		eco_boost)
 			echo "3" > /sys/kernel/intelli_plug/max_cpus_online;
@@ -21,6 +22,7 @@ if [ "a$2" != "a" ]; then
 			echo "3" > /sys/kernel/alucard_hotplug/maxcoreslimit;
 			echo "3" > /sys/kernel/thunderplug/max_core_online;
 			echo "3" > /sys/kernel/msm_mpdecision/conf/max_cpus_online;
+			echo "3" > /sys/devices/system/cpu/cpufreq/zzmoove/hotplug_min_limit;
 		;;
 		eco)
 			echo "2" > /sys/kernel/intelli_plug/max_cpus_online;
@@ -28,6 +30,7 @@ if [ "a$2" != "a" ]; then
 			echo "2" > /sys/kernel/alucard_hotplug/maxcoreslimit;
 			echo "2" > /sys/kernel/thunderplug/max_core_online;
 			echo "2" > /sys/kernel/msm_mpdecision/conf/max_cpus_online;
+			echo "2" > /sys/devices/system/cpu/cpufreq/zzmoove/hotplug_min_limit;
 		;;
 		strict)
 			echo "1" > /sys/kernel/intelli_plug/max_cpus_online;
@@ -35,6 +38,7 @@ if [ "a$2" != "a" ]; then
 			echo "1" > /sys/kernel/alucard_hotplug/maxcoreslimit;
 			echo "1" > /sys/kernel/thunderplug/max_core_online;
 			echo "1" > /sys/kernel/msm_mpdecision/conf/max_cpus_online;
+			echo "1" > /sys/devices/system/cpu/cpufreq/zzmoove/hotplug_min_limit;
 		;;
 		*)
 			eco_mode=all;

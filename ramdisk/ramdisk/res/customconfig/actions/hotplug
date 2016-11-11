@@ -25,6 +25,7 @@ if [ "a$2" != "a" ]; then
 			echo "0" > /sys/kernel/thunderplug/hotplug_enabled;
 			echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/bricked_hotplug_enable;
 			echo "0" > /sys/kernel/msm_mpdecision/conf/enabled;
+			echo "1" > /sys/devices/system/cpu/cpufreq/zzmoove/disable_hotplug;
 			(
 				sleep 2;
 				echo "1" > /sys/kernel/intelli_plug/intelli_plug_active;
@@ -43,6 +44,7 @@ if [ "a$2" != "a" ]; then
 			echo "0" > /sys/kernel/thunderplug/hotplug_enabled;
 			echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/bricked_hotplug_enable;
 			echo "0" > /sys/kernel/msm_mpdecision/conf/enabled;
+			echo "1" > /sys/devices/system/cpu/cpufreq/zzmoove/disable_hotplug;
 			(
 				sleep 2;
 				echo "1" > /sys/module/msm_hotplug/msm_enabled;
@@ -61,6 +63,7 @@ if [ "a$2" != "a" ]; then
 			echo "0" > /sys/kernel/thunderplug/hotplug_enabled;
 			echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/bricked_hotplug_enable;
 			echo "0" > /sys/kernel/msm_mpdecision/conf/enabled;
+			echo "1" > /sys/devices/system/cpu/cpufreq/zzmoove/disable_hotplug;
 			(
 				sleep 2;
 				echo "1" > /sys/kernel/alucard_hotplug/hotplug_enable;
@@ -79,6 +82,7 @@ if [ "a$2" != "a" ]; then
 			echo "0" > /sys/module/msm_hotplug/msm_enabled;
 			echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/bricked_hotplug_enable;
 			echo "0" > /sys/kernel/msm_mpdecision/conf/enabled;
+			echo "1" > /sys/devices/system/cpu/cpufreq/zzmoove/disable_hotplug;
 			(
 				sleep 2;
 				echo "1" > /sys/kernel/thunderplug/hotplug_enabled;
@@ -96,12 +100,32 @@ if [ "a$2" != "a" ]; then
 			echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable;
 			echo "0" > /sys/module/msm_hotplug/msm_enabled;
 			echo "0" > /sys/kernel/thunderplug/hotplug_enabled;
+			echo "1" > /sys/devices/system/cpu/cpufreq/zzmoove/disable_hotplug;
 			(
 				sleep 2;
 				echo "1" > /sys/devices/system/cpu/cpu0/rq-stats/bricked_hotplug_enable;
 				sleep 2;
 				echo "1" > /sys/kernel/msm_mpdecision/conf/enabled;
 				echo "$min_online_cpus" > /sys/kernel/msm_mpdecision/conf/min_cpus_online;
+				if [ -e /res/uci_boot.sh ]; then
+					$BB sh /res/uci_boot.sh eco_mode "$eco_mode";
+				else
+					$BB sh /res/uci.sh eco_mode "$eco_mode";
+				fi;
+			)&
+		;;
+		zzmoove)
+			echo "0" > /sys/kernel/intelli_plug/intelli_plug_active;
+			echo "0" > /sys/kernel/alucard_hotplug/hotplug_enable;
+			echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable;
+			echo "0" > /sys/module/msm_hotplug/msm_enabled;
+			echo "0" > /sys/kernel/thunderplug/hotplug_enabled;
+			echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/bricked_hotplug_enable;
+			echo "0" > /sys/kernel/msm_mpdecision/conf/enabled;
+			(
+				sleep 2;
+				echo "0" > /sys/devices/system/cpu/cpufreq/zzmoove/disable_hotplug;
+				echo "$min_online_cpus" > /sys/devices/system/cpu/cpufreq/zzmoove/hotplug_min_limit;
 				if [ -e /res/uci_boot.sh ]; then
 					$BB sh /res/uci_boot.sh eco_mode "$eco_mode";
 				else

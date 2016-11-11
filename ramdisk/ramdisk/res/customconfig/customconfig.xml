@@ -572,6 +572,7 @@
 			<spinnerItem name="Thunder HotPlug" value="thunderplug"/> 
 			<spinnerItem name="Intelligent HotPlug" value="intelli"/> 
 			<spinnerItem name="Bricked Hotplug" value="bricked"/> 
+			<spinnerItem name="ZZMoove Hotplug" value="zzmoove"/> 
 		</spinner>
 
 		<seekBar description="Set the HotPlug Sample Rate. It determines how often the driver refreshes the CPU load calculation. Lower time have more refined and accurate hotplugging, but also causes a slightly higher power consumption. For battery save, it's recommended to set the same value, as is in MASTER CORE tab in CPU Power Controls section. Note that 10 here is 10000 for CPU governor. For best performance, set in range from 10 to 30 (Default: 20)." name="CPU HotPlug Sample Rate"
