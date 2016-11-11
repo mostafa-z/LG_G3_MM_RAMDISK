@@ -40,6 +40,7 @@ cpu2_min_freq=300000
 cpu3_min_freq=300000
 suspend_max_freq=1958400
 suspend_min_freq=300000
+cpu_undervolt=0
 msm_thermal=intelli_temp
 limit_temp_degC=72
 freq_step=2
