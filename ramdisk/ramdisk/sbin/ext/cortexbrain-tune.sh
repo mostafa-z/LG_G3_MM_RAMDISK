@@ -1145,7 +1145,6 @@ AWAKE_MODE()
 {
 	CPU_CENTRAL_CONTROL "awake";
 	HOTPLUG_CONTROL;
-	CPU_MIN_POLICY;
 
 	if [ "$(cat /data/gabriel_cortex_sleep)" -eq "1" ]; then
 		IO_SCHEDULER "awake";
@@ -1169,8 +1168,9 @@ AWAKE_MODE()
 		PROCESS_RECLAIM;
 		FS_TRIM;
 		echo "0" > /data/gabriel_cortex_sleep;
-		log -p i -t "$FILE_NAME" "*** AWAKE_MODE - WAKEUP ***: done";
+		CPU_MIN_POLICY;
 
+		log -p i -t "$FILE_NAME" "*** AWAKE_MODE - WAKEUP ***: done";
 	else
 		log -p i -t "$FILE_NAME" "*** AWAKE_MODE - WAS NOT SLEEPING ***: done";
 	fi;
@@ -1197,7 +1197,6 @@ SLEEP_MODE()
 
 	CHARGER_STATE=$(cat /sys/class/power_supply/battery/charging_enabled);
 
-	CPU_MIN_POLICY;
 	CLEAN_CACHE;
 	PROCESS_RECLAIM;
 	FS_TRIM;
@@ -1225,6 +1224,7 @@ SLEEP_MODE()
 		PROCESS_RECLAIM_AUTO "sleep";
 		DROP_CACHE_AUTO "sleep";
 		echo "1" > /data/gabriel_cortex_sleep;
+		CPU_MIN_POLICY;
 
 		log -p i -t "$FILE_NAME" "*** SLEEP mode ***";
 	else
