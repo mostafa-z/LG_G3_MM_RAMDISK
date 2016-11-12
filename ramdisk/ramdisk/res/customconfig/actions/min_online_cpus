@@ -4,7 +4,6 @@
 # $2 - value=
 # Created By Dorimanx
 
-
 if [ "a$2" != "a" ]; then
 	min_online_cpus=$2;
 
