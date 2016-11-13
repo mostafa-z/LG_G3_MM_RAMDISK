@@ -1163,6 +1163,8 @@
 
 		<button description="Extreme Battery Save" name="Extreme Battery Save Profile" action="push-actions/config_backup_restore 6" label="Extreme Battery"/>
 
+		<button description="Gabriel" name="Gabriel Profile" action="push-actions/config_backup_restore 8" label="Gabriel"/>
+
 	</settingsPane>
 
 	<settingsPane description="Backup or restore current profile after installing or updating kernel. Some settings will work only after reboot." name="Profile Backup or Restore">

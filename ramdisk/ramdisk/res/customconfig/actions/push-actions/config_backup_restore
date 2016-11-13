@@ -131,6 +131,15 @@ case "${config_backup_restore}" in
 			RELOAD_STWEAKS;
 		)&
 	;;
+	8)
+		(
+			$BB cp -a /res/customconfig/gabriel.profile /data/.gabriel/;
+			echo "gabriel" > /data/.gabriel/.active.profile;
+			echo "Restoring gabriel config file, wait until app reloads.";
+			$BB sh /res/uci.sh apply > /dev/null;
+			RELOAD_STWEAKS;
+		)&
+	;;
 	*)
 		echo "need input";
 	;;
