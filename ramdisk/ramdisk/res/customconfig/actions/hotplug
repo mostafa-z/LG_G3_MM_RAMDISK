@@ -125,6 +125,7 @@ if [ "a$2" != "a" ]; then
 			(
 				sleep 2;
 				echo "0" > /sys/devices/system/cpu/cpufreq/zzmoove/disable_hotplug;
+				sleep 1;
 				echo "$min_online_cpus" > /sys/devices/system/cpu/cpufreq/zzmoove/hotplug_min_limit;
 				if [ -e /res/uci_boot.sh ]; then
 					$BB sh /res/uci_boot.sh eco_mode "$eco_mode";

@@ -12,7 +12,9 @@ if [ "a$2" != "a" ]; then
 	default_cpu0_gov=$2;
 
 	echo "$default_cpu0_gov" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor;
+	sleep 2;
 	echo "$cpu_zzmoove_profile" > /sys/devices/system/cpu/cpufreq/zzmoove/profile_number;
+	sleep 2;
 	echo "$min_online_cpus" > /sys/devices/system/cpu/cpufreq/zzmoove/hotplug_min_limit;
 	echo "$eco_mode" > /sys/devices/system/cpu/cpufreq/zzmoove/hotplug_max_limit;
 	if [ -e /res/uci_boot.sh ]; then
