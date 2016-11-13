@@ -62,6 +62,7 @@ cpus_boosted_time=1000
 eco_mode=all
 min_online_cpus=1
 fast_lane_load=100
+fast_lane_load_sleep=180
 bricked_profile=stock
 gpu_governor=simple_ondemand
 max_freq=578000000

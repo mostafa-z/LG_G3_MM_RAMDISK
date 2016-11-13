@@ -1026,6 +1026,26 @@ SLEEP_HOTPLUG_CONTROL()
 	log -p i -t "$FILE_NAME" "*** SLEEP_HOTPLUG_CONTROL $state ***: done";
 }
 
+MSM_HP_FLL()
+{
+	local state="$1";
+	local sys_msm_hp_fll="/sys/module/msm_hotplug/fast_lane_load";
+
+	if [ -e $sys_msm_hp_fll ]; then
+		if [ "$state" == "awake" ]; then
+			echo "$fast_lane_load" > $sys_msm_hp_fll;
+		elif [ "$state" == "sleep" ]; then
+			echo "$fast_lane_load_sleep" > $sys_msm_hp_fll;
+		fi;
+
+		log -p i -t $FILE_NAME "*** MSM HP FLL: $state ***";
+
+		return 0;
+	fi;
+
+	return 1;
+}
+
 DROP_CACHE_AUTO()
 {
 	local state="$1";
@@ -1150,6 +1170,7 @@ AWAKE_MODE()
 		IO_SCHEDULER "awake";
 		SLEEP_GOV_CONTROL "awake";
 		SLEEP_HOTPLUG_CONTROL "awake";
+		MSM_HP_FLL "awake";
 		WORKQUEUE_CONTROL "awake";
 		UKSM_CONTROL "awake";
 		MOBILE_DATA "awake";
@@ -1208,6 +1229,7 @@ SLEEP_MODE()
 		IO_SCHEDULER "sleep";
 		SLEEP_GOV_CONTROL "sleep";
 		SLEEP_HOTPLUG_CONTROL "sleep";
+		MSM_HP_FLL "sleep";
 		CPU_CENTRAL_CONTROL "sleep";
 		WORKQUEUE_CONTROL "sleep";
 		UKSM_CONTROL "sleep";

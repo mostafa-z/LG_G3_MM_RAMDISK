@@ -618,8 +618,11 @@
 
 	<settingsPane description="only available if MSM Hotplug selected." name="MSM HotPlug Tuning">
 
-		<seekBar description="putting online all cores if current load is above this threshold, default developer's value is 180 and can be over 200." name="Fast Lane Load"
-			action="generic /sys/module/msm_hotplug/fast_lane_load" unit="rate" min="0" reversed="false" step="10" max="400"/>
+		<seekBar description="putting online all cores if current load is above this threshold, default developer's value is 180 and can be over 200. Higher value means putting online cores later" name="Fast Lane Load"
+			action="generic /sys/module/msm_hotplug/fast_lane_load" unit="rate" min="0" reversed="false" step="5" max="400"/>
+
+		<seekBar description="Set the MSM HotPlug fast lane load for Sleep mode (Default: 180)." name="Sleep MSM HotPlug FLL"
+			action="generic_cortex /tmp/fast_lane_load_sleep" unit="rate" min="0" reversed="false" step="5" max="400"/>
 
 	</settingsPane>
 
