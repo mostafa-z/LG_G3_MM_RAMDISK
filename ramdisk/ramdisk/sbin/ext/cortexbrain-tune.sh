@@ -794,126 +794,130 @@ CPU_CENTRAL_CONTROL()
 
 HOTPLUG_CONTROL()
 {
-	if [ "$(pgrep -f "/system/bin/thermal-engine" | wc -l)" -eq "1" ]; then
-		$BB renice -n -20 -p "$(pgrep -f "/system/bin/thermal-engine")";
-	fi;
+	if [ "$cortexbrain_hotplug" == "on" ]; then
+		if [ "$(pgrep -f "/system/bin/thermal-engine" | wc -l)" -eq "1" ]; then
+			$BB renice -n -20 -p "$(pgrep -f "/system/bin/thermal-engine")";
+		fi;
 
-	if [ "$hotplug" == "msm_hotplug" ]; then
-		if [ "$(cat /sys/kernel/intelli_plug/intelli_plug_active)" -eq "1" ]; then
-			echo "0" > /sys/kernel/intelli_plug/intelli_plug_active;
+		if [ "$hotplug" == "msm_hotplug" ]; then
+			if [ "$(cat /sys/kernel/intelli_plug/intelli_plug_active)" -eq "1" ]; then
+				echo "0" > /sys/kernel/intelli_plug/intelli_plug_active;
+			fi;
+			if [ "$(cat /sys/kernel/alucard_hotplug/hotplug_enable)" -eq "1" ]; then
+				echo "0" > /sys/kernel/alucard_hotplug/hotplug_enable;
+			fi;
+			if [ "$(cat /sys/kernel/thunderplug/hotplug_enabled)" == "1" ]; then
+				echo "0" > /sys/kernel/thunderplug/hotplug_enabled;
+			fi;
+			if [ "$(cat /sys/kernel/msm_mpdecision/conf/enabled)" == "1" ]; then
+				echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/bricked_hotplug_enable;
+				echo "0" > /sys/kernel/msm_mpdecision/conf/enabled;
+			fi;
+			if [ "$(cat /sys/module/msm_hotplug/msm_enabled)" -eq "0" ]; then
+				(
+					sleep 1;
+					echo "1" > /sys/module/msm_hotplug/msm_enabled;
+				)&
+			fi;
+			if [ "$(cat /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable)" -eq "1" ]; then
+				echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable;
+			fi;
+		elif [ "$hotplug" == "intelli" ]; then
+			if [ "$(cat /sys/kernel/alucard_hotplug/hotplug_enable)" -eq "1" ]; then
+				echo "0" > /sys/kernel/alucard_hotplug/hotplug_enable;
+			fi;
+			if [ "$(cat /sys/module/msm_hotplug/msm_enabled)" -eq "1" ]; then
+				echo "0" > /sys/module/msm_hotplug/msm_enabled;
+			fi;
+			if [ "$(cat /sys/kernel/thunderplug/hotplug_enabled)" == "1" ]; then
+				echo "0" > /sys/kernel/thunderplug/hotplug_enabled;
+			fi;
+			if [ "$(cat /sys/kernel/msm_mpdecision/conf/enabled)" == "1" ]; then
+				echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/bricked_hotplug_enable;
+				echo "0" > /sys/kernel/msm_mpdecision/conf/enabled;
+			fi;
+			if [ "$(cat /sys/kernel/intelli_plug/intelli_plug_active)" -eq "0" ]; then
+				(
+					sleep 1;
+					echo "1" > /sys/kernel/intelli_plug/intelli_plug_active;
+				)&
+			fi;
+			if [ "$(cat /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable)" -eq "1" ]; then
+				echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable;
+			fi;
+		elif [ "$hotplug" == "alucard" ]; then
+			if [ "$(cat /sys/kernel/intelli_plug/intelli_plug_active)" -eq "1" ]; then
+				echo "0" > /sys/kernel/intelli_plug/intelli_plug_active;
+			fi;
+			if [ "$(cat /sys/module/msm_hotplug/msm_enabled)" -eq "1" ]; then
+				echo "0" > /sys/module/msm_hotplug/msm_enabled;
+			fi;
+			if [ "$(cat /sys/kernel/thunderplug/hotplug_enabled)" == "1" ]; then
+				echo "0" > /sys/kernel/thunderplug/hotplug_enabled;
+			fi;
+			if [ "$(cat /sys/kernel/msm_mpdecision/conf/enabled)" == "1" ]; then
+				echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/bricked_hotplug_enable;
+				echo "0" > /sys/kernel/msm_mpdecision/conf/enabled;
+			fi;
+			if [ "$(cat /sys/kernel/alucard_hotplug/hotplug_enable)" -eq "0" ]; then
+				(
+					sleep 1;
+					echo "1" > /sys/kernel/alucard_hotplug/hotplug_enable;
+				)&
+			fi;
+			if [ "$(cat /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable)" -eq "1" ]; then
+				echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable;
+			fi;
+		elif [ "$hotplug" == "thunderplug" ]; then
+			if [ "$(cat /sys/kernel/intelli_plug/intelli_plug_active)" -eq "1" ]; then
+				echo "0" > /sys/kernel/intelli_plug/intelli_plug_active;
+			fi;
+			if [ "$(cat /sys/module/msm_hotplug/msm_enabled)" -eq "1" ]; then
+				echo "0" > /sys/module/msm_hotplug/msm_enabled;
+			fi;
+			if [ "$(cat /sys/kernel/alucard_hotplug/hotplug_enable)" -eq "1" ]; then
+				echo "0" > /sys/kernel/alucard_hotplug/hotplug_enable;
+			fi;
+			if [ "$(cat /sys/kernel/msm_mpdecision/conf/enabled)" == "1" ]; then
+				echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/bricked_hotplug_enable;
+				echo "0" > /sys/kernel/msm_mpdecision/conf/enabled;
+			fi;
+			if [ "$(cat /sys/kernel/thunderplug/hotplug_enabled)" == "0" ]; then
+				(
+					sleep 1;
+					echo "1" > /sys/kernel/thunderplug/hotplug_enabled;
+				)&
+			fi;
+			if [ "$(cat /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable)" -eq "1" ]; then
+				echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable;
+			fi;
+		elif [ "$hotplug" == "bricked" ]; then
+			if [ "$(cat /sys/kernel/intelli_plug/intelli_plug_active)" -eq "1" ]; then
+				echo "0" > /sys/kernel/intelli_plug/intelli_plug_active;
+			fi;
+			if [ "$(cat /sys/module/msm_hotplug/msm_enabled)" -eq "1" ]; then
+				echo "0" > /sys/module/msm_hotplug/msm_enabled;
+			fi;
+			if [ "$(cat /sys/kernel/alucard_hotplug/hotplug_enable)" -eq "1" ]; then
+				echo "0" > /sys/kernel/alucard_hotplug/hotplug_enable;
+			fi;
+			if [ "$(cat /sys/kernel/thunderplug/hotplug_enabled)" == "1" ]; then
+				echo "0" > /sys/kernel/thunderplug/hotplug_enabled;
+			fi;
+			if [ "$(cat /sys/kernel/msm_mpdecision/conf/enabled)" == "0" ]; then
+				(
+					sleep 1;
+					echo "1" > /sys/devices/system/cpu/cpu0/rq-stats/bricked_hotplug_enable;
+					sleep 2;
+					echo "1" > /sys/kernel/msm_mpdecision/conf/enabled;
+				)&
+			fi;
+			if [ "$(cat /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable)" -eq "1" ]; then
+				echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable;
+			fi;
 		fi;
-		if [ "$(cat /sys/kernel/alucard_hotplug/hotplug_enable)" -eq "1" ]; then
-			echo "0" > /sys/kernel/alucard_hotplug/hotplug_enable;
-		fi;
-		if [ "$(cat /sys/kernel/thunderplug/hotplug_enabled)" == "1" ]; then
-			echo "0" > /sys/kernel/thunderplug/hotplug_enabled;
-		fi;
-		if [ "$(cat /sys/kernel/msm_mpdecision/conf/enabled)" == "1" ]; then
-			echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/bricked_hotplug_enable;
-			echo "0" > /sys/kernel/msm_mpdecision/conf/enabled;
-		fi;
-		if [ "$(cat /sys/module/msm_hotplug/msm_enabled)" -eq "0" ]; then
-			(
-				sleep 1;
-				echo "1" > /sys/module/msm_hotplug/msm_enabled;
-			)&
-		fi;
-		if [ "$(cat /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable)" -eq "1" ]; then
-			echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable;
-		fi;
-	elif [ "$hotplug" == "intelli" ]; then
-		if [ "$(cat /sys/kernel/alucard_hotplug/hotplug_enable)" -eq "1" ]; then
-			echo "0" > /sys/kernel/alucard_hotplug/hotplug_enable;
-		fi;
-		if [ "$(cat /sys/module/msm_hotplug/msm_enabled)" -eq "1" ]; then
-			echo "0" > /sys/module/msm_hotplug/msm_enabled;
-		fi;
-		if [ "$(cat /sys/kernel/thunderplug/hotplug_enabled)" == "1" ]; then
-			echo "0" > /sys/kernel/thunderplug/hotplug_enabled;
-		fi;
-		if [ "$(cat /sys/kernel/msm_mpdecision/conf/enabled)" == "1" ]; then
-			echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/bricked_hotplug_enable;
-			echo "0" > /sys/kernel/msm_mpdecision/conf/enabled;
-		fi;
-		if [ "$(cat /sys/kernel/intelli_plug/intelli_plug_active)" -eq "0" ]; then
-			(
-				sleep 1;
-				echo "1" > /sys/kernel/intelli_plug/intelli_plug_active;
-			)&
-		fi;
-		if [ "$(cat /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable)" -eq "1" ]; then
-			echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable;
-		fi;
-	elif [ "$hotplug" == "alucard" ]; then
-		if [ "$(cat /sys/kernel/intelli_plug/intelli_plug_active)" -eq "1" ]; then
-			echo "0" > /sys/kernel/intelli_plug/intelli_plug_active;
-		fi;
-		if [ "$(cat /sys/module/msm_hotplug/msm_enabled)" -eq "1" ]; then
-			echo "0" > /sys/module/msm_hotplug/msm_enabled;
-		fi;
-		if [ "$(cat /sys/kernel/thunderplug/hotplug_enabled)" == "1" ]; then
-			echo "0" > /sys/kernel/thunderplug/hotplug_enabled;
-		fi;
-		if [ "$(cat /sys/kernel/msm_mpdecision/conf/enabled)" == "1" ]; then
-			echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/bricked_hotplug_enable;
-			echo "0" > /sys/kernel/msm_mpdecision/conf/enabled;
-		fi;
-		if [ "$(cat /sys/kernel/alucard_hotplug/hotplug_enable)" -eq "0" ]; then
-			(
-				sleep 1;
-				echo "1" > /sys/kernel/alucard_hotplug/hotplug_enable;
-			)&
-		fi;
-		if [ "$(cat /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable)" -eq "1" ]; then
-			echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable;
-		fi;
-	elif [ "$hotplug" == "thunderplug" ]; then
-		if [ "$(cat /sys/kernel/intelli_plug/intelli_plug_active)" -eq "1" ]; then
-			echo "0" > /sys/kernel/intelli_plug/intelli_plug_active;
-		fi;
-		if [ "$(cat /sys/module/msm_hotplug/msm_enabled)" -eq "1" ]; then
-			echo "0" > /sys/module/msm_hotplug/msm_enabled;
-		fi;
-		if [ "$(cat /sys/kernel/alucard_hotplug/hotplug_enable)" -eq "1" ]; then
-			echo "0" > /sys/kernel/alucard_hotplug/hotplug_enable;
-		fi;
-		if [ "$(cat /sys/kernel/msm_mpdecision/conf/enabled)" == "1" ]; then
-			echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/bricked_hotplug_enable;
-			echo "0" > /sys/kernel/msm_mpdecision/conf/enabled;
-		fi;
-		if [ "$(cat /sys/kernel/thunderplug/hotplug_enabled)" == "0" ]; then
-			(
-				sleep 1;
-				echo "1" > /sys/kernel/thunderplug/hotplug_enabled;
-			)&
-		fi;
-		if [ "$(cat /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable)" -eq "1" ]; then
-			echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable;
-		fi;
-	elif [ "$hotplug" == "bricked" ]; then
-		if [ "$(cat /sys/kernel/intelli_plug/intelli_plug_active)" -eq "1" ]; then
-			echo "0" > /sys/kernel/intelli_plug/intelli_plug_active;
-		fi;
-		if [ "$(cat /sys/module/msm_hotplug/msm_enabled)" -eq "1" ]; then
-			echo "0" > /sys/module/msm_hotplug/msm_enabled;
-		fi;
-		if [ "$(cat /sys/kernel/alucard_hotplug/hotplug_enable)" -eq "1" ]; then
-			echo "0" > /sys/kernel/alucard_hotplug/hotplug_enable;
-		fi;
-		if [ "$(cat /sys/kernel/thunderplug/hotplug_enabled)" == "1" ]; then
-			echo "0" > /sys/kernel/thunderplug/hotplug_enabled;
-		fi;
-		if [ "$(cat /sys/kernel/msm_mpdecision/conf/enabled)" == "0" ]; then
-			(
-				sleep 1;
-				echo "1" > /sys/devices/system/cpu/cpu0/rq-stats/bricked_hotplug_enable;
-				sleep 2;
-				echo "1" > /sys/kernel/msm_mpdecision/conf/enabled;
-			)&
-		fi;
-		if [ "$(cat /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable)" -eq "1" ]; then
-			echo "0" > /sys/devices/system/cpu/cpu0/rq-stats/hotplug_enable;
-		fi;
+	else
+		log -p i -t "$FILE_NAME" "*** HOTPLUG_CONTROL IS OFF***";
 	fi;
 }
 

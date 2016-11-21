@@ -53,6 +53,7 @@ core_control=0
 core_mask=2
 core_limit_temp_degC=80
 core_temp_hysteresis_degC=5
+cortexbrain_hotplug=on
 hotplug=msm_hotplug
 hotplug_sample_rate=35
 hotplug_sleep_sample_rate=50

@@ -565,6 +565,9 @@
 
 	<settingsPane description="Setup CPU HotPlug settings." name="Global HotPlug">
 
+		<checkbox description="By enabling this setting, kernel will obey only Stweak selected Hotplug driver, other parameters like sampling rate will change during the ON or OFF state.. This option works whenever screen is ON or OFF." name="HOTPLUG-Tweaks"
+			action="generic_cortex /tmp/cortexbrain_hotplug" label="HOTPLUG-Tweaks"/>
+
 		<spinner description="Switch from OLD LG Default HotPlug driver to other custom HotPlug drivers. Note that using Intelligent CPU Thermal Control with mpdecision HotPlug is NOT recommended (causing low performance). Select ZZMoove Hotplug if ZZMoove CPU Governor selected" name="HotPlug Driver"
 			action="hotplug">
 			<spinnerItem name="MSM HotPlug" value="msm_hotplug"/> 
