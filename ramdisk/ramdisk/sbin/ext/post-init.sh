@@ -311,6 +311,8 @@ if [ "$protect_systemui_oom" == "yes" ] && [ "$stweaks_boot_control" == "yes" ];
 	done
 	echo "[Gabriel-Kernel] systemui detected" > /dev/kmsg
 	$BB pgrep -f pgrep com.android.systemui | while read PID; do echo -1000 > /proc/$PID/oom_score_adj; done
+	# nova launcher, smooth ui & less resource, i'm using it
+	$BB pgrep -f coilsw.launcher | while read PID; do echo -1000 > /proc/$PID/oom_score_adj; done
 
 	echo "[Gabriel-Kernel] Protect systemui enabled" > /dev/kmsg
 else
