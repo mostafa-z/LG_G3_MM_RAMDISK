@@ -978,6 +978,13 @@
 
 	</settingsPane>
 
+	<settingsPane description="Here you can set Driver Message logging state for kernel debugging." name="DMESG Logging">
+
+		<checkbox description="Kernel Logging can be switched ON and OFF. if you Turn this OFF kernel no more logging it's activities and DEV can't help you in case of Panic or etc." name="DMESG logging ON and OFF"
+			action="generic01 /sys/kernel/printk_mode/printk_mode" label="Printk Mode"/>
+
+	</settingsPane>
+
 	<settingsPane description="Here you can set profile for screen colour control." name="KCAL Profile">
 
 		<spinner description="Select a preset profile." name="Kcal available profile"
