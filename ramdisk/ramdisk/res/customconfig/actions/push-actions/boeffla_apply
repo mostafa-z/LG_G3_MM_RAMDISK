@@ -1,0 +1,20 @@
+#!/sbin/busybox sh
+
+if [ ! -e /data/.gabriel/boeffla_speaker ]; then
+	touch /data/.gabriel/boeffla_speaker;
+fi;
+
+if [ ! -e /data/.gabriel/boeffla_headphone_l ] || [ ! -e /data/.gabriel/boeffla_headphone_r ]; then
+	touch /data/.gabriel/boeffla_headphone_l;
+	touch /data/.gabriel/boeffla_headphone_r;
+fi;
+
+SPEAKER=`cat /data/.gabriel/boeffla_speaker`;
+HEADPHONE_L=`cat /data/.gabriel/boeffla_headphone_l`;
+HEADPHONE_R=`cat /data/.gabriel/boeffla_headphone_r`;
+
+		sleep 0.5;
+		echo "$SPEAKER"" ""$SPEAKER" > /sys/class/misc/boeffla_sound/speaker_volume;
+		echo "$HEADPHONE_L"" ""$HEADPHONE_R" > /sys/class/misc/boeffla_sound/headphone_volume;
+		
+echo done;

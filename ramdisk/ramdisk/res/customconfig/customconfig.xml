@@ -935,6 +935,31 @@
 
 </settingsTab>
 
+<settingsTab name="Sound">
+
+	<settingsPane description="Boeffla sound engine by andip71 aka Lord Boeffla" name="Sound Strength Control">
+
+		<spinner description="Enable this option to have control over speaker and headphone volume. More volume set gets more Battery Power and Hurt Your Hearing !." name="Boeffla sound Activation"
+			action="boeffla_master">
+			<spinnerItem name="ON" value="on"/> 
+			<spinnerItem name="OFF" value="off"/> 
+		</spinner>
+
+		<seekBar description="Control the speaker volume." name="Speaker Volume"
+			action="generic /data/.gabriel/boeffla_speaker" unit="%" min="-30" reversed="false" step="1" max="30"/>
+
+		<seekBar description="Control the Left headphone volume." name="Left Headphone Volume"
+			action="generic /data/.gabriel/boeffla_headphone_l" unit="%" min="-30" reversed="false" step="1" max="30"/>
+
+		<seekBar description="Control the Right headphone volume." name="Right Headphone Volume"
+			action="generic /data/.gabriel/boeffla_headphone_r" unit="%" min="-30" reversed="false" step="1" max="30"/>
+
+		<button description="Touch here to apply above parameters if you changed them." name="Apply Sound Parameters" action="push-actions/boeffla_apply" label="Apply"/>
+
+	</settingsPane>
+
+</settingsTab>
+
 <settingsTab name="Other">
 
 	<settingsPane description="Other customization settings." name="apps">
