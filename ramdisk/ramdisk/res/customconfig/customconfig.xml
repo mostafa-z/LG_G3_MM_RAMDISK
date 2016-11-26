@@ -978,10 +978,13 @@
 
 	</settingsPane>
 
-	<settingsPane description="Here you can set Driver Message logging state for kernel debugging." name="DMESG Logging">
+	<settingsPane description="Here you can set Driver Message logging options for kernel debugging." name="DMESG Logging">
 
 		<checkbox description="Kernel Logging can be switched ON and OFF. if you Turn this OFF kernel no more logging it's activities and DEV can't help you in case of Panic or etc." name="DMESG logging ON and OFF"
 			action="generic01 /sys/kernel/printk_mode/printk_mode" label="Printk Mode"/>
+
+		<checkbox description="By Turning OFF this option the Low Memory Killer won't log app killing info in DMESG. if you Turn this OFF then DEV can't help you in case of Panic or etc." name="Low Memory Killer Log"
+			action="generic01 /sys/module/lowmemorykiller/parameters/debug_level_lmk" label="LMK Log Mode"/>
 
 	</settingsPane>
 

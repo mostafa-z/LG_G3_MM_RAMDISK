@@ -121,6 +121,7 @@ boeffla_headphone_r=0
 reset_battery=on
 selinux_control=off
 printk_mode=on
+debug_level_lmk=on
 kcal_profile=stock
 lm3697_backlight_control=on
 lm3697_min_backlight=2
