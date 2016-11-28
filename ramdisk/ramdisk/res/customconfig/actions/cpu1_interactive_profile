@@ -117,6 +117,7 @@ if [ "a$2" != "a" ]; then
     		echo 1497600 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/hispeed_freq
     		echo 1 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/io_is_busy
     		echo 0 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/max_freq_hysteresis
+    		echo 1 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/align_windows
     		echo 0 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/min_sample_time
     		echo 1 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/powersave_bias
     		echo "80 1190400:70 1497600:99" > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/target_loads
@@ -132,6 +133,7 @@ if [ "a$2" != "a" ]; then
     		echo 1958400 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/hispeed_freq
     		echo 1 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/io_is_busy
     		echo 0 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/max_freq_hysteresis
+    		echo 1 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/align_windows
     		echo 0 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/min_sample_time
     		echo 1 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/powersave_bias
     		echo "80 1190400:68 1267200:82 1497600:72 1574400:92 1728000:83 1958400:99 2265600:75 2457600:99" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/target_loads
