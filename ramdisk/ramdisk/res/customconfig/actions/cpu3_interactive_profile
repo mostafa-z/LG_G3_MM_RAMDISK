@@ -143,6 +143,22 @@ if [ "a$2" != "a" ]; then
 
 			$BB sync
 		;;
+		kestrel)
+		    echo "0" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/above_hispeed_delay
+		    echo 99 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/go_hispeed_load
+    		echo 1958400 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/hispeed_freq
+    		echo 1 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/io_is_busy
+    		echo 0 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/max_freq_hysteresis
+    		echo 0 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/align_windows
+    		echo 60000 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/min_sample_time
+    		echo 1 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/powersave_bias
+    		echo "85 1190400:30 1267200:65 1497600:72 1574400:78 1728000:92 1958400:95 2265600:98 2457600:100" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/target_loads
+    		echo 40000 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/timer_rate
+    		echo -1 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/timer_slack
+			echo "0" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/boostpulse_duration
+
+			$BB sync
+		;;
 		gabriel)
 			echo "20000 1400000:40000 1700000:20000" > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/above_hispeed_delay 
 			echo "0" > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/boost 
