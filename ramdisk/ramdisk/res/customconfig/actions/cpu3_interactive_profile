@@ -18,8 +18,8 @@ if [ "a$2" != "a" ]; then
 
 	case "${cpu3_interactive_profile}" in
 		off)
-			busybox sleep 0.5s
-			busybox sync
+			$BB sleep 0.5s
+			$BB sync
 		;;
 		standard)
 			echo "20000 1400000:40000 1700000:20000" > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/above_hispeed_delay 
@@ -38,8 +38,7 @@ if [ "a$2" != "a" ]; then
 			echo "1190400" > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/up_threshold_any_cpu_freq 
 			echo "50" > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/up_threshold_any_cpu_load 
 
-			busybox sleep 0.5s
-			busybox sync
+			$BB sync
 		;;
 		battery)
 			echo "20000 1400000:40000 1700000:20000" > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/above_hispeed_delay 
@@ -58,8 +57,7 @@ if [ "a$2" != "a" ]; then
 			echo "1190400" > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/up_threshold_any_cpu_freq 
 			echo "50" > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/up_threshold_any_cpu_load 
 
-			busybox sleep 0.5s
-			busybox sync
+			$BB sync
 		;;
 		battery_extreme)
 			echo "20000 1400000:40000 1700000:20000" > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/above_hispeed_delay 
@@ -78,8 +76,7 @@ if [ "a$2" != "a" ]; then
 			echo "1190400" > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/up_threshold_any_cpu_freq 
 			echo "50" > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/up_threshold_any_cpu_load 
 
-			busybox sleep 0.5s
-			busybox sync
+			$BB sync
 		;;
 		performance)
 			echo "20000 1400000:40000 1700000:20000" > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/above_hispeed_delay 
@@ -98,8 +95,7 @@ if [ "a$2" != "a" ]; then
 			echo "1190400" > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/up_threshold_any_cpu_freq 
 			echo "50" > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/up_threshold_any_cpu_load 
 
-			busybox sleep 0.5s
-			busybox sync
+			$BB sync
 		;;
 		neobuddy89)
 		    echo "20000 1400000:40000 1700000:20000" > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/above_hispeed_delay
@@ -113,8 +109,7 @@ if [ "a$2" != "a" ]; then
     		echo 30000 > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/timer_rate
     		echo 30000 > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/timer_slack
 
-			busybox sleep 0.5s
-			busybox sync
+			$BB sync
 		;;
 		glassfish)
 		    echo "0" > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/above_hispeed_delay
@@ -129,8 +124,22 @@ if [ "a$2" != "a" ]; then
     		echo 480000 > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/timer_slack
 			echo "0" > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/boostpulse_duration
 
-			busybox sleep 0.5s
-			busybox sync
+			$BB sync
+		;;
+		hawktail)
+		    echo "0" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/above_hispeed_delay
+		    echo 99 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/go_hispeed_load
+    		echo 1958400 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/hispeed_freq
+    		echo 1 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/io_is_busy
+    		echo 0 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/max_freq_hysteresis
+    		echo 0 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/min_sample_time
+    		echo 1 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/powersave_bias
+    		echo "80 1190400:68 1267200:82 1497600:72 1574400:92 1728000:83 1958400:99 2265600:75 2457600:99" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/target_loads
+    		echo 60000 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/timer_rate
+    		echo 480000 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/timer_slack
+			echo "0" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/boostpulse_duration
+
+			$BB sync
 		;;
 		gabriel)
 			echo "20000 1400000:40000 1700000:20000" > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/above_hispeed_delay 
@@ -149,8 +158,7 @@ if [ "a$2" != "a" ]; then
 			echo "1190400" > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/up_threshold_any_cpu_freq 
 			echo "50" > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/up_threshold_any_cpu_load 
 
-			busybox sleep 0.5s
-			busybox sync
+			$BB sync
 		;;
 		gabriel_extreme)
 			echo "20000 1400000:40000 1700000:20000" > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/above_hispeed_delay 
@@ -169,8 +177,7 @@ if [ "a$2" != "a" ]; then
 			echo "1190400" > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/up_threshold_any_cpu_freq 
 			echo "50" > /sys/devices/system/cpu/cpufreq/$GOV3_NAME/up_threshold_any_cpu_load 
 
-			busybox sleep 0.5s
-			busybox sync
+			$BB sync
 		;;
 		*)
 			cpu3_interactive_profile=off;
