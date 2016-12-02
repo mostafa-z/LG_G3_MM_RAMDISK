@@ -1214,6 +1214,8 @@
 
 		<button description="Gabriel" name="Gabriel Profile" action="push-actions/config_backup_restore 8" label="Gabriel"/>
 
+		<button description="A Battery friendly profile" name="Suigintou Profile" action="push-actions/config_backup_restore 9" label="Suigintou"/>
+
 	</settingsPane>
 
 	<settingsPane description="Backup or restore current profile after installing or updating kernel. Some settings will work only after reboot." name="Profile Backup or Restore">

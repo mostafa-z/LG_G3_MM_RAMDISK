@@ -140,6 +140,15 @@ case "${config_backup_restore}" in
 			RELOAD_STWEAKS;
 		)&
 	;;
+	9)
+		(
+			$BB cp -a /res/customconfig/suigintou.profile /data/.gabriel/;
+			echo "suigintou" > /data/.gabriel/.active.profile;
+			echo "Restoring suigintou config file, wait until app reloads.";
+			$BB sh /res/uci.sh apply > /dev/null;
+			RELOAD_STWEAKS;
+		)&
+	;;
 	*)
 		echo "need input";
 	;;
