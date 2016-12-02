@@ -312,7 +312,7 @@
 			action="generic01 /sys/module/cpu_boost/parameters/load_based_syncs" label="Load Based Syncs"/>
 
 		<seekBar description="Load percentage of the max frequency, depends on load based syncs (Default: 15)." name="Migration Load Threshold"
-			action="generic /sys/module/cpu_boost/parameters/migration_load_threshold" unit="perc" min="0" reversed="false" step="1" max="100"/>
+			action="generic /sys/module/cpu_boost/parameters/migration_load_threshold" unit="%" min="0" reversed="false" step="1" max="100"/>
 
 		<seekBar description="set min input interval." name="Min Input Interval"
 			action="generic /sys/module/cpu_boost/parameters/min_input_interval" unit="ms" min="0" reversed="false" step="10" max="1000"/>
@@ -1123,12 +1123,12 @@
 		<checkbox description="Enable Auto Ram Reclaim when screen turns off." name="Ram Reclaim Screen OFF"
 			action="generic_cortex /tmp/cortexbrain_process_reclaim_auto_off" label="Ram Reclaim Screen OFF"/>
 
-		<seekBar description="Here you can set Threshold fot reclaiming the memory when screen turns off. if the free amount of memory goes under this value it will reclaim pages of processes in memory while in sleep mode whithout killing Apps and doing this aggressivly can make apps and OS insane !!. higher means aggressive. (default is 110 MiB)" name="Ram Reclaim Threshold Screen OFF" action="generic_cortex /tmp/cortexbrain_process_reclaim_auto_off_threshold" unit="MiB" min="100" reversed="false" step="1" max="300"/>
+		<seekBar description="Here you can set Threshold fot reclaiming the memory when screen turns off. if the used amount of memory goes above this value it will reclaim pages of processes in memory while in sleep mode whithout killing Apps and doing this aggressivly can make apps and OS insane !!. lower means aggressive. (default is 90 %)" name="Ram Reclaim Threshold Screen OFF" action="generic_cortex /tmp/cortexbrain_process_reclaim_auto_off_threshold" unit="%" min="80" reversed="false" step="1" max="100"/>
 
 		<checkbox description="Enable Auto Ram Reclaim when screen turns on." name="Ram Reclaim Screen ON"
 			action="generic_cortex /tmp/cortexbrain_process_reclaim_auto_on" label="Ram Reclaim Screen ON"/>
 
-		<seekBar description="Here you can set Threshold fot reclaiming the memory when screen turns on. if the free amount of memory goes under this value it will reclaim pages of processes in memory while in awake mode whithout killing Apps and doing this aggressivly can make apps and OS insane !!. higher means aggressive. (default is 110 MiB)" name="Ram Reclaim Threshold Screen ON" action="generic_cortex /tmp/cortexbrain_process_reclaim_auto_on_threshold" unit="MiB" min="100" reversed="false" step="1" max="300"/>
+		<seekBar description="Here you can set Threshold fot reclaiming the memory when screen turns on. if the used amount of memory goes above this value it will reclaim pages of processes in memory while in awake mode whithout killing Apps and doing this aggressivly can make apps and OS insane !!. lower means aggressive. (default is 90 %)" name="Ram Reclaim Threshold Screen ON" action="generic_cortex /tmp/cortexbrain_process_reclaim_auto_on_threshold" unit="%" min="80" reversed="false" step="1" max="100"/>
 
 		<checkbox description="Enable or Disable Battery-Calibrate each Time gets 100% and in Sleep Mode (reboot needed)." name="Battery-Tweaks"
 			action="generic_cortex /tmp/cortexbrain_battery" label="Battery-Tweaks"/>
