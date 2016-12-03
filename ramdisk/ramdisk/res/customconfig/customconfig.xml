@@ -351,66 +351,78 @@
 
 	</settingsPane>
 
-	<settingsPane description="Set the Maximum CPU Frequency for each core separately. Other apps or services won't overcome them. Default for each core is 2.26 GHz." name="Maximum CPU Frequency">
+	<settingsPane description="Set the Maximum CPU Frequency for each core separately. Other apps or services won't overcome them. Default for each core is 2.45 GHz and HIGHER FREQUENCIES than this are only available in Over Clocked version." name="Maximum CPU Frequency">
 
 		<spinner description="Select Maximum CPU0 frequency. It works only when CPU-Tweaks is enabled." name="Max CPU0 Frequency"
 			action="cpu0_max_freq">
-			<spinnerItem name="2.45 GHz" value="2457600"/> 
-			<spinnerItem name="2.26 GHz" value="2265600"/> 
-			<spinnerItem name="1.95 GHz" value="1958400"/> 
-			<spinnerItem name="1.72 GHz" value="1728000"/> 
-			<spinnerItem name="1.57 GHz" value="1574400"/> 
-			<spinnerItem name="1.49 GHz" value="1497600"/> 
-			<spinnerItem name="1.26 GHz" value="1267200"/> 
-			<spinnerItem name="1.19 GHz" value="1190400"/> 
-			<spinnerItem name="1.03 GHz" value="1036800"/> 
-			<spinnerItem name="960 MHz" value="960000"/> 
-			<spinnerItem name="883 MHz" value="883200"/> 
+			<spinnerItem name="2.88 GHz" value="2880000"/>
+			<spinnerItem name="2.72 GHz" value="2726400"/>
+			<spinnerItem name="2.57 GHz" value="2572800"/>
+			<spinnerItem name="2.45 GHz" value="2457600"/>
+			<spinnerItem name="2.26 GHz" value="2265600"/>
+			<spinnerItem name="1.95 GHz" value="1958400"/>
+			<spinnerItem name="1.72 GHz" value="1728000"/>
+			<spinnerItem name="1.57 GHz" value="1574400"/>
+			<spinnerItem name="1.49 GHz" value="1497600"/>
+			<spinnerItem name="1.26 GHz" value="1267200"/>
+			<spinnerItem name="1.19 GHz" value="1190400"/>
+			<spinnerItem name="1.03 GHz" value="1036800"/>
+			<spinnerItem name="960 MHz" value="960000"/>
+			<spinnerItem name="883 MHz" value="883200"/>
 		</spinner>
 
 		<spinner description="Select Maximum CPU1 frequency. It works only when CPU-Tweaks is enabled." name="Max CPU1 Frequency"
 			action="cpu1_max_freq">
-			<spinnerItem name="2.45 GHz" value="2457600"/> 
-			<spinnerItem name="2.26 GHz" value="2265600"/> 
-			<spinnerItem name="1.95 GHz" value="1958400"/> 
-			<spinnerItem name="1.72 GHz" value="1728000"/> 
-			<spinnerItem name="1.57 GHz" value="1574400"/> 
-			<spinnerItem name="1.49 GHz" value="1497600"/> 
-			<spinnerItem name="1.26 GHz" value="1267200"/> 
-			<spinnerItem name="1.19 GHz" value="1190400"/> 
-			<spinnerItem name="1.03 GHz" value="1036800"/> 
-			<spinnerItem name="960 MHz" value="960000"/> 
-			<spinnerItem name="883 MHz" value="883200"/> 
+			<spinnerItem name="2.88 GHz" value="2880000"/>
+			<spinnerItem name="2.72 GHz" value="2726400"/>
+			<spinnerItem name="2.57 GHz" value="2572800"/>
+			<spinnerItem name="2.45 GHz" value="2457600"/>
+			<spinnerItem name="2.26 GHz" value="2265600"/>
+			<spinnerItem name="1.95 GHz" value="1958400"/>
+			<spinnerItem name="1.72 GHz" value="1728000"/>
+			<spinnerItem name="1.57 GHz" value="1574400"/>
+			<spinnerItem name="1.49 GHz" value="1497600"/>
+			<spinnerItem name="1.26 GHz" value="1267200"/>
+			<spinnerItem name="1.19 GHz" value="1190400"/>
+			<spinnerItem name="1.03 GHz" value="1036800"/>
+			<spinnerItem name="960 MHz" value="960000"/>
+			<spinnerItem name="883 MHz" value="883200"/>
 		</spinner>
 
 		<spinner description="Select Maximum CPU2 frequency. It works only when CPU-Tweaks is enabled." name="Max CPU2 Frequency"
 			action="cpu2_max_freq">
-			<spinnerItem name="2.45 GHz" value="2457600"/> 
-			<spinnerItem name="2.26 GHz" value="2265600"/> 
-			<spinnerItem name="1.95 GHz" value="1958400"/> 
-			<spinnerItem name="1.72 GHz" value="1728000"/> 
-			<spinnerItem name="1.57 GHz" value="1574400"/> 
-			<spinnerItem name="1.49 GHz" value="1497600"/> 
-			<spinnerItem name="1.26 GHz" value="1267200"/> 
-			<spinnerItem name="1.19 GHz" value="1190400"/> 
-			<spinnerItem name="1.03 GHz" value="1036800"/> 
-			<spinnerItem name="960 MHz" value="960000"/> 
-			<spinnerItem name="883 MHz" value="883200"/> 
+			<spinnerItem name="2.88 GHz" value="2880000"/>
+			<spinnerItem name="2.72 GHz" value="2726400"/>
+			<spinnerItem name="2.57 GHz" value="2572800"/>
+			<spinnerItem name="2.45 GHz" value="2457600"/>
+			<spinnerItem name="2.26 GHz" value="2265600"/>
+			<spinnerItem name="1.95 GHz" value="1958400"/>
+			<spinnerItem name="1.72 GHz" value="1728000"/>
+			<spinnerItem name="1.57 GHz" value="1574400"/>
+			<spinnerItem name="1.49 GHz" value="1497600"/>
+			<spinnerItem name="1.26 GHz" value="1267200"/>
+			<spinnerItem name="1.19 GHz" value="1190400"/>
+			<spinnerItem name="1.03 GHz" value="1036800"/>
+			<spinnerItem name="960 MHz" value="960000"/>
+			<spinnerItem name="883 MHz" value="883200"/>
 		</spinner>
 
 		<spinner description="Select Maximum CPU3 frequency. It works only when CPU-Tweaks is enabled." name="Max CPU3 Frequency"
 			action="cpu3_max_freq">
-			<spinnerItem name="2.45 GHz" value="2457600"/> 
-			<spinnerItem name="2.26 GHz" value="2265600"/> 
-			<spinnerItem name="1.95 GHz" value="1958400"/> 
-			<spinnerItem name="1.72 GHz" value="1728000"/> 
-			<spinnerItem name="1.57 GHz" value="1574400"/> 
-			<spinnerItem name="1.49 GHz" value="1497600"/> 
-			<spinnerItem name="1.26 GHz" value="1267200"/> 
-			<spinnerItem name="1.19 GHz" value="1190400"/> 
-			<spinnerItem name="1.03 GHz" value="1036800"/> 
-			<spinnerItem name="960 MHz" value="960000"/> 
-			<spinnerItem name="883 MHz" value="883200"/> 
+			<spinnerItem name="2.88 GHz" value="2880000"/>
+			<spinnerItem name="2.72 GHz" value="2726400"/>
+			<spinnerItem name="2.57 GHz" value="2572800"/>
+			<spinnerItem name="2.45 GHz" value="2457600"/>
+			<spinnerItem name="2.26 GHz" value="2265600"/>
+			<spinnerItem name="1.95 GHz" value="1958400"/>
+			<spinnerItem name="1.72 GHz" value="1728000"/>
+			<spinnerItem name="1.57 GHz" value="1574400"/>
+			<spinnerItem name="1.49 GHz" value="1497600"/>
+			<spinnerItem name="1.26 GHz" value="1267200"/>
+			<spinnerItem name="1.19 GHz" value="1190400"/>
+			<spinnerItem name="1.03 GHz" value="1036800"/>
+			<spinnerItem name="960 MHz" value="960000"/>
+			<spinnerItem name="883 MHz" value="883200"/>
 		</spinner>
 
 	</settingsPane>
@@ -422,46 +434,46 @@
 
 		<spinner description="Select minimum CPU0 frequency. Note that, it can't be higher than Maximum CPU0 freq. It works only when CPU-Tweaks is enabled." name="min CPU0 Frequency"
 			action="cpu0_min_freq">
-			<spinnerItem name="300 MHz" value="300000"/> 
-			<spinnerItem name="422 MHz" value="422400"/> 
-			<spinnerItem name="499 MHz" value="499200"/> 
-			<spinnerItem name="652 MHz" value="652800"/> 
-			<spinnerItem name="729 MHz" value="729600"/> 
-			<spinnerItem name="883 MHz" value="883200"/> 
-			<spinnerItem name="960 MHz" value="960000"/> 
+			<spinnerItem name="300 MHz" value="300000"/>
+			<spinnerItem name="422 MHz" value="422400"/>
+			<spinnerItem name="499 MHz" value="499200"/>
+			<spinnerItem name="652 MHz" value="652800"/>
+			<spinnerItem name="729 MHz" value="729600"/>
+			<spinnerItem name="883 MHz" value="883200"/>
+			<spinnerItem name="960 MHz" value="960000"/>
 		</spinner>
 
 		<spinner description="Select minimum CPU1 frequency. Note that, it can't be higher than Maximum CPU1 freq. It works only when CPU-Tweaks is enabled." name="min CPU1 Frequency"
 			action="cpu1_min_freq">
-			<spinnerItem name="300 MHz" value="300000"/> 
-			<spinnerItem name="422 MHz" value="422400"/> 
-			<spinnerItem name="499 MHz" value="499200"/> 
-			<spinnerItem name="652 MHz" value="652800"/> 
-			<spinnerItem name="729 MHz" value="729600"/> 
-			<spinnerItem name="883 MHz" value="883200"/> 
-			<spinnerItem name="960 MHz" value="960000"/> 
+			<spinnerItem name="300 MHz" value="300000"/>
+			<spinnerItem name="422 MHz" value="422400"/>
+			<spinnerItem name="499 MHz" value="499200"/>
+			<spinnerItem name="652 MHz" value="652800"/>
+			<spinnerItem name="729 MHz" value="729600"/>
+			<spinnerItem name="883 MHz" value="883200"/>
+			<spinnerItem name="960 MHz" value="960000"/>
 		</spinner>
 
 		<spinner description="Select minimum CPU2 frequency. Note that, it can't be higher than Maximum CPU2 freq. It works only when CPU-Tweaks is enabled." name="min CPU2 Frequency"
 			action="cpu2_min_freq">
-			<spinnerItem name="300 MHz" value="300000"/> 
-			<spinnerItem name="422 MHz" value="422400"/> 
-			<spinnerItem name="499 MHz" value="499200"/> 
-			<spinnerItem name="652 MHz" value="652800"/> 
-			<spinnerItem name="729 MHz" value="729600"/> 
-			<spinnerItem name="883 MHz" value="883200"/> 
-			<spinnerItem name="960 MHz" value="960000"/> 
+			<spinnerItem name="300 MHz" value="300000"/>
+			<spinnerItem name="422 MHz" value="422400"/>
+			<spinnerItem name="499 MHz" value="499200"/>
+			<spinnerItem name="652 MHz" value="652800"/>
+			<spinnerItem name="729 MHz" value="729600"/>
+			<spinnerItem name="883 MHz" value="883200"/>
+			<spinnerItem name="960 MHz" value="960000"/>
 		</spinner>
 
 		<spinner description="Select minimum CPU3 frequency. Note that, it can't be higher than Maximum CPU3 freq. It works only when CPU-Tweaks is enabled." name="min CPU3 Frequency"
 			action="cpu3_min_freq">
-			<spinnerItem name="300 MHz" value="300000"/> 
-			<spinnerItem name="422 MHz" value="422400"/> 
-			<spinnerItem name="499 MHz" value="499200"/> 
-			<spinnerItem name="652 MHz" value="652800"/> 
-			<spinnerItem name="729 MHz" value="729600"/> 
-			<spinnerItem name="883 MHz" value="883200"/> 
-			<spinnerItem name="960 MHz" value="960000"/> 
+			<spinnerItem name="300 MHz" value="300000"/>
+			<spinnerItem name="422 MHz" value="422400"/>
+			<spinnerItem name="499 MHz" value="499200"/>
+			<spinnerItem name="652 MHz" value="652800"/>
+			<spinnerItem name="729 MHz" value="729600"/>
+			<spinnerItem name="883 MHz" value="883200"/>
+			<spinnerItem name="960 MHz" value="960000"/>
 		</spinner>
 
 	</settingsPane>
@@ -470,26 +482,26 @@
 
 		<spinner description="Maximum Allowed CPU frequency when screen is OFF, but phone is awake (cases like any app holds wakelock, music, radio etc.). It has effect ONLY when screen is OFF. If screen is ON, normal Maximum allowed frequency take place (Default: 1.95 GHz)." name="Max Screen OFF CPU Frequency"
 			action="suspend_max_freq">
-			<spinnerItem name="2.45 GHz" value="2457600"/> 
-			<spinnerItem name="2.26 GHz" value="2265600"/> 
-			<spinnerItem name="1.95 GHz" value="1958400"/> 
-			<spinnerItem name="1.72 GHz" value="1728000"/> 
-			<spinnerItem name="1.57 GHz" value="1574400"/> 
-			<spinnerItem name="1.49 GHz" value="1497600"/> 
-			<spinnerItem name="1.26 GHz" value="1267200"/> 
-			<spinnerItem name="1.19 GHz" value="1190400"/> 
-			<spinnerItem name="1.03 GHz" value="1036800"/> 
-			<spinnerItem name="960 MHz" value="960000"/> 
-			<spinnerItem name="883 MHz" value="883200"/> 
+			<spinnerItem name="2.45 GHz" value="2457600"/>
+			<spinnerItem name="2.26 GHz" value="2265600"/>
+			<spinnerItem name="1.95 GHz" value="1958400"/>
+			<spinnerItem name="1.72 GHz" value="1728000"/>
+			<spinnerItem name="1.57 GHz" value="1574400"/>
+			<spinnerItem name="1.49 GHz" value="1497600"/>
+			<spinnerItem name="1.26 GHz" value="1267200"/>
+			<spinnerItem name="1.19 GHz" value="1190400"/>
+			<spinnerItem name="1.03 GHz" value="1036800"/>
+			<spinnerItem name="960 MHz" value="960000"/>
+			<spinnerItem name="883 MHz" value="883200"/>
 		</spinner>
 
 		<spinner description="Minimum Allowed CPU frequency when screen is OFF but phone is awake (cases in which any app holds wakelock, music, radio etc.). It has effect ONLY when screen is OFF. If screen is ON, normal minimum allowed frequency take place (Default: 300 MHz)." name="Min Screen OFF CPU Frequency"
 			action="suspend_min_freq">
-			<spinnerItem name="300 MHz" value="300000"/> 
-			<spinnerItem name="422 MHz" value="422400"/> 
-			<spinnerItem name="499 MHz" value="499200"/> 
-			<spinnerItem name="652 MHz" value="652800"/> 
-			<spinnerItem name="729 MHz" value="729600"/> 
+			<spinnerItem name="300 MHz" value="300000"/>
+			<spinnerItem name="422 MHz" value="422400"/>
+			<spinnerItem name="499 MHz" value="499200"/>
+			<spinnerItem name="652 MHz" value="652800"/>
+			<spinnerItem name="729 MHz" value="729600"/>
 		</spinner>
 
 		<button description="To access CPU LIVE Stats from kernel, Push The Button." name="CPU LIVE Stats" action="push-actions/thermal_control" label="Switch to Synapse Controls"/>
@@ -668,8 +680,9 @@
 
 		<button description="This option updates GPU Governor's changes." name="Update GPU Governor Tuning" action="push-actions/gpu_update" label="Update GPU Governor"/>
 
-		<spinner description="Select GPU Maximum frequency only when needed because some higher frequencies can be unstable! (Default: 450 MHz)." name="Max GPU Frequency"
+		<spinner description="Select GPU Maximum frequency only when needed because some higher frequencies can be unstable! and 657 MHz only available in Over Clocked version (Default: 578 MHz)." name="Max GPU Frequency"
 			action="generic /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/max_freq">
+			<spinnerItem name="657 MHz" value="657500000"/> 
 			<spinnerItem name="578 MHz" value="578000000"/> 
 			<spinnerItem name="462 MHz" value="462400000"/> 
 			<spinnerItem name="389 MHz" value="389000000"/> 
@@ -679,7 +692,7 @@
 			<spinnerItem name="27 MHz" value="27000000"/> 
 		</spinner>
 
-		<spinner description="Select GPU Minimum frequency when GPU is IDLE - if you set higher than 200 MHz, then the GPU will hold selected frequency on IDLE (Default: 100 MHz)." name="Min GPU Frequency"
+		<spinner description="Select GPU Minimum frequency when GPU is IDLE - if you set higher than 200 MHz, then the GPU will hold selected frequency on IDLE (Default: 200 MHz)." name="Min GPU Frequency"
 			action="generic /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/min_freq">
 			<spinnerItem name="27 MHz" value="27000000"/> 
 			<spinnerItem name="100 MHz" value="100000000"/> 
@@ -688,6 +701,7 @@
 			<spinnerItem name="389 MHz" value="389000000"/> 
 			<spinnerItem name="462 MHz" value="462400000"/> 
 			<spinnerItem name="578 MHz" value="578000000"/> 
+			<spinnerItem name="657 MHz" value="657500000"/> 
 		</spinner>
 
 	</settingsPane>
