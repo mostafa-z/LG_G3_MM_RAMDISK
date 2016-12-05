@@ -6,6 +6,7 @@ arch_power=on
 Dyn_fsync_active=on
 entropytweaks=low
 sharpening=on
+allow_suspend=on
 default_cpu0_gov=alucard
 default_cpu1_gov=alucard
 default_cpu2_gov=alucard

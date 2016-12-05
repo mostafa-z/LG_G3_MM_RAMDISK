@@ -67,6 +67,13 @@
 
 	</settingsPane>
 
+<settingsPane description="This will restore deepsleep when DATA is active, but will delay notifications over DATA connection!" name="DSDC">
+
+		<checkbox description="Enable/Disable Deep Sleep for Data Connection. (Default: enabled)" name="DSDC on/off"
+			action="generic01 /sys/module/sps_bam/parameters/allow_suspend" label="DSDC Control"/>
+
+	</settingsPane>
+
 </settingsTab>
 
 <settingsTab name="CPU Tuning">

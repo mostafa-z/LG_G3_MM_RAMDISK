@@ -6,6 +6,7 @@ arch_power=on
 Dyn_fsync_active=on
 entropytweaks=low
 sharpening=on
+allow_suspend=on
 default_cpu0_gov=ondemandx
 default_cpu1_gov=ondemandx
 default_cpu2_gov=ondemandx
