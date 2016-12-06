@@ -964,8 +964,8 @@ SLEEP_GOV_CONTROL()
 	local GOV0_NAME=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor);
 
 	if [ "$state" == "awake" ]; then
-		if [ -e /sys/devices/system/cpu/cpufreq/$GOV0_NAMEv/sampling_rate ]; then
-			echo "$sample_rate" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/sampling_rate;	
+		if [ -e /sys/devices/system/cpu/cpufreq/$GOV0_NAME/sampling_rate ]; then
+			echo "$sample_rate" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/sampling_rate;
 		fi;
 		if [ -e /sys/devices/system/cpu/cpufreq/$GOV0_NAME/timer_rate ]; then
 			echo "$sample_rate" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/timer_rate;
@@ -974,9 +974,9 @@ SLEEP_GOV_CONTROL()
 	elif [ "$state" == "sleep" ]; then
 
 		if [ -e /sys/devices/system/cpu/cpufreq/$GOV0_NAME/sampling_rate ]; then
-			echo "$sleep_sample_rate" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/sampling_rate;	
+			echo "$sleep_sample_rate" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/sampling_rate;
 		fi;
-		if [ -e /sys/devices/system/cpu/cpufreq/$GOV0_NAMEv/timer_rate ]; then
+		if [ -e /sys/devices/system/cpu/cpufreq/$GOV0_NAME/timer_rate ]; then
 			echo "$sleep_sample_rate" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/timer_rate;
 		fi;
 	fi;
