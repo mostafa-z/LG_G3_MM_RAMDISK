@@ -1268,13 +1268,13 @@ cortexbrain_background_process=1;
 
 if [ "$cortexbrain_background_process" -eq "1" ]; then
 	(while true; do
-		while [ "$(cat /sys/module/lm3697/parameters/sleep_state)" == "1" ]; do
+		while [ "$(cat /sys/module/lm3697/parameters/sleep_state)" -ne "0" ]; do
 			sleep "3";
 		done;
 		# AWAKE State. all system ON
 		AWAKE_MODE;
 
-		while [ "$(cat /sys/module/lm3697/parameters/sleep_state)" == "0" ]; do
+		while [ "$(cat /sys/module/lm3697/parameters/sleep_state)" -ne "1" ]; do
 			sleep "3";
 		done;
 		# SLEEP state. All system to power save
