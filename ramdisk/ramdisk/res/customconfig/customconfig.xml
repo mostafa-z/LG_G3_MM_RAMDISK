@@ -439,9 +439,6 @@
 
 	<settingsPane description="Set the minimum CPU frequency for each core separately. Default for each core is 300 MHz." name="Minimum CPU Frequency">
 
-		<checkbox description="By enabling this setting, kernel will force to set 300 Mhz min freq (awake and sleep) in cae of cpu-boost changes it and stucked at boosted freq like 1497600 and drain battery faster. Depends on Cortexbrain !!" name="CPU MIN FREQ POLICY"
-			action="generic_cortex /tmp/cpu_min_policy" label="CPU MIN POLICY"/>
-
 		<spinner description="Select minimum CPU0 frequency. Note that, it can't be higher than Maximum CPU0 freq. It works only when CPU-Tweaks is enabled." name="min CPU0 Frequency"
 			action="cpu0_min_freq">
 			<spinnerItem name="300 MHz" value="300000"/>
@@ -1137,84 +1134,6 @@
 
 		<checkbox description="Enable I/O Tweaks (reboot needed)." name="I/O Tweaks"
 			action="generic_cortex /tmp/cortexbrain_io" label="I/O Tweaks"/>
-
-		<checkbox description="Enable Auto Drop Cache when screen turns off." name="Drop Cache Screen OFF"
-			action="generic_cortex /tmp/cortexbrain_drop_cache_auto_off" label="Drop Cache Screen OFF"/>
-
-		<seekBar description="Here you can set Threshold for cleaning the cache when screen turns off. Kernel drop the cache if cache uses free memory more than this threshold and doing this aggressivly can make apps and OS insane !!. lower means aggressive." name="Clean Cache Threshold Screen OFF" action="generic_cortex /tmp/cortexbrain_drop_cache_auto_off_threshold" unit="%" min="40" reversed="false" step="1" max="100"/>
-
-		<checkbox description="Enable Auto Drop Cache when screen turns on." name="Drop Cache Screen ON"
-			action="generic_cortex /tmp/cortexbrain_drop_cache_auto_on" label="Drop Cache Screen ON"/>
-
-		<seekBar description="Here you can set Threshold for cleaning the cache when screen turns on. Kernel drop the cache if cache uses free memory more than this threshold and doing this aggressivly can make apps and OS insane !!. lower means aggressive." name="Clean Cache Threshold Screen ON" action="generic_cortex /tmp/cortexbrain_drop_cache_auto_on_threshold" unit="%" min="40" reversed="false" step="1" max="100"/>
-
-		<checkbox description="Enable Auto Ram Reclaim when screen turns off." name="Ram Reclaim Screen OFF"
-			action="generic_cortex /tmp/cortexbrain_process_reclaim_auto_off" label="Ram Reclaim Screen OFF"/>
-
-		<seekBar description="Here you can set Threshold fot reclaiming the memory when screen turns off. if the used amount of memory goes above this value it will reclaim pages of processes in memory while in sleep mode whithout killing Apps and doing this aggressivly can make apps and OS insane !!. lower means aggressive. (default is 90 %)" name="Ram Reclaim Threshold Screen OFF" action="generic_cortex /tmp/cortexbrain_process_reclaim_auto_off_threshold" unit="%" min="80" reversed="false" step="1" max="100"/>
-
-		<checkbox description="Enable Auto Ram Reclaim when screen turns on." name="Ram Reclaim Screen ON"
-			action="generic_cortex /tmp/cortexbrain_process_reclaim_auto_on" label="Ram Reclaim Screen ON"/>
-
-		<seekBar description="Here you can set Threshold fot reclaiming the memory when screen turns on. if the used amount of memory goes above this value it will reclaim pages of processes in memory while in awake mode whithout killing Apps and doing this aggressivly can make apps and OS insane !!. lower means aggressive. (default is 90 %)" name="Ram Reclaim Threshold Screen ON" action="generic_cortex /tmp/cortexbrain_process_reclaim_auto_on_threshold" unit="%" min="80" reversed="false" step="1" max="100"/>
-
-		<checkbox description="Enable or Disable Battery-Calibrate each Time gets 100% and in Sleep Mode (reboot needed)." name="Battery-Tweaks"
-			action="generic_cortex /tmp/cortexbrain_battery" label="Battery-Tweaks"/>
-
-		<checkbox description="Enable or Disable the DATA turns off while screen is off function." name="Auto-DATA" action="generic_cortex /tmp/cortexbrain_auto_tweak_mobile" label="Force Auto-Data"/>
-
-		<seekBar description="Here you can set a delay before DATA is forced to OFF when screen is turned off." name="DATA Turn Off Delay (in sec)" action="generic_cortex /tmp/cortexbrain_auto_tweak_mobile_sleep_delay" unit="sec" min="0" reversed="false" step="30" max="300"/>
-
-		<checkbox description="Enable or Disable the Wifi turns off while screen is off function." name="Auto-Wifi" action="generic_cortex /tmp/cortexbrain_auto_tweak_wifi" label="Force Auto-Wifi"/>
-
-		<seekBar description="Here you can set a delay before WIFI is forced to OFF when screen is turned off." name="WIFI Turn Off Delay (in sec)" action="generic_cortex /tmp/cortexbrain_auto_tweak_wifi_sleep_delay" unit="sec" min="0" reversed="false" step="30" max="300"/>
-
-	</settingsPane>
-
-</settingsTab>
-
-<settingsTab name="Services">
-
-	<settingsPane description="Specify Userspace Freezing Time out (kernel threats, process). It will Freeze Services and Prevent them to Run at Specific Times if You Set this over 0" name="PM Freeze Time Out">
-
-		<seekBar description="Userspace Freeze Timeout, default kernel value is 20000" name="Freeze Time Period"
-			action="generic /sys/power/pm_freeze_timeout" unit="ms" min="0" reversed="false" step="1000" max="50000"/>
-
-	</settingsPane>
-
-	<settingsPane description="Activate some scripts which automatically runs in the background at the specified time. Depends on CortexBrain !" name="CortexBrain Services">
-
-		<button description="Touch to check the Details of Finished Service Jobs." name="Check Service Logs" action="push-actions/service_logs" label="CHECK LOGS"/>
-
-		<checkbox description="Enable Clean-Cache, Run at Specific Hour if Used Memory is over 50%. Default Run-Time is Every 3 Hour" name="Clean Cache Service"
-			action="generic_cortex /tmp/cortexbrain_clean_cache" label="Clean Cache service"/>
-
-		<seekBar description="Move Seekbar to Set the Clean-Cache time Period, Re-Executing in Specific Time Period." name="Clean Cache Time out"
-            action="generic_cortex /tmp/cortexbrain_clean_cache_timeout" unit="Hrs" min="1" reversed="false" step="1" max="24"/>
-
-		<checkbox description="Enable reclaiming RAM from apps. It's smart memory kernel feature used to take back all cached RAM from apps without killing them. It helps to maintain stable and fast device for a long time. Default Run-Time is Every 6 Hour" name="Process Reclaim Service"
-			action="generic_cortex /tmp/cortexbrain_process_reclaim" label="Process Reclaim service"/>
-
-		<seekBar description="Move Seekbar to Set the Process-Reclaim time Period, Re-Executing in Specific Time Period" name="Process Reclaim Time out"
-            action="generic_cortex /tmp/cortexbrain_process_reclaim_timeout" unit="Hrs" min="1" reversed="false" step="1" max="24"/>
-
-		<checkbox description="Enable Trim, Run every day at specific Hour. Default Run-Time is Every Day at 10 PM" name="FSTrim Service every day at Specific Hour"
-			action="generic_cortex /tmp/cortexbrain_trim" label="FSTrim servicer"/>
-
-		<seekBar description="Enable Trim of System, Data and Cache partitions every day at Specific Hour to speed up NAND Read and Write Access Time. NOTE that screen will be AWAKE during the fstrim to prevent MMC crash, then if screen was OFF it's will be auto turned off. Some devices don't like to be trimmed, so if device get stuck after Executing this Serivice, don't enable this. Move Seekbar to Set the FSTrim time Period" name="FSTrim Time out"
-            action="generic_cortex /tmp/cortexbrain_fstrim_timeout" unit="Hrs" min="1" reversed="false" step="1" max="24"/>
-
-		<checkbox description="Enable Clean File Cache, Run every day at specific Hour. Default Run-Time is Every Day at 4 AM, While in Sleep Mode" name="Clear APP Cache Service"
-			action="generic_cortex /tmp/cortexbrain_app_cache" label="Clear APP Cache eservice"/>
-
-		<seekBar description="Move Seekbar to Set the Clean File Cache time Period, Executing Only in Specific Hour" name="Clean File Cache Time out"
-            action="generic_cortex /tmp/cortexbrain_appcache_timeout" unit="Hrs" min="1" reversed="false" step="1" max="24"/>
-
-		<checkbox description="Enable DB Optimization, Run every day at specific Hour. Default Run-Time is Every Day at 3 AM, While in Sleep Mode" name="DB Optimization"
-			action="generic_cortex /tmp/cortexbrain_db_opt" label="DB Optimization servicer"/>
-
-		<seekBar description="Move Seekbar to Set the DB Optimization time Period, Executing Only in Specific Hour" name="DB Optimization Time out"
-            action="generic_cortex /tmp/cortexbrain_db_opt_timeout" unit="Hrs" min="1" reversed="false" step="1" max="24"/>
 
 	</settingsPane>
 
