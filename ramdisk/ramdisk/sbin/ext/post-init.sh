@@ -23,6 +23,11 @@ OPEN_RW;
 # run ROM scripts
 $BB sh /system/etc/init.qcom.post_boot.sh;
 
+OPEN_RW;
+
+# start CROND by tree root, so it's will not be terminated.
+$BB sh /res/crontab_service/service.sh;
+
 if [ ! -e /hotplugs/ ]; then
 	$BB mkdir /hotplugs/;
 fi;

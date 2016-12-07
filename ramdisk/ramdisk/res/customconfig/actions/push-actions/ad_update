@@ -42,5 +42,5 @@ if [ "$WGET_CHECK1" -eq "1" ]; then
 
 	mount -o remount,ro /system;
 else
-	echo "Your System don't have WGET binaries from kernel, reinstall Dorimanx kernel.";
+	echo "Your System don't have WGET binaries from kernel, reinstall Gabriel kernel.";
 fi;
