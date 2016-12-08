@@ -1164,6 +1164,28 @@
 
 	</settingsPane>
 
+	<settingsPane description="Rooted ADB control, MLT and Logcat Control." name="ADB, MLT and Logcat">
+
+		<spinner description="Allow ROOTED ADB shell. No SU is needed. For developer needs (direct access to system via ADB) use DEV ROOTED ADB (Default: Protected ADB)." name="ADB Selector"
+			action="adb_selector">
+			<spinnerItem name="Protected ADB" value="1"/> 
+			<spinnerItem name="DEV ROOTED ADB" value="0"/> 
+		</spinner>
+
+		<spinner description="Option to Disable the LG MLT Spyware App, which monitors your activity, and report back to LG and to FBI about your illegal activity. It require Logcat to be enabled!. If you wish to disable Logcat to save power, you must also disable this system app." name="LG MLT ON/OFF"
+			action="lg_mlt">
+			<spinnerItem name="LG SPY APP OFF" value="off"/> 
+			<spinnerItem name="LG SPY APP ON" value="on"/> 
+		</spinner>
+
+		<spinner description="Enable or Disable Logcat that is used to debugging ROM services and apps. If you never used it, then keep it OFF, you get more battery and less CPU usage on idle." name="Logcat ON/OFF"
+			action="logger">
+			<spinnerItem name="Logcat OFF" value="off"/> 
+			<spinnerItem name="Logcat ON" value="on"/> 
+		</spinner>
+
+	</settingsPane>
+
 	<settingsPane description="This script manipulates many kernel settings, based on chosen Stweak profile + settings and screen state (ON/OFF) - we call it CortexBrain. To reset the kernel-settings after disabling a tweak, you must reboot the device." name="CortexBrain Tweaks">
 
 		<spinner description="Enable the CortexBrain Background Process. Disabling it means, losing the functions that sets different settings for screen state (ON/OFF)." name="CortexBrain-Background-Process"
