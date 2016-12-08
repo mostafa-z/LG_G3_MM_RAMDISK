@@ -240,6 +240,24 @@ else
 	$BB mv /res/uci_boot.sh /res/uci.sh;
 fi;
 
+######################################
+# Loading Modules
+######################################
+MODULES_LOAD()
+{
+	# order of modules load is important
+
+	if [ "$cifs_module" == "on" ]; then
+		if [ -e /system/lib/modules/cifs.ko ]; then
+			$BB insmod /system/lib/modules/cifs.ko;
+		else
+			$BB insmod /lib/modules/cifs.ko;
+		fi;
+	else
+		echo "no user modules loaded";
+	fi;
+}
+
 # disable debugging
 echo "0" > /sys/module/lge_touch_core/parameters/debug_mask
 echo "0" > /sys/module/lm3697/parameters/debug_mask
