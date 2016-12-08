@@ -117,7 +117,7 @@ if [ "a$2" != "a" ]; then
     		echo 1497600 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/hispeed_freq
     		echo 1 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/io_is_busy
     		echo 0 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/max_freq_hysteresis
-    		echo 1 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/align_windows
+    		echo 1 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/align_windows
     		echo 0 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/min_sample_time
     		echo 1 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/powersave_bias
     		echo "80 1190400:70 1497600:99" > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/target_loads
@@ -128,34 +128,50 @@ if [ "a$2" != "a" ]; then
 			$BB sync
 		;;
 		hawktail)
-		    echo "0" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/above_hispeed_delay
-		    echo 99 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/go_hispeed_load
-    		echo 1958400 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/hispeed_freq
-    		echo 1 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/io_is_busy
-    		echo 0 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/max_freq_hysteresis
-    		echo 1 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/align_windows
-    		echo 0 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/min_sample_time
-    		echo 1 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/powersave_bias
-    		echo "80 1190400:68 1267200:82 1497600:72 1574400:92 1728000:83 1958400:99 2265600:75 2457600:99" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/target_loads
-    		echo 60000 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/timer_rate
-    		echo 480000 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/timer_slack
-			echo "0" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/boostpulse_duration
+		    echo "0" > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/above_hispeed_delay
+		    echo 99 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/go_hispeed_load
+    		echo 1958400 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/hispeed_freq
+    		echo 1 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/io_is_busy
+    		echo 0 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/max_freq_hysteresis
+    		echo 1 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/align_windows
+    		echo 0 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/min_sample_time
+    		echo 1 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/powersave_bias
+    		echo "80 1190400:68 1267200:82 1497600:72 1574400:92 1728000:83 1958400:99 2265600:75 2457600:99" > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/target_loads
+    		echo 60000 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/timer_rate
+    		echo 480000 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/timer_slack
+			echo "0" > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/boostpulse_duration
 
 			$BB sync
 		;;
 		kestrel)
-		    echo "0" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/above_hispeed_delay
-		    echo 99 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/go_hispeed_load
-    		echo 1958400 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/hispeed_freq
-    		echo 1 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/io_is_busy
-    		echo 0 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/max_freq_hysteresis
-    		echo 0 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/align_windows
-    		echo 60000 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/min_sample_time
-    		echo 1 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/powersave_bias
-    		echo "85 1190400:30 1267200:65 1497600:72 1574400:78 1728000:92 1958400:95 2265600:98 2457600:100" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/target_loads
-    		echo 40000 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/timer_rate
-    		echo -1 > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/timer_slack
-			echo "0" > /sys/devices/system/cpu/cpufreq/$GOV0_NAME/boostpulse_duration
+		    echo "0" > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/above_hispeed_delay
+		    echo 99 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/go_hispeed_load
+    		echo 1958400 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/hispeed_freq
+    		echo 1 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/io_is_busy
+    		echo 0 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/max_freq_hysteresis
+    		echo 0 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/align_windows
+    		echo 60000 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/min_sample_time
+    		echo 1 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/powersave_bias
+    		echo "85 1190400:30 1267200:65 1497600:72 1574400:78 1728000:92 1958400:95 2265600:98 2457600:100" > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/target_loads
+    		echo 40000 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/timer_rate
+    		echo -1 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/timer_slack
+			echo "0" > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/boostpulse_duration
+
+			$BB sync
+		;;
+		eclipse)
+		    echo "40000 1574400:30000" > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/above_hispeed_delay
+		    echo 250 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/go_hispeed_load
+    		echo 1497600 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/hispeed_freq
+    		echo 1 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/io_is_busy
+    		echo 0 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/max_freq_hysteresis
+    		echo 0 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/align_windows
+    		echo 90000 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/min_sample_time
+    		echo 0 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/powersave_bias
+    		echo "95 422400:70 652800:71 729600:75 883200:76 960000:80 1190400:80 1267200:80 1497600:81 1574400:85 1728000:86 1958400:87 2265600:87 2457600:87" > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/target_loads
+    		echo 50000 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/timer_rate
+    		echo -1 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/timer_slack
+			echo 0 > /sys/devices/system/cpu/cpufreq/$GOV1_NAME/boostpulse_duration
 
 			$BB sync
 		;;
