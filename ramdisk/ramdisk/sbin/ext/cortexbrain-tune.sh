@@ -146,21 +146,6 @@ MEMORY_TWEAKS()
 }
 MEMORY_TWEAKS;
 
-# if crond used, then give it root perent - if started by STweaks, then it will be killed in time
-CROND_SAFETY()
-{
-	if [ "$crontab" == "on" ]; then
-		if [ "$(pgrep -f crond | wc -l)" -eq "0" ]; then
-			$BB sh /res/crontab_service/service.sh > /dev/null;
-			log -p i -t "$FILE_NAME" "*** CROND STARTED ***";
-		else
-			log -p i -t "$FILE_NAME" "*** CROND IS ONLINE ***";
-		fi;
-	else
-		log -p i -t "$FILE_NAME" "*** CROND IS OFFLINE ***";
-	fi;
-}
-
 # ==============================================================
 # OOM-TUNING
 # protect services from oom and doing at every state check
@@ -472,8 +457,6 @@ SLEEP_MODE()
 	sys_min_f_kb="/proc/sys/vm/min_free_kbytes"
 	sys_vfs_cache="/proc/sys/vm/vfs_cache_pressure"
 	sys_swappiness="/proc/sys/vm/swappiness"
-
-	CROND_SAFETY;
 
 if [ "$CHARGER_STATE" -eq "0" ]; then
 	echo "$fast_lane_load_sleep" > $sys_msm_hp_fll
