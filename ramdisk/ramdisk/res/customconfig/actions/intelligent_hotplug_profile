@@ -1,6 +1,6 @@
 #!/sbin/busybox sh
 
-# $1 - "intelligent_profile"
+# $1 - "intelligent_hotplug_profile"
 # $2 - value=
 # Created By Dorimanx
 
@@ -11,9 +11,9 @@ PROFILE=$(cat /data/.gabriel/.active.profile);
 . /data/.gabriel/"$PROFILE".profile;
 
 if [ "a$2" != "a" ]; then
-	intelligent_profile=$2;
+	intelligent_hotplug_profile=$2;
 
-	case "${intelligent_profile}" in
+	case "${intelligent_hotplug_profile}" in
 		balance)
 			echo 0 > /sys/kernel/intelli_plug/full_mode_profile
 		;;
@@ -36,9 +36,9 @@ if [ "a$2" != "a" ]; then
 			echo 6 > /sys/kernel/intelli_plug/full_mode_profile
 		;;
 		*)
-			intelligent_profile=balance;
+			intelligent_hotplug_profile=balance;
 		;;
 	esac;
 fi;
 
-echo ${intelligent_profile};
+echo ${intelligent_hotplug_profile};
