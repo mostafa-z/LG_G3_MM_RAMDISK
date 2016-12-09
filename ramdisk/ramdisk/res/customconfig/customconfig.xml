@@ -675,6 +675,21 @@
 
 	</settingsPane>
 
+	<settingsPane description="only available if Intelligent HotPlug selected." name="Intelligent HotPlug Tuning">
+
+		<spinner description="Select Intelligent HotPlug profile." name="Intelligent HotPlug profile"
+			action="intelligent_hotplug_profile">
+			<spinnerItem name="Balance" value="balance"/> 
+			<spinnerItem name="Performance" value="performance"/> 
+			<spinnerItem name="Conservative" value="conservative"/> 
+			<spinnerItem name="Disable" value="disable"/> 
+			<spinnerItem name="Tri" value="tri"/> 
+			<spinnerItem name="Eco" value="eco"/> 
+			<spinnerItem name="Strict" value="strict"/> 
+		</spinner>
+
+	</settingsPane>
+
 </settingsTab>
 
 <settingsTab name="GPU CORE">

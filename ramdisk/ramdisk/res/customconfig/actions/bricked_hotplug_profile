@@ -1,6 +1,6 @@
 #!/sbin/busybox sh
 
-# $1 - "bricked_profile"
+# $1 - "bricked_hotplug_profile"
 # $2 - value=
 # Created By Dorimanx
 
@@ -11,9 +11,9 @@ PROFILE=$(cat /data/.gabriel/.active.profile);
 . /data/.gabriel/"$PROFILE".profile;
 
 if [ "a$2" != "a" ]; then
-	bricked_profile=$2;
+	bricked_hotplug_profile=$2;
 
-	case "${bricked_profile}" in
+	case "${bricked_hotplug_profile}" in
 		stock)
 			echo "12" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_0
 			echo "0" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_1
@@ -45,9 +45,9 @@ if [ "a$2" != "a" ]; then
 			echo "45" > /sys/kernel/msm_mpdecision/conf/nwns_threshold_7
 		;;
 		*)
-			bricked_profile=stock;
+			bricked_hotplug_profile=stock;
 		;;
 	esac;
 fi;
 
-echo ${bricked_profile};
+echo ${bricked_hotplug_profile};
