@@ -785,30 +785,32 @@
 
 		<spinner description="Set the AWAKE I/O scheduler for internal storage (Default: ZEN)." name="Default Awake I/O Scheduler"
 			action="scheduler">
-			<spinnerItem name="CFQ" value="cfq"/> 
-			<spinnerItem name="BFQ" value="bfq"/> 
-			<spinnerItem name="DEADLINE" value="deadline"/> 
-			<spinnerItem name="NOOP" value="noop"/> 
-			<spinnerItem name="ROW" value="row"/> 
-			<spinnerItem name="SIOPLUS" value="sioplus"/> 
-			<spinnerItem name="ZEN" value="zen"/> 
-			<spinnerItem name="FIOPS" value="fiops"/> 
-			<spinnerItem name="TRIPNDROID" value="tripndroid"/> 
-			<spinnerItem name="VR" value="vr"/> 
+			<spinnerItem name="CFQ" value="cfq"/>
+			<spinnerItem name="BFQ" value="bfq"/>
+			<spinnerItem name="DEADLINE" value="deadline"/>
+			<spinnerItem name="NOOP" value="noop"/>
+			<spinnerItem name="ROW" value="row"/>
+			<spinnerItem name="SIOPLUS" value="sioplus"/>
+			<spinnerItem name="ZEN" value="zen"/>
+			<spinnerItem name="Maple" value="maple"/>
+			<spinnerItem name="FIOPS" value="fiops"/>
+			<spinnerItem name="TRIPNDROID" value="tripndroid"/>
+			<spinnerItem name="VR" value="vr"/>
 		</spinner>
 
 		<spinner description="Set the Screen OFF I/O scheduler for internal storage. It depends on CortexBrain Background Process (Default: ZEN)." name="Screen OFF I/O Scheduler"
 			action="generic_cortex /tmp/sleep_scheduler">
-			<spinnerItem name="CFQ" value="cfq"/> 
-			<spinnerItem name="BFQ" value="bfq"/> 
-			<spinnerItem name="DEADLINE" value="deadline"/> 
-			<spinnerItem name="NOOP" value="noop"/> 
-			<spinnerItem name="ROW" value="row"/> 
-			<spinnerItem name="SIOPLUS" value="sioplus"/> 
-			<spinnerItem name="ZEN" value="zen"/> 
-			<spinnerItem name="FIOPS" value="fiops"/> 
-			<spinnerItem name="TRIPNDROID" value="tripndroid"/> 
-			<spinnerItem name="VR" value="vr"/> 
+			<spinnerItem name="CFQ" value="cfq"/>
+			<spinnerItem name="BFQ" value="bfq"/>
+			<spinnerItem name="DEADLINE" value="deadline"/>
+			<spinnerItem name="NOOP" value="noop"/>
+			<spinnerItem name="ROW" value="row"/>
+			<spinnerItem name="SIOPLUS" value="sioplus"/>
+			<spinnerItem name="ZEN" value="zen"/>
+			<spinnerItem name="Maple" value="maple"/>
+			<spinnerItem name="FIOPS" value="fiops"/>
+			<spinnerItem name="TRIPNDROID" value="tripndroid"/>
+			<spinnerItem name="VR" value="vr"/>
 		</spinner>
 
 	</settingsPane>

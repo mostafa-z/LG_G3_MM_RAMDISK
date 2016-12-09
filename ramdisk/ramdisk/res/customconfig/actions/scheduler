@@ -39,6 +39,9 @@ case "${scheduler}" in
 	zen)
 		BLOCK_GOV=zen;
 	;;
+	maple)
+		BLOCK_GOV=maple;
+	;;
 	fiops)
 		BLOCK_GOV=fiops;
 	;;
