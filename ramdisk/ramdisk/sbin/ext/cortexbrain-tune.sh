@@ -428,6 +428,13 @@ if [ "$(cat /data/gabriel_cortex_sleep)" -eq "1" ]; then
 
 	CPU_CENTRAL_CONTROL "awake";
 	HOTPLUG_CONTROL;
+
+	# temporary fix: set again to avoid high min freq
+	echo "0" > /sys/kernel/msm_cpufreq_limit/cpufreq_min_limit_cpu0;
+	echo "$cpu0_min_freq" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq;
+	echo "$cpu0_min_freq" > /sys/kernel/msm_cpufreq_limit/cpufreq_min_limit_cpu0;
+
+	sync
 	echo "0" > /data/gabriel_cortex_sleep
 fi
 
@@ -491,6 +498,8 @@ if [ "$CHARGER_STATE" -eq "0" ]; then
 	echo "1" > /sys/module/workqueue/parameters/power_efficient
 
 	CPU_CENTRAL_CONTROL "sleep";
+
+	sync
 	echo "1" > /data/gabriel_cortex_sleep
 fi
 }
