@@ -287,26 +287,8 @@
 
 	<settingsPane description="Customize the Touch Boost Control settings. Touch Boost means, the CPU frequency is boosted to a higher level when the touch screen is being used. It gives smoother UI, in exchange consumes slightly more power." name="Touch Boost Controls">
 
-		<checkbox description="Enable/Disable cpu boost ability." name="CPU Boost on/off"
-			action="generic01 /sys/module/cpu_boost/parameters/input_boost_enabled" label="CPU Boost"/>
-
 		<spinner description="Set the Maximum CPU Boost frequency for CORE 0. When touch is being detected, CPU frequency will be locked to selected frequency for the time range. Too high frequencies will use more power (Default: 1.49 GHz)." name="Touch Boost Frequency"
 			action="cpu_boost_freq">
-			<spinnerItem name="1.95 GHz" value="1958400"/> 
-			<spinnerItem name="1.72 GHz" value="1728000"/> 
-			<spinnerItem name="1.57 GHz" value="1574400"/> 
-			<spinnerItem name="1.49 GHz" value="1497600"/> 
-			<spinnerItem name="1.26 GHz" value="1267200"/> 
-			<spinnerItem name="1.19 GHz" value="1190400"/> 
-			<spinnerItem name="1.03 GHz" value="1036800"/> 
-			<spinnerItem name="960 MHz" value="960000"/> 
-			<spinnerItem name="883 MHz" value="883200"/> 
-			<spinnerItem name="729 MHz" value="729600"/> 
-			<spinnerItem name="Disable" value="0"/> 
-		</spinner>
-
-		<spinner description="Perform frequency synchronization only when source CPU's frequency is less than sync_threshold, else sync to the sync_threshold. (Default: 960 MHz)." name="Sync Threshold"
-			action="sync_threshold_freq">
 			<spinnerItem name="1.95 GHz" value="1958400"/> 
 			<spinnerItem name="1.72 GHz" value="1728000"/> 
 			<spinnerItem name="1.57 GHz" value="1574400"/> 
@@ -323,17 +305,11 @@
 		<seekBar description="Set the time that core is locked on Maximum Boost frequency. 10 ms is equal to 0.01 sec (Default: 500 ms)." name="CPU Touch Boost duration"
 			action="generic /sys/module/cpu_boost/parameters/input_boost_ms" unit="ms" min="10" reversed="false" step="10" max="2000"/>
 
-		<seekBar description="This option determines the time, that Touch Boost driver will wait before locking CPU on it's minimum frequency (Default: 20 ms)." name="CPU Touch Boost Interval"
-			action="generic /sys/module/cpu_boost/parameters/boost_ms" unit="ms" min="0" reversed="false" step="50" max="1500"/>
+		<seekBar description="This option determines the time, that Touch Boost driver will wait before locking CPU on it's minimum frequency (Default: 150 ms)." name="CPU Touch Boost Interval"
+			action="generic /sys/module/cpu_boost/parameters/min_input_interval" unit="ms" min="100" reversed="false" step="50" max="1500"/>
 
-		<checkbox description="If the scheduler migration notification is extended with task load (cpu demand) information, the cpu boost driver can use this load to compute a suitable frequency for the migrating task. The required frequency for the task is calculated by taking the load percentage of the max frequency and no sync is performed if the load is less than a particular value (migration_load_threshold).This change is beneficial for both perf and power as demand of a task is taken into consideration while making cpufreq decisions and unnecessary syncs for lightweight tasks are avoided. (default: off)" name="Load Based Syncs"
-			action="generic01 /sys/module/cpu_boost/parameters/load_based_syncs" label="Load Based Syncs"/>
-
-		<seekBar description="Load percentage of the max frequency, depends on load based syncs (Default: 15)." name="Migration Load Threshold"
-			action="generic /sys/module/cpu_boost/parameters/migration_load_threshold" unit="%" min="0" reversed="false" step="1" max="100"/>
-
-		<seekBar description="set min input interval." name="Min Input Interval"
-			action="generic /sys/module/cpu_boost/parameters/min_input_interval" unit="ms" min="0" reversed="false" step="10" max="1000"/>
+		<seekBar description="Set how many cores will be affected by the Touch Boost (Default: 2 cores)." name="Affected Cores On Touch Boost"
+			action="generic /sys/module/cpu_boost/parameters/nr_boost_cpus" unit="cores" min="1" reversed="false" step="1" max="4"/>
 
 		<checkbox description="occues when CPUs goes online" name="Hotplug Boost"
 			action="generic01 /sys/module/cpu_boost/parameters/hotplug_boost" label="Hotplug Boost"/>
