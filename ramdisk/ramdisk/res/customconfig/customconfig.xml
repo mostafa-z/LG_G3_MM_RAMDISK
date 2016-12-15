@@ -1206,13 +1206,6 @@
 
 	</settingsPane>
 
-	<settingsPane description="Load (on boot) kernel modules that will add some extra functions." name="Kernel Modules">
-
-		<checkbox description="Enable CIFS Module. Kernel will load the required cifs module to support access to Windows network shares (SMB protocol) from the device. You can then simply use apps like 'CIFS Manager' to access your network drives. Take effect only after reboot!" name="CIFS Module"
-			action="generic_cortex /tmp/cifs_module" label="CIFS Module"/>
-
-	</settingsPane>
-
 </settingsTab>
 
 </settingsRoot>
