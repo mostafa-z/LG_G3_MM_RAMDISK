@@ -45,8 +45,6 @@
 
 		<checkbox description="Using ARCH POWER enables the use of ARM topology power functions instead of generic ones, and saves battery. Not recommended to disable." name="ARCH POWER" action="generic01 /sys/kernel/sched/arch_power" label="ARCH POWER"/>
 
-		<checkbox description="Whenenable and screen is on, fsync operation is asynchronous.when screen is off, this operation is done synchronously." name="Dynamic FSYNC" action="generic01 /sys/kernel/dyn_fsync/Dyn_fsync_active" label="Dynamic FSYNC"/>
-
 	</settingsPane>
 
 <settingsPane description="The random number generator gathers environmental noise from device drivers and other sources into an entropy pool. The generator also keeps an estimate of the number of bits of noise in the entropy pool. From this entropy pool random numbers are created." name="Entropy">

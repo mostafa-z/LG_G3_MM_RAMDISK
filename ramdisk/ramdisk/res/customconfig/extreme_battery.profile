@@ -3,7 +3,6 @@ google_services_fix=no
 protect_systemui_oom=no
 gentle_fair_sleepers=off
 arch_power=on
-Dyn_fsync_active=on
 entropytweaks=low
 sharpening=on
 allow_suspend=1
