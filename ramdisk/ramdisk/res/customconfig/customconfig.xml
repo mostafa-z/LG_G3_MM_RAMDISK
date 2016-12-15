@@ -822,6 +822,12 @@
 		<seekBar description="When RAM pressure is higher than set above, and RAM is lower than set here, kernel will start releasing RAM by stopping background apps. Value calculation here is based on this formula PR * 4096 (example: 68 * 4096 = 278MB free RAM) default 68 PR" name="Adaptive LMK Lowest RAM Allowed"
                         action="vmpressure_file_min" unit="PR" min="65" reversed="false" step="1" max="78"/>
 
+		<checkbox description="It helps to reduce used RAM for each app that is running in the background. When vm memory pressure jumps higher and system needs more RAM for something BIG, then process starts to shrink used RAM by background apps. It's also shrinks the ZRAM swap (if enabled) in order to reduce CPU power usage when RAM is free." name="Process Memory Reclaim"
+			action="generic01 /sys/module/process_reclaim/parameters/enable_process_reclaim" label="Process Reclaim"/>
+
+		<seekBar description="Control for Max vm pressure for process memory reclaim. It allows to shrink RAM from other apps when vm pressure is in range from 50% to (set here) value. When value is lower that default (90%), then less RAM shrinks when something BIG should have been be loaded to RAM. It will reduce CPU usage when loading big apps, but loads it slower, as memory should be first freed by LMK (Default: 80%)." name="Max Process Reclaim Pressure"
+			action="generic /sys/module/process_reclaim/parameters/pressure_max" unit="%" min="75" reversed="false" step="1" max="100"/>
+
 		<spinner description="Set the mode for low memory management (lowmemkiller function) when screen is ON. More aggressive equals more free RAM, but more apps gets killed." name="OOM Level Screen ON"
 			action="oom_config_screen_on">
 			<spinnerItem name="Verylight" value="verylight"/>
