@@ -87,7 +87,8 @@
 			<spinnerItem name="Nightmare" value="nightmare"/>
 			<spinnerItem name="Pegasusq" value="pegasusq"/>
 			<spinnerItem name="Intelliactive" value="intelliactive"/> 
-			<spinnerItem name="Interactive" value="interactive"/> 
+			<spinnerItem name="Interactive" value="interactive"/>
+			<spinnerItem name="InteractiveX" value="interactivex"/>
 			<spinnerItem name="Interactive_LG" value="interactive_lg"/>
 			<spinnerItem name="Yankactive" value="yankactive"/> 
 			<spinnerItem name="Intel" value="intel"/> 
@@ -115,7 +116,8 @@
 			<spinnerItem name="Nightmare" value="nightmare"/>
 			<spinnerItem name="Pegasusq" value="pegasusq"/>
 			<spinnerItem name="Intelliactive" value="intelliactive"/> 
-			<spinnerItem name="Interactive" value="interactive"/> 
+			<spinnerItem name="Interactive" value="interactive"/>
+			<spinnerItem name="InteractiveX" value="interactivex"/>
 			<spinnerItem name="Interactive_LG" value="interactive_lg"/>
 			<spinnerItem name="Yankactive" value="yankactive"/> 
 			<spinnerItem name="Intel" value="intel"/> 
@@ -143,7 +145,8 @@
 			<spinnerItem name="Nightmare" value="nightmare"/>
 			<spinnerItem name="Pegasusq" value="pegasusq"/>
 			<spinnerItem name="Intelliactive" value="intelliactive"/> 
-			<spinnerItem name="Interactive" value="interactive"/> 
+			<spinnerItem name="Interactive" value="interactive"/>
+			<spinnerItem name="InteractiveX" value="interactivex"/>
 			<spinnerItem name="Interactive_LG" value="interactive_lg"/>
 			<spinnerItem name="Yankactive" value="yankactive"/> 
 			<spinnerItem name="Intel" value="intel"/> 
@@ -171,7 +174,8 @@
 			<spinnerItem name="Nightmare" value="nightmare"/>
 			<spinnerItem name="Pegasusq" value="pegasusq"/>
 			<spinnerItem name="Intelliactive" value="intelliactive"/> 
-			<spinnerItem name="Interactive" value="interactive"/> 
+			<spinnerItem name="Interactive" value="interactive"/>
+			<spinnerItem name="InteractiveX" value="interactivex"/>
 			<spinnerItem name="Interactive_LG" value="interactive_lg"/>
 			<spinnerItem name="Yankactive" value="yankactive"/> 
 			<spinnerItem name="Intel" value="intel"/> 
