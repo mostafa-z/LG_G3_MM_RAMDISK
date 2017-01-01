@@ -106,7 +106,8 @@
 			<spinnerItem name="Smartmax_eps" value="smartmax_eps"/> 
 			<spinnerItem name="Lionheart" value="lionheart"/> 
 			<spinnerItem name="Powersave" value="powersave"/> 
-			<spinnerItem name="Wheatley" value="wheatley"/> 
+			<spinnerItem name="Wheatley" value="wheatley"/>
+			<spinnerItem name="Lionfish" value="lionfish"/>
 			<spinnerItem name="Performance" value="performance"/> 
 		</spinner>
 
@@ -135,7 +136,8 @@
 			<spinnerItem name="Smartmax_eps" value="smartmax_eps"/> 
 			<spinnerItem name="Lionheart" value="lionheart"/> 
 			<spinnerItem name="Powersave" value="powersave"/> 
-			<spinnerItem name="Wheatley" value="wheatley"/> 
+			<spinnerItem name="Wheatley" value="wheatley"/>
+			<spinnerItem name="Lionfish" value="lionfish"/>
 			<spinnerItem name="Performance" value="performance"/> 
 		</spinner>
 
@@ -164,7 +166,8 @@
 			<spinnerItem name="Smartmax_eps" value="smartmax_eps"/> 
 			<spinnerItem name="Lionheart" value="lionheart"/> 
 			<spinnerItem name="Powersave" value="powersave"/> 
-			<spinnerItem name="Wheatley" value="wheatley"/> 
+			<spinnerItem name="Wheatley" value="wheatley"/>
+			<spinnerItem name="Lionfish" value="lionfish"/>
 			<spinnerItem name="Performance" value="performance"/> 
 		</spinner>
 
@@ -193,7 +196,8 @@
 			<spinnerItem name="Smartmax_eps" value="smartmax_eps"/> 
 			<spinnerItem name="Lionheart" value="lionheart"/> 
 			<spinnerItem name="Powersave" value="powersave"/> 
-			<spinnerItem name="Wheatley" value="wheatley"/> 
+			<spinnerItem name="Wheatley" value="wheatley"/>
+			<spinnerItem name="Lionfish" value="lionfish"/>
 			<spinnerItem name="Performance" value="performance"/> 
 		</spinner>
 
