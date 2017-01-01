@@ -39,7 +39,33 @@
 
 	</settingsPane>
 
-	<settingsPane description="These settings control other parameters configurations" name="Other Tunings">
+	<settingsPane description="These settings control Main Kernel parameters configurations" name="Kernel Tunings">
+
+		<spinner description="Policy decides the CFS scheduler how to balance tasks onto different CPU unit" name="CFS Scheduler Policy"
+			action="generic /sys/devices/system/cpu/sched_balance_policy/current_sched_balance_policy">
+			<spinnerItem name="Performance" value="performance"/>
+			<spinnerItem name="Power Saving" value="powersaving"/>
+		</spinner>
+
+		<spinner description="set the CFS scheduler balance policy for screen off state. It depends on CortexBrain Background Process ." name="Screen OFF CFS Scheduler Policy"
+			action="generic_cortex /tmp/sleep_current_sched_balance_policy">
+			<spinnerItem name="Performance" value="performance"/>
+			<spinnerItem name="Power Saving" value="powersaving"/>
+		</spinner>
+
+		<spinner description="Try to group tasks into the least cores possible" name="Multicore Power Saving"
+			action="generic /sys/devices/system/cpu/sched_mc_power_savings">
+			<spinnerItem name="Disabled" value="0"/>
+			<spinnerItem name="Enabled" value="1"/>
+			<spinnerItem name="Aggressive" value="2"/>
+		</spinner>
+
+		<spinner description="set the scheduler power saving state for screen off state. It depends on CortexBrain Background Process ." name="Screen OFF Multicore Power Saving"
+			action="generic_cortex /tmp/sleep_sched_mc_power_savings">
+			<spinnerItem name="Disabled" value="0"/>
+			<spinnerItem name="Enabled" value="1"/>
+			<spinnerItem name="Aggressive" value="2"/>
+		</spinner>
 
 		<checkbox description="Disabling GENTLE FAIR SLEEPERS may give you better UI responsiveness, so NOT checked is GOOD." name="GENTLE FAIR SLEEPERS" action="generic01 /sys/kernel/sched/gentle_fair_sleepers" label="GENTLE FAIR SLEEPERS"/>
 

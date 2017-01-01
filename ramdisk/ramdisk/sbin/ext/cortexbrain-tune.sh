@@ -390,6 +390,8 @@ AWAKE_MODE()
 	sys_min_f_kb="/proc/sys/vm/min_free_kbytes"
 	sys_vfs_cache="/proc/sys/vm/vfs_cache_pressure"
 	sys_swappiness="/proc/sys/vm/swappiness"
+	sched_policy="/sys/devices/system/cpu/sched_balance_policy/current_sched_balance_policy"
+	sched_mc="/sys/devices/system/cpu/sched_mc_power_savings"
 
 if [ "$(cat /data/gabriel_cortex_sleep)" -eq "1" ]; then
 	echo "$fast_lane_load" > $sys_msm_hp_fll
@@ -426,6 +428,9 @@ if [ "$(cat /data/gabriel_cortex_sleep)" -eq "1" ]; then
 		echo "0" > /sys/module/workqueue/parameters/power_efficient
 	fi
 
+	echo "$current_sched_balance_policy" > $sched_policy
+	echo "$sched_mc_power_savings" > $sched_mc
+
 	CPU_CENTRAL_CONTROL "awake";
 	HOTPLUG_CONTROL;
 	echo "0" > /data/gabriel_cortex_sleep
@@ -457,6 +462,8 @@ SLEEP_MODE()
 	sys_min_f_kb="/proc/sys/vm/min_free_kbytes"
 	sys_vfs_cache="/proc/sys/vm/vfs_cache_pressure"
 	sys_swappiness="/proc/sys/vm/swappiness"
+	sched_policy="/sys/devices/system/cpu/sched_balance_policy/current_sched_balance_policy"
+	sched_mc="/sys/devices/system/cpu/sched_mc_power_savings"
 
 if [ "$CHARGER_STATE" -eq "0" ]; then
 	echo "$fast_lane_load_sleep" > $sys_msm_hp_fll
@@ -489,6 +496,9 @@ if [ "$CHARGER_STATE" -eq "0" ]; then
 	fi
 
 	echo "1" > /sys/module/workqueue/parameters/power_efficient
+
+	echo "$sleep_current_sched_balance_policy" > $sched_policy
+	echo "$sleep_sched_mc_power_savings" > $sched_mc
 
 	CPU_CENTRAL_CONTROL "sleep";
 	echo "1" > /data/gabriel_cortex_sleep
