@@ -755,10 +755,10 @@
 	<settingsPane description="Customize Msm Adreno Tz Governor! Use that controls ONLY if Msm Adreno Tz is selected (otherwise nothing will happen)." name="Msm Adreno Tz Controls">
 
 		<seekBar description="Msm Adreno Tz CAP, must NOT be HIGHER than TARGET value! (Default: 75%)." name="CAP Value"
-			action="generic /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/gpufreq/msm-adreno-tz/cap" unit="%" min="40" reversed="false" step="5" max="90"/>
+			action="generic /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/msm-adreno-tz/cap" unit="%" min="40" reversed="false" step="5" max="90"/>
 
 		<seekBar description="Msm Adreno Tz TARGET, must NOT be LOWER than TARGET value! (Default: 80%)." name="TARGET Value"
-			action="generic /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/gpufreq/msm-adreno-tz/target" unit="%" min="40" reversed="false" step="5" max="90"/>
+			action="generic /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/msm-adreno-tz/target" unit="%" min="40" reversed="false" step="5" max="90"/>
 
 		<spinner description="Set Control Simple Ramp Threshold and Simple Laziness. If it's set to AUTO, then controls below have no effect." name="Msm Adreno Tz Extra Controls"
 			action="generic /sys/module/simple_gpu_algorithm/parameters/simple_gpu_activate">
@@ -777,20 +777,20 @@
 	<settingsPane description="Customize Simple Ondemand Governor. Use this controls ONLY if Simple Ondemand is selected (otherwise nothing will happen)." name="Simple Ondemand Controls">
 
 		<seekBar description="When GPU load decreases below Down Differential level, then governor reduces GPU frequency to it's min frequency. Must NOT be HIGHER than Up threshold value! (Default: 20%)." name="Down Differential Value"
-			action="generic /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/gpufreq/simple_ondemand/downdifferential" unit="%" min="5" reversed="false" step="5" max="60"/>
+			action="generic /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/simple_ondemand/downdifferential" unit="%" min="5" reversed="false" step="5" max="60"/>
 
 		<seekBar description="When GPU load raises above Up Threshold level, then governor raises GPU frequency to it's next frequency step until it reaches Max frequency (must NOT be LOWER than Down Differential)! (Default: 60%)." name="Up Threshold Value"
-			action="generic /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/gpufreq/simple_ondemand/upthreshold" unit="%" min="30" reversed="false" step="5" max="90"/>
+			action="generic /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/simple_ondemand/upthreshold" unit="%" min="30" reversed="false" step="5" max="90"/>
 
 	</settingsPane>
 
 	<settingsPane description="Customize Conservative Governor. Use the controls ONLY if Conservative is selected (otherwise nothing will happen)." name="Conservative Controls">
 
 		<seekBar description="When GPU load decreases below Down differential level, then governor. reduces GPU frequency to it's min frequency. Must NOT be HIGHER than Up threshold value! (Default: 20%)." name="Down Threshold Value"
-			action="generic /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/gpufreq/conservative/downthreshold" unit="%" min="5" reversed="false" step="5" max="60"/>
+			action="generic /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/conservative/downthreshold" unit="%" min="5" reversed="false" step="5" max="60"/>
 
 		<seekBar description="When GPU load raises above Up threshold level, then governor raises GPU frequency to it's next frequency step until it reaches Max frequency (must NOT be LOWER than Down differential)! (Default: 50%)." name="Up Threshold Value"
-			action="generic /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/gpufreq/conservative/upthreshold_cons" unit="%" min="30" reversed="false" step="5" max="90"/>
+			action="generic /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/conservative/upthreshold_cons" unit="%" min="30" reversed="false" step="5" max="90"/>
 
 	</settingsPane>
 
