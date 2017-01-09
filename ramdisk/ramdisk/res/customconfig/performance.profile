@@ -63,6 +63,7 @@ eco_mode=all
 min_online_cpus=1
 fast_lane_load=100
 fast_lane_load_sleep=180
+down_lock_duration=1000
 bricked_hotplug_profile=showp1984
 intelligent_hotplug_profile=performance
 gpu_governor=simple_ondemand

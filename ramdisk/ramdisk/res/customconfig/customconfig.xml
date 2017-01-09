@@ -682,6 +682,9 @@
 		<seekBar description="Set the MSM HotPlug fast lane load for Sleep mode (Default: 180)." name="Sleep MSM HotPlug FLL"
 			action="generic_cortex /tmp/fast_lane_load_sleep" unit="rate" min="0" reversed="false" step="5" max="400"/>
 
+		<seekBar description="Minimum interval a CPU is kept online" name="Down Lock Duration"
+			action="generic /sys/module/msm_hotplug/down_lock_duration" unit="rate" min="5" reversed="false" step="50" max="5000"/>
+
 	</settingsPane>
 
 	<settingsPane description="only available if Bricked Hotplug selected." name="Bricked HotPlug Tuning">
