@@ -149,6 +149,15 @@ case "${config_backup_restore}" in
 			RELOAD_STWEAKS;
 		)&
 	;;
+	10)
+		(
+			$BB cp -a /res/customconfig/dcop7.profile /data/.gabriel/;
+			echo "dcop7" > /data/.gabriel/.active.profile;
+			echo "Restoring dcop7 config file, wait until app reloads.";
+			$BB sh /res/uci.sh apply > /dev/null;
+			RELOAD_STWEAKS;
+		)&
+	;;
 	*)
 		echo "need input";
 	;;

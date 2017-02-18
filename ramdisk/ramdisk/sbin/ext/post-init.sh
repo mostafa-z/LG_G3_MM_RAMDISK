@@ -200,6 +200,7 @@ fi;
 [ ! -f /data/.gabriel/extreme_battery.profile ] && cp -a /res/customconfig/extreme_battery.profile /data/.gabriel/extreme_battery.profile;
 [ ! -f /data/.gabriel/gabriel.profile ] && cp -a /res/customconfig/gabriel.profile /data/.gabriel/gabriel.profile;
 [ ! -f /data/.gabriel/suigintou.profile ] && cp -a /res/customconfig/gabriel.profile /data/.gabriel/suigintou.profile;
+[ ! -f /data/.gabriel/dcop7.profile ] && cp -a /res/customconfig/gabriel.profile /data/.gabriel/dcop7.profile;
 
 $BB chmod -R 0777 /data/.gabriel/;
 
