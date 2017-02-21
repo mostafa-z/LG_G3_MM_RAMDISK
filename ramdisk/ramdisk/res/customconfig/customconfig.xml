@@ -121,6 +121,7 @@
 			action="default_cpu0_gov">
 			<spinnerItem name="Alucard" value="alucard"/> 
 			<spinnerItem name="Nightmare" value="nightmare"/>
+			<spinnerItem name="Darkness" value="darkness"/>
 			<spinnerItem name="Pegasusq" value="pegasusq"/>
 			<spinnerItem name="Intelliactive" value="intelliactive"/> 
 			<spinnerItem name="Interactive" value="interactive"/>
@@ -154,6 +155,7 @@
 			action="default_cpu1_gov">
 			<spinnerItem name="Alucard" value="alucard"/> 
 			<spinnerItem name="Nightmare" value="nightmare"/>
+			<spinnerItem name="Darkness" value="darkness"/>
 			<spinnerItem name="Pegasusq" value="pegasusq"/>
 			<spinnerItem name="Intelliactive" value="intelliactive"/> 
 			<spinnerItem name="Interactive" value="interactive"/>
@@ -187,6 +189,7 @@
 			action="default_cpu2_gov">
 			<spinnerItem name="Alucard" value="alucard"/> 
 			<spinnerItem name="Nightmare" value="nightmare"/>
+			<spinnerItem name="Darkness" value="darkness"/>
 			<spinnerItem name="Pegasusq" value="pegasusq"/>
 			<spinnerItem name="Intelliactive" value="intelliactive"/> 
 			<spinnerItem name="Interactive" value="interactive"/>
@@ -220,6 +223,7 @@
 			action="default_cpu3_gov">
 			<spinnerItem name="Alucard" value="alucard"/> 
 			<spinnerItem name="Nightmare" value="nightmare"/>
+			<spinnerItem name="Darkness" value="darkness"/>
 			<spinnerItem name="Pegasusq" value="pegasusq"/>
 			<spinnerItem name="Intelliactive" value="intelliactive"/> 
 			<spinnerItem name="Interactive" value="interactive"/>
