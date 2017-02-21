@@ -70,6 +70,7 @@ fast_lane_load_sleep=180
 down_lock_duration=500
 bricked_hotplug_profile=conservative
 intelligent_hotplug_profile=conservative
+hp_alucard_profile=off
 gpu_governor=simple_ondemand
 max_freq=389000000
 min_freq=100000000

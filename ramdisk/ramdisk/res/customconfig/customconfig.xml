@@ -751,6 +751,18 @@
 
 	</settingsPane>
 
+	<settingsPane description="only available if Alucard HotPlug selected." name="Alucard HotPlug Tuning">
+
+		<spinner description="Select Alucard HotPlug profile." name="Alucard HotPlug profile"
+			action="hp_alucard_profile">
+			<spinnerItem name="OFF" value="off"/>
+			<spinnerItem name="Standard" value="standard"/>
+			<spinnerItem name="Battery" value="battery"/>
+			<spinnerItem name="Battery Extreme" value="battery_extreme"/>
+		</spinner>
+
+	</settingsPane>
+
 </settingsTab>
 
 <settingsTab name="GPU CORE">
