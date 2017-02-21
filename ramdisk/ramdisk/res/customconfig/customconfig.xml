@@ -815,6 +815,7 @@
 
 		<spinner description="Set the Maximum number of KiloBytes to read-ahead from device storage, (Default: 1024 KiB)." name="KiloBytes to Read Ahead"
 			action="generic /sys/block/mmcblk0/bdi/read_ahead_kb">
+			<spinnerItem name="64 KiB" value="64"/>
 			<spinnerItem name="128 KiB" value="128"/> 
 			<spinnerItem name="256 KiB" value="256"/> 
 			<spinnerItem name="512 KiB" value="512"/> 
