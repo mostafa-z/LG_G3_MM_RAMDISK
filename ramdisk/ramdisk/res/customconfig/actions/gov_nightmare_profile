@@ -1,0 +1,111 @@
+#!/sbin/busybox sh
+
+# $1 - "gov_nightmare_profile"
+# $2 - value=
+# Created By Dorimanx
+
+BB=/sbin/busybox
+
+# get values from profile
+PROFILE=$(cat /data/.gabriel/.active.profile);
+. /data/.gabriel/"$PROFILE".profile;
+
+if [ "a$2" != "a" ]; then
+	gov_nightmare_profile=$2;
+
+	case "${gov_nightmare_profile}" in
+		off)
+			$BB sleep 0.5s
+			$BB sync
+		;;
+		standard)
+			echo "1" > /sys/devices/system/cpu/cpu0/online;
+			echo "1" > /sys/devices/system/cpu/cpu1/online;
+			echo "1" > /sys/devices/system/cpu/cpu2/online;
+			echo "1" > /sys/devices/system/cpu/cpu3/online;
+
+#The frequency at which governor scales CPU down. Load less than dec_cpu_load: cpu scaled down.
+			echo "60" > /sys/devices/system/cpu/cpufreq/nightmare/dec_cpu_load
+
+#Until freq_for_responsiveness, Up Threshold considered for sampling load is up_threshold_at_min_freq. Also during the part where CPU is at maximum load frequency, governor need to find the optimal frequency as the next frequency - which should not trigger up_threshold in the next sampling. When such a frequency_next is found to be :
+#a) less than freq_for_responsiveness
+#b)will not trigger down_threshold in the next sample
+#then the optimal frequency is set to freq_for_responsiveness.
+			echo "1728000" > /sys/devices/system/cpu/cpufreq/nightmare/freq_for_responsiveness
+
+#When current freq is greater than freq_for_responsiviness_max, freq_step_dec will be equal to freq_step_dec_at_max_freq.
+			echo "2457600" > /sys/devices/system/cpu/cpufreq/nightmare/freq_for_responsiveness_max
+
+#Defines how much as a percentage of maximum frequency, governor should increase CPU frequency each time CPU load reaches up_threshold or inc_cpu_load.
+			echo "50" > /sys/devices/system/cpu/cpufreq/nightmare/freq_step
+
+#Defines how much as a percentage of maximum frequency, governor should increase CPU frequency each time CPU load reaches inc_cpu_load_at_min_freq.
+			echo "40" > /sys/devices/system/cpu/cpufreq/nightmare/freq_step_at_min_freq
+
+#Defines how much as a percentage of maximum frequency, governor should decrease CPU frequency each time CPU load reaches dec_cpu_load.
+			echo "10" > /sys/devices/system/cpu/cpufreq/nightmare/freq_step_dec
+
+#Defines how much as a percentage of maximum frequency, governor should decrease CPU frequency each time CPU load reaches dec_cpu_load and current freq is greater than freq_for_responsiviness_max.
+			echo "10" > /sys/devices/system/cpu/cpufreq/nightmare/freq_step_dec_at_max_freq
+
+#Brake scale up frequency when load big or equal inc_cpu_load.
+			echo "30" > /sys/devices/system/cpu/cpufreq/nightmare/freq_up_brake
+
+#Brake scale up frequency when load big or equal inc_cpu_load_at_min_freq.
+			echo "40" > /sys/devices/system/cpu/cpufreq/nightmare/freq_up_brake_at_min_freq
+
+#The frequency at which governor scales CPU up. Load big or equal inc_cpu_load: cpu scaled up.
+			echo "60" > /sys/devices/system/cpu/cpufreq/nightmare/inc_cpu_load
+
+#This threshold is used as up threshold while sampling at frequencies less than freq_for_responsiveness. Above that, normal inc_cpu_load is used. This gives us an option to make scaling aggressive/relaxed until a frequency and normal for higher frequencies.
+			echo "40" > /sys/devices/system/cpu/cpufreq/nightmare/inc_cpu_load_at_min_freq
+
+			$BB sync
+		;;
+		battery)
+			echo "1" > /sys/devices/system/cpu/cpu0/online;
+			echo "1" > /sys/devices/system/cpu/cpu1/online;
+			echo "1" > /sys/devices/system/cpu/cpu2/online;
+			echo "1" > /sys/devices/system/cpu/cpu3/online;
+
+			echo "70" > /sys/devices/system/cpu/cpufreq/nightmare/dec_cpu_load
+			echo "1497600" > /sys/devices/system/cpu/cpufreq/nightmare/freq_for_responsiveness
+			echo "1728000" > /sys/devices/system/cpu/cpufreq/nightmare/freq_for_responsiveness_max
+			echo "40" > /sys/devices/system/cpu/cpufreq/nightmare/freq_step
+			echo "30" > /sys/devices/system/cpu/cpufreq/nightmare/freq_step_at_min_freq
+			echo "20" > /sys/devices/system/cpu/cpufreq/nightmare/freq_step_dec
+			echo "20" > /sys/devices/system/cpu/cpufreq/nightmare/freq_step_dec_at_max_freq
+			echo "20" > /sys/devices/system/cpu/cpufreq/nightmare/freq_up_brake
+			echo "30" > /sys/devices/system/cpu/cpufreq/nightmare/freq_up_brake_at_min_freq
+			echo "70" > /sys/devices/system/cpu/cpufreq/nightmare/inc_cpu_load
+			echo "50" > /sys/devices/system/cpu/cpufreq/nightmare/inc_cpu_load_at_min_freq
+
+			$BB sync
+		;;
+		battery_extreme)
+			echo "1" > /sys/devices/system/cpu/cpu0/online;
+			echo "1" > /sys/devices/system/cpu/cpu1/online;
+			echo "1" > /sys/devices/system/cpu/cpu2/online;
+			echo "1" > /sys/devices/system/cpu/cpu3/online;
+
+			echo "80" > /sys/devices/system/cpu/cpufreq/nightmare/dec_cpu_load
+			echo "1190400" > /sys/devices/system/cpu/cpufreq/nightmare/freq_for_responsiveness
+			echo "1574400" > /sys/devices/system/cpu/cpufreq/nightmare/freq_for_responsiveness_max
+			echo "30" > /sys/devices/system/cpu/cpufreq/nightmare/freq_step
+			echo "20" > /sys/devices/system/cpu/cpufreq/nightmare/freq_step_at_min_freq
+			echo "30" > /sys/devices/system/cpu/cpufreq/nightmare/freq_step_dec
+			echo "30" > /sys/devices/system/cpu/cpufreq/nightmare/freq_step_dec_at_max_freq
+			echo "10" > /sys/devices/system/cpu/cpufreq/nightmare/freq_up_brake
+			echo "20" > /sys/devices/system/cpu/cpufreq/nightmare/freq_up_brake_at_min_freq
+			echo "80" > /sys/devices/system/cpu/cpufreq/nightmare/inc_cpu_load
+			echo "60" > /sys/devices/system/cpu/cpufreq/nightmare/inc_cpu_load_at_min_freq
+
+			$BB sync
+		;;
+		*)
+			gov_nightmare_profile=off;
+		;;
+	esac;
+fi;
+
+echo ${gov_nightmare_profile};

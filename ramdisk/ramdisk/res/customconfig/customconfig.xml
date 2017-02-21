@@ -343,6 +343,30 @@
 
 	</settingsPane>
 
+	<settingsPane description="Select Alucard Governor Profile if you selected as a CPU Governor." name="Alucard CPU Governor Profile">
+
+		<spinner description="Select the Alucard Profile." name="Alucard Governor Profile"
+			action="gov_alucard_profile">
+			<spinnerItem name="OFF" value="off"/>
+			<spinnerItem name="Standard" value="standard"/>
+			<spinnerItem name="Battery" value="battery"/>
+			<spinnerItem name="Battery Extreme" value="battery_extreme"/>
+		</spinner>
+
+	</settingsPane>
+
+	<settingsPane description="Select Nightmare Governor Profile if you selected as a CPU Governor." name="Nightmare CPU Governor Profile">
+
+		<spinner description="Select the Nightmare Profile." name="Nightmare Governor Profile"
+			action="gov_nightmare_profile">
+			<spinnerItem name="OFF" value="off"/>
+			<spinnerItem name="Standard" value="standard"/>
+			<spinnerItem name="Battery" value="battery"/>
+			<spinnerItem name="Battery Extreme" value="battery_extreme"/>
+		</spinner>
+
+	</settingsPane>
+
 	<settingsPane description="Customize the Touch Boost Control settings. Touch Boost means, the CPU frequency is boosted to a higher level when the touch screen is being used. It gives smoother UI, in exchange consumes slightly more power." name="Touch Boost Controls">
 
 		<spinner description="Set the Maximum CPU Boost frequency for CORE 0. When touch is being detected, CPU frequency will be locked to selected frequency for the time range. Too high frequencies will use more power (Default: 1.49 GHz)." name="Touch Boost Frequency"

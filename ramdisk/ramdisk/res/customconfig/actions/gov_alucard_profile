@@ -1,0 +1,147 @@
+#!/sbin/busybox sh
+
+# $1 - "gov_alucard_profile"
+# $2 - value=
+# Created By Dorimanx
+
+BB=/sbin/busybox
+
+# get values from profile
+PROFILE=$(cat /data/.gabriel/.active.profile);
+. /data/.gabriel/"$PROFILE".profile;
+
+if [ "a$2" != "a" ]; then
+	gov_alucard_profile=$2;
+
+	case "${gov_alucard_profile}" in
+		off)
+			$BB sleep 0.5s
+			$BB sync
+		;;
+		standard)
+			echo "1" > /sys/devices/system/cpu/cpu0/online;
+			echo "1" > /sys/devices/system/cpu/cpu1/online;
+			echo "1" > /sys/devices/system/cpu/cpu2/online;
+			echo "1" > /sys/devices/system/cpu/cpu3/online;
+
+#Number of samples to evaluate cpu frequency scaling down when current cpu frequency is greater than freq_responsiveness.
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/cpus_down_rate
+
+#Number of samples to evaluate cpu frequency scaling up when current cpu frequency is greater than freq_responsiveness.
+			echo "1" > /sys/devices/system/cpu/cpufreq/alucard/cpus_up_rate
+
+#The frequency at which governor scales CPU down. Load less than dec_cpu_load: cpu scaled down.
+			echo "70" > /sys/devices/system/cpu/cpufreq/alucard/dec_cpu_load
+
+#This threshold is used as down threshold while sampling at frequencies less than freq_responsiveness. Above that, normal dec_cpu_load is used. This gives us an option to make scaling aggressive/relaxed until a frequency and normal for higher frequencies.
+			echo "60" > /sys/devices/system/cpu/cpufreq/alucard/dec_cpu_load_at_min_freq
+
+#Until freq_responsiveness, Up Threshold considered for sampling load is inc_cpu_load_at_min_freq. Also during the part where CPU is at maximum load frequency, governor need to find the optimal frequency as the next frequency - which should not trigger up_threshold in the next sampling. When such a frequency_next is found to be :
+#a) less than freq_responsiveness
+#b) will not trigger down_threshold in the next sample
+#then the optimal frequency is set to freq_responsiveness.
+			echo "2457600" > /sys/devices/system/cpu/cpufreq/alucard/freq_responsiveness
+
+#The frequency at which governor scales CPU up. Load big or equal inc_cpu_load: cpu scaled up.
+			echo "70" > /sys/devices/system/cpu/cpufreq/alucard/inc_cpu_load
+
+#This threshold is used as up threshold while sampling at frequencies less than freq_for_responsiveness. Above that, normal inc_cpu_load is used. This gives us an option to make scaling aggressive/relaxed until a frequency and normal for higher frequencies.
+			echo "60" > /sys/devices/system/cpu/cpufreq/alucard/inc_cpu_load_at_min_freq
+
+#Governor should decrease CPU frequency by n step each time CPU load reaches dec_cpu_load.
+			echo "1" > /sys/devices/system/cpu/cpufreq/alucard/pump_dec_step_1
+			echo "1" > /sys/devices/system/cpu/cpufreq/alucard/pump_dec_step_2
+			echo "1" > /sys/devices/system/cpu/cpufreq/alucard/pump_dec_step_3
+			echo "1" > /sys/devices/system/cpu/cpufreq/alucard/pump_dec_step_4
+
+#Governor should decrease CPU frequency by n step each time CPU load is below inc_cpu_load_at_min_freq.
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_dec_step_at_min_freq_1
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_dec_step_at_min_freq_2
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_dec_step_at_min_freq_3
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_dec_step_at_min_freq_4
+
+#Governor should increase CPU frequency by n step each time CPU load reaches inc_cpu_load.
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_inc_step_1
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_inc_step_2
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_inc_step_3
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_inc_step_4
+
+#Governor should increase CPU frequency by n step each time CPU load reaches inc_cpu_load_at_min_freq.
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_inc_step_at_min_freq_1
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_inc_step_at_min_freq_2
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_inc_step_at_min_freq_3
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_inc_step_at_min_freq_4
+
+			$BB sync
+		;;
+		battery)
+			echo "1" > /sys/devices/system/cpu/cpu0/online;
+			echo "1" > /sys/devices/system/cpu/cpu1/online;
+			echo "1" > /sys/devices/system/cpu/cpu2/online;
+			echo "1" > /sys/devices/system/cpu/cpu3/online;
+
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/cpus_down_rate
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/cpus_up_rate
+			echo "80" > /sys/devices/system/cpu/cpufreq/alucard/dec_cpu_load
+			echo "70" > /sys/devices/system/cpu/cpufreq/alucard/dec_cpu_load_at_min_freq
+			echo "1728000" > /sys/devices/system/cpu/cpufreq/alucard/freq_responsiveness
+			echo "80" > /sys/devices/system/cpu/cpufreq/alucard/inc_cpu_load
+			echo "70" > /sys/devices/system/cpu/cpufreq/alucard/inc_cpu_load_at_min_freq
+			echo "1" > /sys/devices/system/cpu/cpufreq/alucard/pump_dec_step_1
+			echo "1" > /sys/devices/system/cpu/cpufreq/alucard/pump_dec_step_2
+			echo "1" > /sys/devices/system/cpu/cpufreq/alucard/pump_dec_step_3
+			echo "1" > /sys/devices/system/cpu/cpufreq/alucard/pump_dec_step_4
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_dec_step_at_min_freq_1
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_dec_step_at_min_freq_2
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_dec_step_at_min_freq_3
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_dec_step_at_min_freq_4
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_inc_step_1
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_inc_step_2
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_inc_step_3
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_inc_step_4
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_inc_step_at_min_freq_1
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_inc_step_at_min_freq_2
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_inc_step_at_min_freq_3
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_inc_step_at_min_freq_4
+
+			$BB sync
+		;;
+		battery_extreme)
+			echo "1" > /sys/devices/system/cpu/cpu0/online;
+			echo "1" > /sys/devices/system/cpu/cpu1/online;
+			echo "1" > /sys/devices/system/cpu/cpu2/online;
+			echo "1" > /sys/devices/system/cpu/cpu3/online;
+
+			echo "1" > /sys/devices/system/cpu/cpufreq/alucard/cpus_down_rate
+			echo "3" > /sys/devices/system/cpu/cpufreq/alucard/cpus_up_rate
+			echo "85" > /sys/devices/system/cpu/cpufreq/alucard/dec_cpu_load
+			echo "75" > /sys/devices/system/cpu/cpufreq/alucard/dec_cpu_load_at_min_freq
+			echo "1497600" > /sys/devices/system/cpu/cpufreq/alucard/freq_responsiveness
+			echo "85" > /sys/devices/system/cpu/cpufreq/alucard/inc_cpu_load
+			echo "75" > /sys/devices/system/cpu/cpufreq/alucard/inc_cpu_load_at_min_freq
+			echo "1" > /sys/devices/system/cpu/cpufreq/alucard/pump_dec_step_1
+			echo "1" > /sys/devices/system/cpu/cpufreq/alucard/pump_dec_step_2
+			echo "1" > /sys/devices/system/cpu/cpufreq/alucard/pump_dec_step_3
+			echo "1" > /sys/devices/system/cpu/cpufreq/alucard/pump_dec_step_4
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_dec_step_at_min_freq_1
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_dec_step_at_min_freq_2
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_dec_step_at_min_freq_3
+			echo "2" > /sys/devices/system/cpu/cpufreq/alucard/pump_dec_step_at_min_freq_4
+			echo "3" > /sys/devices/system/cpu/cpufreq/alucard/pump_inc_step_1
+			echo "3" > /sys/devices/system/cpu/cpufreq/alucard/pump_inc_step_2
+			echo "3" > /sys/devices/system/cpu/cpufreq/alucard/pump_inc_step_3
+			echo "3" > /sys/devices/system/cpu/cpufreq/alucard/pump_inc_step_4
+			echo "3" > /sys/devices/system/cpu/cpufreq/alucard/pump_inc_step_at_min_freq_1
+			echo "3" > /sys/devices/system/cpu/cpufreq/alucard/pump_inc_step_at_min_freq_2
+			echo "3" > /sys/devices/system/cpu/cpufreq/alucard/pump_inc_step_at_min_freq_3
+			echo "3" > /sys/devices/system/cpu/cpufreq/alucard/pump_inc_step_at_min_freq_4
+
+			$BB sync
+		;;
+		*)
+			gov_alucard_profile=off;
+		;;
+	esac;
+fi;
+
+echo ${gov_alucard_profile};
