@@ -201,6 +201,7 @@ fi;
 [ ! -f /data/.gabriel/gabriel.profile ] && cp -a /res/customconfig/gabriel.profile /data/.gabriel/gabriel.profile;
 [ ! -f /data/.gabriel/suigintou.profile ] && cp -a /res/customconfig/gabriel.profile /data/.gabriel/suigintou.profile;
 [ ! -f /data/.gabriel/dcop7.profile ] && cp -a /res/customconfig/gabriel.profile /data/.gabriel/dcop7.profile;
+[ ! -f /data/.gabriel/salvation.profile ] && cp -a /res/customconfig/gabriel.profile /data/.gabriel/salvation.profile;
 
 $BB chmod -R 0777 /data/.gabriel/;
 

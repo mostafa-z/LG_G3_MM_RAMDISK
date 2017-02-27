@@ -158,6 +158,15 @@ case "${config_backup_restore}" in
 			RELOAD_STWEAKS;
 		)&
 	;;
+	11)
+		(
+			$BB cp -a /res/customconfig/salvation.profile /data/.gabriel/;
+			echo "salvation" > /data/.gabriel/.active.profile;
+			echo "Restoring salvation config file, wait until app reloads.";
+			$BB sh /res/uci.sh apply > /dev/null;
+			RELOAD_STWEAKS;
+		)&
+	;;
 	*)
 		echo "need input";
 	;;

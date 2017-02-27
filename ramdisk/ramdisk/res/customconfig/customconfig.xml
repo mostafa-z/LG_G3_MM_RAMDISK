@@ -1288,6 +1288,8 @@
 
 		<button description="A Battery friendly profile" name="Dcop7 Profile" action="push-actions/config_backup_restore 10" label="Dcop7"/>
 
+		<button description="A Balanced profile" name="Salvation Profile" action="push-actions/config_backup_restore 11" label="Salvation"/>
+
 	</settingsPane>
 
 	<settingsPane description="Backup or restore current profile after installing or updating kernel. Some settings will work only after reboot." name="Profile Backup or Restore">

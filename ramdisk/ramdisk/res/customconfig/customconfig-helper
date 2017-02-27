@@ -9,6 +9,7 @@ PERFORMANCE_PROFILE="/res/customconfig/performance.profile";
 GABRIEL_PROFILE="/res/customconfig/gabriel.profile";
 SUIGINTOU_PROFILE="/res/customconfig/suigintou.profile";
 DCOP7_PROFILE="/res/customconfig/dcop7.profile";
+SALVATION_PROFILE="/res/customconfig/salvation.profile";
 CONFIG_XML="/res/customconfig/customconfig.xml";
 PROFILE_PATH="/data/.gabriel";
 TEMP_CONFIG="${PROFILE_PATH}/.config.tmp";
@@ -55,6 +56,7 @@ select_profile()
 			[ "$_ACTIVE_PROFILE" == "gabriel" ] && cp -a $GABRIEL_PROFILE ${PROFILE_PATH}/${1}.profile;
 			[ "$_ACTIVE_PROFILE" == "suigintou" ] && cp -a $SUIGINTOU_PROFILE ${PROFILE_PATH}/${1}.profile;
 			[ "$_ACTIVE_PROFILE" == "dcop7" ] && cp -a $DCOP7_PROFILE ${PROFILE_PATH}/${1}.profile;
+			[ "$_ACTIVE_PROFILE" == "salvation" ] && cp -a $SALVATION_PROFILE ${PROFILE_PATH}/${1}.profile;
 		fi;
 		if [ ! -f ${PROFILE_PATH}/${1}.profile ]; then
 			cp -a ${PROFILE_PATH}/${_ACTIVE_PROFILE}.profile ${PROFILE_PATH}/${1}.profile;
@@ -133,6 +135,7 @@ read_defaults()
 	[ "$_ACTIVE_PROFILE" == "gabriel" ] && read_config $GABRIEL_PROFILE;
 	[ "$_ACTIVE_PROFILE" == "suigintou" ] && read_config $SUIGINTOU_PROFILE;
 	[ "$_ACTIVE_PROFILE" == "dcop7" ] && read_config $DCOP7_PROFILE;
+	[ "$_ACTIVE_PROFILE" == "salvation" ] && read_config $SALVATION_PROFILE;
 }
 
 # some initialization code
@@ -165,6 +168,9 @@ if [ ! -f $PROFILE_PATH/suigintou.profile ]; then
 fi;
 if [ ! -f $PROFILE_PATH/dcop7.profile ]; then
 	cp -a $DCOP7_PROFILE $PROFILE_PATH/dcop7.profile
+fi;
+if [ ! -f $PROFILE_PATH/salvation.profile ]; then
+	cp -a $SALVATION_PROFILE $PROFILE_PATH/salvation.profile
 fi;
 
 chmod 777 $PROFILE_PATH/*.profile;
