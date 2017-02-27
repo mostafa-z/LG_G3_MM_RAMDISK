@@ -1,0 +1,111 @@
+#!/sbin/busybox sh
+
+# $1 - "hp_alucard_profile"
+# $2 - value=
+# Created By Dorimanx
+
+BB=/sbin/busybox
+
+# get values from profile
+PROFILE=$(cat /data/.gabriel/.active.profile);
+. /data/.gabriel/"$PROFILE".profile;
+
+if [ "a$2" != "a" ]; then
+	hp_alucard_profile=$2;
+
+	case "${hp_alucard_profile}" in
+		off)
+			$BB sleep 0.5s
+			$BB sync
+		;;
+		standard)
+			echo "1497600" > /hotplugs/alucard/hotplug_freq_1_1
+			echo "652800" > /hotplugs/alucard/hotplug_freq_2_0
+			echo "1190400" > /hotplugs/alucard/hotplug_freq_2_1
+			echo "652800" > /hotplugs/alucard/hotplug_freq_3_0
+			echo "1190400" > /hotplugs/alucard/hotplug_freq_3_1
+			echo "652800" > /hotplugs/alucard/hotplug_freq_4_0
+			echo "60" > /hotplugs/alucard/hotplug_load_1_1
+			echo "20" > /hotplugs/alucard/hotplug_load_2_0
+			echo "60" > /hotplugs/alucard/hotplug_load_2_1
+			echo "20" > /hotplugs/alucard/hotplug_load_3_0
+			echo "60" > /hotplugs/alucard/hotplug_load_3_1
+			echo "20" > /hotplugs/alucard/hotplug_load_4_0
+			echo "1" > /hotplugs/alucard/hotplug_rate_1_1
+			echo "1" > /hotplugs/alucard/hotplug_rate_2_0
+			echo "2" > /hotplugs/alucard/hotplug_rate_2_1
+			echo "2" > /hotplugs/alucard/hotplug_rate_3_0
+			echo "2" > /hotplugs/alucard/hotplug_rate_3_1
+			echo "2" > /hotplugs/alucard/hotplug_rate_4_0
+			echo "100" > /hotplugs/alucard/hotplug_rq_1_1
+			echo "100" > /hotplugs/alucard/hotplug_rq_2_0
+			echo "150" > /hotplugs/alucard/hotplug_rq_2_1
+			echo "150" > /hotplugs/alucard/hotplug_rq_3_0
+			echo "150" > /hotplugs/alucard/hotplug_rq_3_1
+			echo "150" > /hotplugs/alucard/hotplug_rq_4_0
+
+			$BB sync
+		;;
+		battery)
+			echo "1497600" > /hotplugs/alucard/hotplug_freq_1_1
+			echo "652800" > /hotplugs/alucard/hotplug_freq_2_0
+			echo "1190400" > /hotplugs/alucard/hotplug_freq_2_1
+			echo "652800" > /hotplugs/alucard/hotplug_freq_3_0
+			echo "1190400" > /hotplugs/alucard/hotplug_freq_3_1
+			echo "652800" > /hotplugs/alucard/hotplug_freq_4_0
+			echo "70" > /hotplugs/alucard/hotplug_load_1_1
+			echo "25" > /hotplugs/alucard/hotplug_load_2_0
+			echo "70" > /hotplugs/alucard/hotplug_load_2_1
+			echo "25" > /hotplugs/alucard/hotplug_load_3_0
+			echo "70" > /hotplugs/alucard/hotplug_load_3_1
+			echo "25" > /hotplugs/alucard/hotplug_load_4_0
+			echo "1" > /hotplugs/alucard/hotplug_rate_1_1
+			echo "1" > /hotplugs/alucard/hotplug_rate_2_0
+			echo "2" > /hotplugs/alucard/hotplug_rate_2_1
+			echo "2" > /hotplugs/alucard/hotplug_rate_3_0
+			echo "2" > /hotplugs/alucard/hotplug_rate_3_1
+			echo "2" > /hotplugs/alucard/hotplug_rate_4_0
+			echo "125" > /hotplugs/alucard/hotplug_rq_1_1
+			echo "125" > /hotplugs/alucard/hotplug_rq_2_0
+			echo "175" > /hotplugs/alucard/hotplug_rq_2_1
+			echo "175" > /hotplugs/alucard/hotplug_rq_3_0
+			echo "175" > /hotplugs/alucard/hotplug_rq_3_1
+			echo "175" > /hotplugs/alucard/hotplug_rq_4_0
+
+			$BB sync
+		;;
+		battery_extreme)
+			echo "1574400" > /hotplugs/alucard/hotplug_freq_1_1
+			echo "729600" > /hotplugs/alucard/hotplug_freq_2_0
+			echo "1267200" > /hotplugs/alucard/hotplug_freq_2_1
+			echo "729600" > /hotplugs/alucard/hotplug_freq_3_0
+			echo "1267200" > /hotplugs/alucard/hotplug_freq_3_1
+			echo "729600" > /hotplugs/alucard/hotplug_freq_4_0
+			echo "75" > /hotplugs/alucard/hotplug_load_1_1
+			echo "30" > /hotplugs/alucard/hotplug_load_2_0
+			echo "75" > /hotplugs/alucard/hotplug_load_2_1
+			echo "30" > /hotplugs/alucard/hotplug_load_3_0
+			echo "75" > /hotplugs/alucard/hotplug_load_3_1
+			echo "30" > /hotplugs/alucard/hotplug_load_4_0
+			echo "1" > /hotplugs/alucard/hotplug_rate_1_1
+			echo "1" > /hotplugs/alucard/hotplug_rate_2_0
+			echo "3" > /hotplugs/alucard/hotplug_rate_2_1
+			echo "3" > /hotplugs/alucard/hotplug_rate_3_0
+			echo "3" > /hotplugs/alucard/hotplug_rate_3_1
+			echo "3" > /hotplugs/alucard/hotplug_rate_4_0
+			echo "150" > /hotplugs/alucard/hotplug_rq_1_1
+			echo "150" > /hotplugs/alucard/hotplug_rq_2_0
+			echo "200" > /hotplugs/alucard/hotplug_rq_2_1
+			echo "200" > /hotplugs/alucard/hotplug_rq_3_0
+			echo "200" > /hotplugs/alucard/hotplug_rq_3_1
+			echo "200" > /hotplugs/alucard/hotplug_rq_4_0
+
+			$BB sync
+		;;
+		*)
+			hp_alucard_profile=off;
+		;;
+	esac;
+fi;
+
+echo ${hp_alucard_profile};
