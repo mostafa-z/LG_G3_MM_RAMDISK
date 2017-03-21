@@ -847,6 +847,25 @@
 
 	</settingsPane>
 
+	<settingsPane description="Here you can change the way to lower the power consumptions while maintaining high-performance with msm-adreno-tz." name="Adreno Idler">
+
+		<spinner description="Select Adreno Idler State" name="Idler State"
+			action="generic /sys/module/adreno_idler/parameters/adreno_idler_active">
+			<spinnerItem name="Disable" value="0"/>
+			<spinnerItem name="Enable" value="1"/>
+		</spinner>
+
+		<seekBar description="Threshold for determining if the given work load is idle. (Default: 20%)." name="Down differential Value"
+			action="generic /sys/module/adreno_idler/parameters/adreno_idler_downdifferential" unit="%" min="0" reversed="false" step="1" max="99"/>
+
+		<seekBar description="Number of events to wait before ramping down the frequency. (Default: 20%)." name="Idle Wait Value"
+			action="generic /sys/module/adreno_idler/parameters/adreno_idler_idlewait" unit="%" min="0" reversed="false" step="1" max="99"/>
+
+		<seekBar description="Try to ramp down the frequency if set to a higher value. (Default: 5000)." name="Idle Work Load Value"
+			action="generic /sys/module/adreno_idler/parameters/adreno_idler_idleworkload" unit="" min="1000" reversed="false" step="1000" max="10000"/>
+
+	</settingsPane>
+
 </settingsTab>
 
 <settingsTab name="I/O">
