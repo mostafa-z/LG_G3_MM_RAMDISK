@@ -7,6 +7,9 @@ on init
 on init
     setprop ro.ssbd.session /dev/block/platform/msm_sdcc.1/by-name/eksst
     setprop ro.ssbd.offset 0
+# FULMICS_ROM_CHANGE, xpirt.dev@gmail.com, 2016-08-01
+    setprop ro.sys.sec.version.info "xpirt@FulmicsROM"
+# FULMICS_ROM_CHANGE, xpirt.dev@gmail.com, 2016-08-01
 
 # [ENCRYPTION]For FIPS and  applied only VZW,ATT,SPR and TMUS(NorthAmerica)
 service ufips /system/bin/ufips_perf

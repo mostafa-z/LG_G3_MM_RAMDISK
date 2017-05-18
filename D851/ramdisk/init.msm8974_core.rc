@@ -56,9 +56,6 @@ on post-fs-data
     start last_kmsg_backup
     start sreadahead
 
-    # enable exfat feature
-       insmod /system/lib/modules/exfat.ko
-
 on boot
     start set_emmc_size
 

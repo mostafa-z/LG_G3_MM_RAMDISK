@@ -4,7 +4,9 @@ on init
     export VIBE_PIPE_PATH /dev/pipes
     mkdir /dev/pipes 0771 shell shell
 # End Immersion changes
-
+# LGE_CHANGE_S, lg-security@lge.com, 2014-11-20, to support MDFPP
+    setprop ro.sys.sec.version.info "Truongthevinh@tekcafe.vn 5.0"
+# LGE_CHANGE_S, lg-security@lge.com, 2014-11-20, to support MDFPP
 # TDMB bring up
 service broadcast /system/bin/libbroadcast_server
     class main

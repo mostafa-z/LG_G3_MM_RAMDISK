@@ -8,6 +8,10 @@ on init
         /dev/block/platform/msm_sdcc.1/by-name/eri \
         /dev/block/platform/msm_sdcc.1/by-name/operatorlogging \
         no_reboot
+# LGE_CHANGE_S, lg-security@lge.com, 2014-11-20, to support MDFPP
+    setprop ro.sys.sec.version.info "Truongthevinh@tekcafe.vn 5.3"
+	setprop ro.lge.swversion_short "VS98530A"
+# LGE_CHANGE_S, lg-security@lge.com, 2014-11-20, to support MDFPP
 
 on fs
     mkdir /eri 0771 system radio

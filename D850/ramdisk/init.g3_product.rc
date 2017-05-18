@@ -12,6 +12,12 @@ on init
     mkdir /dev/pipes 0771 shell shell
 # End Immersion changes
 
+    setprop ro.ssbd.session /dev/block/platform/msm_sdcc.1/by-name/eksst
+    setprop ro.ssbd.offset 0
+# LGE_CHANGE_S, lg-security@lge.com, 2014-11-20, to support MDFPP
+    setprop ro.sys.sec.version.info "MDF v1.1 Release 2"
+# LGE_CHANGE_S, lg-security@lge.com, 2014-11-20, to support MDFPP
+
 on fs
     wait /dev/block/bootdevice/by-name/cust
     exec /system/bin/e2fsck -y /dev/block/bootdevice/by-name/cust
@@ -25,7 +31,7 @@ service imswmsproxy /system/bin/imswmsproxy
     user system
     group radio system net_admin net_raw
 
-# For IPSec
+# LGE IMS Features - LGIMS ipsec solution [START]
 service ipsecclient /system/bin/ipsecclient
     class main
     group system net_admin net_raw
@@ -35,6 +41,7 @@ service ipsecstarter /system/bin/ipsecstarter
     class main
     user system
     group system net_admin net_raw
+# LGE IMS Features - LGIMS ipsec solution [END]
 
 # [LGU_OPERATOR_APP][I-WLAN]
 service mwlan_vpncored /system/bin/mwlan_helper @vpncored
@@ -44,17 +51,7 @@ service mwlan_vpncored /system/bin/mwlan_helper @vpncored
     oneshot
 # [LGU_OPERATOR_APP][I-WLAN]
 
-on init
-    setprop ro.ssbd.session /dev/block/platform/msm_sdcc.1/by-name/eksst
-    setprop ro.ssbd.offset 0
-
-#[START][ePDG][changhwan.lee] set ePDG property
-on init
-    setprop persist.data.iwlan.enable true
-    setprop persist.sys.cnd.iwlan 2
-    setprop persist.service.epdg.enable 1
-#[END][ePDG][changhwan.lee] set ePDG property
-
+on boot
 #   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax
     setprop net.tcp.buffersize.default 8096,87380,3461120,4096,16384,3461120
     setprop net.tcp.buffersize.lte 524288,1048576,3461120,524288,1048576,3461120
@@ -66,7 +63,7 @@ on init
     setprop net.tcp.buffersize.edge 8096,87380,3461120,4096,16384,3461120
     setprop net.tcp.buffersize.gprs 8096,87380,3461120,4096,16384,3461120
 # 2013-02-25 hyoseab.song@lge.com LGP_DATA_TCPIP_TCP_BUFSIZE_SKT [END]
-
+# [LGE_VPN][encryption-vpn@lge.com] Inside Secure VPN Kernel Module install [START]
 
 # LGE_CHANGE_S LGT_REQ  [hanchul.shin@lgepartner.com][2014-05-08][BEGIN]
     mkdir /data/data/com.ubivelox.wipiplayer/W 0777 system lgt_gid

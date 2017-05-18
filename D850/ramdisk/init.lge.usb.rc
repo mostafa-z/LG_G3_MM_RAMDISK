@@ -105,7 +105,7 @@ on post-fs-data
     chmod 0660 /sys/devices/platform/lg_diag_cmd/diag_enable
 
 ################################################################################
-# COMMON
+# ATT
 ################################################################################
 
 on property:persist.sys.usb.diag_enable=*
@@ -130,26 +130,26 @@ on property:sys.usb.config=adb
 on property:sys.usb.config=boot
     write /sys/class/android_usb/android0/enable 0
     write /sys/class/android_usb/android0/idVendor 1004
-    write /sys/class/android_usb/android0/idProduct 633A
-    write /sys/class/android_usb/android0/bDeviceClass 239
-    write /sys/class/android_usb/android0/bDeviceSubClass 2
-    write /sys/class/android_usb/android0/bDeviceProtocol 1
+    write /sys/class/android_usb/android0/idProduct 633E
+    write /sys/class/android_usb/android0/bDeviceClass 0
+    write /sys/class/android_usb/android0/bDeviceSubClass 0
+    write /sys/class/android_usb/android0/bDeviceProtocol 0
     write /sys/class/android_usb/android0/f_acm/acm_transports tty
     write /sys/class/android_usb/android0/f_diag/clients diag
-    write /sys/class/android_usb/android0/functions acm,diag
+    write /sys/class/android_usb/android0/functions mtp:mtp,acm,diag
     write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=boot,adb
     write /sys/class/android_usb/android0/enable 0
     write /sys/class/android_usb/android0/idVendor 1004
-    write /sys/class/android_usb/android0/idProduct 633A
-    write /sys/class/android_usb/android0/bDeviceClass 239
-    write /sys/class/android_usb/android0/bDeviceSubClass 2
-    write /sys/class/android_usb/android0/bDeviceProtocol 1
+    write /sys/class/android_usb/android0/idProduct 633E
+    write /sys/class/android_usb/android0/bDeviceClass 0
+    write /sys/class/android_usb/android0/bDeviceSubClass 0
+    write /sys/class/android_usb/android0/bDeviceProtocol 0
     write /sys/class/android_usb/android0/f_acm/acm_transports tty
     write /sys/class/android_usb/android0/f_diag/clients diag
-    write /sys/class/android_usb/android0/functions acm,diag,adb
+    write /sys/class/android_usb/android0/functions mtp,adb:mtp,acm,diag,adb
     write /sys/class/android_usb/android0/enable 1
     start adbd
     setprop sys.usb.state ${sys.usb.config}

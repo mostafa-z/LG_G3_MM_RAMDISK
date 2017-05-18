@@ -19,11 +19,6 @@ on fs
     restorecon_recursive /cust
     mount ext4 /dev/block/bootdevice/by-name/cust /cust ro remount nosuid nodev barrier=1 noauto_da_alloc
 
-# LGE IMS Features - To interwork with QMI WMS (64-bit exe/lib)
-service imswmsproxy /system/bin/imswmsproxy
-    class main
-    user system
-    group radio system net_admin net_raw
 
 # For IPSec
 service ipsecclient /system/bin/ipsecclient

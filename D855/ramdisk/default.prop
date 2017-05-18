@@ -1,9 +1,9 @@
 #
 # ADDITIONAL_DEFAULT_PROPERTIES
 #
-ro.secure=0
+ro.secure=1
 ro.allow.mock.location=0
-ro.debuggable=1
+ro.debuggable=0
 persist.sys.usb.config=boot
 ro.adb.secure=1
 ro.lge.fmframework.enabled=true
@@ -20,7 +20,7 @@ debug.atrace.tags.enableflags=0
 #
 # BOOTIMAGE_BUILD_PROPERTIES
 #
-ro.bootimage.build.date=Thu Apr 21 15:43:31 IST 2016
-ro.bootimage.build.date.utc=1461233611
-ro.bootimage.build.fingerprint=lge/g3_global_com/g3:6.0/MRA58K/161121858a9c0:user/release-key
+ro.bootimage.build.date=Tue Aug 16 15:51:23 KST 2016
+ro.bootimage.build.date.utc=1471330283
+ro.bootimage.build.fingerprint=lge/g3_global_com/g3:6.0/MRA58K/162291543a76c:user/release-keys
 
