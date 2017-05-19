@@ -2,12 +2,16 @@
 
 BB=/sbin/busybox
 
+OPEN_RW()
+{
 if [ "$($BB mount | $BB grep rootfs | $BB cut -c 26-27 | $BB grep -c ro)" -eq "1" ]; then
 	$BB mount -o remount,rw /;
 fi;
 if [ "$($BB mount | $BB grep system | $BB grep -c ro)" -eq "1" ]; then
 	$BB mount -o remount,rw /system;
 fi;
+}
+OPEN_RW;
 
 # update passwd and group files for busybox.
 echo "root:x:0:0::/:/sbin/sh" > /system/etc/passwd;
@@ -59,6 +63,14 @@ cd /;
 $BB cp /sbin/busybox /system/xbin/;
 
 /system/xbin/busybox --install -s /system/xbin/
+
+# fix titanium backup root fail with magisk
+$BB mount -o remount,rw /system;
+$BB cp /sbin/su /system/bin/su;
+$BB chmod 06755 /system/bin/su;
+$BB mount -o remount,ro /system;
+OPEN_RW;
+
 if [ -e /system/xbin/wget ]; then
 	rm /system/xbin/wget;
 fi;
