@@ -2,6 +2,7 @@ stweaks_boot_control=yes
 google_services_fix=no
 protect_systemui_oom=no
 restart_lge_systemui=no
+fstrim_after_boot=no
 current_sched_balance_policy=powersaving
 sleep_current_sched_balance_policy=powersaving
 sched_mc_power_savings=0

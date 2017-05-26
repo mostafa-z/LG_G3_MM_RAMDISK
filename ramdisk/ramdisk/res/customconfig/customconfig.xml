@@ -41,6 +41,12 @@
 			<spinnerItem name="Don't Restart Launcher at boot completion." value="no"/>
 		</spinner>
 
+		<spinner description="Trim cache, data, system partition when CPU temp goes under 65, once at boot completion (reboot needed). (Default: Don't Trim)." name="FSTrim"
+			action="generic_cortex /tmp/fstrim_after_boot">
+			<spinnerItem name="Trim at boot completion." value="yes"/>
+			<spinnerItem name="Don't Trim at boot completion." value="no"/>
+		</spinner>
+
 		<button description="Push this button to manually load ALL settings in case of the master switch is (or already was) OFF and wait until Stweak reloads. When the Master Switch was already ON while phone was booting up, there is no need to use it." name="Reload All Settings" action="push-actions/reload_settings" label="Reload All"/>
 
 	</settingsPane>
