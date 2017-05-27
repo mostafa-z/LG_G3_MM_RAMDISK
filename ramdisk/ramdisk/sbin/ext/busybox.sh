@@ -64,13 +64,6 @@ $BB cp /sbin/busybox /system/xbin/;
 
 /system/xbin/busybox --install -s /system/xbin/
 
-# fix titanium backup root fail with magisk
-$BB mount -o remount,rw /system;
-$BB cp /sbin/su /system/bin/su;
-$BB chmod 06755 /system/bin/su;
-$BB mount -o remount,ro /system;
-OPEN_RW;
-
 if [ -e /system/xbin/wget ]; then
 	rm /system/xbin/wget;
 fi;
@@ -84,6 +77,26 @@ if [ -e /system/xbin/su ]; then
 fi;
 if [ -e /system/xbin/daemonsu ]; then
 	$BB chmod 06755 /system/xbin/daemonsu;
+fi;
+
+# fix titanium backup root fail with magisk
+# check whether magisk is installed or not
+# the su binary is exist in /system/xbin/ and magisk one is in /magisk/.core/bin/
+# TiB wants it in /system/bin/ path
+if [ -e /magisk/.core/bin/su ] && [ -e /data/magisk/init.magisk.rc ]; then
+	mount -o remount,rw /system;
+	ln -s /magisk/.core/bin/su /system/bin/su;
+	chmod 06755 /system/bin/su;
+	echo "[Gabriel-Kernel init] SU added to /system/bin" > /dev/kmsg
+	mount -o remount,ro /system;
+	OPEN_RW;
+elif [ -e /system/bin/su ] && [ -e /system/app/SuperSU/SuperSU.apk ] || [ ! -e /magisk/.core/bin/su ]; then
+	# just make sure it's like default system state
+	mount -o remount,rw /system;
+	rm /system/bin/su;
+	echo "[Gabriel-Kernel init] SU removed from /system/bin" > /dev/kmsg
+	mount -o remount,ro /system;
+	OPEN_RW;
 fi;
 
 $BB sh /sbin/ext/post-init.sh;
