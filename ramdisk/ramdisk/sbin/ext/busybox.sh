@@ -90,7 +90,8 @@ if [ -e /magisk/.core/bin/su ] && [ -e /data/magisk/init.magisk.rc ]; then
 	echo "[Gabriel-Kernel init] SU added to /system/bin" > /dev/kmsg
 	mount -o remount,ro /system;
 	OPEN_RW;
-elif [ -e /system/bin/su ] && [ -e /system/app/SuperSU/SuperSU.apk ] || [ ! -e /magisk/.core/bin/su ]; then
+fi;
+if [ -e /system/bin/su ] && [ -e /system/bin/.ext/.su ] && [ -e /system/xbin/su ] || [ ! -e /magisk/.core/bin/su ]; then
 	# just make sure it's like default system state
 	mount -o remount,rw /system;
 	rm /system/bin/su;
