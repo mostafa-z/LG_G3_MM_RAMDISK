@@ -73,17 +73,23 @@
 
 	</settingsPane>
 
-<settingsPane description="Allow to control FSync." name="FSYNC">
+	<settingsPane description="Disable for better file system performance at the risk of data loss in case of system crash (Default: enabled)" name="FSync control">
 
-		<checkbox description="Disable for better file system performance at the risk of data loss in case of system crash (Default: enabled)" name="FSync on/off"
-			action="generic01 /sys/module/sync/parameters/fsync_enabled" label="FSync Control"/>
+		<spinner description="Select FSync State" name="FSync State"
+			action="generic /sys/module/sync/parameters/fsync_enabled">
+			<spinnerItem name="Disable" value="0"/>
+			<spinnerItem name="Enable" value="1"/>
+		</spinner>
 
-		<checkbox description="FSync operation during input boost events (Default: enabled)" name="FSync on input boost"
-			action="generic01 /sys/module/sync/parameters/fsync_enabled_on_input_boost" label="FSync on input boost"/>
+		<spinner description="Select FSync on input Boost State" name="FSync on input Boost State"
+			action="generic /sys/module/sync/parameters/fsync_enabled_on_input_boost">
+			<spinnerItem name="Disable" value="0"/>
+			<spinnerItem name="Enable" value="1"/>
+		</spinner>
 
 	</settingsPane>
 
-<settingsPane description="The random number generator gathers environmental noise from device drivers and other sources into an entropy pool. The generator also keeps an estimate of the number of bits of noise in the entropy pool. From this entropy pool random numbers are created." name="Entropy">
+	<settingsPane description="The random number generator gathers environmental noise from device drivers and other sources into an entropy pool. The generator also keeps an estimate of the number of bits of noise in the entropy pool. From this entropy pool random numbers are created." name="Entropy">
 
 		<spinner description="Select availalbe entropy generator. (Default: Medium)." name="Available entropy"
 			action="entropytweaks">
@@ -94,7 +100,7 @@
 
 	</settingsPane>
 
-<settingsPane description="Allow to control Screen Sharpening, which makes texts unreadable in some case." name="Sharpening">
+	<settingsPane description="Allow to control Screen Sharpening, which makes texts unreadable in some case." name="Sharpening">
 
 		<checkbox description="Enable/Disable Sharpening Control ability. (Default: enabled)" name="Sharpening Control on/off"
 			action="generic01 /sys/devices/virtual/graphics/fb0/sharpening" label="Sharpening Control"/>
