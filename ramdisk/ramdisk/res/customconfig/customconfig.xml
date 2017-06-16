@@ -81,7 +81,7 @@
 			<spinnerItem name="Enable" value="1"/>
 		</spinner>
 
-		<spinner description="Select FSync on input Boost State" name="FSync on input Boost State"
+		<spinner description="Select FSync on input Boost State, depends on cpu_boost state which sync fs on touch boost" name="FSync on input Boost State"
 			action="generic /sys/module/sync/parameters/fsync_enabled_on_input_boost">
 			<spinnerItem name="Disable" value="0"/>
 			<spinnerItem name="Enable" value="1"/>
