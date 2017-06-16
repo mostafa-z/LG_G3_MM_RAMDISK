@@ -773,7 +773,7 @@
 
 		<button description="This option updates GPU Governor's changes." name="Update GPU Governor Tuning" action="push-actions/gpu_update" label="Update GPU Governor"/>
 
-		<spinner description="Select GPU Maximum frequency only when needed because some higher frequencies can be unstable! and 657 MHz only available in Over Clocked version (Default: 578 MHz)." name="Max GPU Frequency"
+		<spinner description="Select GPU Maximum frequency only when needed because some higher frequencies can be unstable! and 657 MHz only available in Over Clocked version. Stock LG UI start lag under 330 MHz with msm-adreno governor. (Default: 578 MHz)." name="Max GPU Frequency"
 			action="generic /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/max_freq">
 			<spinnerItem name="657 MHz" value="657500000"/> 
 			<spinnerItem name="578 MHz" value="578000000"/> 
@@ -785,7 +785,7 @@
 			<spinnerItem name="27 MHz" value="27000000"/> 
 		</spinner>
 
-		<spinner description="Select GPU Minimum frequency when GPU is IDLE - if you set higher than 200 MHz, then the GPU will hold selected frequency on IDLE (Default: 200 MHz)." name="Min GPU Frequency"
+		<spinner description="Select GPU Minimum frequency when GPU is IDLE - if you set higher than 200 MHz, then the GPU will hold selected frequency on IDLE. Stock LG UI has better response with msm-adreno governor if min gpu frequency set to 27 MHz. (Default: 200 MHz)." name="Min GPU Frequency"
 			action="generic /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/min_freq">
 			<spinnerItem name="27 MHz" value="27000000"/> 
 			<spinnerItem name="100 MHz" value="100000000"/> 
