@@ -364,11 +364,4 @@ fi;
 		echo "[Gabriel-Kernel] LGe Launcher2 restarted" > /dev/kmsg
 	fi;
 
-	if [ "$fstrim_after_boot" == "yes" ] && [ "$stweaks_boot_control" == "yes" ]; then
-		$BB fstrim /system
-		$BB fstrim /data
-		$BB fstrim /cache
-		echo "[Gabriel-Kernel] file systems trimmed" > /dev/kmsg
-	fi;
-
 )&
