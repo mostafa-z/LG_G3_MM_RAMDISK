@@ -358,10 +358,4 @@ fi;
 		$BB sh /res/uci.sh cpu2_max_freq "$cpu2_max_freq";
 		$BB sh /res/uci.sh cpu3_max_freq "$cpu3_max_freq";
 	fi;
-
-	if [ "$restart_lge_systemui" == "yes" ] && [ "$stweaks_boot_control" == "yes" ]; then
-		pkill -f com.lge.launcher2;
-		echo "[Gabriel-Kernel] LGe Launcher2 restarted" > /dev/kmsg
-	fi;
-
 )&
