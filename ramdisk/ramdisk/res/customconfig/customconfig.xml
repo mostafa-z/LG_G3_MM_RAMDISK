@@ -133,7 +133,8 @@
 			<spinnerItem name="Interactive" value="interactive"/>
 			<spinnerItem name="InteractiveX" value="interactivex"/>
 			<spinnerItem name="Interactive_LG" value="interactive_lg"/>
-			<spinnerItem name="Yankactive" value="yankactive"/> 
+			<spinnerItem name="Yankactive" value="yankactive"/>
+			<spinnerItem name="Blu-Active" value="blu_active"/> 
 			<spinnerItem name="Intel" value="intel"/> 
 			<spinnerItem name="Impulse" value="impulse"/> 
 			<spinnerItem name="Intellimm" value="intellimm"/> 
@@ -145,6 +146,7 @@
 			<spinnerItem name="Slim" value="slim"/> 
 			<spinnerItem name="Conservative" value="conservative"/> 
 			<spinnerItem name="ZZMoove" value="zzmoove"/> 
+			<spinnerItem name="Despair" value="despair"/>
 			<spinnerItem name="Smartmax" value="smartmax"/> 
 			<spinnerItem name="Smartmax_eps" value="smartmax_eps"/> 
 			<spinnerItem name="Lionheart" value="lionheart"/> 
@@ -165,6 +167,7 @@
 			<spinnerItem name="InteractiveX" value="interactivex"/>
 			<spinnerItem name="Interactive_LG" value="interactive_lg"/>
 			<spinnerItem name="Yankactive" value="yankactive"/> 
+			<spinnerItem name="Blu-Active" value="blu_active"/>
 			<spinnerItem name="Intel" value="intel"/> 
 			<spinnerItem name="Impulse" value="impulse"/> 
 			<spinnerItem name="Intellimm" value="intellimm"/> 
@@ -176,6 +179,7 @@
 			<spinnerItem name="Slim" value="slim"/> 
 			<spinnerItem name="Conservative" value="conservative"/> 
 			<spinnerItem name="ZZMoove" value="zzmoove"/> 
+			<spinnerItem name="Despair" value="despair"/>
 			<spinnerItem name="Smartmax" value="smartmax"/> 
 			<spinnerItem name="Smartmax_eps" value="smartmax_eps"/> 
 			<spinnerItem name="Lionheart" value="lionheart"/> 
@@ -196,6 +200,7 @@
 			<spinnerItem name="InteractiveX" value="interactivex"/>
 			<spinnerItem name="Interactive_LG" value="interactive_lg"/>
 			<spinnerItem name="Yankactive" value="yankactive"/> 
+			<spinnerItem name="Blu-Active" value="blu_active"/>
 			<spinnerItem name="Intel" value="intel"/> 
 			<spinnerItem name="Impulse" value="impulse"/> 
 			<spinnerItem name="Intellimm" value="intellimm"/> 
@@ -207,6 +212,7 @@
 			<spinnerItem name="Slim" value="slim"/> 
 			<spinnerItem name="Conservative" value="conservative"/> 
 			<spinnerItem name="ZZMoove" value="zzmoove"/> 
+			<spinnerItem name="Despair" value="despair"/>
 			<spinnerItem name="Smartmax" value="smartmax"/> 
 			<spinnerItem name="Smartmax_eps" value="smartmax_eps"/> 
 			<spinnerItem name="Lionheart" value="lionheart"/> 
@@ -227,6 +233,7 @@
 			<spinnerItem name="InteractiveX" value="interactivex"/>
 			<spinnerItem name="Interactive_LG" value="interactive_lg"/>
 			<spinnerItem name="Yankactive" value="yankactive"/> 
+			<spinnerItem name="Blu-Active" value="blu_active"/>
 			<spinnerItem name="Intel" value="intel"/> 
 			<spinnerItem name="Impulse" value="impulse"/> 
 			<spinnerItem name="Intellimm" value="intellimm"/> 
@@ -238,6 +245,7 @@
 			<spinnerItem name="Slim" value="slim"/> 
 			<spinnerItem name="Conservative" value="conservative"/> 
 			<spinnerItem name="ZZMoove" value="zzmoove"/> 
+			<spinnerItem name="Despair" value="despair"/>
 			<spinnerItem name="Smartmax" value="smartmax"/> 
 			<spinnerItem name="Smartmax_eps" value="smartmax_eps"/> 
 			<spinnerItem name="Lionheart" value="lionheart"/> 
