@@ -143,6 +143,7 @@
 			<spinnerItem name="Ondemandplus" value="ondemandplus"/> 
 			<spinnerItem name="Ondemand_LG" value="ondemand_lg"/> 
 			<spinnerItem name="Intellidemand" value="intellidemand"/> 
+			<spinnerItem name="Elementalx" value="elementalx"/>
 			<spinnerItem name="Slim" value="slim"/> 
 			<spinnerItem name="Conservative" value="conservative"/> 
 			<spinnerItem name="ZZMoove" value="zzmoove"/> 
@@ -176,6 +177,7 @@
 			<spinnerItem name="Ondemandplus" value="ondemandplus"/> 
 			<spinnerItem name="Ondemand_LG" value="ondemand_lg"/> 
 			<spinnerItem name="Intellidemand" value="intellidemand"/> 
+			<spinnerItem name="Elementalx" value="elementalx"/>
 			<spinnerItem name="Slim" value="slim"/> 
 			<spinnerItem name="Conservative" value="conservative"/> 
 			<spinnerItem name="ZZMoove" value="zzmoove"/> 
@@ -209,6 +211,7 @@
 			<spinnerItem name="Ondemandplus" value="ondemandplus"/> 
 			<spinnerItem name="Ondemand_LG" value="ondemand_lg"/> 
 			<spinnerItem name="Intellidemand" value="intellidemand"/> 
+			<spinnerItem name="Elementalx" value="elementalx"/>
 			<spinnerItem name="Slim" value="slim"/> 
 			<spinnerItem name="Conservative" value="conservative"/> 
 			<spinnerItem name="ZZMoove" value="zzmoove"/> 
@@ -242,6 +245,7 @@
 			<spinnerItem name="Ondemandplus" value="ondemandplus"/> 
 			<spinnerItem name="Ondemand_LG" value="ondemand_lg"/> 
 			<spinnerItem name="Intellidemand" value="intellidemand"/> 
+			<spinnerItem name="Elementalx" value="elementalx"/>
 			<spinnerItem name="Slim" value="slim"/> 
 			<spinnerItem name="Conservative" value="conservative"/> 
 			<spinnerItem name="ZZMoove" value="zzmoove"/> 
