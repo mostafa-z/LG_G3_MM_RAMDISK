@@ -279,6 +279,7 @@
 			<spinnerItem name="Hawk Tail" value="hawktail"/>
 			<spinnerItem name="Kestrel" value="kestrel"/>
 			<spinnerItem name="Eclipse" value="eclipse"/>
+			<spinnerItem name="Franco" value="franco"/>
 			<spinnerItem name="Gabriel" value="gabriel"/>
 			<spinnerItem name="Gabriel Extreme" value="gabriel_extreme"/>
 		</spinner>
@@ -295,6 +296,7 @@
 			<spinnerItem name="Hawk Tail" value="hawktail"/>
 			<spinnerItem name="Kestrel" value="kestrel"/>
 			<spinnerItem name="Eclipse" value="eclipse"/>
+			<spinnerItem name="Franco" value="franco"/>
 			<spinnerItem name="Gabriel" value="gabriel"/>
 			<spinnerItem name="Gabriel Extreme" value="gabriel_extreme"/>
 		</spinner>
@@ -311,6 +313,7 @@
 			<spinnerItem name="Hawk Tail" value="hawktail"/>
 			<spinnerItem name="Kestrel" value="kestrel"/>
 			<spinnerItem name="Eclipse" value="eclipse"/>
+			<spinnerItem name="Franco" value="franco"/>
 			<spinnerItem name="Gabriel" value="gabriel"/>
 			<spinnerItem name="Gabriel Extreme" value="gabriel_extreme"/>
 		</spinner>
@@ -327,6 +330,7 @@
 			<spinnerItem name="Hawk Tail" value="hawktail"/>
 			<spinnerItem name="Kestrel" value="kestrel"/>
 			<spinnerItem name="Eclipse" value="eclipse"/>
+			<spinnerItem name="Franco" value="franco"/>
 			<spinnerItem name="Gabriel" value="gabriel"/>
 			<spinnerItem name="Gabriel Extreme" value="gabriel_extreme"/>
 		</spinner>
