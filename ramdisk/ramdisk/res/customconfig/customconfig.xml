@@ -145,7 +145,8 @@
 			<spinnerItem name="Intellidemand" value="intellidemand"/> 
 			<spinnerItem name="Elementalx" value="elementalx"/>
 			<spinnerItem name="Slim" value="slim"/> 
-			<spinnerItem name="Conservative" value="conservative"/> 
+			<spinnerItem name="Conservative" value="conservative"/>
+			<spinnerItem name="ConservativeX" value="conservativex"/>
 			<spinnerItem name="ZZMoove" value="zzmoove"/> 
 			<spinnerItem name="Despair" value="despair"/>
 			<spinnerItem name="Smartmax" value="smartmax"/> 
@@ -180,6 +181,7 @@
 			<spinnerItem name="Elementalx" value="elementalx"/>
 			<spinnerItem name="Slim" value="slim"/> 
 			<spinnerItem name="Conservative" value="conservative"/> 
+			<spinnerItem name="ConservativeX" value="conservativex"/>
 			<spinnerItem name="ZZMoove" value="zzmoove"/> 
 			<spinnerItem name="Despair" value="despair"/>
 			<spinnerItem name="Smartmax" value="smartmax"/> 
@@ -214,6 +216,7 @@
 			<spinnerItem name="Elementalx" value="elementalx"/>
 			<spinnerItem name="Slim" value="slim"/> 
 			<spinnerItem name="Conservative" value="conservative"/> 
+			<spinnerItem name="ConservativeX" value="conservativex"/>
 			<spinnerItem name="ZZMoove" value="zzmoove"/> 
 			<spinnerItem name="Despair" value="despair"/>
 			<spinnerItem name="Smartmax" value="smartmax"/> 
@@ -248,6 +251,7 @@
 			<spinnerItem name="Elementalx" value="elementalx"/>
 			<spinnerItem name="Slim" value="slim"/> 
 			<spinnerItem name="Conservative" value="conservative"/> 
+			<spinnerItem name="ConservativeX" value="conservativex"/>
 			<spinnerItem name="ZZMoove" value="zzmoove"/> 
 			<spinnerItem name="Despair" value="despair"/>
 			<spinnerItem name="Smartmax" value="smartmax"/> 
